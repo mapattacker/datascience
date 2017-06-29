@@ -2,3 +2,5 @@
 _build/
 images/
 templates/
+_static/
+_templates/
