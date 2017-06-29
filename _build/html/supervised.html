@@ -113,6 +113,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unsupervised.html">5. Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition.html">6. Time Series Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">7. Forecasting</a></li>
 </ul>
 
             
@@ -207,6 +209,19 @@
 </div>
 <div class="section" id="lasso-regression">
 <h3>4.2.3. Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
+<p>Least absolute shrinkage and selection operator regression, or LASSO regression, has a unique penalty parameter, lambda that <em>change unimportant features (their regression coefficients) into 0</em>.
+This helps to prevent <em>overfitting</em>.</p>
+<ul class="simple">
+<li>Prevent overfitting.</li>
+<li>Uses regularisation.</li>
+<li>Uses a penalty parameter lambda to change unimportant features (their regression coefficients) into 0. When lambda = 0, then it is a normal OLS regression. (Note sklearn name it as alpha instead)<ol class="loweralpha">
+<li>Bias increase &amp; variability decreases when lambda increases.</li>
+<li>Useful when there are many features (explanatory variables).</li>
+<li>Have to standardize all features so that they have mean 0 and std error 1.</li>
+<li>Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors &amp; add each predictor that is most correlated at each step.</li>
+</ol>
+</li>
+</ul>
 </div>
 </div>
 </div>

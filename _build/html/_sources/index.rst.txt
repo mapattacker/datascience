@@ -21,4 +21,4 @@ This documentation summarises various statistics and machine learning techniques
    supervised
    unsupervised
    decomposition
-   forecasting
+   forecasting 
