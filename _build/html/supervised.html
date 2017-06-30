@@ -330,29 +330,28 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 <span class="go"> CHAS   0.009405</span>
 </pre></div>
 </div>
+<p><strong>Optimum Ensemble of Trees</strong></p>
 <div class="code python highlight-python"><div class="highlight"><pre><span></span># see how many decision trees are minimally required make the accuarcy consistent
-
 import numpy as np
 import matplotlib.pylab as plt
 import seaborn as sns
 %matplotlib inline
+
+trees=range(100)
+accuracy=np.zeros(100)
+
+for i in range(len(trees)):
+   clf=RandomForestClassifier(n_estimators= i+1)
+   model=clf.fit(train_feature, train_target)
+   predictions=model.predict(test_feature)
+   accuracy[i]=sklearn.metrics.accuracy_score(test_target, predictions)
+
+plt.plot(trees,accuracy)
+
+# well, seems like more than 10 trees will have a consistent accuracy of 0.82.
+# Guess there&#39;s no need to have an ensemble of 100 trees!
 </pre></div>
 </div>
-<p><strong>Optimum Ensemble of Trees</strong></p>
-<blockquote>
-<div><p>trees=range(100)
-accuracy=np.zeros(100)</p>
-<dl class="docutils">
-<dt>for i in range(len(trees)):</dt>
-<dd>clf=RandomForestClassifier(n_estimators= i+1)
-model=clf.fit(train_feature, train_target)
-predictions=model.predict(test_feature)
-accuracy[i]=sklearn.metrics.accuracy_score(test_target, predictions)</dd>
-</dl>
-<p>plt.plot(trees,accuracy)</p>
-<p># well, seems like more than 10 trees will have a consistent accuracy of 0.82.
-# Guess there&#8217;s no need to have an ensemble of 100 trees!</p>
-</div></blockquote>
 <img alt="./images/randomforest.jpg" src="./images/randomforest.jpg" />
 </div>
 <div class="section" id="logistic-regression">

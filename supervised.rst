@@ -205,17 +205,15 @@ confusion matrix
  ZN	0.012635
  CHAS	0.009405
 
+**Optimum Ensemble of Trees**
 
 .. code:: python
 
  # see how many decision trees are minimally required make the accuarcy consistent
-
  import numpy as np
  import matplotlib.pylab as plt
  import seaborn as sns
  %matplotlib inline
-
-**Optimum Ensemble of Trees**
 
  trees=range(100)
  accuracy=np.zeros(100)
@@ -230,6 +228,7 @@ confusion matrix
 
  # well, seems like more than 10 trees will have a consistent accuracy of 0.82.
  # Guess there's no need to have an ensemble of 100 trees!
+
 
 .. image:: ./images/randomforest.jpg
 
