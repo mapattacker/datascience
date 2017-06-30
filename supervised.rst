@@ -11,14 +11,14 @@ K Nearest Neighbours (KNN)
 3. ``Weighting function on neighbours:`` (optional)
 4. ``How to aggregate class of neighbour points:`` Simple majority (default)
 
-Create Model
+*Create Model*
 
 .. code:: python
 
   from sklearn.neighbors import KNeighborsClassifier
   knn = KNeighborsClassifier(n_neighbors = 5)
 
-Fit Model
+*Fit Model*
 
 .. code:: python
 
