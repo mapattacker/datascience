@@ -20,16 +20,10 @@ K Nearest Neighbours (KNN)
 
 **Fit Model**
 
-.. code:: python
-
-  knn.fit(X_train, y_train)
-  
-.. 
-
-KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
+>>> knn.fit(X_train, y_train)
+    KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
          metric_params=None, n_jobs=1, n_neighbors=5, p=2,
          weights='uniform')
-
 
 
 Decision Tree
