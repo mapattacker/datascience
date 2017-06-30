@@ -190,6 +190,20 @@
 <li><code class="docutils literal"><span class="pre">Weighting</span> <span class="pre">function</span> <span class="pre">on</span> <span class="pre">neighbours:</span></code> (optional)</li>
 <li><code class="docutils literal"><span class="pre">How</span> <span class="pre">to</span> <span class="pre">aggregate</span> <span class="pre">class</span> <span class="pre">of</span> <span class="pre">neighbour</span> <span class="pre">points:</span></code> Simple majority (default)</li>
 </ol>
+<p>Create Model</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Fit Model</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>KNeighborsClassifier(algorithm=&#8217;auto&#8217;, leaf_size=30, metric=&#8217;minkowski&#8217;,</dt>
+<dd>metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+weights=&#8217;uniform&#8217;)</dd>
+</dl>
 </div>
 <div class="section" id="decision-tree">
 <h3>4.1.2. Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">¶</a></h3>
