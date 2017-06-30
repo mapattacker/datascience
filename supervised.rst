@@ -31,6 +31,7 @@ KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
          weights='uniform')
 
 
+
 Decision Tree
 **************************
 
