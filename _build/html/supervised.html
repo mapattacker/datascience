@@ -186,6 +186,58 @@
 </div>
 <div class="section" id="decision-tree">
 <h3>4.1.2. Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">¶</a></h3>
+<p><strong>Train Test Split</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">train_predictor</span><span class="p">,</span> <span class="n">test_predictor</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">test_predictor</span><span class="o">.</span><span class="n">shape</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">train_predictor</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(38, 4)</span>
+<span class="go">(112, 4)</span>
+</pre></div>
+</div>
+<p><strong>Create Model</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Fit Model</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_predictor</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">model</span>
+<span class="go">DecisionTreeClassifier(class_weight=None, criterion=&#39;gini&#39;, max_depth=None,</span>
+<span class="go">            max_features=None, max_leaf_nodes=None, min_samples_leaf=1,</span>
+<span class="go">            min_samples_split=2, min_weight_fraction_leaf=0.0,</span>
+<span class="go">            presort=False, random_state=None, splitter=&#39;best&#39;)</span>
+</pre></div>
+</div>
+<p><strong>Test Model</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_predictor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Score Model</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span><span class="n">predictions</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span>
+<span class="go">[[14  0  0]</span>
+<span class="go"> [ 0 13  0]</span>
+<span class="go"> [ 0  1 10]]</span>
+<span class="go">97.3684210526 %</span>
+</pre></div>
+</div>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="c1"># it is easier to use this package that does everything nicely for a perfect confusion matrix</span>
+<span class="kn">from</span> <span class="nn">pandas_confusion</span> <span class="kn">import</span> <span class="n">ConfusionMatrix</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ConfusionMatrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="go">Predicted   setosa  versicolor  virginica  __all__</span>
+<span class="go">Actual</span>
+<span class="go">setosa          14           0          0       14</span>
+<span class="go">versicolor       0          13          0       13</span>
+<span class="go">virginica        0           1         10       11</span>
+<span class="go">__all__         14          14         10       38</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="random-forest">
 <h3>4.1.3. Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>

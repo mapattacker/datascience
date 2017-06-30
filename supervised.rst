@@ -41,6 +41,66 @@ K Nearest Neighbours (KNN)
 Decision Tree
 **************************
 
+**Train Test Split**
+
+.. code:: python
+
+  train_predictor, test_predictor, train_target, test_target = train_test_split(predictor, target, test_size=0.25)
+
+>>> print test_predictor.shape
+>>> print train_predictor.shape
+(38, 4)
+(112, 4)
+
+**Create Model**
+
+.. code:: python
+
+  from sklearn.tree import DecisionTreeClassifier
+  clf = DecisionTreeClassifier()
+
+**Fit Model**
+
+.. code:: python
+
+  model = clf.fit(train_predictor, train_target)
+
+>>> print model
+DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
+            max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
+            min_samples_split=2, min_weight_fraction_leaf=0.0,
+            presort=False, random_state=None, splitter='best')
+
+**Test Model**
+
+.. code:: python
+
+  predictions = model.predict(test_predictor)
+
+**Score Model**
+
+>>> print sklearn.metrics.confusion_matrix(test_target,predictions)
+>>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
+[[14  0  0]
+ [ 0 13  0]
+ [ 0  1 10]]
+97.3684210526 %
+
+.. code:: python
+
+  # it is easier to use this package that does everything nicely for a perfect confusion matrix
+  from pandas_confusion import ConfusionMatrix
+>>> ConfusionMatrix(test_target, predictions)
+Predicted   setosa  versicolor  virginica  __all__
+Actual
+setosa          14           0          0       14
+versicolor       0          13          0       13
+virginica        0           1         10       11
+__all__         14          14         10       38
+
+
+
+
 Random Forest
 **************************
 
