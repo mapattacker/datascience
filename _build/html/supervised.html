@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -32,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Data Science 0.1 documentation" href="index.html"/>
         <link rel="next" title="5. Unsupervised Learning" href="unsupervised.html"/>
         <link rel="prev" title="3. Tests of Association" href="association.html"/> 
@@ -46,7 +41,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -87,15 +81,12 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents</span></p>
+                <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="general.html">1. General Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="difference.html">2. Tests of Difference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="association.html">3. Tests of Association</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Supervised Learning</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">4. Supervised Learning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#classification">4.1. Classification</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#k-nearest-neighbours-knn">4.1.1. K Nearest Neighbours (KNN)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#decision-tree">4.1.2. Decision Tree</a></li>
@@ -127,10 +118,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Data Science</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Data Science</a>
       </nav>
 
 
@@ -143,36 +132,19 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>4. Supervised Learning</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>4. Supervised Learning</li>
       <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="_sources/supervised.rst.txt" rel="nofollow"> View page source</a>
+          
+            <a href="_sources/supervised.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -190,16 +162,25 @@
 <li><code class="docutils literal"><span class="pre">Weighting</span> <span class="pre">function</span> <span class="pre">on</span> <span class="pre">neighbours:</span></code> (optional)</li>
 <li><code class="docutils literal"><span class="pre">How</span> <span class="pre">to</span> <span class="pre">aggregate</span> <span class="pre">class</span> <span class="pre">of</span> <span class="pre">neighbour</span> <span class="pre">points:</span></code> Simple majority (default)</li>
 </ol>
+<p><strong>Train Test Split</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><strong>Create Model</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Fit Model</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="go">    KNeighborsClassifier(algorithm=&#39;auto&#39;, leaf_size=30, metric=&#39;minkowski&#39;,</span>
 <span class="go">         metric_params=None, n_jobs=1, n_neighbors=5, p=2,</span>
 <span class="go">         weights=&#39;uniform&#39;)</span>
+</pre></div>
+</div>
+<p><strong>Test Model</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="go">0.53333333333333333</span>
 </pre></div>
 </div>
 </div>
@@ -250,18 +231,15 @@ This helps to prevent <em>overfitting</em>.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="unsupervised.html" class="btn btn-neutral float-right" title="5. Unsupervised Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="unsupervised.html" class="btn btn-neutral float-right" title="5. Unsupervised Learning" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="association.html" class="btn btn-neutral" title="3. Tests of Association" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="association.html" class="btn btn-neutral" title="3. Tests of Association" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -295,8 +273,7 @@ This helps to prevent <em>overfitting</em>.</p>
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

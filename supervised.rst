@@ -7,9 +7,16 @@ Classification
 K Nearest Neighbours (KNN)
 **************************
 1. ``Distance Metric:`` Eclidean Distance (default). In sklearn it is known as (Minkowski with p = 2)
-2. ``How many nearest neighbour to look at:`` k=1 very specific, k=5 more general model. Use nearest k data points to determine classification 
+2. ``How many nearest neighbour to look at:`` k=1 very specific, k=5 more general model. Use nearest k data points to determine classification
 3. ``Weighting function on neighbours:`` (optional)
 4. ``How to aggregate class of neighbour points:`` Simple majority (default)
+
+**Train Test Split**
+
+.. code:: python
+
+  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
 
 **Create Model**
 
@@ -24,6 +31,11 @@ K Nearest Neighbours (KNN)
     KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
          metric_params=None, n_jobs=1, n_neighbors=5, p=2,
          weights='uniform')
+
+**Test Model**
+
+>>> knn.score(X_test, y_test)
+0.53333333333333333
 
 
 Decision Tree
@@ -67,5 +79,5 @@ This helps to prevent *overfitting*.
   d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors & add each predictor that is most correlated at each step.
 
 .. note::
-  
+
   sklearn define lambda as alpha instead.
