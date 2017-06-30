@@ -125,7 +125,9 @@ An ensemble of decision trees.
 
 
 **Import Modules**
+
 .. code:: python
+
   import pandas as pd
   import numpy as np
   from sklearn.ensemble import RandomForestClassifier
@@ -213,6 +215,7 @@ confusion matrix
  import seaborn as sns
  %matplotlib inline
 
+**Optimum Ensemble of Trees**
 
  trees=range(100)
  accuracy=np.zeros(100)
@@ -228,7 +231,7 @@ confusion matrix
  # well, seems like more than 10 trees will have a consistent accuracy of 0.82.
  # Guess there's no need to have an ensemble of 100 trees!
 
-.. image:: .images/randomforest.jpg
+.. image:: ./images/randomforest.jpg
 
 
 Logistic Regression

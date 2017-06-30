@@ -258,14 +258,14 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 <div class="section" id="random-forest">
 <h3>4.1.3. Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
 <p>An ensemble of decision trees.</p>
-<p><strong>Import Modules</strong>
-.. code:: python</p>
-<blockquote>
-<div>import pandas as pd
-import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.cross_validation import train_test_split
-import sklearn.metrics</div></blockquote>
+<p><strong>Import Modules</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span>
+</pre></div>
+</div>
 <p><strong>Train Test Split</strong></p>
 <div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">train_feature</span><span class="p">,</span> <span class="n">test_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
@@ -336,24 +336,24 @@ import numpy as np
 import matplotlib.pylab as plt
 import seaborn as sns
 %matplotlib inline
-
-
-trees=range(100)
-accuracy=np.zeros(100)
-
-for i in range(len(trees)):
-   clf=RandomForestClassifier(n_estimators= i+1)
-   model=clf.fit(train_feature, train_target)
-   predictions=model.predict(test_feature)
-   accuracy[i]=sklearn.metrics.accuracy_score(test_target, predictions)
-
-plt.plot(trees,accuracy)
-
-# well, seems like more than 10 trees will have a consistent accuracy of 0.82.
-# Guess there&#39;s no need to have an ensemble of 100 trees!
 </pre></div>
 </div>
-<img alt=".images/randomforest.jpg" src=".images/randomforest.jpg" />
+<p><strong>Optimum Ensemble of Trees</strong></p>
+<blockquote>
+<div><p>trees=range(100)
+accuracy=np.zeros(100)</p>
+<dl class="docutils">
+<dt>for i in range(len(trees)):</dt>
+<dd>clf=RandomForestClassifier(n_estimators= i+1)
+model=clf.fit(train_feature, train_target)
+predictions=model.predict(test_feature)
+accuracy[i]=sklearn.metrics.accuracy_score(test_target, predictions)</dd>
+</dl>
+<p>plt.plot(trees,accuracy)</p>
+<p># well, seems like more than 10 trees will have a consistent accuracy of 0.82.
+# Guess there&#8217;s no need to have an ensemble of 100 trees!</p>
+</div></blockquote>
+<img alt="./images/randomforest.jpg" src="./images/randomforest.jpg" />
 </div>
 <div class="section" id="logistic-regression">
 <h3>4.1.4. Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
