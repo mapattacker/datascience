@@ -40,6 +40,13 @@ K Nearest Neighbours (KNN)
 
 Decision Tree
 **************************
+Uses gini index to split the data at binary level.
+
+**Strengths:** Can select a large number of features that best determine the targets.
+**Weakness:** Tends to overfit the data as it will split till the end.
+Pruning can be done to remove the leaves to prevent overfitting but that is not available in sklearn.
+Small changes in data can lead to different splits. Not very reproducible for future data (see random forest).
+
 
 **Train Test Split**
 
@@ -99,10 +106,130 @@ virginica        0           1         10       11
 __all__         14          14         10       38
 
 
+**Feature Importance**
+
+.. code:: python
+
+  df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
+
+>>> df2.sort_values(by=0,ascending=False)
+petal width (cm)	0.952542
+petal length (cm)	0.029591
+sepal length (cm)	0.017867
+sepal width (cm)	0.000000
 
 
 Random Forest
 **************************
+An ensemble of decision trees.
+
+
+**Import Modules**
+.. code:: python
+  import pandas as pd
+  import numpy as np
+  from sklearn.ensemble import RandomForestClassifier
+  from sklearn.cross_validation import train_test_split
+  import sklearn.metrics
+
+**Train Test Split**
+
+.. code:: python
+
+  train_feature, test_feature, train_target, test_target = train_test_split(feature, target, test_size=.2)
+
+>>> print train_feature.shape
+>>> print test_feature.shape
+(404, 13)
+(102, 13)
+
+**Create Model**
+
+.. code:: python
+
+  # use 100 decision trees
+  clf = RandomForestClassifier(n_estimators=100)
+
+**Fit Model**
+
+.. code:: python
+
+  model = clf.fit(train_feature, train_target)
+
+>>> print model
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
+
+**Test Model**
+
+.. code:: python
+
+  predictions = model.predict(test_feature)
+
+
+**Score Model**
+
+>>> print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
+>>> print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
+accuracy
+82.3529411765 %
+confusion matrix
+[[21  0  3]
+ [ 0 21  4]
+ [ 8  3 42]]
+
+**Feature Importance**
+
+.. code:: python
+
+ # rank the importance of features
+ df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
+>>> df2.sort_values(by=0,ascending=False)
+ RM	0.225612
+ LSTAT	0.192478
+ CRIM	0.108510
+ DIS	0.088056
+ AGE	0.074202
+ NOX	0.067718
+ B	0.057706
+ PTRATIO	0.051702
+ TAX	0.047568
+ INDUS	0.037871
+ RAD	0.026538
+ ZN	0.012635
+ CHAS	0.009405
+
+
+.. code:: python
+
+ # see how many decision trees are minimally required make the accuarcy consistent
+
+ import numpy as np
+ import matplotlib.pylab as plt
+ import seaborn as sns
+ %matplotlib inline
+
+
+ trees=range(100)
+ accuracy=np.zeros(100)
+
+ for i in range(len(trees)):
+    clf=RandomForestClassifier(n_estimators= i+1)
+    model=clf.fit(train_feature, train_target)
+    predictions=model.predict(test_feature)
+    accuracy[i]=sklearn.metrics.accuracy_score(test_target, predictions)
+
+ plt.plot(trees,accuracy)
+
+ # well, seems like more than 10 trees will have a consistent accuracy of 0.82.
+ # Guess there's no need to have an ensemble of 100 trees!
+
+.. image:: .images/randomforest.jpg
+
 
 Logistic Regression
 **************************
