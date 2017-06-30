@@ -230,7 +230,7 @@ confusion matrix
  # Guess there's no need to have an ensemble of 100 trees!
 
 
-.. image:: ./images/randomforest.jpg
+.. image:: images/randomforest.png
 
 
 Logistic Regression
