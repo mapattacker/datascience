@@ -240,6 +240,7 @@ Support Vector Machine
 ***********************
 
 
+|
 Regression
 ----------
 
@@ -270,3 +271,120 @@ This helps to prevent *overfitting*.
 .. note::
 
   sklearn define lambda as alpha instead.
+
+
+**Import Modules**
+
+.. code:: python
+
+  import pandas as pd
+  import numpy as py
+  from sklearn.linear_model import LassoLarsCV
+  from sklearn.cross_validation import train_test_split
+  import sklearn.metrics
+  from sklearn.datasets import load_boston
+
+
+**Normalization**
+
+.. code:: python
+
+  # standardise the means to 0 and standard error to 1
+  from sklearn import preprocessing
+  for i in df.columns[:-1]: # df.columns[:-1] = dataframe for all features
+    df[i] = preprocessing.scale(df[i].astype('float64'))
+
+  df.describe()
+
+
+**Train Test Split**
+
+.. code:: python
+
+  train_feature, test_feature, train_target, test_target = \
+  train_test_split(feature, target, random_state=123, test_size=0.2)
+
+>>> print train_feature.shape
+>>> print test_feature.shape
+(404, 13)
+(102, 13)
+
+
+**Create Model**
+
+.. code:: python
+
+  # Fit the LASSO LAR regression model
+  # cv=10; use k-fold cross validation
+  # precompute; True=model will be faster if dataset is large
+  model=LassoLarsCV(cv=10, precompute=False)
+
+**Fit Model**
+
+>>> model = model.fit(train_feature,train_target)
+>>> print model
+LassoLarsCV(copy_X=True, cv=10, eps=2.2204460492503131e-16,
+      fit_intercept=True, max_iter=500, max_n_alphas=1000, n_jobs=1,
+      normalize=True, positive=False, precompute=False, verbose=False)
+
+**Analyse Coefficients**
+
+Compare the regression coefficients, and see which one LASSO removed.
+LSTAT is the most important predictor, followed by RM, DIS, and RAD. AGE is removed by LASSO
+
+>>> df2=pd.DataFrame(model.coef_, index=feature.columns)
+>>> df2.sort_values(by=0,ascending=False)
+RM	3.050843
+RAD	2.040252
+ZN	1.004318
+B	0.629933
+CHAS	0.317948
+INDUS	0.225688
+AGE	0.000000
+CRIM	-0.770291
+NOX	-1.617137
+TAX	-1.731576
+PTRATIO	-1.923485
+DIS	-2.733660
+LSTAT	-3.878356
+
+**Score Model**
+
+Mean Square Errors.
+
+.. code:: python
+
+  # MSE from training and test data
+  from sklearn.metrics import mean_squared_error
+  train_error = mean_squared_error(train_target, model.predict(train_feature))
+  test_error = mean_squared_error(test_target, model.predict(test_feature))
+
+  print ('training data MSE')
+  print(train_error)
+  print ('test data MSE')
+  print(test_error)
+
+  # MSE closer to 0 are better
+  # test dataset is less accurate as expected
+  training data MSE
+  20.7279948891
+  test data MSE
+  28.3767672242
+
+R-Square
+
+.. code:: python
+
+  # R-square from training and test data
+  rsquared_train=model.score(train_feature,train_target)
+  rsquared_test=model.score(test_feature,test_target)
+  print ('training data R-square')
+  print(rsquared_train)
+  print ('test data R-square')
+  print(rsquared_test)
+
+  # test data explained 65% of the predictors
+  training data R-square
+  0.755337444405
+  test data R-square
+  0.657019301268
