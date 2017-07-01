@@ -3,6 +3,7 @@ In-Built Datasets
 There are in-built datasets provided in both statsmodels and sklearn packages.
 
 **Statsmodels**
+
 In statsmodels, many R datasets can be obtained from the function ``sm.datasets.get_rdataset()``. 
 To view each dataset's description, use ``print(duncan_prestige.__doc__)``.
 
@@ -23,6 +24,7 @@ To view each dataset's description, use ``print(duncan_prestige.__doc__)``.
 
 |
 **Sklearn**
+
 There are five common toy datasets here. For others, view http://scikit-learn.org/stable/datasets/index.html. 
 To view each dataset's description, use ``print boston['DESCR']``.
 
