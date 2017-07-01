@@ -241,9 +241,10 @@ Support Vector Machine
 Regression
 ----------
 
-Ordinary Least Squares (OLS) Regression
+OLS Regression
 ***************************************
-Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares method. i.e., least total area of squares with length from each x,y point to regresson line.
+Ordinary Least Squares Regression or OLS Regression is the most basic form and fundamental of regression.
+Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares method. i.e., least total area of squares (sum of squares) with length from each x,y point to regresson line.
 
 
 .. code:: python
@@ -285,7 +286,7 @@ Ridge Regression
 
 
 
-Lasso Regression
+LASSO Regression
 ****************
 Least absolute shrinkage and selection operator regression, or LASSO regression, has a unique penalty parameter, lambda that *change unimportant features (their regression coefficients) into 0*.
 This helps to prevent *overfitting*.
