@@ -13,22 +13,22 @@ K Nearest Neighbours (KNN)
 
 .. code:: python
 
-  # Import Modules
+  # IMPORT MODULES
   import pandas as pd
   import numpy as np
   from sklearn.cross_validation import train_test_split
   from sklearn.neighbors import KNeighborsClassifier
 
 
-  # Train Test Split
+  # TRAIN TEST SPLIT
   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
 
-  # Create Model
+  # CREATE MODEL
   knn = KNeighborsClassifier(n_neighbors = 5)
 
 
-  #Fit Model
+  #FIT MODEL
   knn.fit(X_train, y_train)
   #KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
   #     metric_params=None, n_jobs=1, n_neighbors=5, p=2,
@@ -51,10 +51,15 @@ Pruning can be done to remove the leaves to prevent overfitting but that is not 
 Small changes in data can lead to different splits. Not very reproducible for future data (see random forest).
 
 
-**Train Test Split**
-
 .. code:: python
-
+  
+  # IMPORT MODULES
+  # TRAIN TEST SPLIT
+  # CREATE MODEL
+  # FIT MODEL
+  # TEST MODEL
+  # SCORE MODEL
+  
   train_predictor, test_predictor, train_target, test_target = train_test_split(predictor, target, test_size=0.25)
 
 >>> print test_predictor.shape
@@ -62,14 +67,14 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 (38, 4)
 (112, 4)
 
-**Create Model**
+**CREATE MODEL**
 
 .. code:: python
 
   from sklearn.tree import DecisionTreeClassifier
   clf = DecisionTreeClassifier()
 
-**Fit Model**
+**FIT MODEL**
 
 .. code:: python
 
@@ -81,13 +86,13 @@ DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
             min_samples_split=2, min_weight_fraction_leaf=0.0,
             presort=False, random_state=None, splitter='best')
 
-**Test Model**
+**TEST MODEL**
 
 .. code:: python
 
   predictions = model.predict(test_predictor)
 
-**Score Model**
+**SCORE MODEL**
 
 >>> print sklearn.metrics.confusion_matrix(test_target,predictions)
 >>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
@@ -127,17 +132,24 @@ Random Forest
 An ensemble of decision trees.
 
 
-**Import Modules**
+**IMPORT MODULES**
 
 .. code:: python
-
+  
+  # IMPORT MODULES
+  # TRAIN TEST SPLIT
+  # CREATE MODEL
+  # FIT MODEL
+  # TEST MODEL
+  # SCORE MODEL
+  
   import pandas as pd
   import numpy as np
   from sklearn.ensemble import RandomForestClassifier
   from sklearn.cross_validation import train_test_split
   import sklearn.metrics
 
-**Train Test Split**
+**TRAIN TEST SPLIT**
 
 .. code:: python
 
@@ -149,14 +161,14 @@ An ensemble of decision trees.
 (404, 13)
 (102, 13)
 
-**Create Model**
+**CREATE MODEL**
 
 .. code:: python
 
   # use 100 decision trees
   clf = RandomForestClassifier(n_estimators=100)
 
-**Fit Model**
+**FIT MODEL**
 
 .. code:: python
 
@@ -170,14 +182,14 @@ RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
             oob_score=False, random_state=None, verbose=0,
             warm_start=False)
 
-**Test Model**
+**TEST MODEL**
 
 .. code:: python
 
   predictions = model.predict(test_feature)
 
 
-**Score Model**
+**SCORE MODEL**
 
 >>> print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
 >>> print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
@@ -277,87 +289,76 @@ This helps to prevent *overfitting*.
   sklearn define lambda as alpha instead.
 
 
-**Import Modules**
+**IMPORT MODULES**
 
 .. code:: python
 
+  # IMPORT MODULES
+  
   import pandas as pd
   import numpy as py
-  from sklearn.linear_model import LassoLarsCV
+  from sklearn import preprocessing
   from sklearn.cross_validation import train_test_split
+  from sklearn.linear_model import LassoLarsCV
   import sklearn.metrics
   from sklearn.datasets import load_boston
-
-
-**Normalization**
-
-.. code:: python
-
+  
+  
+  # NORMALIZATION
   # standardise the means to 0 and standard error to 1
-  from sklearn import preprocessing
   for i in df.columns[:-1]: # df.columns[:-1] = dataframe for all features
     df[i] = preprocessing.scale(df[i].astype('float64'))
 
   df.describe()
-
-
-**Train Test Split**
-
-.. code:: python
-
+  
+  
+  # TRAIN TEST SPLIT
   train_feature, test_feature, train_target, test_target = \
   train_test_split(feature, target, random_state=123, test_size=0.2)
 
->>> print train_feature.shape
->>> print test_feature.shape
-(404, 13)
-(102, 13)
+  >>> print train_feature.shape
+  >>> print test_feature.shape
+  >>> (404, 13)
+  >>> (102, 13)
 
 
-**Create Model**
-
-.. code:: python
-
+  # CREATE MODEL
   # Fit the LASSO LAR regression model
   # cv=10; use k-fold cross validation
   # precompute; True=model will be faster if dataset is large
   model=LassoLarsCV(cv=10, precompute=False)
+  
+  
+  # FIT MODEL
+  model = model.fit(train_feature,train_target)
+  >>> print model
+  LassoLarsCV(copy_X=True, cv=10, eps=2.2204460492503131e-16,
+        fit_intercept=True, max_iter=500, max_n_alphas=1000, n_jobs=1,
+        normalize=True, positive=False, precompute=False, verbose=False)
+  
+        
+  # ANALYSE COEFFICIENTS
+  Compare the regression coefficients, and see which one LASSO removed.
+  LSTAT is the most important predictor, followed by RM, DIS, and RAD. AGE is removed by LASSO
 
-**Fit Model**
-
->>> model = model.fit(train_feature,train_target)
->>> print model
-LassoLarsCV(copy_X=True, cv=10, eps=2.2204460492503131e-16,
-      fit_intercept=True, max_iter=500, max_n_alphas=1000, n_jobs=1,
-      normalize=True, positive=False, precompute=False, verbose=False)
-
-**Analyse Coefficients**
-
-Compare the regression coefficients, and see which one LASSO removed.
-LSTAT is the most important predictor, followed by RM, DIS, and RAD. AGE is removed by LASSO
-
->>> df2=pd.DataFrame(model.coef_, index=feature.columns)
->>> df2.sort_values(by=0,ascending=False)
-RM	3.050843
-RAD	2.040252
-ZN	1.004318
-B	0.629933
-CHAS	0.317948
-INDUS	0.225688
-AGE	0.000000
-CRIM	-0.770291
-NOX	-1.617137
-TAX	-1.731576
-PTRATIO	-1.923485
-DIS	-2.733660
-LSTAT	-3.878356
-
-**Score Model**
-
-Mean Square Errors.
-
-.. code:: python
-
+  >>> df2=pd.DataFrame(model.coef_, index=feature.columns)
+  >>> df2.sort_values(by=0,ascending=False)
+  RM	3.050843
+  RAD	2.040252
+  ZN	1.004318
+  B	0.629933
+  CHAS	0.317948
+  INDUS	0.225688
+  AGE	0.000000
+  CRIM	-0.770291
+  NOX	-1.617137
+  TAX	-1.731576
+  PTRATIO	-1.923485
+  DIS	-2.733660
+  LSTAT	-3.878356
+  
+  
+  # SCORE MODEL
   # MSE from training and test data
   from sklearn.metrics import mean_squared_error
   train_error = mean_squared_error(train_target, model.predict(train_feature))
@@ -367,17 +368,13 @@ Mean Square Errors.
   print(train_error)
   print ('test data MSE')
   print(test_error)
-
   # MSE closer to 0 are better
   # test dataset is less accurate as expected
-  training data MSE
-  20.7279948891
-  test data MSE
-  28.3767672242
+  >>> training data MSE
+  >>> 20.7279948891
+  >>> test data MSE
+  >>> 28.3767672242
 
-R-Square
-
-.. code:: python
 
   # R-square from training and test data
   rsquared_train=model.score(train_feature,train_target)
@@ -386,9 +383,9 @@ R-Square
   print(rsquared_train)
   print ('test data R-square')
   print(rsquared_test)
-
   # test data explained 65% of the predictors
-  training data R-square
-  0.755337444405
-  test data R-square
-  0.657019301268
+  >>> training data R-square
+  >>> 0.755337444405
+  >>> test data R-square
+  >>> 0.657019301268
+
