@@ -3,9 +3,13 @@ Tests of Difference
 
 Chi-Square Test
 ---------------
-X, Explantory: ``Categorical``
-Y, Response: ``Categorical``
-Type: ``Non-Parametric``
+
+.. note::
+  
+  **X, Explantory**: Categorical
+  **Y, Response**: Categorical
+  **Type**: Non-Parametric
+
 
 .. code:: python
 
@@ -21,12 +25,19 @@ Type: ``Non-Parametric``
 
 Student's T-Test
 ----------------
-Type: ``Parametric``
+
+.. note::
+  
+  **Type**: Parametric
 
 
 ANOVA
 -----
-Type: ``Parametric``
+
+.. note::
+  
+  **Type**: Parametric
+  
 
 Analysis of Variance (ANOVA). X, or independent variable can be continuous or categorical. 
 Can input mutiple factors (x).

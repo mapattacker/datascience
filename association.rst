@@ -4,9 +4,11 @@ Tests of Association
 Pearson's Correlation
 ---------------------
 
-X, Explantory: ``Continuous``
-Y, Response: ``Continuous``
-Type: ``Non-Parametric``
+.. note::
+  
+  **X, Explantory**: Continuous
+  **Y, Response**: Continuous
+  **Type**: Non-Parametric
 
 .. code:: python
   
@@ -23,6 +25,9 @@ Type: ``Non-Parametric``
 
 Spearman's Rank Correlation
 ---------------------------
-X, Explantory:``Continuous``
-Y, Response: ``Continuous``
-Type: ``Parametric``
+
+.. note::
+  
+  **X, Explantory**: Continuous
+  **Y, Response**: Continuous
+  **Type**: Parametric
