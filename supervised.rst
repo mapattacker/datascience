@@ -232,6 +232,53 @@ An ensemble of decision trees.
 
 Logistic Regression
 **************************
+Binary output.
+
+.. code:: python
+  
+  #### IMPORT MODULES ####
+  import pandas as pd
+  import statsmodels.api as sm
+  
+  
+  
+  #### FIT MODEL ####
+  lreg = sm.Logit(df3['diameter_cut'], df3[trainC]).fit()
+  print lreg.summary()
+
+
+  Optimization terminated successfully.
+         Current function value: 0.518121
+         Iterations 6
+                             Logit Regression Results                           
+  ==============================================================================
+  Dep. Variable:           diameter_cut   No. Observations:                18067
+  Model:                          Logit   Df Residuals:                    18065
+  Method:                           MLE   Df Model:                            1
+  Date:                Thu, 04 Aug 2016   Pseudo R-squ.:                  0.2525
+  Time:                        14:13:14   Log-Likelihood:                -9360.9
+  converged:                       True   LL-Null:                       -12523.
+                                          LLR p-value:                     0.000
+  ================================================================================
+                     coef    std err          z      P>|z|      [95.0% Conf. Int.]
+  --------------------------------------------------------------------------------
+  depth            4.2529      0.067     63.250      0.000         4.121     4.385
+  layers_YESNO    -2.1102      0.037    -57.679      0.000        -2.182    -2.039
+  ================================================================================
+  
+  
+  
+  #### CONFIDENCE INTERVALS ####
+  params = lreg.params
+  conf = lreg.conf_int()
+  conf['OR'] = params
+  conf.columns = ['Lower CI', 'Upper CI', 'OR']
+  print (np.exp(conf))
+
+  Lower CI   Upper CI         OR
+  depth         61.625434  80.209893  70.306255
+  layers_YESNO   0.112824   0.130223   0.121212
+
 
 Support Vector Machine
 ***********************
