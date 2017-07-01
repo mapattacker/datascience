@@ -187,13 +187,13 @@
 <h2>6.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="k-nearest-neighbours-knn">
 <h3>6.1.1. K Nearest Neighbours (KNN)<a class="headerlink" href="#k-nearest-neighbours-knn" title="Permalink to this headline">¶</a></h3>
-<div class="topic">
-<p class="topic-title first"><strong>Parameters Selection</strong></p>
-<ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">Distance</span> <span class="pre">Metric:</span></code> Eclidean Distance (default). In sklearn it is known as (Minkowski with p = 2)</li>
-<li><code class="docutils literal"><span class="pre">How</span> <span class="pre">many</span> <span class="pre">nearest</span> <span class="pre">neighbour</span> <span class="pre">to</span> <span class="pre">look</span> <span class="pre">at:</span></code> k=1 very specific, k=5 more general model. Use nearest k data points to determine classification</li>
-<li><code class="docutils literal"><span class="pre">Weighting</span> <span class="pre">function</span> <span class="pre">on</span> <span class="pre">neighbours:</span></code> (optional)</li>
-<li><code class="docutils literal"><span class="pre">How</span> <span class="pre">to</span> <span class="pre">aggregate</span> <span class="pre">class</span> <span class="pre">of</span> <span class="pre">neighbour</span> <span class="pre">points:</span></code> Simple majority (default)</li>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li><strong>Distance Metric</strong>: Eclidean Distance (default). In sklearn it is known as (Minkowski with p = 2)</li>
+<li><strong>How many nearest neighbour</strong>: k=1 very specific, k=5 more general model. Use nearest k data points to determine classification</li>
+<li><strong>Weighting function on neighbours</strong>: (optional)</li>
+<li><strong>How to aggregate class of neighbour points</strong>: Simple majority (default)</li>
 </ol>
 </div>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#### IMPORT MODULES ####</span>
