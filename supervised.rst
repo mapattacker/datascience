@@ -19,17 +19,21 @@ K Nearest Neighbours (KNN)
   from sklearn.cross_validation import train_test_split
   from sklearn.neighbors import KNeighborsClassifier
 
+
   # Train Test Split
   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
+
   # Create Model
   knn = KNeighborsClassifier(n_neighbors = 5)
+
 
   #Fit Model
   knn.fit(X_train, y_train)
   #KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
   #     metric_params=None, n_jobs=1, n_neighbors=5, p=2,
   #     weights='uniform')
+
 
   #Test Module
   knn.score(X_test, y_test)
