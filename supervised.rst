@@ -37,7 +37,7 @@ K Nearest Neighbours (KNN)
 
   #Test Module
   knn.score(X_test, y_test)
-  #0.53333333333333333
+  >>> 0.53333333333333333
 
 
 
