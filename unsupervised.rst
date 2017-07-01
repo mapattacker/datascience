@@ -45,7 +45,7 @@ K-Means
   
   
   
-  #### CREATE ELBOW CHART ####
+  #### ELBOW CHART TO DETERMINE OPTIMUM K ####
   from scipy.spatial.distance import cdist
   import numpy as np
   clusters=range(1,10)
@@ -84,3 +84,30 @@ K-Means
   # doesn't decrease the average distance as much
   
 .. image:: images/elbowchart.png
+
+
+.. code:: python
+  
+  #### VIEW CLUSTER USING PCA ####
+  # Interpret 3 cluster solution
+  model3=KMeans(n_clusters=3)
+  model3.fit(train_feature)
+  clusassign=model3.predict(train_feature)
+  # plot clusters
+
+  # Use Canonical Discriminate Analysis to reduce the dimensions (into 2)
+  # Creates a smaller no. of variables, with canonical variables ordered by proportion of variable accounted
+  # i.e., 1st canonical variable is most importance & so on
+
+  from sklearn.decomposition import PCA
+  pca_2 = PCA(2) #return first two canonical variables
+  plot_columns = pca_2.fit_transform(train_feature)
+  # plot 1st canonical v in x axis, 2nd variable on y axis
+  # color code variables based on cluster assignments (i.e., predicted targets)
+  plt.scatter(x=plot_columns[:,0], y=plot_columns[:,1], c=model3.labels_)
+  plt.xlabel('Canonical variable 1')
+  plt.ylabel('Canonical variable 2')
+  plt.title('Scatterplot of Canonical Variables for 3 Clusters')
+  plt.show()
+  
+.. image:: images/kmeans.png
