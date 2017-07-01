@@ -1,7 +1,6 @@
 *.DS_Store
 
 _build/
-images/
 templates/
 _static/
 _templates/

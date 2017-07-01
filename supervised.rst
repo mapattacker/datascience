@@ -13,7 +13,7 @@ K Nearest Neighbours (KNN)
 
 .. code:: python
 
-  # IMPORT MODULES
+  #### IMPORT MODULES ####
   import pandas as pd
   import numpy as np
   from sklearn.cross_validation import train_test_split
@@ -21,17 +21,17 @@ K Nearest Neighbours (KNN)
 
 
 
-  # TRAIN TEST SPLIT
+  #### TRAIN TEST SPLIT ####
   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
 
 
-  # CREATE MODEL
+  #### CREATE MODEL ####
   knn = KNeighborsClassifier(n_neighbors = 5)
 
 
 
-  # FIT MODEL
+  #### FIT MODEL ####
   knn.fit(X_train, y_train)
   #KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
   #     metric_params=None, n_jobs=1, n_neighbors=5, p=2,
@@ -39,7 +39,7 @@ K Nearest Neighbours (KNN)
 
 
 
-  # TEST MODEL
+  #### TEST MODEL ####
   knn.score(X_test, y_test)
   >>> 0.53333333333333333
 
@@ -57,14 +57,14 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 
 .. code:: python
   
-  # IMPORT MODULES
+  ###### IMPORT MODULES #### ###
   import pandas as pd
   import numpy as np
   from sklearn.tree import DecisionTreeClassifier
   
   
   
-  # TRAIN TEST SPLIT
+  #### TRAIN TEST SPLIT ####
   train_predictor, test_predictor, train_target, test_target = \
   train_test_split(predictor, target, test_size=0.25)
   
@@ -75,12 +75,12 @@ Small changes in data can lead to different splits. Not very reproducible for fu
   
   
   
-  # CREATE MODEL
+  #### CREATE MODEL ####
   clf = DecisionTreeClassifier()
   
   
   
-  # FIT MODEL
+  #### FIT MODEL ####
   model = clf.fit(train_predictor, train_target)
   >>> print model
   >>> DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
@@ -90,7 +90,7 @@ Small changes in data can lead to different splits. Not very reproducible for fu
   
   
   
-  # TEST MODEL
+  #### TEST MODEL ####
   predictions = model.predict(test_predictor)
   
   >>> print sklearn.metrics.confusion_matrix(test_target,predictions)
@@ -101,7 +101,7 @@ Small changes in data can lead to different splits. Not very reproducible for fu
   97.3684210526 %
   
   
-  # SCORE MODEL
+  #### SCORE MODEL ####
   # it is easier to use this package that does everything nicely for a perfect confusion matrix
   from pandas_confusion import ConfusionMatrix
   >>> ConfusionMatrix(test_target, predictions)
@@ -114,7 +114,7 @@ Small changes in data can lead to different splits. Not very reproducible for fu
   
   
   
-  # FEATURE IMPORTANCE
+  ####### FEATURE IMPORTANCE #### ####
   df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
 
   >>> df2.sort_values(by=0,ascending=False)
@@ -134,7 +134,7 @@ An ensemble of decision trees.
 
 .. code:: python
   
-  # IMPORT MODULES
+  ###### IMPORT MODULES #### ###
   import pandas as pd
   import numpy as np
   from sklearn.ensemble import RandomForestClassifier
@@ -143,7 +143,7 @@ An ensemble of decision trees.
   
   
   
-  # TRAIN TEST SPLIT
+  #### TRAIN TEST SPLIT ####
   train_feature, test_feature, train_target, test_target = \
   train_test_split(feature, target, test_size=0.2)
   
@@ -153,13 +153,13 @@ An ensemble of decision trees.
   (102, 13)
   
   
-  # CREATE MODEL
+  #### CREATE MODEL ####
   # use 100 decision trees
   clf = RandomForestClassifier(n_estimators=100)
   
   
   
-  # FIT MODEL
+  #### FIT MODEL ####
   model = clf.fit(train_feature, train_target)
   >>> print model
   RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
@@ -171,12 +171,12 @@ An ensemble of decision trees.
   
   
   
-  # TEST MODEL
+  #### TEST MODEL ####
   predictions = model.predict(test_feature)
   
   
   
-  # SCORE MODEL
+  #### SCORE MODEL ####
   >>> print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
   >>> print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
   accuracy
@@ -188,7 +188,7 @@ An ensemble of decision trees.
   
   
   
-  # FEATURE IMPORTANCE
+  ####### FEATURE IMPORTANCE #### ####
   # rank the importance of features
   df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
   >>> df2.sort_values(by=0,ascending=False)
@@ -208,7 +208,7 @@ An ensemble of decision trees.
 
   
   
-  # GRAPHS
+  #### GRAPHS ####
 
   # see how many decision trees are minimally required make the accuarcy consistent
   import numpy as np
@@ -273,11 +273,9 @@ This helps to prevent *overfitting*.
   sklearn define lambda as alpha instead.
 
 
-**IMPORT MODULES**
-
 .. code:: python
 
-  # IMPORT MODULES
+  ###### IMPORT MODULES #### ###
   import pandas as pd
   import numpy as py
   from sklearn import preprocessing
@@ -296,7 +294,7 @@ This helps to prevent *overfitting*.
   
   
   
-  # TRAIN TEST SPLIT
+  #### TRAIN TEST SPLIT ####
   train_feature, test_feature, train_target, test_target = \
   train_test_split(feature, target, random_state=123, test_size=0.2)
 
@@ -307,7 +305,7 @@ This helps to prevent *overfitting*.
 
 
 
-  # CREATE MODEL
+  #### CREATE MODEL ####
   # Fit the LASSO LAR regression model
   # cv=10; use k-fold cross validation
   # precompute; True=model will be faster if dataset is large
@@ -315,7 +313,7 @@ This helps to prevent *overfitting*.
 
 
   
-  # FIT MODEL
+  #### FIT MODEL ####
   model = model.fit(train_feature,train_target)
   >>> print model
   LassoLarsCV(copy_X=True, cv=10, eps=2.2204460492503131e-16,
@@ -324,7 +322,7 @@ This helps to prevent *overfitting*.
   
   
         
-  # ANALYSE COEFFICIENTS
+  #### ANALYSE COEFFICIENTS ####
   Compare the regression coefficients, and see which one LASSO removed.
   LSTAT is the most important predictor, followed by RM, DIS, and RAD. AGE is removed by LASSO
 
@@ -346,7 +344,7 @@ This helps to prevent *overfitting*.
   
   
   
-  # SCORE MODEL
+  #### SCORE MODEL ####
   # MSE from training and test data
   from sklearn.metrics import mean_squared_error
   train_error = mean_squared_error(train_target, model.predict(train_feature))
