@@ -250,6 +250,8 @@ Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares metho
 
   model = smf.ols(formula='diameter ~ depth', data=df3).fit()
   print model.summary()
+
+  
   
   OLS Regression Results                            
   ==============================================================================
@@ -276,7 +278,6 @@ Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares metho
 
   Warnings:
   [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-
 
 
 Ridge Regression
