@@ -84,8 +84,7 @@ K-Means
   # doesn't decrease the average distance as much
   
 .. image:: images/elbowchart.png
-
-  scale: 50%
+  :scale: 40 %
 
 
 .. code:: python
@@ -113,5 +112,4 @@ K-Means
   plt.show()
   
 .. image:: images/kmeans.png
-
-  scale: 50%
+  :scale: 40 %
