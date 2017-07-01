@@ -197,22 +197,26 @@
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
 
 
+
 <span class="c1"># TRAIN TEST SPLIT</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
 
 
 <span class="c1"># CREATE MODEL</span>
 <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 
 
-<span class="c1">#FIT MODEL</span>
+
+<span class="c1"># FIT MODEL</span>
 <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="c1">#KNeighborsClassifier(algorithm=&#39;auto&#39;, leaf_size=30, metric=&#39;minkowski&#39;,</span>
 <span class="c1">#     metric_params=None, n_jobs=1, n_neighbors=5, p=2,</span>
 <span class="c1">#     weights=&#39;uniform&#39;)</span>
 
 
-<span class="c1">#Test Module</span>
+
+<span class="c1"># TEST MODEL</span>
 <span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="mf">0.53333333333333333</span>
 </pre></div>
@@ -226,72 +230,70 @@
 Pruning can be done to remove the leaves to prevent overfitting but that is not available in sklearn.
 Small changes in data can lead to different splits. Not very reproducible for future data (see random forest).</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># IMPORT MODULES</span>
-<span class="c1"># TRAIN TEST SPLIT</span>
-<span class="c1"># CREATE MODEL</span>
-<span class="c1"># FIT MODEL</span>
-<span class="c1"># TEST MODEL</span>
-<span class="c1"># SCORE MODEL</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeClassifier</span>
 
-<span class="n">train_predictor</span><span class="p">,</span> <span class="n">test_predictor</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">test_predictor</span><span class="o">.</span><span class="n">shape</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">train_predictor</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(38, 4)</span>
-<span class="go">(112, 4)</span>
-</pre></div>
-</div>
-<p><strong>CREATE MODEL</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeClassifier</span>
+
+
+<span class="c1"># TRAIN TEST SPLIT</span>
+<span class="n">train_predictor</span><span class="p">,</span> <span class="n">test_predictor</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> \
+<span class="n">train_test_split</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">test_predictor</span><span class="o">.</span><span class="n">shape</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">train_predictor</span><span class="o">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">112</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+
+
+<span class="c1"># CREATE MODEL</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
-</pre></div>
-</div>
-<p><strong>FIT MODEL</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_predictor</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">model</span>
-<span class="go">DecisionTreeClassifier(class_weight=None, criterion=&#39;gini&#39;, max_depth=None,</span>
-<span class="go">            max_features=None, max_leaf_nodes=None, min_samples_leaf=1,</span>
-<span class="go">            min_samples_split=2, min_weight_fraction_leaf=0.0,</span>
-<span class="go">            presort=False, random_state=None, splitter=&#39;best&#39;)</span>
-</pre></div>
-</div>
-<p><strong>TEST MODEL</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_predictor</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>SCORE MODEL</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span><span class="n">predictions</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span>
-<span class="go">[[14  0  0]</span>
-<span class="go"> [ 0 13  0]</span>
-<span class="go"> [ 0  1 10]]</span>
-<span class="go">97.3684210526 %</span>
-</pre></div>
-</div>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># it is easier to use this package that does everything nicely for a perfect confusion matrix</span>
+
+
+
+<span class="c1"># FIT MODEL</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_predictor</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">model</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">max_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">presort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">splitter</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+
+
+
+<span class="c1"># TEST MODEL</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_predictor</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span><span class="n">predictions</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span>
+<span class="p">[[</span><span class="mi">14</span>  <span class="mi">0</span>  <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span> <span class="mi">13</span>  <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span>  <span class="mi">1</span> <span class="mi">10</span><span class="p">]]</span>
+<span class="mf">97.3684210526</span> <span class="o">%</span>
+
+
+<span class="c1"># SCORE MODEL</span>
+<span class="c1"># it is easier to use this package that does everything nicely for a perfect confusion matrix</span>
 <span class="kn">from</span> <span class="nn">pandas_confusion</span> <span class="k">import</span> <span class="n">ConfusionMatrix</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ConfusionMatrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
-<span class="go">Predicted   setosa  versicolor  virginica  __all__</span>
-<span class="go">Actual</span>
-<span class="go">setosa          14           0          0       14</span>
-<span class="go">versicolor       0          13          0       13</span>
-<span class="go">virginica        0           1         10       11</span>
-<span class="go">__all__         14          14         10       38</span>
-</pre></div>
-</div>
-<p><strong>Feature Importance</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">petal width (cm)        0.952542</span>
-<span class="go">petal length (cm)       0.029591</span>
-<span class="go">sepal length (cm)       0.017867</span>
-<span class="go">sepal width (cm)        0.000000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ConfusionMatrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">Predicted</span>   <span class="n">setosa</span>  <span class="n">versicolor</span>  <span class="n">virginica</span>  <span class="n">__all__</span>
+<span class="n">Actual</span>
+<span class="n">setosa</span>          <span class="mi">14</span>           <span class="mi">0</span>          <span class="mi">0</span>       <span class="mi">14</span>
+<span class="n">versicolor</span>       <span class="mi">0</span>          <span class="mi">13</span>          <span class="mi">0</span>       <span class="mi">13</span>
+<span class="n">virginica</span>        <span class="mi">0</span>           <span class="mi">1</span>         <span class="mi">10</span>       <span class="mi">11</span>
+<span class="n">__all__</span>         <span class="mi">14</span>          <span class="mi">14</span>         <span class="mi">10</span>       <span class="mi">38</span>
+
+
+
+<span class="c1"># FEATURE IMPORTANCE</span>
+<span class="n">df2</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">petal</span> <span class="n">width</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>      <span class="mf">0.952542</span>
+<span class="n">petal</span> <span class="n">length</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>     <span class="mf">0.029591</span>
+<span class="n">sepal</span> <span class="n">length</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>     <span class="mf">0.017867</span>
+<span class="n">sepal</span> <span class="n">width</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>      <span class="mf">0.000000</span>
 </pre></div>
 </div>
 </div>
@@ -300,86 +302,82 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 <p>An ensemble of decision trees.</p>
 <p><strong>IMPORT MODULES</strong></p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># IMPORT MODULES</span>
-<span class="c1"># TRAIN TEST SPLIT</span>
-<span class="c1"># CREATE MODEL</span>
-<span class="c1"># FIT MODEL</span>
-<span class="c1"># TEST MODEL</span>
-<span class="c1"># SCORE MODEL</span>
-
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
 <span class="kn">import</span> <span class="nn">sklearn.metrics</span>
-</pre></div>
-</div>
-<p><strong>TRAIN TEST SPLIT</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">train_feature</span><span class="p">,</span> <span class="n">test_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> \
-<span class="n">train_test_split</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">train_feature</span><span class="o">.</span><span class="n">shape</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">test_feature</span><span class="o">.</span><span class="n">shape</span>
-<span class="go">(404, 13)</span>
-<span class="go">(102, 13)</span>
-</pre></div>
-</div>
-<p><strong>CREATE MODEL</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># use 100 decision trees</span>
+
+
+
+<span class="c1"># TRAIN TEST SPLIT</span>
+<span class="n">train_feature</span><span class="p">,</span> <span class="n">test_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> \
+<span class="n">train_test_split</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">train_feature</span><span class="o">.</span><span class="n">shape</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">test_feature</span><span class="o">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+
+
+<span class="c1"># CREATE MODEL</span>
+<span class="c1"># use 100 decision trees</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>FIT MODEL</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">model</span>
-<span class="go">RandomForestClassifier(bootstrap=True, class_weight=None, criterion=&#39;gini&#39;,</span>
-<span class="go">            max_depth=None, max_features=&#39;auto&#39;, max_leaf_nodes=None,</span>
-<span class="go">            min_samples_leaf=1, min_samples_split=2,</span>
-<span class="go">            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,</span>
-<span class="go">            oob_score=False, random_state=None, verbose=0,</span>
-<span class="go">            warm_start=False)</span>
-</pre></div>
-</div>
-<p><strong>TEST MODEL</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_feature</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>SCORE MODEL</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="s1">&#39;confusion matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span><span class="n">predictions</span><span class="p">)</span>
-<span class="go">accuracy</span>
-<span class="go">82.3529411765 %</span>
-<span class="go">confusion matrix</span>
-<span class="go">[[21  0  3]</span>
-<span class="go"> [ 0 21  4]</span>
-<span class="go"> [ 8  3 42]]</span>
-</pre></div>
-</div>
-<p><strong>Feature Importance</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># rank the importance of features</span>
+
+
+
+<span class="c1"># FIT MODEL</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="n">model</span>
+<span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span>
+            <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+
+<span class="c1"># TEST MODEL</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_feature</span><span class="p">)</span>
+
+
+
+<span class="c1"># SCORE MODEL</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span> <span class="s1">&#39;confusion matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span><span class="n">predictions</span><span class="p">)</span>
+<span class="n">accuracy</span>
+<span class="mf">82.3529411765</span> <span class="o">%</span>
+<span class="n">confusion</span> <span class="n">matrix</span>
+<span class="p">[[</span><span class="mi">21</span>  <span class="mi">0</span>  <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">0</span> <span class="mi">21</span>  <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">8</span>  <span class="mi">3</span> <span class="mi">42</span><span class="p">]]</span>
+
+
+
+<span class="c1"># FEATURE IMPORTANCE</span>
+<span class="c1"># rank the importance of features</span>
 <span class="n">df2</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go"> RM     0.225612</span>
-<span class="go"> LSTAT  0.192478</span>
-<span class="go"> CRIM   0.108510</span>
-<span class="go"> DIS    0.088056</span>
-<span class="go"> AGE    0.074202</span>
-<span class="go"> NOX    0.067718</span>
-<span class="go"> B      0.057706</span>
-<span class="go"> PTRATIO        0.051702</span>
-<span class="go"> TAX    0.047568</span>
-<span class="go"> INDUS  0.037871</span>
-<span class="go"> RAD    0.026538</span>
-<span class="go"> ZN     0.012635</span>
-<span class="go"> CHAS   0.009405</span>
-</pre></div>
-</div>
-<p><strong>Optimum Ensemble of Trees</strong></p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># see how many decision trees are minimally required make the accuarcy consistent</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">RM</span>    <span class="mf">0.225612</span>
+<span class="n">LSTAT</span> <span class="mf">0.192478</span>
+<span class="n">CRIM</span>  <span class="mf">0.108510</span>
+<span class="n">DIS</span>   <span class="mf">0.088056</span>
+<span class="n">AGE</span>   <span class="mf">0.074202</span>
+<span class="n">NOX</span>   <span class="mf">0.067718</span>
+<span class="n">B</span>     <span class="mf">0.057706</span>
+<span class="n">PTRATIO</span>       <span class="mf">0.051702</span>
+<span class="n">TAX</span>   <span class="mf">0.047568</span>
+<span class="n">INDUS</span> <span class="mf">0.037871</span>
+<span class="n">RAD</span>   <span class="mf">0.026538</span>
+<span class="n">ZN</span>    <span class="mf">0.012635</span>
+<span class="n">CHAS</span>  <span class="mf">0.009405</span>
+
+
+
+<span class="c1"># GRAPHS</span>
+
+<span class="c1"># see how many decision trees are minimally required make the accuarcy consistent</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -389,10 +387,10 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 <span class="n">accuracy</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trees</span><span class="p">)):</span>
-   <span class="n">clf</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-   <span class="n">model</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
-   <span class="n">predictions</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_feature</span><span class="p">)</span>
-   <span class="n">accuracy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+  <span class="n">clf</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">model</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
+  <span class="n">predictions</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_feature</span><span class="p">)</span>
+  <span class="n">accuracy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trees</span><span class="p">,</span><span class="n">accuracy</span><span class="p">)</span>
 
@@ -442,7 +440,6 @@ This helps to prevent <em>overfitting</em>.</p>
 </div>
 <p><strong>IMPORT MODULES</strong></p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># IMPORT MODULES</span>
-
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">py</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
@@ -452,12 +449,13 @@ This helps to prevent <em>overfitting</em>.</p>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_boston</span>
 
 
+
 <span class="c1"># NORMALIZATION</span>
 <span class="c1"># standardise the means to 0 and standard error to 1</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="c1"># df.columns[:-1] = dataframe for all features</span>
   <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 
 
 <span class="c1"># TRAIN TEST SPLIT</span>
@@ -470,11 +468,13 @@ This helps to prevent <em>overfitting</em>.</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">102</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
 
 
+
 <span class="c1"># CREATE MODEL</span>
 <span class="c1"># Fit the LASSO LAR regression model</span>
 <span class="c1"># cv=10; use k-fold cross validation</span>
 <span class="c1"># precompute; True=model will be faster if dataset is large</span>
 <span class="n">model</span><span class="o">=</span><span class="n">LassoLarsCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">precompute</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
 
 
 <span class="c1"># FIT MODEL</span>
@@ -483,6 +483,7 @@ This helps to prevent <em>overfitting</em>.</p>
 <span class="n">LassoLarsCV</span><span class="p">(</span><span class="n">copy_X</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">2.2204460492503131e-16</span><span class="p">,</span>
       <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_n_alphas</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
       <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">precompute</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
 
 
 <span class="c1"># ANALYSE COEFFICIENTS</span>
@@ -506,6 +507,7 @@ This helps to prevent <em>overfitting</em>.</p>
 <span class="n">LSTAT</span> <span class="o">-</span><span class="mf">3.878356</span>
 
 
+
 <span class="c1"># SCORE MODEL</span>
 <span class="c1"># MSE from training and test data</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_squared_error</span>
@@ -516,6 +518,7 @@ This helps to prevent <em>overfitting</em>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">train_error</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;test data MSE&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">test_error</span><span class="p">)</span>
+
 <span class="c1"># MSE closer to 0 are better</span>
 <span class="c1"># test dataset is less accurate as expected</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training</span> <span class="n">data</span> <span class="n">MSE</span>
@@ -531,6 +534,7 @@ This helps to prevent <em>overfitting</em>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">rsquared_train</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;test data R-square&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rsquared_test</span><span class="p">)</span>
+
 <span class="c1"># test data explained 65% of the predictors</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">training</span> <span class="n">data</span> <span class="n">R</span><span class="o">-</span><span class="n">square</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="mf">0.755337444405</span>

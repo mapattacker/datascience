@@ -20,22 +20,26 @@ K Nearest Neighbours (KNN)
   from sklearn.neighbors import KNeighborsClassifier
 
 
+
   # TRAIN TEST SPLIT
   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
 
 
   # CREATE MODEL
   knn = KNeighborsClassifier(n_neighbors = 5)
 
 
-  #FIT MODEL
+
+  # FIT MODEL
   knn.fit(X_train, y_train)
   #KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
   #     metric_params=None, n_jobs=1, n_neighbors=5, p=2,
   #     weights='uniform')
 
 
-  #Test Module
+
+  # TEST MODEL
   knn.score(X_test, y_test)
   >>> 0.53333333333333333
 
@@ -54,77 +58,71 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 .. code:: python
   
   # IMPORT MODULES
-  # TRAIN TEST SPLIT
-  # CREATE MODEL
-  # FIT MODEL
-  # TEST MODEL
-  # SCORE MODEL
-  
-  train_predictor, test_predictor, train_target, test_target = train_test_split(predictor, target, test_size=0.25)
-
->>> print test_predictor.shape
->>> print train_predictor.shape
-(38, 4)
-(112, 4)
-
-**CREATE MODEL**
-
-.. code:: python
-
+  import pandas as pd
+  import numpy as np
   from sklearn.tree import DecisionTreeClassifier
+  
+  
+  
+  # TRAIN TEST SPLIT
+  train_predictor, test_predictor, train_target, test_target = \
+  train_test_split(predictor, target, test_size=0.25)
+  
+  >>> print test_predictor.shape
+  >>> print train_predictor.shape
+  (38, 4)
+  (112, 4)
+  
+  
+  
+  # CREATE MODEL
   clf = DecisionTreeClassifier()
-
-**FIT MODEL**
-
-.. code:: python
-
+  
+  
+  
+  # FIT MODEL
   model = clf.fit(train_predictor, train_target)
-
->>> print model
-DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
-            max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
-            min_samples_split=2, min_weight_fraction_leaf=0.0,
-            presort=False, random_state=None, splitter='best')
-
-**TEST MODEL**
-
-.. code:: python
-
+  >>> print model
+  >>> DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
+              max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
+              min_samples_split=2, min_weight_fraction_leaf=0.0,
+              presort=False, random_state=None, splitter='best')
+  
+  
+  
+  # TEST MODEL
   predictions = model.predict(test_predictor)
-
-**SCORE MODEL**
-
->>> print sklearn.metrics.confusion_matrix(test_target,predictions)
->>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
-[[14  0  0]
- [ 0 13  0]
- [ 0  1 10]]
-97.3684210526 %
-
-.. code:: python
-
+  
+  >>> print sklearn.metrics.confusion_matrix(test_target,predictions)
+  >>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
+  [[14  0  0]
+   [ 0 13  0]
+   [ 0  1 10]]
+  97.3684210526 %
+  
+  
+  # SCORE MODEL
   # it is easier to use this package that does everything nicely for a perfect confusion matrix
   from pandas_confusion import ConfusionMatrix
->>> ConfusionMatrix(test_target, predictions)
-Predicted   setosa  versicolor  virginica  __all__
-Actual
-setosa          14           0          0       14
-versicolor       0          13          0       13
-virginica        0           1         10       11
-__all__         14          14         10       38
-
-
-**Feature Importance**
-
-.. code:: python
-
+  >>> ConfusionMatrix(test_target, predictions)
+  Predicted   setosa  versicolor  virginica  __all__
+  Actual
+  setosa          14           0          0       14
+  versicolor       0          13          0       13
+  virginica        0           1         10       11
+  __all__         14          14         10       38
+  
+  
+  
+  # FEATURE IMPORTANCE
   df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
 
->>> df2.sort_values(by=0,ascending=False)
-petal width (cm)	0.952542
-petal length (cm)	0.029591
-sepal length (cm)	0.017867
-sepal width (cm)	0.000000
+  >>> df2.sort_values(by=0,ascending=False)
+  petal width (cm)	0.952542
+  petal length (cm)	0.029591
+  sepal length (cm)	0.017867
+  sepal width (cm)	0.000000
+
 
 
 Random Forest
@@ -137,114 +135,100 @@ An ensemble of decision trees.
 .. code:: python
   
   # IMPORT MODULES
-  # TRAIN TEST SPLIT
-  # CREATE MODEL
-  # FIT MODEL
-  # TEST MODEL
-  # SCORE MODEL
-  
   import pandas as pd
   import numpy as np
   from sklearn.ensemble import RandomForestClassifier
   from sklearn.cross_validation import train_test_split
   import sklearn.metrics
-
-**TRAIN TEST SPLIT**
-
-.. code:: python
-
+  
+  
+  
+  # TRAIN TEST SPLIT
   train_feature, test_feature, train_target, test_target = \
-  train_test_split(feature, target, test_size=.2)
-
->>> print train_feature.shape
->>> print test_feature.shape
-(404, 13)
-(102, 13)
-
-**CREATE MODEL**
-
-.. code:: python
-
+  train_test_split(feature, target, test_size=0.2)
+  
+  >>> print train_feature.shape
+  >>> print test_feature.shape
+  (404, 13)
+  (102, 13)
+  
+  
+  # CREATE MODEL
   # use 100 decision trees
   clf = RandomForestClassifier(n_estimators=100)
-
-**FIT MODEL**
-
-.. code:: python
-
+  
+  
+  
+  # FIT MODEL
   model = clf.fit(train_feature, train_target)
-
->>> print model
-RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-            max_depth=None, max_features='auto', max_leaf_nodes=None,
-            min_samples_leaf=1, min_samples_split=2,
-            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
-            oob_score=False, random_state=None, verbose=0,
-            warm_start=False)
-
-**TEST MODEL**
-
-.. code:: python
-
+  >>> print model
+  RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+              max_depth=None, max_features='auto', max_leaf_nodes=None,
+              min_samples_leaf=1, min_samples_split=2,
+              min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
+              oob_score=False, random_state=None, verbose=0,
+              warm_start=False)
+  
+  
+  
+  # TEST MODEL
   predictions = model.predict(test_feature)
+  
+  
+  
+  # SCORE MODEL
+  >>> print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
+  >>> print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
+  accuracy
+  82.3529411765 %
+  confusion matrix
+  [[21  0  3]
+   [ 0 21  4]
+   [ 8  3 42]]
+  
+  
+  
+  # FEATURE IMPORTANCE
+  # rank the importance of features
+  df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
+  >>> df2.sort_values(by=0,ascending=False)
+  RM	0.225612
+  LSTAT	0.192478
+  CRIM	0.108510
+  DIS	0.088056
+  AGE	0.074202
+  NOX	0.067718
+  B	0.057706
+  PTRATIO	0.051702
+  TAX	0.047568
+  INDUS	0.037871
+  RAD	0.026538
+  ZN	0.012635
+  CHAS	0.009405
 
+  
+  
+  # GRAPHS
 
-**SCORE MODEL**
+  # see how many decision trees are minimally required make the accuarcy consistent
+  import numpy as np
+  import matplotlib.pylab as plt
+  import seaborn as sns
+  %matplotlib inline
 
->>> print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
->>> print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
-accuracy
-82.3529411765 %
-confusion matrix
-[[21  0  3]
- [ 0 21  4]
- [ 8  3 42]]
+  trees=range(100)
+  accuracy=np.zeros(100)
 
-**Feature Importance**
-
-.. code:: python
-
- # rank the importance of features
- df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
->>> df2.sort_values(by=0,ascending=False)
- RM	0.225612
- LSTAT	0.192478
- CRIM	0.108510
- DIS	0.088056
- AGE	0.074202
- NOX	0.067718
- B	0.057706
- PTRATIO	0.051702
- TAX	0.047568
- INDUS	0.037871
- RAD	0.026538
- ZN	0.012635
- CHAS	0.009405
-
-**Optimum Ensemble of Trees**
-
-.. code:: python
-
- # see how many decision trees are minimally required make the accuarcy consistent
- import numpy as np
- import matplotlib.pylab as plt
- import seaborn as sns
- %matplotlib inline
-
- trees=range(100)
- accuracy=np.zeros(100)
-
- for i in range(len(trees)):
+  for i in range(len(trees)):
     clf=RandomForestClassifier(n_estimators= i+1)
     model=clf.fit(train_feature, train_target)
     predictions=model.predict(test_feature)
     accuracy[i]=sklearn.metrics.accuracy_score(test_target, predictions)
 
- plt.plot(trees,accuracy)
+  plt.plot(trees,accuracy)
 
- # well, seems like more than 10 trees will have a consistent accuracy of 0.82.
- # Guess there's no need to have an ensemble of 100 trees!
-
+  # well, seems like more than 10 trees will have a consistent accuracy of 0.82.
+  # Guess there's no need to have an ensemble of 100 trees!
 
 .. image:: images/randomforest.png
 
@@ -294,7 +278,6 @@ This helps to prevent *overfitting*.
 .. code:: python
 
   # IMPORT MODULES
-  
   import pandas as pd
   import numpy as py
   from sklearn import preprocessing
@@ -304,12 +287,13 @@ This helps to prevent *overfitting*.
   from sklearn.datasets import load_boston
   
   
+  
   # NORMALIZATION
   # standardise the means to 0 and standard error to 1
   for i in df.columns[:-1]: # df.columns[:-1] = dataframe for all features
     df[i] = preprocessing.scale(df[i].astype('float64'))
-
-  df.describe()
+  >>> df.describe()
+  
   
   
   # TRAIN TEST SPLIT
@@ -322,12 +306,14 @@ This helps to prevent *overfitting*.
   >>> (102, 13)
 
 
+
   # CREATE MODEL
   # Fit the LASSO LAR regression model
   # cv=10; use k-fold cross validation
   # precompute; True=model will be faster if dataset is large
   model=LassoLarsCV(cv=10, precompute=False)
-  
+
+
   
   # FIT MODEL
   model = model.fit(train_feature,train_target)
@@ -335,6 +321,7 @@ This helps to prevent *overfitting*.
   LassoLarsCV(copy_X=True, cv=10, eps=2.2204460492503131e-16,
         fit_intercept=True, max_iter=500, max_n_alphas=1000, n_jobs=1,
         normalize=True, positive=False, precompute=False, verbose=False)
+  
   
         
   # ANALYSE COEFFICIENTS
@@ -358,6 +345,7 @@ This helps to prevent *overfitting*.
   LSTAT	-3.878356
   
   
+  
   # SCORE MODEL
   # MSE from training and test data
   from sklearn.metrics import mean_squared_error
@@ -368,6 +356,7 @@ This helps to prevent *overfitting*.
   print(train_error)
   print ('test data MSE')
   print(test_error)
+  
   # MSE closer to 0 are better
   # test dataset is less accurate as expected
   >>> training data MSE
@@ -383,6 +372,7 @@ This helps to prevent *overfitting*.
   print(rsquared_train)
   print ('test data R-square')
   print(rsquared_test)
+  
   # test data explained 65% of the predictors
   >>> training data R-square
   >>> 0.755337444405
