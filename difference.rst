@@ -6,9 +6,9 @@ Chi-Square Test
 
 .. note::
   
-  **X, Explantory**: Categorical
-  **Y, Response**: Categorical
-  **Type**: Non-Parametric
+  1. **X, Explantory**: Categorical
+  2. **Y, Response**: Categorical
+  3. **Type**: Non-Parametric
 
 
 .. code:: python
@@ -28,7 +28,7 @@ Student's T-Test
 
 .. note::
   
-  **Type**: Parametric
+  1. **Type**: Parametric
 
 
 ANOVA
@@ -36,7 +36,7 @@ ANOVA
 
 .. note::
   
-  **Type**: Parametric
+  1. **Type**: Parametric
   
 
 Analysis of Variance (ANOVA). X, or independent variable can be continuous or categorical. 

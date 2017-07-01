@@ -6,9 +6,9 @@ Pearson's Correlation
 
 .. note::
   
-  **X, Explantory**: Continuous
-  **Y, Response**: Continuous
-  **Type**: Non-Parametric
+  1. **X, Explantory**: Continuous
+  2. **Y, Response**: Continuous
+  3. **Type**: Non-Parametric
 
 .. code:: python
   
@@ -28,6 +28,6 @@ Spearman's Rank Correlation
 
 .. note::
   
-  **X, Explantory**: Continuous
-  **Y, Response**: Continuous
-  **Type**: Parametric
+  1. **X, Explantory**: Continuous
+  2. **Y, Response**: Continuous
+  3. **Type**: Parametric
