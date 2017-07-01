@@ -19,20 +19,20 @@ The type of data is essential as it determines what kind of tests can be applied
 
 Bias-Variance Tradeoff
 -----------------------
-The best predictive algorithm is one that has good *Generalization Ability*. 
+The best predictive algorithm is one that has good *Generalization Ability*.
 With that, it will be able to give accurate predictions to new and previously unseen data.
 
 *High Bias* results from *Underfitting* the model. This usually results from erroneous assumptions, and cause the model to be too general.
 
-*High Variance* results from *Overfitting* the model, and it will predict the training dataset very accurately, but not with unseen new datasets. 
+*High Variance* results from *Overfitting* the model, and it will predict the training dataset very accurately, but not with unseen new datasets.
 This is because it will fit even the slightless noise in the dataset.
 
 The best model with the highest accuarcy is the middle ground between the two.
-    
+
 .. figure:: ./images/bias-variance.png
     :scale: 25 %
     :align: center
-  
+
     from Andrew Ng's lecture
 
 Steps to Build a Predictive Model
@@ -41,11 +41,12 @@ Train Test Split
 *****************
 Split the dataset into *Train* and *Test* datasets.
 By default, sklearn assigns 75% to train & 25% to test randomly.
+A random state (seed) can be selected to fixed the randomisation
 
 .. code:: Python
 
-  train_predictor, test_predictor, train_target, test_target 
-  = train_test_split(predictor, target, test_size=0.25)
+  train_predictor, test_predictor, train_target, test_target
+  = train_test_split(predictor, target, test_size=0.25, random_state=0)
 
 Create Model
 ************
@@ -87,9 +88,8 @@ Use a confusion matrix and...
 [[14  0  0]
  [ 0 13  0]
  [ 0  1 10]]
- 
+
 accuarcy percentage score to obtain the predictive accuarcy.
 
 >>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
 97.3684210526 %
-

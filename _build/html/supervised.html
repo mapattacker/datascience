@@ -162,25 +162,27 @@
 <li><code class="docutils literal"><span class="pre">Weighting</span> <span class="pre">function</span> <span class="pre">on</span> <span class="pre">neighbours:</span></code> (optional)</li>
 <li><code class="docutils literal"><span class="pre">How</span> <span class="pre">to</span> <span class="pre">aggregate</span> <span class="pre">class</span> <span class="pre">of</span> <span class="pre">neighbour</span> <span class="pre">points:</span></code> Simple majority (default)</li>
 </ol>
-<p><strong>Train Test Split</strong></p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Create Model</strong></p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Import Modules</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="c1"># Train Test Split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Create Model</span>
 <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Fit Model</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="go">    KNeighborsClassifier(algorithm=&#39;auto&#39;, leaf_size=30, metric=&#39;minkowski&#39;,</span>
-<span class="go">         metric_params=None, n_jobs=1, n_neighbors=5, p=2,</span>
-<span class="go">         weights=&#39;uniform&#39;)</span>
-</pre></div>
-</div>
-<p><strong>Test Model</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="go">0.53333333333333333</span>
+
+<span class="c1">#Fit Model</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1">#KNeighborsClassifier(algorithm=&#39;auto&#39;, leaf_size=30, metric=&#39;minkowski&#39;,</span>
+<span class="c1">#     metric_params=None, n_jobs=1, n_neighbors=5, p=2,</span>
+<span class="c1">#     weights=&#39;uniform&#39;)</span>
+
+<span class="c1">#Test Module</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="c1">#0.53333333333333333</span>
 </pre></div>
 </div>
 </div>
@@ -267,7 +269,8 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 </pre></div>
 </div>
 <p><strong>Train Test Split</strong></p>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">train_feature</span><span class="p">,</span> <span class="n">test_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">train_feature</span><span class="p">,</span> <span class="n">test_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> \
+<span class="n">train_test_split</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">train_feature</span><span class="o">.</span><span class="n">shape</span>
@@ -368,7 +371,7 @@ plt.plot(trees,accuracy)
 <h2>4.2. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ordinary-least-squares-ols-regression">
 <h3>4.2.1. Ordinary Least Squares (OLS) Regression<a class="headerlink" href="#ordinary-least-squares-ols-regression" title="Permalink to this headline">¶</a></h3>
-<p>Best fit line <code class="docutils literal"><span class="pre">ŷ</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">bx</span></code> is drawn based on the ordrinary least squares method. i.e., least total area of squares with length from each x,y point to regresson line.</p>
+<p>Best fit line <code class="docutils literal"><span class="pre">ŷ</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">bx</span></code> is drawn based on the ordinary least squares method. i.e., least total area of squares with length from each x,y point to regresson line.</p>
 </div>
 <div class="section" id="ridge-regression">
 <h3>4.2.2. Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>

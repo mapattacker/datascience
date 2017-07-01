@@ -11,31 +11,30 @@ K Nearest Neighbours (KNN)
 3. ``Weighting function on neighbours:`` (optional)
 4. ``How to aggregate class of neighbour points:`` Simple majority (default)
 
-**Train Test Split**
-
 .. code:: python
 
+  # Import Modules
+  import pandas as pd
+  import numpy as np
+  from sklearn.cross_validation import train_test_split
+  from sklearn.neighbors import KNeighborsClassifier
+
+  # Train Test Split
   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
-
-**Create Model**
-
-.. code:: python
-
-  from sklearn.neighbors import KNeighborsClassifier
+  # Create Model
   knn = KNeighborsClassifier(n_neighbors = 5)
 
-**Fit Model**
+  #Fit Model
+  knn.fit(X_train, y_train)
+  #KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
+  #     metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+  #     weights='uniform')
 
->>> knn.fit(X_train, y_train)
-    KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
-         metric_params=None, n_jobs=1, n_neighbors=5, p=2,
-         weights='uniform')
+  #Test Module
+  knn.score(X_test, y_test)
+  #0.53333333333333333
 
-**Test Model**
-
->>> knn.score(X_test, y_test)
-0.53333333333333333
 
 
 Decision Tree
@@ -138,7 +137,8 @@ An ensemble of decision trees.
 
 .. code:: python
 
-  train_feature, test_feature, train_target, test_target = train_test_split(feature, target, test_size=.2)
+  train_feature, test_feature, train_target, test_target = \
+  train_test_split(feature, target, test_size=.2)
 
 >>> print train_feature.shape
 >>> print test_feature.shape
@@ -246,7 +246,7 @@ Regression
 
 Ordinary Least Squares (OLS) Regression
 ***************************************
-Best fit line ``ŷ = a + bx`` is drawn based on the ordrinary least squares method. i.e., least total area of squares with length from each x,y point to regresson line.
+Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares method. i.e., least total area of squares with length from each x,y point to regresson line.
 
 
 Ridge Regression

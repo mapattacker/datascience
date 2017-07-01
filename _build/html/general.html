@@ -178,9 +178,10 @@ This is because it will fit even the slightless noise in the dataset.</p>
 <div class="section" id="train-test-split">
 <h3>1.4.1. Train Test Split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">¶</a></h3>
 <p>Split the dataset into <em>Train</em> and <em>Test</em> datasets.
-By default, sklearn assigns 75% to train &amp; 25% to test randomly.</p>
+By default, sklearn assigns 75% to train &amp; 25% to test randomly.
+A random state (seed) can be selected to fixed the randomisation</p>
 <div class="code Python highlight-python"><div class="highlight"><pre><span></span>train_predictor, test_predictor, train_target, test_target
-= train_test_split(predictor, target, test_size=0.25)
+= train_test_split(predictor, target, test_size=0.25, random_state=0)
 </pre></div>
 </div>
 </div>
