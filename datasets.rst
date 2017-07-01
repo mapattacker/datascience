@@ -1,6 +1,6 @@
 In-Built Datasets
 =================
-There are in-built datasets provided in both pandas and statsmodels packages.
+There are in-built datasets provided in both statsmodels and sklearn packages.
 
 **Statsmodels**
 In statsmodels, many R datasets can be obtained from the function ``sm.datasets.get_rdataset()``. 
