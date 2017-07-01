@@ -173,6 +173,17 @@
 <p>X, Explantory: <code class="docutils literal"><span class="pre">Continuous</span></code>
 Y, Response: <code class="docutils literal"><span class="pre">Continuous</span></code>
 Type: <code class="docutils literal"><span class="pre">Non-Parametric</span></code></p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#### IMPORT MODULES ####</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">ss</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="nb">print</span> <span class="n">ss</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">],</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;diameter&#39;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;diameter&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df3</span><span class="p">,</span> <span class="n">fit_reg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="spearman-s-rank-correlation">
 <h2>3.2. Spearman&#8217;s Rank Correlation<a class="headerlink" href="#spearman-s-rank-correlation" title="Permalink to this headline">¶</a></h2>

@@ -246,6 +246,39 @@ Ordinary Least Squares (OLS) Regression
 Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares method. i.e., least total area of squares with length from each x,y point to regresson line.
 
 
+.. code:: python
+
+  model = smf.ols(formula='diameter ~ depth', data=df3).fit()
+  print model.summary()
+  
+  OLS Regression Results                            
+  ==============================================================================
+  Dep. Variable:               diameter   R-squared:                       0.512
+  Model:                            OLS   Adj. R-squared:                  0.512
+  Method:                 Least Squares   F-statistic:                 1.895e+04
+  Date:                Tue, 02 Aug 2016   Prob (F-statistic):               0.00
+  Time:                        17:10:34   Log-Likelihood:                -51812.
+  No. Observations:               18067   AIC:                         1.036e+05
+  Df Residuals:                   18065   BIC:                         1.036e+05
+  Df Model:                           1                                         
+  Covariance Type:            nonrobust                                         
+  ==============================================================================
+  coef    std err          t      P>|t|      [95.0% Conf. Int.]
+  ------------------------------------------------------------------------------
+  Intercept      2.2523      0.054     41.656      0.000         2.146     2.358
+  depth         11.5836      0.084    137.675      0.000        11.419    11.749
+  ==============================================================================
+  Omnibus:                    12117.030   Durbin-Watson:                   0.673
+  Prob(Omnibus):                  0.000   Jarque-Bera (JB):           391356.565
+  Skew:                           2.771   Prob(JB):                         0.00
+  Kurtosis:                      25.117   Cond. No.                         3.46
+  ==============================================================================
+
+  Warnings:
+  [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+
+
 Ridge Regression
 ****************
 
