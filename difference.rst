@@ -28,8 +28,10 @@ ANOVA
 -----
 Type: ``Parametric``
 
-Analysis of Variance (ANOVA).
+Analysis of Variance (ANOVA). X, or independent variable can be continuous or categorical. 
+Can input mutiple factors (x).
 
+**Categorical Independent Variable**
 
 .. code:: python
 
@@ -102,3 +104,5 @@ Analysis of Variance (ANOVA).
     3      5     9.5281   3.0154 16.0409  True 
     4      5     3.4984  -3.1806 10.1773 False 
   ---------------------------------------------
+  
+**Categorical Independent Variable**

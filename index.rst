@@ -16,9 +16,11 @@ This documentation summarises various statistics and machine learning techniques
    :numbered:
    
    general
+   datasets
    difference
    association
    supervised
    unsupervised
    decomposition
-   forecasting 
+   forecasting
+   resources

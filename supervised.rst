@@ -328,6 +328,8 @@ Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares metho
   [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
 
+
+
 Ridge Regression
 ****************
 
