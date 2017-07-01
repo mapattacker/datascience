@@ -275,7 +275,7 @@ This helps to prevent *overfitting*.
 
 .. code:: python
 
-  ###### IMPORT MODULES #### ###
+  #### IMPORT MODULES ####
   import pandas as pd
   import numpy as py
   from sklearn import preprocessing
@@ -286,7 +286,7 @@ This helps to prevent *overfitting*.
   
   
   
-  # NORMALIZATION
+  #### NORMALIZATION ####
   # standardise the means to 0 and standard error to 1
   for i in df.columns[:-1]: # df.columns[:-1] = dataframe for all features
     df[i] = preprocessing.scale(df[i].astype('float64'))
