@@ -85,6 +85,8 @@ K-Means
   
 .. image:: images/elbowchart.png
 
+  scale: 50%
+
 
 .. code:: python
   
@@ -111,3 +113,5 @@ K-Means
   plt.show()
   
 .. image:: images/kmeans.png
+
+  scale: 50%
