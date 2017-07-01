@@ -7,7 +7,7 @@ Classification
 K Nearest Neighbours (KNN)
 **************************
 
-.. topic:: Parameters Selection
+.. topic:: **Parameters Selection**
   
   1. ``Distance Metric:`` Eclidean Distance (default). In sklearn it is known as (Minkowski with p = 2)
   2. ``How many nearest neighbour to look at:`` k=1 very specific, k=5 more general model. Use nearest k data points to determine classification
