@@ -12,6 +12,7 @@ To view each dataset's description, use ``print(duncan_prestige.__doc__)``.
   prestige = sm.datasets.get_rdataset("Duncan", "car", cache=True).data
   print prestige.head()
 
+
   
   type  income  education  prestige
   accountant  prof      62         86        82
@@ -20,7 +21,7 @@ To view each dataset's description, use ``print(duncan_prestige.__doc__)``.
   author      prof      55         90        76
   chemist     prof      64         86        90
 
-
+|
 **Sklearn**
 There are five common toy datasets here. For others, view http://scikit-learn.org/stable/datasets/index.html. 
 To view each dataset's description, use ``print boston['DESCR']``.
@@ -56,6 +57,7 @@ To view each dataset's description, use ``print boston['DESCR']``.
   4                5.0               3.6                1.4               0.2
   
   
+  
   # Feature names are in .target & .target_names
   >>> print iris.target_names[:5]
   >>> ['setosa' 'versicolor' 'virginica']
@@ -66,6 +68,7 @@ To view each dataset's description, use ``print boston['DESCR']``.
    2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
    2 2]
    
+  
   
   # Change target to target_names & merge with main dataframe
   df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
