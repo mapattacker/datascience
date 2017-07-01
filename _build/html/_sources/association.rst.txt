@@ -28,6 +28,6 @@ Spearman's Rank Correlation
 
 .. note::
   
-  1. **X, Explantory**: Continuous
-  2. **Y, Response**: Continuous
-  3. **Type**: Parametric
+  * **X, Explantory**: Continuous
+  * **Y, Response**: Continuous
+  * **Type**: Parametric
