@@ -3,6 +3,8 @@ In-Built Datasets
 There are in-built datasets provided in both pandas and statsmodels packages.
 
 **Statsmodels**
+In statsmodels, many R datasets can be obtained from the function ``sm.datasets.get_rdataset()``. 
+To view each dataset's description, use ``print(duncan_prestige.__doc__)``.
 
 .. code:: python
 
@@ -20,6 +22,21 @@ There are in-built datasets provided in both pandas and statsmodels packages.
 
 
 **Sklearn**
+There are five common toy datasets here. For others, view http://scikit-learn.org/stable/datasets/index.html. 
+To view each dataset's description, use ``print boston['DESCR']``.
+
++------------------------------------+-----------------------------------------------------------------+
+| load_boston([return_X_y])          | Load and return the boston house-prices dataset (regression).   |
++------------------------------------+-----------------------------------------------------------------+
+| load_iris([return_X_y])            | Load and return the iris dataset (classification).              |
++------------------------------------+-----------------------------------------------------------------+
+| load_diabetes([return_X_y])        | Load and return the diabetes dataset (regression).              |
++------------------------------------+-----------------------------------------------------------------+
+| load_digits([n_class, return_X_y]) | Load and return the digits dataset (classification).            |
++------------------------------------+-----------------------------------------------------------------+
+| load_linnerud([return_X_y])        | Load and return the linnerud dataset (multivariate regression). |
++------------------------------------+-----------------------------------------------------------------+
+
 
 .. code:: python
 
