@@ -105,4 +105,40 @@ Can input mutiple factors (x).
     4      5     3.4984  -3.1806 10.1773 False 
   ---------------------------------------------
   
-**Categorical Independent Variable**
+**Multiple Factors**
+
+.. code:: python
+
+  reg2 = smf.ols('depth~diameter_new+layers+lat+long',data=df3).fit()
+  print reg2.summary()
+  
+  
+  
+  OLS Regression Results                            
+  ==============================================================================
+  Dep. Variable:                  depth   R-squared:                       0.518
+  Model:                            OLS   Adj. R-squared:                  0.518
+  Method:                 Least Squares   F-statistic:                     4856.
+  Date:                Wed, 03 Aug 2016   Prob (F-statistic):               0.00
+  Time:                        17:58:20   Log-Likelihood:                -1393.4
+  No. Observations:               18067   AIC:                             2797.
+  Df Residuals:                   18062   BIC:                             2836.
+  Df Model:                           4                                         
+  Covariance Type:            nonrobust                                         
+  ================================================================================
+  coef    std err          t      P>|t|      [95.0% Conf. Int.]
+  --------------------------------------------------------------------------------
+  Intercept        0.5112      0.005     94.795      0.000         0.501     0.522
+  diameter_new     0.0438      0.000    122.136      0.000         0.043     0.045
+  layers           0.0061      0.004      1.555      0.120        -0.002     0.014
+  lat             -0.0007    5.3e-05    -13.557      0.000        -0.001    -0.001
+  long             0.0001   1.93e-05      7.131      0.000      9.97e-05     0.000
+  ==============================================================================
+  Omnibus:                      598.651   Durbin-Watson:                   1.078
+  Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1210.720
+  Skew:                          -0.234   Prob(JB):                    1.25e-263
+  Kurtosis:                       4.179   Cond. No.                         342.
+  ==============================================================================
+
+  Warnings:
+  [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

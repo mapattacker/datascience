@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. Supervised Learning &mdash; Data Science 0.1 documentation</title>
+  <title>6. Supervised Learning &mdash; Data Science 0.1 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Data Science 0.1 documentation" href="index.html"/>
-        <link rel="next" title="5. Unsupervised Learning" href="unsupervised.html"/>
-        <link rel="prev" title="3. Tests of Association" href="association.html"/> 
+        <link rel="next" title="7. Unsupervised Learning" href="unsupervised.html"/>
+        <link rel="prev" title="5. Tests of Association" href="association.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -93,28 +93,31 @@
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="general.html">1. General Notes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="difference.html">2. Tests of Difference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="association.html">3. Tests of Association</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Supervised Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#classification">4.1. Classification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#k-nearest-neighbours-knn">4.1.1. K Nearest Neighbours (KNN)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#decision-tree">4.1.2. Decision Tree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#random-forest">4.1.3. Random Forest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#logistic-regression">4.1.4. Logistic Regression</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#support-vector-machine">4.1.5. Support Vector Machine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assumptions.html">2. Tests for Assumptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">3. In-Built Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="difference.html">4. Tests of Difference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="association.html">5. Tests of Association</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Supervised Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classification">6.1. Classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k-nearest-neighbours-knn">6.1.1. K Nearest Neighbours (KNN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decision-tree">6.1.2. Decision Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#random-forest">6.1.3. Random Forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logistic-regression">6.1.4. Logistic Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-vector-machine">6.1.5. Support Vector Machine</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#regression">4.2. Regression</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#ordinary-least-squares-ols-regression">4.2.1. Ordinary Least Squares (OLS) Regression</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ridge-regression">4.2.2. Ridge Regression</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lasso-regression">4.2.3. Lasso Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#regression">6.2. Regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ols-regression">6.2.1. OLS Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ridge-regression">6.2.2. Ridge Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lasso-regression">6.2.3. LASSO Regression</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">5. Unsupervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decomposition.html">6. Time Series Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forecasting.html">7. Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">7. Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition.html">8. Time Series Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">9. Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Resources</a></li>
 </ul>
 
             
@@ -159,7 +162,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>4. Supervised Learning</li>
+      <li>6. Supervised Learning</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,11 +182,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="supervised-learning">
-<h1>4. Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h1>
+<h1>6. Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="classification">
-<h2>4.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
+<h2>6.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="k-nearest-neighbours-knn">
-<h3>4.1.1. K Nearest Neighbours (KNN)<a class="headerlink" href="#k-nearest-neighbours-knn" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.1. K Nearest Neighbours (KNN)<a class="headerlink" href="#k-nearest-neighbours-knn" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">Distance</span> <span class="pre">Metric:</span></code> Eclidean Distance (default). In sklearn it is known as (Minkowski with p = 2)</li>
 <li><code class="docutils literal"><span class="pre">How</span> <span class="pre">many</span> <span class="pre">nearest</span> <span class="pre">neighbour</span> <span class="pre">to</span> <span class="pre">look</span> <span class="pre">at:</span></code> k=1 very specific, k=5 more general model. Use nearest k data points to determine classification</li>
@@ -223,7 +226,7 @@
 </div>
 </div>
 <div class="section" id="decision-tree">
-<h3>4.1.2. Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.2. Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">¶</a></h3>
 <p>Uses gini index to split the data at binary level.</p>
 <p><strong>Strengths:</strong> Can select a large number of features that best determine the targets.
 <strong>Weakness:</strong> Tends to overfit the data as it will split till the end.
@@ -298,7 +301,7 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 </div>
 </div>
 <div class="section" id="random-forest">
-<h3>4.1.3. Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.3. Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
 <p>An ensemble of decision trees.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">###### IMPORT MODULES #### ###</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -400,20 +403,66 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 <img alt="_images/randomforest.png" src="_images/randomforest.png" />
 </div>
 <div class="section" id="logistic-regression">
-<h3>4.1.4. Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.4. Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
+<p>Binary output.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#### IMPORT MODULES ####</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+
+
+<span class="c1">#### FIT MODEL ####</span>
+<span class="n">lreg</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;diameter_cut&#39;</span><span class="p">],</span> <span class="n">df3</span><span class="p">[</span><span class="n">trainC</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">lreg</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+
+<span class="n">Optimization</span> <span class="n">terminated</span> <span class="n">successfully</span><span class="o">.</span>
+       <span class="n">Current</span> <span class="n">function</span> <span class="n">value</span><span class="p">:</span> <span class="mf">0.518121</span>
+       <span class="n">Iterations</span> <span class="mi">6</span>
+                           <span class="n">Logit</span> <span class="n">Regression</span> <span class="n">Results</span>
+<span class="o">==============================================================================</span>
+<span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>           <span class="n">diameter_cut</span>   <span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                <span class="mi">18067</span>
+<span class="n">Model</span><span class="p">:</span>                          <span class="n">Logit</span>   <span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>                    <span class="mi">18065</span>
+<span class="n">Method</span><span class="p">:</span>                           <span class="n">MLE</span>   <span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>                            <span class="mi">1</span>
+<span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">04</span> <span class="n">Aug</span> <span class="mi">2016</span>   <span class="n">Pseudo</span> <span class="n">R</span><span class="o">-</span><span class="n">squ</span><span class="o">.</span><span class="p">:</span>                  <span class="mf">0.2525</span>
+<span class="n">Time</span><span class="p">:</span>                        <span class="mi">14</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">14</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>                <span class="o">-</span><span class="mf">9360.9</span>
+<span class="n">converged</span><span class="p">:</span>                       <span class="kc">True</span>   <span class="n">LL</span><span class="o">-</span><span class="n">Null</span><span class="p">:</span>                       <span class="o">-</span><span class="mf">12523.</span>
+                                        <span class="n">LLR</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">:</span>                     <span class="mf">0.000</span>
+<span class="o">================================================================================</span>
+                   <span class="n">coef</span>    <span class="n">std</span> <span class="n">err</span>          <span class="n">z</span>      <span class="n">P</span><span class="o">&gt;|</span><span class="n">z</span><span class="o">|</span>      <span class="p">[</span><span class="mf">95.0</span><span class="o">%</span> <span class="n">Conf</span><span class="o">.</span> <span class="n">Int</span><span class="o">.</span><span class="p">]</span>
+<span class="o">--------------------------------------------------------------------------------</span>
+<span class="n">depth</span>            <span class="mf">4.2529</span>      <span class="mf">0.067</span>     <span class="mf">63.250</span>      <span class="mf">0.000</span>         <span class="mf">4.121</span>     <span class="mf">4.385</span>
+<span class="n">layers_YESNO</span>    <span class="o">-</span><span class="mf">2.1102</span>      <span class="mf">0.037</span>    <span class="o">-</span><span class="mf">57.679</span>      <span class="mf">0.000</span>        <span class="o">-</span><span class="mf">2.182</span>    <span class="o">-</span><span class="mf">2.039</span>
+<span class="o">================================================================================</span>
+
+
+
+<span class="c1">#### CONFIDENCE INTERVALS ####</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">lreg</span><span class="o">.</span><span class="n">params</span>
+<span class="n">conf</span> <span class="o">=</span> <span class="n">lreg</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+<span class="n">conf</span><span class="p">[</span><span class="s1">&#39;OR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span>
+<span class="n">conf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lower CI&#39;</span><span class="p">,</span> <span class="s1">&#39;Upper CI&#39;</span><span class="p">,</span> <span class="s1">&#39;OR&#39;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">conf</span><span class="p">))</span>
+
+<span class="n">Lower</span> <span class="n">CI</span>   <span class="n">Upper</span> <span class="n">CI</span>         <span class="n">OR</span>
+<span class="n">depth</span>         <span class="mf">61.625434</span>  <span class="mf">80.209893</span>  <span class="mf">70.306255</span>
+<span class="n">layers_YESNO</span>   <span class="mf">0.112824</span>   <span class="mf">0.130223</span>   <span class="mf">0.121212</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="support-vector-machine">
-<h3>4.1.5. Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.5. Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 </div>
 <div class="section" id="regression">
-<h2>4.2. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ordinary-least-squares-ols-regression">
-<h3>4.2.1. Ordinary Least Squares (OLS) Regression<a class="headerlink" href="#ordinary-least-squares-ols-regression" title="Permalink to this headline">¶</a></h3>
-<p>Best fit line <code class="docutils literal"><span class="pre">ŷ</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">bx</span></code> is drawn based on the ordinary least squares method. i.e., least total area of squares with length from each x,y point to regresson line.</p>
+<h2>6.2. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ols-regression">
+<h3>6.2.1. OLS Regression<a class="headerlink" href="#ols-regression" title="Permalink to this headline">¶</a></h3>
+<p>Ordinary Least Squares Regression or OLS Regression is the most basic form and fundamental of regression.
+Best fit line <code class="docutils literal"><span class="pre">ŷ</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">bx</span></code> is drawn based on the ordinary least squares method. i.e., least total area of squares (sum of squares) with length from each x,y point to regresson line.</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;diameter ~ depth&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span> <span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 
@@ -448,10 +497,10 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 </div>
 </div>
 <div class="section" id="ridge-regression">
-<h3>4.2.2. Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.2. Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="lasso-regression">
-<h3>4.2.3. Lasso Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.3. LASSO Regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
 <p>Least absolute shrinkage and selection operator regression, or LASSO regression, has a unique penalty parameter, lambda that <em>change unimportant features (their regression coefficients) into 0</em>.
 This helps to prevent <em>overfitting</em>.</p>
 <ul class="simple">
@@ -586,10 +635,10 @@ This helps to prevent <em>overfitting</em>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="unsupervised.html" class="btn btn-neutral float-right" title="5. Unsupervised Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="unsupervised.html" class="btn btn-neutral float-right" title="7. Unsupervised Learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="association.html" class="btn btn-neutral" title="3. Tests of Association" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="association.html" class="btn btn-neutral" title="5. Tests of Association" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

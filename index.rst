@@ -16,6 +16,7 @@ This documentation summarises various statistics and machine learning techniques
    :numbered:
    
    general
+   assumptions
    datasets
    difference
    association
