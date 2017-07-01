@@ -129,9 +129,6 @@ Random Forest
 **************************
 An ensemble of decision trees.
 
-
-**IMPORT MODULES**
-
 .. code:: python
   
   ###### IMPORT MODULES #### ###
