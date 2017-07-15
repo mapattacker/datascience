@@ -24,7 +24,7 @@ Min Max Scale
 -------------
 Another way to normalise is to use the Min Max Scaler, as defined below:
 
-.. figure:: images/minmaxscaler
+.. figure:: images/minmaxscaler.png
 
 .. code:: python
 
