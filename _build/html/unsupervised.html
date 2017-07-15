@@ -13,8 +13,6 @@
 
   
   
-  
-  
 
   
 
@@ -32,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Data Science 0.1 documentation" href="index.html"/>
         <link rel="next" title="8. Time Series Decomposition" href="decomposition.html"/>
         <link rel="prev" title="6. Supervised Learning" href="supervised.html"/> 
@@ -46,7 +41,6 @@
 
 <body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
 
     
@@ -87,10 +81,7 @@
           
             
             
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents</span></p>
+                <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="general.html">1. General Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assumptions.html">2. Tests for Assumptions</a></li>
@@ -98,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="difference.html">4. Tests of Difference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="association.html">5. Tests of Association</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supervised.html">6. Supervised Learning</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Unsupervised Learning</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">7. Unsupervised Learning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#clustering">7.1. Clustering</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#k-means">7.1.1. K-Means</a></li>
 </ul>
@@ -120,10 +111,8 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Data Science</a>
-        
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Data Science</a>
       </nav>
 
 
@@ -136,36 +125,19 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
-
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>7. Unsupervised Learning</li>
-    
-    
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>7. Unsupervised Learning</li>
       <li class="wy-breadcrumbs-aside">
         
-            
-            <a href="_sources/unsupervised.rst.txt" rel="nofollow"> View page source</a>
+          
+            <a href="_sources/unsupervised.txt" rel="nofollow"> View page source</a>
           
         
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -177,24 +149,121 @@
 <h2>7.1. Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="k-means">
 <h3>7.1.1. K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span>#### IMPORT MODULES ####
+import pandas as pd
+from sklearn import preprocessing
+from sklearn.cross_validation import train_test_split
+from sklearn.cluster import KMeans
+from sklearn.datasets import load_iris
+
+
+
+#### NORMALIZATION ####
+# standardise the means to 0 and standard error to 1
+for i in df.columns[:-2]: # df.columns[:-1] = dataframe for all features, minus target
+    df[i] = preprocessing.scale(df[i].astype(&#39;float64&#39;))
+
+df.describe()
+
+
+
+#### TRAIN-TEST SPLIT ####
+train_feature, test_feature = train_test_split(feature, random_state=123, test_size=0.2)
+
+print train_feature.shape
+print test_feature.shape
+(120, 4)
+(30, 4)
+
+
+
+#### A LOOK AT THE MODEL ####
+&gt;&gt;&gt; KMeans(n_clusters=2)
+KMeans(copy_x=True, init=&#39;k-means++&#39;, max_iter=300, n_clusters=2, n_init=10,
+    n_jobs=1, precompute_distances=&#39;auto&#39;, random_state=None, tol=0.0001,
+    verbose=0)
+
+
+
+#### ELBOW CHART TO DETERMINE OPTIMUM K ####
+from scipy.spatial.distance import cdist
+import numpy as np
+clusters=range(1,10)
+# to store average distance values for each cluster from 1-9
+meandist=[]
+
+# k-means cluster analysis for 9 clusters
+for k in clusters:
+    # prepare the model
+    model=KMeans(n_clusters=k)
+    # fit the model
+    model.fit(train_feature)
+    # test the model
+    clusassign=model.predict(train_feature)
+    # gives average distance values for each cluster solution
+        # cdist calculates distance of each two points from centriod
+        # get the min distance (where point is placed in clsuter)
+        # get average distance by summing &amp; dividing by total number of samples
+    meandist.append(sum(np.min(cdist(train_feature, model.cluster_centers_, &#39;euclidean&#39;), axis=1))
+    / train_feature.shape[0])
+
+
+import matplotlib.pylab as plt
+import seaborn as sns
+%matplotlib inline
+&quot;&quot;&quot;Plot average distance from observations from the cluster centroid
+to use the Elbow Method to identify number of clusters to choose&quot;&quot;&quot;
+
+plt.plot(clusters, meandist)
+plt.xlabel(&#39;Number of clusters&#39;)
+plt.ylabel(&#39;Average distance&#39;)
+plt.title(&#39;Selecting k with the Elbow Method&#39;)
+
+# look a bend in the elbow that kind of shows where
+# the average distance value might be leveling off such that adding more clusters
+# doesn&#39;t decrease the average distance as much
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/elbowchart.png"><img alt="_images/elbowchart.png" src="_images/elbowchart.png" style="width: 315.2px; height: 232.0px;" /></a>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="c1">#### VIEW CLUSTER USING PCA ####</span>
+<span class="c1"># Interpret 3 cluster solution</span>
+<span class="n">model3</span><span class="o">=</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
+<span class="n">clusassign</span><span class="o">=</span><span class="n">model3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
+<span class="c1"># plot clusters</span>
+
+<span class="c1"># Use Canonical Discriminate Analysis to reduce the dimensions (into 2)</span>
+<span class="c1"># Creates a smaller no. of variables, with canonical variables ordered by proportion of variable accounted</span>
+<span class="c1"># i.e., 1st canonical variable is most importance &amp; so on</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">pca_2</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#return first two canonical variables</span>
+<span class="n">plot_columns</span> <span class="o">=</span> <span class="n">pca_2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
+<span class="c1"># plot 1st canonical v in x axis, 2nd variable on y axis</span>
+<span class="c1"># color code variables based on cluster assignments (i.e., predicted targets)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">plot_columns</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">plot_columns</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">model3</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Canonical variable 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Canonical variable 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatterplot of Canonical Variables for 3 Clusters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/kmeans.png"><img alt="_images/kmeans.png" src="_images/kmeans.png" style="width: 318.4px; height: 229.6px;" /></a>
 </div>
 </div>
 </div>
 
 
-           </div>
-           <div class="articleComments">
-            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="decomposition.html" class="btn btn-neutral float-right" title="8. Time Series Decomposition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="decomposition.html" class="btn btn-neutral float-right" title="8. Time Series Decomposition" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="supervised.html" class="btn btn-neutral" title="6. Supervised Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="supervised.html" class="btn btn-neutral" title="6. Supervised Learning" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -228,8 +297,7 @@
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
+            HAS_SOURCE:  true
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

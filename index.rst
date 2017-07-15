@@ -7,14 +7,12 @@ Data Science in Python
 ========================================
 This documentation summarises various statistics and machine learning techniques in Python.
 
-  
-
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents
    :numbered:
-   
+
    general
    assumptions
    datasets

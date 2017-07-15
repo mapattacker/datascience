@@ -60,30 +60,30 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 
 
 .. code:: python
-  
+
   ###### IMPORT MODULES #### ###
   import pandas as pd
   import numpy as np
   from sklearn.tree import DecisionTreeClassifier
-  
-  
-  
+
+
+
   #### TRAIN TEST SPLIT ####
   train_predictor, test_predictor, train_target, test_target = \
   train_test_split(predictor, target, test_size=0.25)
-  
+
   >>> print test_predictor.shape
   >>> print train_predictor.shape
   (38, 4)
   (112, 4)
-  
-  
-  
+
+
+
   #### CREATE MODEL ####
   clf = DecisionTreeClassifier()
-  
-  
-  
+
+
+
   #### FIT MODEL ####
   model = clf.fit(train_predictor, train_target)
   >>> print model
@@ -91,20 +91,20 @@ Small changes in data can lead to different splits. Not very reproducible for fu
               max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
               min_samples_split=2, min_weight_fraction_leaf=0.0,
               presort=False, random_state=None, splitter='best')
-  
-  
-  
+
+
+
   #### TEST MODEL ####
   predictions = model.predict(test_predictor)
-  
+
   >>> print sklearn.metrics.confusion_matrix(test_target,predictions)
   >>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
   [[14  0  0]
    [ 0 13  0]
    [ 0  1 10]]
   97.3684210526 %
-  
-  
+
+
   #### SCORE MODEL ####
   # it is easier to use this package that does everything nicely for a perfect confusion matrix
   from pandas_confusion import ConfusionMatrix
@@ -115,9 +115,9 @@ Small changes in data can lead to different splits. Not very reproducible for fu
   versicolor       0          13          0       13
   virginica        0           1         10       11
   __all__         14          14         10       38
-  
-  
-  
+
+
+
   ####### FEATURE IMPORTANCE #### ####
   df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
 
@@ -134,32 +134,32 @@ Random Forest
 An ensemble of decision trees.
 
 .. code:: python
-  
+
   ###### IMPORT MODULES #### ###
   import pandas as pd
   import numpy as np
   from sklearn.ensemble import RandomForestClassifier
   from sklearn.cross_validation import train_test_split
   import sklearn.metrics
-  
-  
-  
+
+
+
   #### TRAIN TEST SPLIT ####
   train_feature, test_feature, train_target, test_target = \
   train_test_split(feature, target, test_size=0.2)
-  
+
   >>> print train_feature.shape
   >>> print test_feature.shape
   (404, 13)
   (102, 13)
-  
-  
+
+
   #### CREATE MODEL ####
   # use 100 decision trees
   clf = RandomForestClassifier(n_estimators=100)
-  
-  
-  
+
+
+
   #### FIT MODEL ####
   model = clf.fit(train_feature, train_target)
   >>> print model
@@ -169,14 +169,14 @@ An ensemble of decision trees.
               min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
               oob_score=False, random_state=None, verbose=0,
               warm_start=False)
-  
-  
-  
+
+
+
   #### TEST MODEL ####
   predictions = model.predict(test_feature)
-  
-  
-  
+
+
+
   #### SCORE MODEL ####
   >>> print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
   >>> print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
@@ -186,9 +186,9 @@ An ensemble of decision trees.
   [[21  0  3]
    [ 0 21  4]
    [ 8  3 42]]
-  
-  
-  
+
+
+
   ####### FEATURE IMPORTANCE #### ####
   # rank the importance of features
   df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
@@ -207,8 +207,8 @@ An ensemble of decision trees.
   ZN	0.012635
   CHAS	0.009405
 
-  
-  
+
+
   #### GRAPHS ####
 
   # see how many decision trees are minimally required make the accuarcy consistent
@@ -239,13 +239,13 @@ Logistic Regression
 Binary output.
 
 .. code:: python
-  
+
   #### IMPORT MODULES ####
   import pandas as pd
   import statsmodels.api as sm
-  
-  
-  
+
+
+
   #### FIT MODEL ####
   lreg = sm.Logit(df3['diameter_cut'], df3[trainC]).fit()
   print lreg.summary()
@@ -254,7 +254,7 @@ Binary output.
   Optimization terminated successfully.
          Current function value: 0.518121
          Iterations 6
-                             Logit Regression Results                           
+                             Logit Regression Results
   ==============================================================================
   Dep. Variable:           diameter_cut   No. Observations:                18067
   Model:                          Logit   Df Residuals:                    18065
@@ -269,9 +269,9 @@ Binary output.
   depth            4.2529      0.067     63.250      0.000         4.121     4.385
   layers_YESNO    -2.1102      0.037    -57.679      0.000        -2.182    -2.039
   ================================================================================
-  
-  
-  
+
+
+
   #### CONFIDENCE INTERVALS ####
   params = lreg.params
   conf = lreg.conf_int()
@@ -303,9 +303,9 @@ Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares metho
   model = smf.ols(formula='diameter ~ depth', data=df3).fit()
   print model.summary()
 
-  
-  
-  OLS Regression Results                            
+
+
+  OLS Regression Results
   ==============================================================================
   Dep. Variable:               diameter   R-squared:                       0.512
   Model:                            OLS   Adj. R-squared:                  0.512
@@ -314,8 +314,8 @@ Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares metho
   Time:                        17:10:34   Log-Likelihood:                -51812.
   No. Observations:               18067   AIC:                         1.036e+05
   Df Residuals:                   18065   BIC:                         1.036e+05
-  Df Model:                           1                                         
-  Covariance Type:            nonrobust                                         
+  Df Model:                           1
+  Covariance Type:            nonrobust
   ==============================================================================
   coef    std err          t      P>|t|      [95.0% Conf. Int.]
   ------------------------------------------------------------------------------
@@ -336,26 +336,85 @@ Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares metho
 
 Ridge Regression
 ****************
+**Regularisaton** is an important concept used in Ridge Regression as well as the next LASSO regression.
+Ridge regression uses regularisation which adds a penalty parameter to a variable when it has a large variation.
+Regularisation prevents overfitting by restricting the model, thus lowering its complexity.
 
+ * Uses L2 regularisation, which *reduces the sum of squares* of the parameters
+ * The influence of L2 is controlled by an alpha parameter. Default is 1.
+ * High alpha means more regularisation and a simpler model.
+
+.. code:: python
+
+  #### IMPORT MODULES ####
+  import panda as pd
+  import numpy as np
+  from sklearn.linear_model import Ridge
+  from sklearn.preprocessing import MinMaxScaler
+
+  #### TRAIN-TEST SPLIT ####
+  X_train, X_test, y_train, y_test = train_test_split(X_crime, y_crime,
+                                                   random_state = 0)
+
+  #### NORMALIZATION ####
+    # using minmaxscaler
+  scaler = MinMaxScaler()
+  X_train_scaled = scaler.fit_transform(X_train)
+  X_test_scaled = scaler.transform(X_test)
+
+
+  #### CREATE AND FIT MODEL ####
+  linridge = Ridge(alpha=20.0).fit(X_train_scaled, y_train)
+
+  print('Crime dataset')
+  print('ridge regression linear model intercept: {}'
+     .format(linridge.intercept_))
+  print('ridge regression linear model coeff:\n{}'
+     .format(linridge.coef_))
+  print('R-squared score (training): {:.3f}'
+     .format(linridge.score(X_train_scaled, y_train)))
+  print('R-squared score (test): {:.3f}'
+     .format(linridge.score(X_test_scaled, y_test)))
+  print('Number of non-zero features: {}'
+     .format(np.sum(linridge.coef_ != 0)))
+
+
+To investigate the effect of alpha:
+
+.. code:: python
+
+  print('Ridge regression: effect of alpha regularization parameter\n')
+  for this_alpha in [0, 1, 10, 20, 50, 100, 1000]:
+    linridge = Ridge(alpha = this_alpha).fit(X_train_scaled, y_train)
+    r2_train = linridge.score(X_train_scaled, y_train)
+    r2_test = linridge.score(X_test_scaled, y_test)
+    num_coeff_bigger = np.sum(abs(linridge.coef_) > 1.0)
+    print('Alpha = {:.2f}\nnum abs(coeff) > 1.0: {}, \
+          r-squared training: {:.2f}, r-squared test: {:.2f}\n'
+         .format(this_alpha, num_coeff_bigger, r2_train, r2_test))
+
+
+.. note::
+
+  * Many variables with small/medium effects: Ridge
+  * Only a few variables with medium/large effects: LASSO
 
 
 LASSO Regression
 ****************
-Least absolute shrinkage and selection operator regression, or LASSO regression, has a unique penalty parameter, lambda that *change unimportant features (their regression coefficients) into 0*.
-This helps to prevent *overfitting*.
+LASSO refers to Least Absolute Shrinkage and Selection Operator Regression.
+Like Ridge Regression this also has a regularisation property.
 
-* Prevent overfitting.
-* Uses regularisation.
-* Uses a penalty parameter lambda to change unimportant features (their regression coefficients) into 0. When lambda = 0, then it is a normal OLS regression. (Note sklearn name it as alpha instead)
+* Uses L1 regularisation, which *reduces sum of the absolute values of coefficients*, that change unimportant features (their regression coefficients) into 0
+* The influence of L1 is controlled by an alpha parameter. Default is 1.
+* High alpha means more regularisation and a simpler model. When alpha = 0, then it is a normal OLS regression.
 
-  a. Bias increase & variability decreases when lambda increases.
-  b. Useful when there are many features (explanatory variables).
-  c. Have to standardize all features so that they have mean 0 and std error 1.
-  d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors & add each predictor that is most correlated at each step.
 
-.. note::
 
-  sklearn define lambda as alpha instead.
+a. Bias increase & variability decreases when alpha increases.
+b. Useful when there are many features (explanatory variables).
+c. Have to standardize all features so that they have mean 0 and std error 1.
+d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors & add each predictor that is most correlated at each step.
 
 
 .. code:: python
@@ -368,17 +427,17 @@ This helps to prevent *overfitting*.
   from sklearn.linear_model import LassoLarsCV
   import sklearn.metrics
   from sklearn.datasets import load_boston
-  
-  
-  
+
+
+
   #### NORMALIZATION ####
   # standardise the means to 0 and standard error to 1
   for i in df.columns[:-1]: # df.columns[:-1] = dataframe for all features
     df[i] = preprocessing.scale(df[i].astype('float64'))
   >>> df.describe()
-  
-  
-  
+
+
+
   #### TRAIN TEST SPLIT ####
   train_feature, test_feature, train_target, test_target = \
   train_test_split(feature, target, random_state=123, test_size=0.2)
@@ -397,16 +456,16 @@ This helps to prevent *overfitting*.
   model=LassoLarsCV(cv=10, precompute=False)
 
 
-  
+
   #### FIT MODEL ####
   model = model.fit(train_feature,train_target)
   >>> print model
   LassoLarsCV(copy_X=True, cv=10, eps=2.2204460492503131e-16,
         fit_intercept=True, max_iter=500, max_n_alphas=1000, n_jobs=1,
         normalize=True, positive=False, precompute=False, verbose=False)
-  
-  
-        
+
+
+
   #### ANALYSE COEFFICIENTS ####
   Compare the regression coefficients, and see which one LASSO removed.
   LSTAT is the most important predictor, followed by RM, DIS, and RAD. AGE is removed by LASSO
@@ -426,9 +485,9 @@ This helps to prevent *overfitting*.
   PTRATIO	-1.923485
   DIS	-2.733660
   LSTAT	-3.878356
-  
-  
-  
+
+
+
   #### SCORE MODEL ####
   # MSE from training and test data
   from sklearn.metrics import mean_squared_error
@@ -439,7 +498,7 @@ This helps to prevent *overfitting*.
   print(train_error)
   print ('test data MSE')
   print(test_error)
-  
+
   # MSE closer to 0 are better
   # test dataset is less accurate as expected
   >>> training data MSE
@@ -455,10 +514,9 @@ This helps to prevent *overfitting*.
   print(rsquared_train)
   print ('test data R-square')
   print(rsquared_test)
-  
+
   # test data explained 65% of the predictors
   >>> training data R-square
   >>> 0.755337444405
   >>> test data R-square
   >>> 0.657019301268
-
