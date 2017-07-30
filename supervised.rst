@@ -331,7 +331,11 @@ A regularisation penlty L2, just like ridge regression is by default in ``sklear
 
 Support Vector Machine
 ***********************
-Have regularisation using parameter C, just like logistic regression. Default to 1.
+Have 3 parameters. Need to normalize first too!
+
+1. Have regularisation using parameter C, just like logistic regression. Default to 1.
+2. Type of kernel. Default is Radial Basis Function (RBF)
+3. Gamma parameter for adjusting kernel width
 
 .. code:: python
 
@@ -361,6 +365,86 @@ We can directly call a linear SVC by directly importing the ``LinearSVC`` functi
        .format(clf.score(X_train, y_train)))
   print('Accuracy of Linear SVC classifier on test set: {:.2f}'
        .format(clf.score(X_test, y_test)))
+
+**Multi-Class Classification**, i.e., having more than 2 target values, is also possible.
+With the results, it is possible to compare one class versus all other classes.
+
+.. code:: python
+
+  from sklearn.svm import LinearSVC
+
+  X_train, X_test, y_train, y_test = train_test_split(X_fruits_2d, y_fruits_2d, random_state = 0)
+
+  clf = LinearSVC(C=5, random_state = 67).fit(X_train, y_train)
+  print('Coefficients:\n', clf.coef_)
+  print('Intercepts:\n', clf.intercept_)
+
+visualising in a graph...
+
+.. code:: python
+
+  plt.figure(figsize=(6,6))
+  colors = ['r', 'g', 'b', 'y']
+  cmap_fruits = ListedColormap(['#FF0000', '#00FF00', '#0000FF','#FFFF00'])
+
+  plt.scatter(X_fruits_2d[['height']], X_fruits_2d[['width']],
+             c=y_fruits_2d, cmap=cmap_fruits, edgecolor = 'black', alpha=.7)
+
+  x_0_range = np.linspace(-10, 15)
+
+  for w, b, color in zip(clf.coef_, clf.intercept_, ['r', 'g', 'b', 'y']):
+      # Since class prediction with a linear model uses the formula y = w_0 x_0 + w_1 x_1 + b, 
+      # and the decision boundary is defined as being all points with y = 0, to plot x_1 as a 
+      # function of x_0 we just solve w_0 x_0 + w_1 x_1 + b = 0 for x_1:
+      plt.plot(x_0_range, -(x_0_range * w[0] + b) / w[1], c=color, alpha=.8)
+      
+  plt.legend(target_names_fruits)
+  plt.xlabel('height')
+  plt.ylabel('width')
+  plt.xlim(-2, 12)
+  plt.ylim(-2, 15)
+  plt.show()
+
+**Kernalised Support Vector Machines**
+
+For complex classification, new dimensions can be added to SVM. e.g., square of x. 
+There are many types of kernal transformations. By default, SVM will use the Radial Basis Function (RBF) kernel.
+
+.. code:: python
+
+  from sklearn.svm import SVC
+  from adspy_shared_utilities import plot_class_regions_for_classifier
+
+  X_train, X_test, y_train, y_test = train_test_split(X_D2, y_D2, random_state = 0)
+
+  # The default SVC kernel is radial basis function (RBF)
+  plot_class_regions_for_classifier(SVC().fit(X_train, y_train),
+                                   X_train, y_train, None, None,
+                                   'Support Vector Classifier: RBF kernel')
+
+  # Compare decision boundries with polynomial kernel, degree = 3
+  plot_class_regions_for_classifier(SVC(kernel = 'poly', degree = 3)
+                                   .fit(X_train, y_train), X_train,
+                                   y_train, None, None,
+                                   'Support Vector Classifier: Polynomial kernel, degree = 3')
+
+
+Full tuning in Support Vector Machines, using normalisation, kernel tuning, and regularisation.
+
+.. code:: python
+
+  from sklearn.preprocessing import MinMaxScaler
+  scaler = MinMaxScaler()
+  X_train_scaled = scaler.fit_transform(X_train)
+  X_test_scaled = scaler.transform(X_test)
+
+  clf = SVC(kernel = 'rbf', gamme=1, C=10).fit(X_train_scaled, y_train)
+  print('Breast cancer dataset (normalized with MinMax scaling)')
+  print('RBF-kernel SVC (with MinMax scaling) training set accuracy: {:.2f}'
+       .format(clf.score(X_train_scaled, y_train)))
+  print('RBF-kernel SVC (with MinMax scaling) test set accuracy: {:.2f}'
+       .format(clf.score(X_test_scaled, y_test)))
+
 
 |
 Regression
