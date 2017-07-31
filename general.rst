@@ -1,6 +1,8 @@
 General Notes
 =============
 
+A parsimonious model is a the model that accomplishes the desired level of prediction with as few predictor variables as possible.
+
 Variables
 ---------
 ``x`` = independent variable = explanatory = predictor
