@@ -11,7 +11,8 @@ Some useful websites and video series that I refer to:
 
 .. _Scipy: http://www.scipy-lectures.org/packages/statistics/index.html
 
-
+|
+|
 **Sci-Kit Learn Cheat Sheet from Data Camp**
 
 .. image:: images/sklearn.PNG
