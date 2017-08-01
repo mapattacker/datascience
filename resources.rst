@@ -14,7 +14,5 @@ Some useful websites and video series that I refer to:
 
 **Sci-Kit Learn Cheat Sheet from Data Camp**
 
-.. image:: images/sklearn.png
+.. image:: images/sklearn.PNG
     :target: _static/sklearn_cheat.pdf
-    
-.. image:: images/randomforest.png
