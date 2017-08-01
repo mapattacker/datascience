@@ -337,7 +337,7 @@ Have 3 tuning parameters. Need to normalize first too!
 2. Type of kernel. Default is Radial Basis Function (RBF)
 3. Gamma parameter for adjusting kernel width. Influence of a single training example reaches. Low gamma > far reach, high values > limited reach.
 
-.. image:: svm_parameters.PNG
+.. image:: images/svm_parameters.PNG
 
 
 .. code:: python
