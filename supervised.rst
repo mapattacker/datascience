@@ -331,11 +331,14 @@ A regularisation penlty L2, just like ridge regression is by default in ``sklear
 
 Support Vector Machine
 ***********************
-Have 3 parameters. Need to normalize first too!
+Have 3 tuning parameters. Need to normalize first too!
 
-1. Have regularisation using parameter C, just like logistic regression. Default to 1.
+1. Have regularisation using parameter C, just like logistic regression. Default to 1. Limits the importance of each point.
 2. Type of kernel. Default is Radial Basis Function (RBF)
-3. Gamma parameter for adjusting kernel width
+3. Gamma parameter for adjusting kernel width. Influence of a single training example reaches. Low gamma > far reach, high values > limited reach.
+
+.. image:: svm_parameters.PNG
+
 
 .. code:: python
 
