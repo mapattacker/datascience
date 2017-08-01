@@ -16,3 +16,5 @@ Some useful websites and video series that I refer to:
 
 .. image:: images/sklearn.png
     :target: _static/sklearn_cheat.pdf
+    
+.. image:: images/randomforest.png
