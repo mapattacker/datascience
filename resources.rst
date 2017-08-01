@@ -10,3 +10,9 @@ Some useful websites and video series that I refer to:
 2. Scipy_: Introduction to scipy statistical packages
 
 .. _Scipy: http://www.scipy-lectures.org/packages/statistics/index.html
+
+
+**Sci-Kit Learn Cheat Sheet from Data Camp**
+
+.. image:: images/sklearn.png
+    :target: _static/sklearn_cheat.pdf
