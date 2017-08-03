@@ -11,6 +11,10 @@ Some useful websites and video series that I refer to:
 
 .. _Scipy: http://www.scipy-lectures.org/packages/statistics/index.html
 
+3. JohnWittenauer_: Blog with posts on Python machine learning
+
+.. _JohnWittenauer_: http://www.johnwittenauer.net/machine-learning-exercises-in-python-part-1/
+
 |
 |
 **Sci-Kit Learn Cheat Sheet from Data Camp**
