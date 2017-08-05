@@ -29,3 +29,7 @@ Some useful websites and video series that I refer to:
 
 .. image:: images/sklearn.PNG
     :target: _static/sklearn_cheat.pdf
+
+**Decision Tree Map to use what Machine Learning Technique**
+
+.. image:: images/ml_map.png
