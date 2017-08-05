@@ -13,7 +13,15 @@ Some useful websites and video series that I refer to:
 
 3. JohnWittenauer_: Blog with posts on Python machine learning
 
-.. _JohnWittenauer_: http://www.johnwittenauer.net/machine-learning-exercises-in-python-part-1/
+.. _JohnWittenauer: http://www.johnwittenauer.net/machine-learning-exercises-in-python-part-1/
+
+4. JakeVanderPlas_: Sklearn Machine Learning guide from the man!
+
+.. _JakeVanderPlas: https://github.com/jakevdp/sklearn_tutorial/tree/master/notebooks
+
+5. JosePortilla_: Notebooks from the famous Udemy Python instructor.
+
+.. _JosePortilla_: http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/tree/master/scikit-learn/
 
 |
 |
