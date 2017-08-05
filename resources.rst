@@ -21,7 +21,7 @@ Some useful websites and video series that I refer to:
 
 5. JosePortilla_: Notebooks from the famous Udemy Python instructor.
 
-.. _JosePortilla_: http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/tree/master/scikit-learn/
+.. _JosePortilla: http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/tree/master/scikit-learn/
 
 |
 |
