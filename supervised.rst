@@ -458,6 +458,7 @@ OLS Regression
 Ordinary Least Squares Regression or OLS Regression is the most basic form and fundamental of regression.
 Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares method. i.e., least total area of squares (sum of squares) with length from each x,y point to regresson line.
 
+OLS can be conducted using statsmodel package...
 
 .. code:: python
 
@@ -493,6 +494,18 @@ Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares metho
   [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
 
+or sci-kit learn package
+
+.. code:: python
+
+  from sklearn import linear_model
+  
+  reg = linear_model.LinearRegression()
+  reg.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
+  
+  LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+  >>> reg.coef_
+  array([ 0.5,  0.5])
 
 
 Ridge Regression
@@ -695,7 +708,8 @@ Polynomial Regression
   from sklearn.linear_model import Ridge
   from sklearn.preprocessing import PolynomialFeatures
 
-
+  
+  # Normal Linear Regression
   X_train, X_test, y_train, y_test = train_test_split(X_F1, y_F1,
                                                      random_state = 0)
   linreg = LinearRegression().fit(X_train, y_train)
@@ -711,6 +725,8 @@ Polynomial Regression
 
   print('\nNow we transform the original input data to add\n\
   polynomial features up to degree 2 (quadratic)\n')
+  
+  # Polynomial Regression
   poly = PolynomialFeatures(degree=2)
   X_F1_poly = poly.fit_transform(X_F1)
 
@@ -727,7 +743,7 @@ Polynomial Regression
   print('(poly deg 2) R-squared score (test): {:.3f}\n'
        .format(linreg.score(X_test, y_test)))
 
-  # RIDGE REGRESSION TO POLYNOMIAL
+  # Polynomial with Ridge Regression
   '''Addition of many polynomial features often leads to
   overfitting, so we often use polynomial features in combination
   with regression that has a regularization penalty, like ridge
