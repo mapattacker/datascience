@@ -23,6 +23,10 @@ Some useful websites and video series that I refer to:
 
 .. _JosePortilla: http://nbviewer.jupyter.org/github/donnemartin/data-science-ipython-notebooks/tree/master/scikit-learn/
 
+6. SkLearn Tutorials_: Notebooks 
+
+.. _Tutorials: https://github.com/justmarkham/scikit-learn-videos
+
 |
 |
 **Sci-Kit Learn Cheat Sheet from Data Camp**
