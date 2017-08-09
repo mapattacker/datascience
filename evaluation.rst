@@ -49,8 +49,9 @@ Search query suggestion, Document classification, customer-facing tasks.
    plt.figure(figsize=(5.5,4)) # define graph
    sns.heatmap(df_cm, annot=True) # draw heatmap, add annotation
 
-.. figure:: images/confusion3.png
-    :width: 400px
+
+.. image:: images/confusion3.png
+    :scale: 60 %
     :align: center
 
 
