@@ -153,6 +153,6 @@ Area Under Curve (AUC) of a ROC is used
   plt.axes().set_aspect('equal')
   plt.show()
 
-.. image:: images/roc-surve.png
+.. image:: images/roc-curve.png
     :scale: 40 %
     :align: center
