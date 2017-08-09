@@ -80,6 +80,7 @@ Using a heatmap.
   Recall: 0.60
   F1: 0.68
 
+  
 
 **3. Classification Report**
 
@@ -101,8 +102,57 @@ Using a heatmap.
 Precision-Recall Curves
 -----------------------
 
+.. code:: python
+
+  from sklearn.metrics import precision_recall_curve
+
+  precision, recall, thresholds = precision_recall_curve(y_test, y_scores_lr)
+  closest_zero = np.argmin(np.abs(thresholds))
+  closest_zero_p = precision[closest_zero]
+  closest_zero_r = recall[closest_zero]
+
+  plt.figure()
+  plt.xlim([0.0, 1.01])
+  plt.ylim([0.0, 1.01])
+  plt.plot(precision, recall, label='Precision-Recall Curve')
+  plt.plot(closest_zero_p, closest_zero_r, 'o', markersize = 12, fillstyle = 'none', c='r', mew=3)
+  plt.xlabel('Precision', fontsize=16)
+  plt.ylabel('Recall', fontsize=16)
+  plt.axes().set_aspect('equal')
+  plt.show()
+
+.. image:: images/precision-recall-curve.png
+    :scale: 40 %
+    :align: center
+
 ROC Curves
 ----------
 
 Receiver Operating Characteristic (ROC) is used to show the performance of a binary classifier. 
 Area Under Curve (AUC) of a ROC is used 
+
+.. code:: python
+
+  from sklearn.metrics import roc_curve, auc
+
+  X_train, X_test, y_train, y_test = train_test_split(X, y_binary_imbalanced, random_state=0)
+
+  y_score_lr = lr.fit(X_train, y_train).decision_function(X_test)
+  fpr_lr, tpr_lr, _ = roc_curve(y_test, y_score_lr)
+  roc_auc_lr = auc(fpr_lr, tpr_lr)
+
+  plt.figure()
+  plt.xlim([-0.01, 1.00])
+  plt.ylim([-0.01, 1.01])
+  plt.plot(fpr_lr, tpr_lr, lw=3, label='LogRegr ROC curve (area = {:0.2f})'.format(roc_auc_lr))
+  plt.xlabel('False Positive Rate', fontsize=16)
+  plt.ylabel('True Positive Rate', fontsize=16)
+  plt.title('ROC curve (1-of-10 digits classifier)', fontsize=16)
+  plt.legend(loc='lower right', fontsize=13)
+  plt.plot([0, 1], [0, 1], color='navy', lw=3, linestyle='--')
+  plt.axes().set_aspect('equal')
+  plt.show()
+
+.. image:: images/roc-surve.png
+    :scale: 40 %
+    :align: center
