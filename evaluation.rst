@@ -27,7 +27,7 @@ Confusion Matrix
 true positives despite having some false positives.
 Search & extraction in legal cases, Tumour detection. Often need humans to filter false positives.
 
-**Precision|Specificity**: (True Positive / True Positive + True Negative) High precision means it is important 
+**Precision**: (True Positive / True Positive + True Negative) High precision means it is important 
 to filter off the any false positives.
 Search query suggestion, Document classification, customer-facing tasks. 
 
@@ -144,7 +144,11 @@ Precision-Recall Curves
 .. code:: python
 
   from sklearn.metrics import precision_recall_curve
-
+  
+  # get decision function scores
+  y_scores_lr = m.fit(X_train, y_train).decision_function(X_test)
+  
+  # get precision & recall values
   precision, recall, thresholds = precision_recall_curve(y_test, y_scores_lr)
   closest_zero = np.argmin(np.abs(thresholds))
   closest_zero_p = precision[closest_zero]
