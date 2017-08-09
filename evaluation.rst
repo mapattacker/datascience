@@ -32,11 +32,15 @@ Search query suggestion, Document classification, customer-facing tasks.
 
 **1. Confusion Matrix**
 
+Plain vanilla matrix.
+
 >>> print sklearn.metrics.confusion_matrix(test_target,predictions)
 [[14  0  0]
  [ 0 13  0]
  [ 0  1 10]]
- 
+
+Using a heatmap.
+
 .. code:: python
   
    # create confusion matrix
