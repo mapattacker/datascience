@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>7. Unsupervised Learning &mdash; Data Science 0.1 documentation</title>
+  <title>8. Unsupervised Learning &mdash; Data Science 0.1 documentation</title>
   
 
+  
+  
   
   
 
@@ -30,9 +32,12 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Data Science 0.1 documentation" href="index.html"/>
-        <link rel="next" title="8. Time Series Decomposition" href="decomposition.html"/>
-        <link rel="prev" title="6. Supervised Learning" href="supervised.html"/> 
+        <link rel="next" title="9. Time Series Decomposition" href="decomposition.html"/>
+        <link rel="prev" title="7. Supervised Learning" href="supervised.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -41,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,24 +87,28 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="general.html">1. General Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assumptions.html">2. Tests for Assumptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">3. In-Built Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="difference.html">4. Tests of Difference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="association.html">5. Tests of Association</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supervised.html">6. Supervised Learning</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">7. Unsupervised Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#clustering">7.1. Clustering</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#k-means">7.1.1. K-Means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normalisation.html">4. Feature Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="difference.html">5. Tests of Difference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="association.html">6. Tests of Association</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised.html">7. Supervised Learning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Unsupervised Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clustering">8.1. Clustering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#k-means">8.1.1. K-Means</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="decomposition.html">8. Time Series Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forecasting.html">9. Forecasting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition.html">9. Time Series Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">10. Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">11. Resources</a></li>
 </ul>
 
             
@@ -111,8 +121,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Data Science</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Data Science</a>
+        
       </nav>
 
 
@@ -125,107 +137,124 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>7. Unsupervised Learning</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>8. Unsupervised Learning</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/unsupervised.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/unsupervised.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <div class="section" id="unsupervised-learning">
-<h1>7. Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h1>
+<h1>8. Unsupervised Learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="clustering">
-<h2>7.1. Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h2>
+<h2>8.1. Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="k-means">
-<h3>7.1.1. K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h3>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span>#### IMPORT MODULES ####
-import pandas as pd
-from sklearn import preprocessing
-from sklearn.cross_validation import train_test_split
-from sklearn.cluster import KMeans
-from sklearn.datasets import load_iris
+<h3>8.1.1. K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h3>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#### IMPORT MODULES ####</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_iris</span>
 
 
 
-#### NORMALIZATION ####
-# standardise the means to 0 and standard error to 1
-for i in df.columns[:-2]: # df.columns[:-1] = dataframe for all features, minus target
-    df[i] = preprocessing.scale(df[i].astype(&#39;float64&#39;))
+<span class="c1">#### NORMALIZATION ####</span>
+<span class="c1"># standardise the means to 0 and standard error to 1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span> <span class="c1"># df.columns[:-1] = dataframe for all features, minus target</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">))</span>
 
-df.describe()
-
-
-
-#### TRAIN-TEST SPLIT ####
-train_feature, test_feature = train_test_split(feature, random_state=123, test_size=0.2)
-
-print train_feature.shape
-print test_feature.shape
-(120, 4)
-(30, 4)
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 
 
 
-#### A LOOK AT THE MODEL ####
-&gt;&gt;&gt; KMeans(n_clusters=2)
-KMeans(copy_x=True, init=&#39;k-means++&#39;, max_iter=300, n_clusters=2, n_init=10,
-    n_jobs=1, precompute_distances=&#39;auto&#39;, random_state=None, tol=0.0001,
-    verbose=0)
+<span class="c1">#### TRAIN-TEST SPLIT ####</span>
+<span class="n">train_feature</span><span class="p">,</span> <span class="n">test_feature</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="n">train_feature</span><span class="o">.</span><span class="n">shape</span>
+<span class="nb">print</span> <span class="n">test_feature</span><span class="o">.</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
 
 
-#### ELBOW CHART TO DETERMINE OPTIMUM K ####
-from scipy.spatial.distance import cdist
-import numpy as np
-clusters=range(1,10)
-# to store average distance values for each cluster from 1-9
-meandist=[]
-
-# k-means cluster analysis for 9 clusters
-for k in clusters:
-    # prepare the model
-    model=KMeans(n_clusters=k)
-    # fit the model
-    model.fit(train_feature)
-    # test the model
-    clusassign=model.predict(train_feature)
-    # gives average distance values for each cluster solution
-        # cdist calculates distance of each two points from centriod
-        # get the min distance (where point is placed in clsuter)
-        # get average distance by summing &amp; dividing by total number of samples
-    meandist.append(sum(np.min(cdist(train_feature, model.cluster_centers_, &#39;euclidean&#39;), axis=1))
-    / train_feature.shape[0])
+<span class="c1">#### A LOOK AT THE MODEL ####</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">KMeans</span><span class="p">(</span><span class="n">copy_x</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">precompute_distances</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 
-import matplotlib.pylab as plt
-import seaborn as sns
-%matplotlib inline
-&quot;&quot;&quot;Plot average distance from observations from the cluster centroid
-to use the Elbow Method to identify number of clusters to choose&quot;&quot;&quot;
 
-plt.plot(clusters, meandist)
-plt.xlabel(&#39;Number of clusters&#39;)
-plt.ylabel(&#39;Average distance&#39;)
-plt.title(&#39;Selecting k with the Elbow Method&#39;)
+<span class="c1">#### ELBOW CHART TO DETERMINE OPTIMUM K ####</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="k">import</span> <span class="n">cdist</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">clusters</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># to store average distance values for each cluster from 1-9</span>
+<span class="n">meandist</span><span class="o">=</span><span class="p">[]</span>
 
-# look a bend in the elbow that kind of shows where
-# the average distance value might be leveling off such that adding more clusters
-# doesn&#39;t decrease the average distance as much
+<span class="c1"># k-means cluster analysis for 9 clusters</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+    <span class="c1"># prepare the model</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="c1"># fit the model</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
+    <span class="c1"># test the model</span>
+    <span class="n">clusassign</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
+    <span class="c1"># gives average distance values for each cluster solution</span>
+        <span class="c1"># cdist calculates distance of each two points from centriod</span>
+        <span class="c1"># get the min distance (where point is placed in clsuter)</span>
+        <span class="c1"># get average distance by summing &amp; dividing by total number of samples</span>
+    <span class="n">meandist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">cdist</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="o">/</span> <span class="n">train_feature</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="sd">&quot;&quot;&quot;Plot average distance from observations from the cluster centroid</span>
+<span class="sd">to use the Elbow Method to identify number of clusters to choose&quot;&quot;&quot;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clusters</span><span class="p">,</span> <span class="n">meandist</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of clusters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average distance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Selecting k with the Elbow Method&#39;</span><span class="p">)</span>
+
+<span class="c1"># look a bend in the elbow that kind of shows where</span>
+<span class="c1"># the average distance value might be leveling off such that adding more clusters</span>
+<span class="c1"># doesn&#39;t decrease the average distance as much</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/elbowchart.png"><img alt="_images/elbowchart.png" src="_images/elbowchart.png" style="width: 315.2px; height: 232.0px;" /></a>
-<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="c1">#### VIEW CLUSTER USING PCA ####</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#### VIEW CLUSTER USING PCA ####</span>
 <span class="c1"># Interpret 3 cluster solution</span>
 <span class="n">model3</span><span class="o">=</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">model3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
@@ -236,7 +265,7 @@ plt.title(&#39;Selecting k with the Elbow Method&#39;)
 <span class="c1"># Creates a smaller no. of variables, with canonical variables ordered by proportion of variable accounted</span>
 <span class="c1"># i.e., 1st canonical variable is most importance &amp; so on</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
 <span class="n">pca_2</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#return first two canonical variables</span>
 <span class="n">plot_columns</span> <span class="o">=</span> <span class="n">pca_2</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
 <span class="c1"># plot 1st canonical v in x axis, 2nd variable on y axis</span>
@@ -255,15 +284,18 @@ plt.title(&#39;Selecting k with the Elbow Method&#39;)
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="decomposition.html" class="btn btn-neutral float-right" title="8. Time Series Decomposition" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="decomposition.html" class="btn btn-neutral float-right" title="9. Time Series Decomposition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="supervised.html" class="btn btn-neutral" title="6. Supervised Learning" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="supervised.html" class="btn btn-neutral" title="7. Supervised Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -297,7 +329,8 @@ plt.title(&#39;Selecting k with the Elbow Method&#39;)
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

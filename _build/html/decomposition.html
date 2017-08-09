@@ -8,9 +8,11 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Time Series Decomposition &mdash; Data Science 0.1 documentation</title>
+  <title>9. Time Series Decomposition &mdash; Data Science 0.1 documentation</title>
   
 
+  
+  
   
   
 
@@ -30,9 +32,12 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Data Science 0.1 documentation" href="index.html"/>
-        <link rel="next" title="9. Forecasting" href="forecasting.html"/>
-        <link rel="prev" title="7. Unsupervised Learning" href="unsupervised.html"/> 
+        <link rel="next" title="10. Forecasting" href="forecasting.html"/>
+        <link rel="prev" title="8. Unsupervised Learning" href="unsupervised.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -41,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,18 +87,22 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="general.html">1. General Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assumptions.html">2. Tests for Assumptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">3. In-Built Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="difference.html">4. Tests of Difference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="association.html">5. Tests of Association</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supervised.html">6. Supervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">7. Unsupervised Learning</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">8. Time Series Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forecasting.html">9. Forecasting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normalisation.html">4. Feature Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="difference.html">5. Tests of Difference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="association.html">6. Tests of Association</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised.html">7. Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">8. Unsupervised Learning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. Time Series Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">10. Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">11. Resources</a></li>
 </ul>
 
             
@@ -105,8 +115,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Data Science</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Data Science</a>
+        
       </nav>
 
 
@@ -119,40 +131,60 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>8. Time Series Decomposition</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>9. Time Series Decomposition</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/decomposition.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/decomposition.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <div class="section" id="time-series-decomposition">
-<h1>8. Time Series Decomposition<a class="headerlink" href="#time-series-decomposition" title="Permalink to this headline">¶</a></h1>
+<h1>9. Time Series Decomposition<a class="headerlink" href="#time-series-decomposition" title="Permalink to this headline">¶</a></h1>
 <p>Time Series Decomposition is available in statsmodel (sm), time series analysis (tsa) <code class="docutils literal"><span class="pre">sm.tsa.seasonal_decompose()</span></code>.</p>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="forecasting.html" class="btn btn-neutral float-right" title="9. Forecasting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="forecasting.html" class="btn btn-neutral float-right" title="10. Forecasting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="unsupervised.html" class="btn btn-neutral" title="7. Unsupervised Learning" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="unsupervised.html" class="btn btn-neutral" title="8. Unsupervised Learning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -186,7 +218,8 @@
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

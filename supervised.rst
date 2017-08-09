@@ -517,6 +517,7 @@ Regularisation prevents overfitting by restricting the model, thus lowering its 
  * Uses L2 regularisation, which *reduces the sum of squares* of the parameters
  * The influence of L2 is controlled by an alpha parameter. Default is 1.
  * High alpha means more regularisation and a simpler model.
+ * More in https://www.analyticsvidhya.com/blog/2016/01/complete-tutorial-ridge-lasso-regression-python/
 
 .. code:: python
 

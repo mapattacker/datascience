@@ -16,11 +16,12 @@ This documentation summarises various statistics and machine learning techniques
    general
    assumptions
    datasets
-   normalisation.rst
+   normalisation
    difference
    association
    supervised
    unsupervised
+   evaluation
    decomposition
    forecasting
    resources

@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -30,6 +32,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Data Science 0.1 documentation" href="#"/>
         <link rel="next" title="1. General Notes" href="general.html"/> 
 
@@ -40,6 +45,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -80,18 +86,22 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general.html">1. General Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assumptions.html">2. Tests for Assumptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">3. In-Built Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="difference.html">4. Tests of Difference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="association.html">5. Tests of Association</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supervised.html">6. Supervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">7. Unsupervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decomposition.html">8. Time Series Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forecasting.html">9. Forecasting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normalisation.html">4. Feature Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="difference.html">5. Tests of Difference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="association.html">6. Tests of Association</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised.html">7. Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">8. Unsupervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition.html">9. Time Series Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">10. Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">11. Resources</a></li>
 </ul>
 
             
@@ -104,8 +114,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">Data Science</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Data Science</a>
+        
       </nav>
 
 
@@ -118,19 +130,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
-      
-    <li>Data Science in Python</li>
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Data Science in Python</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -139,8 +168,8 @@
   <div class="section" id="data-science-in-python">
 <h1>Data Science in Python<a class="headerlink" href="#data-science-in-python" title="Permalink to this headline">¶</a></h1>
 <p>This documentation summarises various statistics and machine learning techniques in Python.</p>
-<div class="toctree-wrapper compound" id="contents">
-<p class="caption"><span class="caption-text">Contents</span><a class="headerlink" href="#contents" title="Permalink to this toctree">¶</a></p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="general.html">1. General Notes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="general.html#variables">1.1. Variables</a></li>
@@ -155,41 +184,49 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">3. In-Built Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="difference.html">4. Tests of Difference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="difference.html#chi-square-test">4.1. Chi-Square Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="difference.html#student-s-t-test">4.2. Student&#8217;s T-Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="difference.html#anova">4.3. ANOVA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normalisation.html">4. Feature Normalization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="normalisation.html#scale">4.1. Scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normalisation.html#min-max-scale">4.2. Min Max Scale</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="association.html">5. Tests of Association</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="association.html#pearson-s-correlation">5.1. Pearson&#8217;s Correlation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="association.html#spearman-s-rank-correlation">5.2. Spearman&#8217;s Rank Correlation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="difference.html">5. Tests of Difference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="difference.html#chi-square-test">5.1. Chi-Square Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="difference.html#student-s-t-test">5.2. Student&#8217;s T-Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="difference.html#anova">5.3. ANOVA</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="supervised.html">6. Supervised Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="supervised.html#classification">6.1. Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="supervised.html#regression">6.2. Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="association.html">6. Tests of Association</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="association.html#pearson-s-correlation">6.1. Pearson&#8217;s Correlation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="association.html#spearman-s-rank-correlation">6.2. Spearman&#8217;s Rank Correlation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">7. Unsupervised Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="unsupervised.html#clustering">7.1. Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised.html">7. Supervised Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="supervised.html#classification">7.1. Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervised.html#regression">7.2. Regression</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="decomposition.html">8. Time Series Decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forecasting.html">9. Forecasting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="resources.html">10. Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised.html">8. Unsupervised Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised.html#clustering">8.1. Clustering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition.html">9. Time Series Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasting.html">10. Forecasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources.html">11. Resources</a></li>
 </ul>
 </div>
 </div>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="general.html" class="btn btn-neutral float-right" title="1. General Notes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="general.html" class="btn btn-neutral float-right" title="1. General Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -224,7 +261,8 @@
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
