@@ -36,6 +36,20 @@ Search query suggestion, Document classification, customer-facing tasks.
 [[14  0  0]
  [ 0 13  0]
  [ 0  1 10]]
+ 
+.. code:: python
+
+   confusion_mc = confusion_matrix(y_test_mc, svm_predicted_mc)
+   # convert to a dataframe
+   df_cm = pd.DataFrame(confusion_mc, 
+                        index = [i for i in range(0,10)], 
+                        columns = [i for i in range(0,10)])
+   # plot graph
+   plt.figure(figsize=(5.5,4)) # define graph
+   sns.heatmap(df_cm, annot=True) # draw heatmap, add annotation
+
+.. image:: images/confusion3.png
+
 
 **2. Evaluation Metrics**
 
@@ -74,3 +88,13 @@ Search query suggestion, Document classification, customer-facing tasks.
             1       0.79      0.60      0.68        43
 
   avg / total       0.94      0.95      0.94       450
+  
+  
+Precision-Recall Curves
+-----------------------
+
+ROC Curves
+----------
+
+Receiver Operating Characteristic (ROC) is used to show the performance of a binary classifier. 
+Area Under Curve (AUC) of a ROC is used 
