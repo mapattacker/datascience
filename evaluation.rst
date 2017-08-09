@@ -1,8 +1,8 @@
 Evaluation
 ==========
 
-Accuarcy is widely used for evalution, but others like, user satisfaction, increased in patient survival, 
-etc., can be used too depending on circumstance.
+Accuarcy is widely used as a metric for evalution, but others like precision, recall, etc. are important for 
+different use cases.
 
 
 Classification
@@ -23,11 +23,11 @@ Confusion Matrix
 
     Wikipedia
         
-**Sensitivity|Recall**: True Positive / True Positive + False Negative. High recall means to get all 
+**Recall|Sensitivity**: True Positive / True Positive + False Negative. High recall means to get all 
 true positives despite having some false positives.
 Search & extraction in legal cases, Tumour detection. Often need humans to filter false positives.
 
-**Precision**: True Positive / True Positive + True Negative. High precision means it is important 
+**Precision|Specificity**: True Positive / True Positive + True Negative. High precision means it is important 
 to filter off the any false positives.
 Search query suggestion, Document classification, customer-facing tasks. 
 
@@ -83,7 +83,43 @@ Using a heatmap.
   Recall: 0.60
   F1: 0.68
 
-  
+There are many other evaluation metrics, a list can be found here:
+
+.. code:: python
+
+  from sklearn.metrics.scorer import SCORERS
+
+  for i in sorted(list(SCORERS.keys())):
+      print i  
+
+  accuracy
+  adjusted_rand_score
+  average_precision
+  f1
+  f1_macro
+  f1_micro
+  f1_samples
+  f1_weighted
+  log_loss
+  mean_absolute_error
+  mean_squared_error
+  median_absolute_error
+  neg_log_loss
+  neg_mean_absolute_error
+  neg_mean_squared_error
+  neg_median_absolute_error
+  precision
+  precision_macro
+  precision_micro
+  precision_samples
+  precision_weighted
+  r2
+  recall
+  recall_macro
+  recall_micro
+  recall_samples
+  recall_weighted
+  roc_auc
 
 **3. Classification Report**
 
