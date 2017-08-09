@@ -15,7 +15,7 @@ Confusion Matrix
     Wikipedia
 
 .. figure:: images/confusion2.png
-    :width: 300px
+    :width: 400px
     :align: center
 
     Wikipedia
@@ -48,6 +48,9 @@ Search query suggestion, Document classification, customer-facing tasks.
   Precision: 0.79
   Recall: 0.60
   F1: 0.68
+
+
+**3. Classification Report**
 
 .. code:: python
 
