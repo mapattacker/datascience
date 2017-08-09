@@ -26,7 +26,7 @@ Search & extraction in legal cases, Tumour detection. Often need humans to filte
 **Precision**: True Positive / True Positive + True Negative
 Search query suggestion, Document classification, customer-facing tasks. 
 
-**F-Score**: 
+**F1-Score**: is the harmonic mean of precision and sensitivity
 
 **2. Evaluation Metrics**
 
