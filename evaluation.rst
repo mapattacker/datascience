@@ -20,13 +20,22 @@ Confusion Matrix
 
     Wikipedia
         
-**Sensitivity|Recall**: True Positive / True Positive + False Negative.
+**Sensitivity|Recall**: True Positive / True Positive + False Negative. High recall means to get all 
+true positives despite having some false positives.
 Search & extraction in legal cases, Tumour detection. Often need humans to filter false positives.
 
-**Precision**: True Positive / True Positive + True Negative
+**Precision**: True Positive / True Positive + True Negative. High precision means it is important 
+to filter off the any false positives.
 Search query suggestion, Document classification, customer-facing tasks. 
 
 **F1-Score**: is the harmonic mean of precision and sensitivity
+
+**1. Confusion Matrix**
+
+>>> print sklearn.metrics.confusion_matrix(test_target,predictions)
+[[14  0  0]
+ [ 0 13  0]
+ [ 0  1 10]]
 
 **2. Evaluation Metrics**
 
