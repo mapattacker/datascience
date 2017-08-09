@@ -38,7 +38,8 @@ Search query suggestion, Document classification, customer-facing tasks.
  [ 0  1 10]]
  
 .. code:: python
-
+  
+   # create confusion matrix
    confusion_mc = confusion_matrix(y_test_mc, svm_predicted_mc)
    # convert to a dataframe
    df_cm = pd.DataFrame(confusion_mc, 
@@ -49,6 +50,8 @@ Search query suggestion, Document classification, customer-facing tasks.
    sns.heatmap(df_cm, annot=True) # draw heatmap, add annotation
 
 .. image:: images/confusion3.png
+
+    :width: 300px
 
 
 **2. Evaluation Metrics**
