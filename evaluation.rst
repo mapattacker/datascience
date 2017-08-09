@@ -55,7 +55,7 @@ Using a heatmap.
 
 
 .. image:: images/confusion3.png
-    :scale: 50 %
+    :scale: 40 %
     :align: center
 
 
