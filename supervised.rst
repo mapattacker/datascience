@@ -501,11 +501,16 @@ or sci-kit learn package
   from sklearn import linear_model
   
   reg = linear_model.LinearRegression()
-  reg.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
+  model = reg.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
   
+  >>> model
   LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
   >>> reg.coef_
   array([ 0.5,  0.5])
+  
+  # R2 scores
+  r2_trains = model.score(X_train, y_train)
+  r2_tests = model.score(X_test, y_test)
 
 
 Ridge Regression

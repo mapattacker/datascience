@@ -5,8 +5,11 @@ Accuarcy is widely used for evalution, but others like, user satisfaction, incre
 etc., can be used too depending on circumstance.
 
 
+Classification
+--------------
+
 Confusion Matrix
-----------------
+****************
 
 .. figure:: images/confusion.png
     :width: 300px
@@ -100,7 +103,7 @@ Using a heatmap.
   
   
 Precision-Recall Curves
------------------------
+************************
 
 .. code:: python
 
@@ -126,7 +129,7 @@ Precision-Recall Curves
     :align: center
 
 ROC Curves
-----------
+***********
 
 Receiver Operating Characteristic (ROC) is used to show the performance of a binary classifier. 
 Area Under Curve (AUC) of a ROC is used 
