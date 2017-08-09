@@ -14,6 +14,12 @@ Confusion Matrix
 
     Wikipedia
 
+.. figure:: images/confusion2.png
+    :width: 300px
+    :align: center
+
+    Wikipedia
+        
 **Sensitivity|Recall**: True Positive / True Positive + False Negative.
 Search & extraction in legal cases, Tumour detection. Often need humans to filter false positives.
 
