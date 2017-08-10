@@ -170,7 +170,8 @@ ROC Curves
 ----------------
 
 Receiver Operating Characteristic (ROC) is used to show the performance of a binary classifier. 
-Area Under Curve (AUC) of a ROC is used 
+Y-axis is True Positive Rate (Recall) & X-axis is False Positive Rate (Fall-Out). 
+Area Under Curve (AUC) of a ROC is used. Higher AUC better.
 
 .. code:: python
 
