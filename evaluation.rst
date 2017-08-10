@@ -241,13 +241,17 @@ You can work through many combination only changing parameters a bit.
   X, y = dataset.data, dataset.target == 1
   X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
+  # choose a classifier
   clf = SVC(kernel='rbf')
   # input grid value range
   grid_values = {'gamma': [0.001, 0.01, 0.05, 0.1, 1, 10, 100]}
-
+  # other parameters can be input in the dictionary, e.g.,
+  # grid_values = {'gamma': [0.01, 0.1, 1, 10], 'C': [0.01, 0.1, 1, 10]}
+  
 
   # default metric to optimize over grid parameters: accuracy
   grid_clf_acc = GridSearchCV(clf, param_grid = grid_values)
+  
   grid_clf_acc.fit(X_train, y_train)
   y_decision_fn_scores_acc = grid_clf_acc.decision_function(X_test) 
 
@@ -256,6 +260,7 @@ You can work through many combination only changing parameters a bit.
 
 
   # alternative metric to optimize over grid parameters: AUC
+  # other scoring include 'recall'
   grid_clf_auc = GridSearchCV(clf, param_grid = grid_values, scoring = 'roc_auc') # indicate AUC
   grid_clf_auc.fit(X_train, y_train)
   y_decision_fn_scores_auc = grid_clf_auc.decision_function(X_test) 
