@@ -260,7 +260,7 @@ You can work through many combination only changing parameters a bit.
 
 
   # alternative metric to optimize over grid parameters: AUC
-  # other scoring include 'recall'
+  # other scoring parameters include 'recall' or 'precision'
   grid_clf_auc = GridSearchCV(clf, param_grid = grid_values, scoring = 'roc_auc') # indicate AUC
   grid_clf_auc.fit(X_train, y_train)
   y_decision_fn_scores_auc = grid_clf_auc.decision_function(X_test) 

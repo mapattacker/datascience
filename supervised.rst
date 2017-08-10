@@ -236,7 +236,7 @@ An ensemble of decision trees.
 
 Logistic Regression
 **************************
-Binary output or y value.
+Binary output or y value. Functions are available in both statsmodels and sklearn packages.
 
 .. image:: images/logisticR.png
 
@@ -251,6 +251,7 @@ Binary output or y value.
   #### FIT MODEL ####
   lreg = sm.Logit(df3['diameter_cut'], df3[trainC]).fit()
   print lreg.summary()
+
 
 
   Optimization terminated successfully.
@@ -288,14 +289,13 @@ Binary output or y value.
 
 
 A regularisation penlty L2, just like ridge regression is by default in ``sklearn.linear_model``, 
-```LogisticRegression``, controlled using the parameter C (default 1).
+``LogisticRegression``, controlled using the parameter C (default 1).
 
 
 .. code:: python
 
   from sklearn.linear_model import LogisticRegression
-  from adspy_shared_utilities import (
-  plot_class_regions_for_classifier_subplot)
+  from adspy_shared_utilities import (plot_class_regions_for_classifier_subplot)
 
   fig, subaxes = plt.subplots(1, 1, figsize=(7, 5))
   y_fruits_apple = y_fruits_2d == 1   # make into a binary problem: apples vs everything else
