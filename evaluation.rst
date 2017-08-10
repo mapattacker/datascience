@@ -7,7 +7,7 @@ different use cases.
 
 
 Confusion Matrix
-----------------
+-----------------
 
 .. figure:: images/confusion.png
     :width: 300px
@@ -22,10 +22,10 @@ Confusion Matrix
     Wikipedia
         
 **Recall|Sensitivity**: (True Positive / True Positive + False Negative) High recall means to get all 
-true positives despite having some false positives.
+positives (i.e., True Positive + False Negative) despite having some false positives.
 Search & extraction in legal cases, Tumour detection. Often need humans to filter false positives.
 
-**Precision**: (True Positive / True Positive + True Negative) High precision means it is important 
+**Precision**: (True Positive / True Positive + False Positive) High precision means it is important 
 to filter off the any false positives.
 Search query suggestion, Document classification, customer-facing tasks. 
 
@@ -137,7 +137,7 @@ There are many other evaluation metrics, a list can be found here:
   
   
 Precision-Recall Curves
---------------------------------
+------------------------
 
 .. code:: python
 
