@@ -5,11 +5,9 @@ Accuarcy is widely used as a metric for evalution, but others like precision, re
 different use cases.
 
 
-Classification
---------------
 
 Confusion Matrix
-****************
+----------------
 
 .. figure:: images/confusion.png
     :width: 300px
@@ -139,7 +137,7 @@ There are many other evaluation metrics, a list can be found here:
   
   
 Precision-Recall Curves
-************************
+--------------------------------
 
 .. code:: python
 
@@ -169,7 +167,7 @@ Precision-Recall Curves
     :align: center
 
 ROC Curves
-***********
+----------------
 
 Receiver Operating Characteristic (ROC) is used to show the performance of a binary classifier. 
 Area Under Curve (AUC) of a ROC is used 
@@ -199,3 +197,74 @@ Area Under Curve (AUC) of a ROC is used
 .. image:: images/roc-curve.png
     :scale: 40 %
     :align: center
+    
+    
+Cross-Validation
+------------------
+
+Takes more time and computation to use k-fold, but well worth the cost. 
+By default, sklean uses stratified cross validation. Another type is leave one out cross-validation.
+
+.. image:: \images\kfold.png
+
+.. code:: python
+
+  from sklearn.model_selection import cross_val_score
+
+  clf = KNeighborsClassifier(n_neighbors = 5)
+  X = X_fruits_2d.as_matrix()
+  y = y_fruits_2d.as_matrix()
+  cv_scores = cross_val_score(clf, X, y)
+
+  print('Cross-validation scores (3-fold):', cv_scores)
+  print('Mean cross-validation score (3-fold): {:.3f}'.format(np.mean(cv_scores)))
+
+
+Grid-Search
+----------------
+
+From Stackoverflow: Systematically working through multiple combinations of parameter tunes, 
+cross validate each and determine which one gives the best performance.
+You can work through many combination only changing parameters a bit.
+
+.. code:: python
+
+  from sklearn.svm import SVC
+  from sklearn.model_selection import GridSearchCV
+  from sklearn.metrics import roc_auc_score
+
+  dataset = load_digits()
+  X, y = dataset.data, dataset.target == 1
+  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+  clf = SVC(kernel='rbf')
+  # input grid value range
+  grid_values = {'gamma': [0.001, 0.01, 0.05, 0.1, 1, 10, 100]}
+
+
+  # default metric to optimize over grid parameters: accuracy
+  grid_clf_acc = GridSearchCV(clf, param_grid = grid_values)
+  grid_clf_acc.fit(X_train, y_train)
+  y_decision_fn_scores_acc = grid_clf_acc.decision_function(X_test) 
+
+  print('Grid best parameter (max. accuracy): ', grid_clf_acc.best_params_)
+  print('Grid best score (accuracy): ', grid_clf_acc.best_score_)
+
+
+  # alternative metric to optimize over grid parameters: AUC
+  grid_clf_auc = GridSearchCV(clf, param_grid = grid_values, scoring = 'roc_auc') # indicate AUC
+  grid_clf_auc.fit(X_train, y_train)
+  y_decision_fn_scores_auc = grid_clf_auc.decision_function(X_test) 
+
+  print('Test set AUC: ', roc_auc_score(y_test, y_decision_fn_scores_auc))
+  print('Grid best parameter (max. AUC): ', grid_clf_auc.best_params_)
+  print('Grid best score (AUC): ', grid_clf_auc.best_score_)
+
+
+  # results 1
+  ('Grid best parameter (max. accuracy): ', {'gamma': 0.001})
+  ('Grid best score (accuracy): ', 0.99628804751299183)
+  # results 2
+  ('Test set AUC: ', 0.99982858122393004)
+  ('Grid best parameter (max. AUC): ', {'gamma': 0.001})
+  ('Grid best score (AUC): ', 0.99987412783021423)
