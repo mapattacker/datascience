@@ -234,6 +234,27 @@ An ensemble of decision trees.
 .. image:: images/randomforest.png
 
 
+Naive Bayes
+************
+Three types of Naive Bayes:
+ * Bernouli: binary features (absence/presence)
+ * Multinomial: discrete features (word count)
+ * Gaussian: continuous / real-value features
+
+Sklearn allows **partial fitting**, i.e., fit the model incrementally if dataset is too large for memory.
+
+.. code:: python
+
+  from sklearn.naive_bayes import GaussianNB
+  from adspy_shared_utilities import plot_class_regions_for_classifier
+
+  X_train, X_test, y_train, y_test = train_test_split(X_C2, y_C2, random_state=0)
+
+  nbclf = GaussianNB().fit(X_train, y_train)
+  plot_class_regions_for_classifier(nbclf, X_train, y_train, X_test, y_test,
+                                 'Gaussian Naive Bayes classifier: Dataset 1')
+
+
 Logistic Regression
 **************************
 Binary output or y value. Functions are available in both statsmodels and sklearn packages.
