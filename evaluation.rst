@@ -205,7 +205,9 @@ Cross-Validation
 Takes more time and computation to use k-fold, but well worth the cost. 
 By default, sklean uses stratified cross validation. Another type is leave one out cross-validation.
 
-.. image:: images\kfold.png
+.. image:: images/kfold.png
+    :align: center
+
 
 .. code:: python
 
