@@ -250,9 +250,17 @@ Sklearn allows **partial fitting**, i.e., fit the model incrementally if dataset
 
   X_train, X_test, y_train, y_test = train_test_split(X_C2, y_C2, random_state=0)
 
+  # no parameters for tuning
   nbclf = GaussianNB().fit(X_train, y_train)
   plot_class_regions_for_classifier(nbclf, X_train, y_train, X_test, y_test,
                                  'Gaussian Naive Bayes classifier: Dataset 1')
+                                 
+  print('Accuracy of GaussianNB classifier on training set: {:.2f}'
+      .format(nbclf.score(X_train, y_train)))
+  print('Accuracy of GaussianNB classifier on test set: {:.2f}'
+      .format(nbclf.score(X_test, y_test)))
+                                 
+                                 
 
 
 Logistic Regression
