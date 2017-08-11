@@ -24,5 +24,4 @@ This documentation summarises various statistics and machine learning techniques
    unsupervised
    evaluation
    decomposition
-   forecasting
    resources
