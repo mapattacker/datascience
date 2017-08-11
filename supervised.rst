@@ -657,6 +657,35 @@ Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, 
     :width: 600px
     :align: center
 
+**Normalisation**: Input features should be normalised.
+
+.. code:: python
+
+  from sklearn.neural_network import MLPClassifier
+  from sklearn.preprocessing import MinMaxScaler
+
+
+  scaler = MinMaxScaler()
+
+  X_train, X_test, y_train, y_test = train_test_split(X_cancer, y_cancer, random_state = 0)
+  X_train_scaled = scaler.fit_transform(X_train)
+  X_test_scaled = scaler.transform(X_test)
+
+  clf = MLPClassifier(hidden_layer_sizes = [100, 100], alpha = 5.0,
+                     random_state = 0, solver='lbfgs').fit(X_train_scaled, y_train)
+
+  print('Breast cancer dataset')
+  print('Accuracy of NN classifier on training set: {:.2f}'
+       .format(clf.score(X_train_scaled, y_train)))
+  print('Accuracy of NN classifier on test set: {:.2f}'
+       .format(clf.score(X_test_scaled, y_test)))
+
+
+  # RESULTS
+  Breast cancer dataset
+  Accuracy of NN classifier on training set: 0.98
+  Accuracy of NN classifier on test set: 0.97
+
 |
 Regression
 ----------
