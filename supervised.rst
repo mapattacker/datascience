@@ -128,6 +128,21 @@ Small changes in data can lead to different splits. Not very reproducible for fu
   sepal width (cm)	0.000000
 
 
+Parameters to tune decision trees include **maxdepth** & **min sample leaf**.
+
+.. code:: python
+
+  from sklearn.tree import DecisionTreeClassifier
+  from adspy_shared_utilities import plot_decision_tree
+  from adspy_shared_utilities import plot_feature_importances
+
+  X_train, X_test, y_train, y_test = train_test_split(X_cancer, y_cancer, random_state = 0)
+
+  clf = DecisionTreeClassifier(max_depth = 4, min_samples_leaf = 8,
+                              random_state = 0).fit(X_train, y_train)
+
+  plot_decision_tree(clf, cancer.feature_names, cancer.target_names)
+
 
 Random Forest
 **************************
