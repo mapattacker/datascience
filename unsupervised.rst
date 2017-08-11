@@ -114,7 +114,7 @@ in most cases, a two-dimensional page. PCA is weak in this aspect.
 
 t-SNE
 ^^^^^^
-t-SNE is a powerful manifold learning algorithm. It finds a two-dimensional representation of your data, 
+t-Distributed Stochastic Neighbor Embedding (t-SNE) is a powerful manifold learning algorithm. It finds a two-dimensional representation of your data, 
 such that the distances between points in the 2D scatterplot match as closely as possible the distances 
 between the same points in the original high dimensional dataset. In particular, 
 t-SNE gives much more weight to preserving information about distances between points that are neighbors. 
@@ -136,13 +136,52 @@ t-SNE gives much more weight to preserving information about distances between p
 .. figure:: images/tsne.png
     :width: 600px
     :align: center
-
+    
+    You can see how some dimensionality reduction methods may be less successful on some datasets. 
+    Here, it doesn't work as well at finding structure in the small fruits dataset, compared to other methods like MDS.
+    
 Clustering
 ----------
 Find groups in data & assign every point in the dataset to one of the groups.
 
 K-Means
 **************************
+It is important to scale the features before applying K-means.
+
+
+.. figure:: images/kmeans2.png
+    :width: 600px
+    :align: center
+    
+    University of Michigan: Coursera Data Science in Python
+
+**Example 1**
+
+.. code:: python
+
+  from sklearn.datasets import make_blobs
+  from sklearn.cluster import KMeans
+  from adspy_shared_utilities import plot_labelled_scatter
+  from sklearn.preprocessing import MinMaxScaler
+
+  fruits = pd.read_table('fruit_data_with_colors.txt')
+  X_fruits = fruits[['mass','width','height', 'color_score']].as_matrix()
+  y_fruits = fruits[['fruit_label']] - 1
+
+  X_fruits_normalized = MinMaxScaler().fit(X_fruits).transform(X_fruits)  
+
+  kmeans = KMeans(n_clusters = 4, random_state = 0)
+  kmeans.fit(X_fruits)
+
+  plot_labelled_scatter(X_fruits_normalized, kmeans.labels_, 
+                        ['Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4'])
+
+.. figure:: images/kmeans3.png
+    :width: 600px
+    :align: center
+
+
+**Example 2**
 
 .. code:: python 
 
