@@ -158,7 +158,7 @@ An ensemble of decision trees.
 
 
 .. figure:: images/randomf.png
-    :width: 300px
+    :width: 600px
     :align: center
 
 
