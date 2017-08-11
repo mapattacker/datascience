@@ -601,7 +601,29 @@ Neural Networks
 
     Activation Function
     University of Michigan: Coursera Data Science in Python
-    
+
+Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, 
+``solvers`` which is the algorithm used.
+
+.. code:: python
+
+  from sklearn.neural_network import MLPClassifier
+  from adspy_shared_utilities import plot_class_regions_for_classifier_subplot
+
+  X_train, X_test, y_train, y_test = train_test_split(X_D2, y_D2, random_state=0)
+
+  fig, subaxes = plt.subplots(3, 1, figsize=(6,18))
+
+
+  for units, axis in zip([1, 10, 100], subaxes):
+      nnclf = MLPClassifier(hidden_layer_sizes = [units], solver='lbfgs',
+                           random_state = 0).fit(X_train, y_train)
+      
+      title = 'Dataset 1: Neural net classifier, 1 layer, {} units'.format(units)
+      
+      plot_class_regions_for_classifier_subplot(nnclf, X_train, y_train,
+                                               X_test, y_test, title, axis)
+      plt.tight_layout()
     
 |
 Regression
