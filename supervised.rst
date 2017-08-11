@@ -594,6 +594,14 @@ Full tuning in Support Vector Machines, using normalisation, kernel tuning, and 
 Neural Networks
 ****************
 
+Examples using Multi-Layer Perceptrons (MLP).
+
+.. figure:: images/neuralnetwork4.png
+    :width: 400px
+    :align: center
+
+    University of Michigan: Coursera Data Science in Python
+    
 
 .. figure:: images/neuralnetwork1.png
     :width: 400px
@@ -603,7 +611,9 @@ Neural Networks
     University of Michigan: Coursera Data Science in Python
 
 Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, with no. units in each layer. 
-``solvers`` which is the algorithm used.
+``solvers`` which is the algorithm used, ``alpha``: L2 regularisation, default is 0.0001, 
+``activation``: non-linear function used for activation function which include ``relu`` (default), 
+``logistic``, ``tanh``
 
 **One Hidden Layer**
 
