@@ -1,8 +1,88 @@
 Unsupervised Learning
 =====================
+No labeled responses, the goal is to capture interesting structure or information.
+
+Applications include:
+  * Visualise structure of a complex dataset
+  * Density estimations to predict probabilities of events
+  * Compress and summarise the data
+  * Extract features for supervised learning
+  * Discover important clusters or outliers
+
+Transformations
+---------------
+Processes that extract or compute information.
+
+Kernel Density Estimation
+*************************
+
+Dimensionality Reduction
+************************
+
+**Principal Component Analysis**
+
+.. code:: python
+
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.decomposition import PCA
+  from sklearn.datasets import load_breast_cancer
+
+  cancer = load_breast_cancer()
+  (X_cancer, y_cancer) = load_breast_cancer(return_X_y = True)
+
+  # Before applying PCA, each feature should be centered (zero mean) and with unit variance
+  X_normalized = StandardScaler().fit(X_cancer).transform(X_cancer)  
+
+  pca = PCA(n_components = 2).fit(X_normalized)
+
+  X_pca = pca.transform(X_normalized)
+  print(X_cancer.shape, X_pca.shape)
+  
+  # RESULTS
+  (569, 30) (569, 2)
+
+Plotting the PCA-transformed version of the breast cancer dataset.
+
+.. code:: python
+
+  from adspy_shared_utilities import plot_labelled_scatter
+  plot_labelled_scatter(X_pca, y_cancer, ['malignant', 'benign'])
+
+  plt.xlabel('First principal component')
+  plt.ylabel('Second principal component')
+  plt.title('Breast Cancer Dataset PCA (n_components = 2)');
+
+  
+.. figure:: images/pca1.png
+    :width: 600px
+    :align: center
+      
+      
+Plotting the magnitude of each feature value for the first two principal components.
+
+.. code:: python
+
+  fig = plt.figure(figsize=(8, 4))
+  plt.imshow(pca.components_, interpolation = 'none', cmap = 'plasma')
+  feature_names = list(cancer.feature_names)
+
+  plt.gca().set_xticks(np.arange(-.5, len(feature_names)));
+  plt.gca().set_yticks(np.arange(0.5, 2));
+  plt.gca().set_xticklabels(feature_names, rotation=90, ha='left', fontsize=12);
+  plt.gca().set_yticklabels(['First PC', 'Second PC'], va='bottom', fontsize=12);
+
+  plt.colorbar(orientation='horizontal', ticks=[pca.components_.min(), 0, 
+                                                pca.components_.max()], pad=0.65);
+
+                                                
+.. figure:: images/pca2.png
+    :width: 600px
+    :align: center
+
 
 Clustering
 ----------
+Find groups in data & assign every point in the dataset to one of the groups.
 
 K-Means
 **************************
