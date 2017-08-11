@@ -610,7 +610,7 @@ Examples using Multi-Layer Perceptrons (MLP).
     Activation Function.
     University of Michigan: Coursera Data Science in Python
 
-Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, with no. units in each layer. 
+Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, with no. units in each layer (default 100). 
 ``solvers`` which is the algorithm used, ``alpha``: L2 regularisation, default is 0.0001, 
 ``activation``: non-linear function used for activation function which include ``relu`` (default), 
 ``logistic``, ``tanh``
@@ -1014,3 +1014,39 @@ Polynomial Regression
        .format(linreg.score(X_train, y_train)))
   print('(poly deg 2 + ridge) R-squared score (test): {:.3f}'
        .format(linreg.score(X_test, y_test)))
+       
+       
+Neutral Networks
+*****************
+
+.. code:: python
+
+  from sklearn.neural_network import MLPRegressor
+
+  fig, subaxes = plt.subplots(2, 3, figsize=(11,8), dpi=70)
+
+  X_predict_input = np.linspace(-3, 3, 50).reshape(-1,1)
+
+  X_train, X_test, y_train, y_test = train_test_split(X_R1[0::5], y_R1[0::5], random_state = 0)
+
+  for thisaxisrow, thisactivation in zip(subaxes, ['tanh', 'relu']):
+      for thisalpha, thisaxis in zip([0.0001, 1.0, 100], thisaxisrow):
+          mlpreg = MLPRegressor(hidden_layer_sizes = [100,100],
+                               activation = thisactivation,
+                               alpha = thisalpha,
+                               solver = 'lbfgs').fit(X_train, y_train)
+          y_predict_output = mlpreg.predict(X_predict_input)
+          thisaxis.set_xlim([-2.5, 0.75])
+          thisaxis.plot(X_predict_input, y_predict_output,
+                       '^', markersize = 10)
+          thisaxis.plot(X_train, y_train, 'o')
+          thisaxis.set_xlabel('Input feature')
+          thisaxis.set_ylabel('Target value')
+          thisaxis.set_title('MLP regression\nalpha={}, activation={})'
+                            .format(thisalpha, thisactivation))
+          plt.tight_layout()
+          
+          
+.. figure:: images/neuralnetwork5.png
+    :width: 400px
+    :align: center
