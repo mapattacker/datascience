@@ -624,7 +624,10 @@ Parameters include ``hidden_layer_sizes`` which is the number of hidden layers,
       plot_class_regions_for_classifier_subplot(nnclf, X_train, y_train,
                                                X_test, y_test, title, axis)
       plt.tight_layout()
-    
+
+.. figure:: images/neuralnetwork2.png
+    :width: 400px
+    :align: center
 |
 Regression
 ----------
