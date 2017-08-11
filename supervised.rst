@@ -150,8 +150,8 @@ An ensemble of decision trees.
 
 * It is widely used and has very good results on many problems
 * sklearn.ensemble module
-  * Classification: ``RandomForestClassifier``
-  * Regression: ``RandomForestRegressor``
+    * Classification: ``RandomForestClassifier``
+    * Regression: ``RandomForestRegressor``
 * One decision tree tends to overfit
 * Many decision trees tends to be more stable and generalised
 * Ensemble of trees should be diverse: introduce random variation into tree building
@@ -265,7 +265,8 @@ An ensemble of decision trees.
 
 Naive Bayes
 ************
-Three types of Naive Bayes:
+
+There are 3 types of Naive Bayes:
  * Bernouli: binary features (absence/presence)
  * Multinomial: discrete features (word count)
  * Gaussian: continuous / real-value features
