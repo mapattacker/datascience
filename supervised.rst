@@ -185,6 +185,8 @@ Prediction is then averaged among the trees.
 
     University of Michigan: Coursera Data Science in Python
 
+Parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jobs``.
+
 .. code:: python
 
   ###### IMPORT MODULES #### ###
@@ -286,6 +288,56 @@ Prediction is then averaged among the trees.
 .. image:: images/randomforest.png
 
 
+Gradient Boosted Decision Trees
+********************************
+Gradient Boosted Decision Trees (GBDT) builds a series of small decision trees,
+with each tree attempting to correct errors from previous stage.
+
+Typically, gradient boosted tree ensembles use lots of shallow trees known in machine learning as weak learners. 
+Built in a nonrandom way, to create a model that makes fewer and fewer mistakes as more trees are added. 
+Once the model is built, making predictions with a gradient boosted tree models is fast and doesn't use a lot of memory. 
+
+``learning_rate`` parameter controls how hard each tree tries to correct mistakes from previous round.
+High learning rate, more complex trees.
+
+
+.. code:: python
+
+  from sklearn.ensemble import GradientBoostingClassifier
+
+  X_train, X_test, y_train, y_test = train_test_split(X_cancer, y_cancer, random_state = 0)
+
+  
+  # Default Parameters
+  clf = GradientBoostingClassifier(random_state = 0)
+  clf.fit(X_train, y_train)
+
+  print('Breast cancer dataset (learning_rate=0.1, max_depth=3)')
+  print('Accuracy of GBDT classifier on training set: {:.2f}'
+       .format(clf.score(X_train, y_train)))
+  print('Accuracy of GBDT classifier on test set: {:.2f}\n'
+       .format(clf.score(X_test, y_test)))
+
+  # Adjusting Learning Rate & Max Depth
+  clf = GradientBoostingClassifier(learning_rate = 0.01, max_depth = 2, random_state = 0)
+  clf.fit(X_train, y_train)
+
+  print('Breast cancer dataset (learning_rate=0.01, max_depth=2)')
+  print('Accuracy of GBDT classifier on training set: {:.2f}'
+       .format(clf.score(X_train, y_train)))
+  print('Accuracy of GBDT classifier on test set: {:.2f}'
+       .format(clf.score(X_test, y_test)))
+
+
+  # Results
+  Breast cancer dataset (learning_rate=0.1, max_depth=3)
+  Accuracy of GBDT classifier on training set: 1.00
+  Accuracy of GBDT classifier on test set: 0.96
+
+  Breast cancer dataset (learning_rate=0.01, max_depth=2)
+  Accuracy of GBDT classifier on training set: 0.97
+  Accuracy of GBDT classifier on test set: 0.97
+       
 Naive Bayes
 ************
 
