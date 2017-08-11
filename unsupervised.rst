@@ -146,8 +146,11 @@ Find groups in data & assign every point in the dataset to one of the groups.
 
 K-Means
 **************************
-It is important to scale the features before applying K-means.
+Need to specify K number of clusters. It is also important to scale the features before applying K-means.
 
+One aspect of k means is that different random starting points for the cluster centers often result in very different clustering solutions. 
+So typically, the k-means algorithm is run in scikit-learn with ten different random initializations 
+and the solution occurring the most number of times is chosen. 
 
 .. figure:: images/kmeans2.png
     :width: 600px
@@ -289,3 +292,38 @@ It is important to scale the features before applying K-means.
   
 .. image:: images/kmeans.png
   :scale: 40 %
+  
+
+Agglomerative Clustering
+-------------------------
+
+Agglomerative Clustering is a method of clustering technique used to build clusters from bottom up.
+
+.. figure:: images/aggocluster.png
+    :width: 600px
+    :align: center
+    
+    University of Michigan: Coursera Data Science in Python
+
+Methods of linking clusters together.
+    
+.. figure:: images/aggocluster2.png
+    :width: 600px
+    :align: center
+    
+    University of Michigan: Coursera Data Science in Python
+        
+        
+.. code:: python  
+  
+  from sklearn.datasets import make_blobs
+  from sklearn.cluster import AgglomerativeClustering
+  from adspy_shared_utilities import plot_labelled_scatter
+
+  X, y = make_blobs(random_state = 10)
+
+  cls = AgglomerativeClustering(n_clusters = 3)
+  cls_assignment = cls.fit_predict(X)
+
+  plot_labelled_scatter(X, cls_assignment, 
+          ['Cluster 1', 'Cluster 2', 'Cluster 3'])
