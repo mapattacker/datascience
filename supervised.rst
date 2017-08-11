@@ -599,7 +599,7 @@ Neural Networks
     :width: 400px
     :align: center
 
-    Activation Function
+    Activation Function.
     University of Michigan: Coursera Data Science in Python
 
 Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, with no. units in each layer. 
@@ -628,7 +628,7 @@ Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, 
       plt.tight_layout()
 
 .. figure:: images/neuralnetwork2.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 **Two Hidden Layers, L2 Regularisation (alpha), Activation**
@@ -636,21 +636,26 @@ Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, 
 
 .. code:: python
 
-    X_train, X_test, y_train, y_test = train_test_split(X_D2, y_D2, random_state=0)
+  X_train, X_test, y_train, y_test = train_test_split(X_D2, y_D2, random_state=0)
 
-    fig, subaxes = plt.subplots(3, 1, figsize=(6,18))
+  fig, subaxes = plt.subplots(4, 1, figsize=(6, 23))
 
-    for this_activation, axis in zip(['logistic', 'tanh', 'relu'], subaxes):
-        nnclf = MLPClassifier(solver='lbfgs', activation = this_activation,
-                             alpha = 0.1, hidden_layer_sizes = [10, 10],
-                             random_state = 0).fit(X_train, y_train)
-        
-        title = 'Dataset 2: NN classifier, 2 layers 10/10, {} \
-    activation function'.format(this_activation)
-        
-        plot_class_regions_for_classifier_subplot(nnclf, X_train, y_train,
-                                                 X_test, y_test, title, axis)
-        plt.tight_layout()
+  for this_alpha, axis in zip([0.01, 0.1, 1.0, 5.0], subaxes):
+      nnclf = MLPClassifier(solver='lbfgs', activation = 'tanh',
+                           alpha = this_alpha,
+                           hidden_layer_sizes = [100, 100],
+                           random_state = 0).fit(X_train, y_train)
+      
+      title = 'Dataset 2: NN classifier, alpha = {:.3f} '.format(this_alpha)
+      
+      plot_class_regions_for_classifier_subplot(nnclf, X_train, y_train,
+                                               X_test, y_test, title, axis)
+      plt.tight_layout()
+      
+
+.. figure:: images/neuralnetwork3.png
+    :width: 600px
+    :align: center
 
 |
 Regression
