@@ -1049,5 +1049,5 @@ Neutral Networks
           
           
 .. figure:: images/neuralnetwork5.png
-    :width: 400px
+    :width: 600px
     :align: center
