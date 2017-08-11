@@ -172,7 +172,15 @@ combined with the fact that splitting a node in the tree is restricted to random
 virtually guarantees that all of the decision trees and the random forest will be different.
 
 .. figure:: images/randomf2.png
-    :width: 600px
+    :width: 400px
+    :align: center
+
+    University of Michigan: Coursera Data Science in Python
+
+Prediction is then averaged among the trees.
+
+.. figure:: images/randomf3.png
+    :width: 400px
     :align: center
 
     University of Michigan: Coursera Data Science in Python
