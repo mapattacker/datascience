@@ -27,6 +27,10 @@ Some useful websites and video series that I refer to:
 
 .. _Tutorials: https://github.com/justmarkham/scikit-learn-videos
 
+7. FreeCodeCamp_: Very basic tutorials with videos.
+
+.. _FreeCodeCamp: https://medium.freecodecamp.org/the-hitchhikers-guide-to-machine-learning-algorithms-in-python-bfad66adb378
+
 |
 |
 **Sci-Kit Learn Cheat Sheet from Data Camp**
