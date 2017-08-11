@@ -185,7 +185,7 @@ Prediction is then averaged among the trees.
 
     University of Michigan: Coursera Data Science in Python
 
-Parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jobs``.
+Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jobs``.
 
 .. code:: python
 
@@ -299,6 +299,8 @@ Once the model is built, making predictions with a gradient boosted tree models 
 
 ``learning_rate`` parameter controls how hard each tree tries to correct mistakes from previous round.
 High learning rate, more complex trees.
+
+Key parameters, ``n_estimators``, ``learning_rate``, ``max_depth``.
 
 .. figure:: images/gbdt.png
     :width: 400px
@@ -589,6 +591,18 @@ Full tuning in Support Vector Machines, using normalisation, kernel tuning, and 
        .format(clf.score(X_test_scaled, y_test)))
 
 
+Neural Networks
+****************
+
+
+.. figure:: images/gbdt.png
+    :width: 400px
+    :align: center
+
+    Activation Function
+    University of Michigan: Coursera Data Science in Python
+    
+    
 |
 Regression
 ----------
