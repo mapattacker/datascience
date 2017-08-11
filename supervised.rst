@@ -628,7 +628,7 @@ Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, 
       plt.tight_layout()
 
 .. figure:: images/neuralnetwork2.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 **Two Hidden Layers, L2 Regularisation (alpha), Activation**
