@@ -611,7 +611,8 @@ Examples using Multi-Layer Perceptrons (MLP).
     University of Michigan: Coursera Data Science in Python
 
 Parameters include ``hidden_layer_sizes`` which is the number of hidden layers, with no. units in each layer (default 100). 
-``solvers`` which is the algorithm used, ``alpha``: L2 regularisation, default is 0.0001, 
+``solvers`` which is the algorithm used. default ``adam`` used for large datasets, ``lbfgs`` is used for smaller datasets,
+``alpha``: L2 regularisation, default is 0.0001, 
 ``activation``: non-linear function used for activation function which include ``relu`` (default), 
 ``logistic``, ``tanh``
 
