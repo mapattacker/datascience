@@ -295,7 +295,7 @@ and the solution occurring the most number of times is chosen.
   
 
 Agglomerative Clustering
--------------------------
+************************
 
 Agglomerative Clustering is a method of clustering technique used to build clusters from bottom up.
 
@@ -327,3 +327,39 @@ Methods of linking clusters together.
 
   plot_labelled_scatter(X, cls_assignment, 
           ['Cluster 1', 'Cluster 2', 'Cluster 3'])
+          
+.. figure:: images/aggocluster3.png
+    :width: 600px
+    :align: center
+
+One of the benfits of this clustering is that a hierarchy can be built.
+
+.. code:: python
+
+  X, y = make_blobs(random_state = 10, n_samples = 10)
+  plot_labelled_scatter(X, y, 
+          ['Cluster 1', 'Cluster 2', 'Cluster 3'])
+  print(X)
+
+  [[  5.69192445  -9.47641249]
+   [  1.70789903   6.00435173]
+   [  0.23621041  -3.11909976]
+   [  2.90159483   5.42121526]
+   [  5.85943906  -8.38192364]
+   [  6.04774884 -10.30504657]
+   [ -2.00758803  -7.24743939]
+   [  1.45467725  -6.58387198]
+   [  1.53636249   5.11121453]
+   [  5.4307043   -9.75956122]]
+   
+   # BUILD DENDROGRAM
+   from scipy.cluster.hierarchy import ward, dendrogram
+   plt.figure()
+   dendrogram(ward(X))
+   plt.show()
+
+
+.. figure:: images/aggocluster4.png
+    :width: 600px
+    :align: center
+        
