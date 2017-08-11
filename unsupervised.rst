@@ -363,3 +363,34 @@ One of the benfits of this clustering is that a hierarchy can be built.
     :width: 600px
     :align: center
         
+DBSCAN
+*******
+Density-based spatial clustering of applications with noise (DBSCAN)
+
+.. figure:: images/dbscan.png
+    :width: 600px
+    :align: center
+    
+    University of Michigan: Coursera Data Science in Python
+
+.. code:: python
+
+  from sklearn.cluster import DBSCAN
+  from sklearn.datasets import make_blobs
+
+  X, y = make_blobs(random_state = 9, n_samples = 25)
+
+  dbscan = DBSCAN(eps = 2, min_samples = 2)
+
+  cls = dbscan.fit_predict(X)
+  print("Cluster membership values:\n{}".format(cls))
+  >>> Cluster membership values:
+      [ 0  1  0  2  0  0  0  2  2 -1  1  2  0  0 -1  0  0  1 -1  1  1  2  2  2  1]
+
+  plot_labelled_scatter(X, cls + 1, 
+          ['Noise', 'Cluster 0', 'Cluster 1', 'Cluster 2'])
+          
+          
+.. figure:: images/dbscan2.png
+    :width: 600px
+    :align: center
