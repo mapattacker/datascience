@@ -19,7 +19,8 @@ Kernel Density Estimation
 Dimensionality Reduction
 ************************
 
-**Principal Component Analysis**
+Principal Component Analysis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: python
 
@@ -41,7 +42,9 @@ Dimensionality Reduction
   # RESULTS
   (569, 30) (569, 2)
 
-Plotting the PCA-transformed version of the breast cancer dataset.
+Plotting the PCA-transformed version of the breast cancer dataset. 
+We can see that malignant and benign cells cluster between two groups and can apply a linear classifier
+to this two dimensional representation of the dataset.
 
 .. code:: python
 
@@ -79,6 +82,60 @@ Plotting the magnitude of each feature value for the first two principal compone
     :width: 600px
     :align: center
 
+
+Multi-Dimensional Scaling
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Multi-Dimensional Scaling (MDS) is a type of manifold learning algorithm that to visualize 
+a high dimensional dataset and project it onto a lower dimensional space - 
+in most cases, a two-dimensional page. PCA is weak in this aspect.
+
+.. code:: python
+
+  from adspy_shared_utilities import plot_labelled_scatter
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.manifold import MDS
+
+  # each feature should be centered (zero mean) and with unit variance
+  X_fruits_normalized = StandardScaler().fit(X_fruits).transform(X_fruits)  
+
+  mds = MDS(n_components = 2)
+
+  X_fruits_mds = mds.fit_transform(X_fruits_normalized)
+
+  plot_labelled_scatter(X_fruits_mds, y_fruits, ['apple', 'mandarin', 'orange', 'lemon'])
+  plt.xlabel('First MDS feature')
+  plt.ylabel('Second MDS feature')
+  plt.title('Fruit sample dataset MDS');
+
+.. figure:: images/mds.png
+    :width: 600px
+    :align: center
+
+
+t-SNE
+^^^^^^
+t-SNE is a powerful manifold learning algorithm. It finds a two-dimensional representation of your data, 
+such that the distances between points in the 2D scatterplot match as closely as possible the distances 
+between the same points in the original high dimensional dataset. In particular, 
+t-SNE gives much more weight to preserving information about distances between points that are neighbors. 
+
+.. code:: python
+
+  from sklearn.manifold import TSNE
+
+  tsne = TSNE(random_state = 0)
+
+  X_tsne = tsne.fit_transform(X_fruits_normalized)
+
+  plot_labelled_scatter(X_tsne, y_fruits, 
+      ['apple', 'mandarin', 'orange', 'lemon'])
+  plt.xlabel('First t-SNE feature')
+  plt.ylabel('Second t-SNE feature')
+  plt.title('Fruits dataset t-SNE');
+
+.. figure:: images/tsne.png
+    :width: 600px
+    :align: center
 
 Clustering
 ----------
