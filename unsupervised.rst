@@ -119,6 +119,10 @@ such that the distances between points in the 2D scatterplot match as closely as
 between the same points in the original high dimensional dataset. In particular, 
 t-SNE gives much more weight to preserving information about distances between points that are neighbors. 
 
+More information here_.
+
+.. _here: https://distill.pub/2016/misread-tsne/#citation
+
 .. code:: python
 
   from sklearn.manifold import TSNE
@@ -365,7 +369,9 @@ One of the benfits of this clustering is that a hierarchy can be built.
         
 DBSCAN
 *******
-Density-based spatial clustering of applications with noise (DBSCAN)
+Density-based spatial clustering of applications with noise (DBSCAN). Need to scale/normalise data.
+
+Key parameters are ``eps`` and ``min_samples``.
 
 .. figure:: images/dbscan.png
     :width: 600px
@@ -386,6 +392,7 @@ Density-based spatial clustering of applications with noise (DBSCAN)
   print("Cluster membership values:\n{}".format(cls))
   >>> Cluster membership values:
       [ 0  1  0  2  0  0  0  2  2 -1  1  2  0  0 -1  0  0  1 -1  1  1  2  2  2  1]
+      # -1 indicates noise or outliers
 
   plot_labelled_scatter(X, cls + 1, 
           ['Noise', 'Cluster 0', 'Cluster 1', 'Cluster 2'])
