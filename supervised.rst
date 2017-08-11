@@ -300,6 +300,12 @@ Once the model is built, making predictions with a gradient boosted tree models 
 ``learning_rate`` parameter controls how hard each tree tries to correct mistakes from previous round.
 High learning rate, more complex trees.
 
+.. figure:: images/gbdt.png
+    :width: 400px
+    :align: center
+
+    University of Michigan: Coursera Data Science in Python
+    
 
 .. code:: python
 
