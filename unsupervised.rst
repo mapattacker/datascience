@@ -121,7 +121,7 @@ t-SNE gives much more weight to preserving information about distances between p
 
 More information here_.
 
-.. _here: https://distill.pub/2016/misread-tsne/#citation
+.. _here: https://distill.pub/2016/misread-tsne
 
 .. code:: python
 
