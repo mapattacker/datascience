@@ -29,3 +29,13 @@ Detecting Leakages
     :align: center
 
     University of Michigan: Coursera Data Science in Python
+    
+Minimising Leakages
+--------------------
+
+.. figure:: images/dataleakage4.png
+    :width: 600px
+    :align: center
+
+    University of Michigan: Coursera Data Science in Python
+    

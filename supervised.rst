@@ -354,6 +354,12 @@ There are 3 types of Naive Bayes:
  * Multinomial: discrete features (word count)
  * Gaussian: continuous / real-value features
 
+.. figure:: images/naivebayes.png
+   :width: 400px
+   :align: center
+
+   University of Michigan: Coursera Data Science in Python
+
 Sklearn allows **partial fitting**, i.e., fit the model incrementally if dataset is too large for memory.
 
 .. code:: python
