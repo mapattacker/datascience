@@ -148,6 +148,20 @@ Random Forest
 **************************
 An ensemble of decision trees.
 
+* It is widely used and has very good results on many problems
+* sklearn.ensemble module
+  * Classification: ``RandomForestClassifier``
+  * Regression: ``RandomForestRegressor``
+* One decision tree tends to overfit
+* Many decision trees tends to be more stable and generalised
+* Ensemble of trees should be diverse: introduce random variation into tree building
+
+
+.. figure:: images/randomf.png
+    :width: 300px
+    :align: center
+
+
 .. code:: python
 
   ###### IMPORT MODULES #### ###
