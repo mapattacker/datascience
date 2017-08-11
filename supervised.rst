@@ -595,7 +595,7 @@ Neural Networks
 ****************
 
 
-.. figure:: images/gbdt.png
+.. figure:: images/neuralnetwork1.png
     :width: 400px
     :align: center
 
