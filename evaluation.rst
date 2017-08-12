@@ -134,8 +134,41 @@ There are many other evaluation metrics, a list can be found here:
             1       0.79      0.60      0.68        43
 
   avg / total       0.94      0.95      0.94       450
-  
-  
+
+
+**4. Decision Function**
+
+.. code:: python
+
+  X_train, X_test, y_train, y_test = train_test_split(X, y_binary_imbalanced, random_state=0)
+  y_scores_lr = lr.fit(X_train, y_train).decision_function(X_test)
+  y_score_list = list(zip(y_test[0:20], y_scores_lr[0:20]))
+
+  # show the decision_function scores for first 20 instances
+  y_score_list
+
+  [(0, -23.176682692580048),
+   (0, -13.541079101203881),
+   (0, -21.722576315155052),
+   (0, -18.90752748077151),
+   (0, -19.735941639551616),
+   (0, -9.7494967330877031),
+   (1, 5.2346395208185506),
+   (0, -19.307366394398947),
+   (0, -25.101037079396367),
+   (0, -21.827003670866031),
+   (0, -24.15099619980262),
+   (0, -19.576751014363683),
+   (0, -22.574837580426664),
+   (0, -10.823683312193941),
+   (0, -11.91254508661434),
+   (0, -10.979579441354835),
+   (1, 11.20593342976589),
+   (0, -27.645821704614207),
+   (0, -12.85921201890492),
+   (0, -25.848618861971779)]
+   
+
 Precision-Recall Curves
 ------------------------
 
