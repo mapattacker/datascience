@@ -167,7 +167,38 @@ There are many other evaluation metrics, a list can be found here:
    (0, -27.645821704614207),
    (0, -12.85921201890492),
    (0, -25.848618861971779)]
-   
+  
+**5. Probability Function**
+
+.. code:: python
+
+  X_train, X_test, y_train, y_test = train_test_split(X, y_binary_imbalanced, random_state=0)
+  y_proba_lr = lr.fit(X_train, y_train).predict_proba(X_test)
+  y_proba_list = list(zip(y_test[0:20], y_proba_lr[0:20,1]))
+
+  # show the probability of positive class for first 20 instances
+  y_proba_list
+
+  [(0, 8.5999236926158807e-11),
+   (0, 1.31578065170999e-06),
+   (0, 3.6813318939966053e-10),
+   (0, 6.1456121155693793e-09),
+   (0, 2.6840428788564424e-09),
+   (0, 5.8320607398268079e-05),
+   (1, 0.99469949997393026),
+   (0, 4.1201906576825675e-09),
+   (0, 1.2553305740618937e-11),
+   (0, 3.3162918920398805e-10),
+   (0, 3.2460530855408745e-11),
+   (0, 3.1472051953481208e-09),
+   (0, 1.5699022391384567e-10),
+   (0, 1.9921654858205874e-05),
+   (0, 6.7057057309326073e-06),
+   (0, 1.704597440356912e-05),
+   (1, 0.99998640688336282),
+   (0, 9.8530840165646881e-13),
+   (0, 2.6020404794341749e-06),
+   (0, 5.9441185633886803e-12)]
 
 Precision-Recall Curves
 ------------------------
