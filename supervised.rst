@@ -54,6 +54,7 @@ Decision Tree
 Uses gini index to split the data at binary level.
 
 **Strengths:** Can select a large number of features that best determine the targets.
+
 **Weakness:** Tends to overfit the data as it will split till the end.
 Pruning can be done to remove the leaves to prevent overfitting but that is not available in sklearn.
 Small changes in data can lead to different splits. Not very reproducible for future data (see random forest).
