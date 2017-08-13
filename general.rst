@@ -39,6 +39,15 @@ The best model with the highest accuarcy is the middle ground between the two.
 
 Steps to Build a Predictive Model
 --------------------------------------------
+Feature Selection
+*****************
+Remove features that have too many NULLs, or features that will introduce data leakage.
+
+Normalise the Features
+***********************
+With the exception of Decision Trees and Naive Bayes, other machine learning techniques like
+Neural Networks, KNN, Support Vector Machines should have their features scaled.
+
 Train Test Split
 *****************
 Split the dataset into *Train* and *Test* datasets.
