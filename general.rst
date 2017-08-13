@@ -95,5 +95,9 @@ Use a confusion matrix and...
 
 accuarcy percentage score to obtain the predictive accuarcy.
 
->>> print sklearn.metrics.accuracy_score(y_test, y_predict)*100, '%'
-97.3684210526 %
+
+.. code:: python
+
+  import sklearn.metrics
+  print sklearn.metrics.accuracy_score(y_test, y_predict)*100, '%'
+  >>> 97.3684210526 %
