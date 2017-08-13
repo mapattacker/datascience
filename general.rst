@@ -46,6 +46,8 @@ By default, sklearn assigns 75% to train & 25% to test randomly.
 A random state (seed) can be selected to fixed the randomisation
 
 .. code:: Python
+  
+  from sklearn.cross_validation import train_test_split
 
   train_predictor, test_predictor, train_target, test_target
   = train_test_split(predictor, target, test_size=0.25, random_state=0)
