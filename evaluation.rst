@@ -173,6 +173,8 @@ There are many other evaluation metrics, a list can be found here:
 .. code:: python
 
   X_train, X_test, y_train, y_test = train_test_split(X, y_binary_imbalanced, random_state=0)
+  # note that the first column of array indicates probability of predicting negative class,
+  # 2nd column indicates probability of predicting positive class
   y_proba_lr = lr.fit(X_train, y_train).predict_proba(X_test)
   y_proba_list = list(zip(y_test[0:20], y_proba_lr[0:20,1]))
 
