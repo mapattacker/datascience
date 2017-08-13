@@ -49,7 +49,7 @@ A random state (seed) can be selected to fixed the randomisation
   
   from sklearn.cross_validation import train_test_split
 
-  train_predictor, test_predictor, train_target, test_target
+  X_train, X_test, y_train, y_test
   = train_test_split(predictor, target, test_size=0.25, random_state=0)
 
 Create Model
@@ -67,7 +67,7 @@ Fit the model using the training dataset.
 
 .. code:: Python
 
-  model = clf.fit(train_predictor, train_target)
+  model = clf.fit(X_train, y_train)
 
 >>> print model
 DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
@@ -81,19 +81,19 @@ Test the model by predicting identity of unseen data using the testing dataset.
 
 .. code:: Python
 
-  predictions = model.predict(test_predictor)
+  y_predict = model.predict(X_test)
 
 
 Score Model
 ***********
 Use a confusion matrix and...
 
->>> print sklearn.metrics.confusion_matrix(test_target,predictions)
+>>> print sklearn.metrics.confusion_matrix(y_test, predictions)
 [[14  0  0]
  [ 0 13  0]
  [ 0  1 10]]
 
 accuarcy percentage score to obtain the predictive accuarcy.
 
->>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
+>>> print sklearn.metrics.accuracy_score(y_test, y_predict)*100, '%'
 97.3684210526 %
