@@ -39,9 +39,11 @@ The best model with the highest accuarcy is the middle ground between the two.
 
 Steps to Build a Predictive Model
 --------------------------------------------
-Feature Selection
-*****************
-Remove features that have too many NULLs, or features that will introduce data leakage.
+Feature Selection & Preprocessing
+**********************************
+ 1. Remove features that have too many NAN or fill NAN with another value
+ 2. Remove features that will introduce data leakage
+ 3. Encode categorical features into integers
 
 Normalise the Features
 ***********************
