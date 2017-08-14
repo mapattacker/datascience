@@ -205,6 +205,9 @@ There are many other evaluation metrics, a list can be found here:
 Precision-Recall Curves
 ------------------------
 
+Some classifiers have a decision_function method while others have a probability prediction method, 
+and some have both. Whichever one is available works fine for an ROC curve.
+
 .. code:: python
 
   from sklearn.metrics import precision_recall_curve
