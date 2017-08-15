@@ -275,6 +275,10 @@ Cross-Validation
 Takes more time and computation to use k-fold, but well worth the cost. 
 By default, sklean uses stratified cross validation. Another type is leave one out cross-validation.
 
+More here_.
+
+.. _here:: https://medium.com/towards-data-science/train-test-split-and-cross-validation-in-python-80b61beca4b6
+
 .. figure:: images/kfold.png
     :scale: 30 %
     :align: center
@@ -317,6 +321,7 @@ You can work through many combination only changing parameters a bit.
   grid_values = {'gamma': [0.001, 0.01, 0.05, 0.1, 1, 10, 100]}
   # other parameters can be input in the dictionary, e.g.,
   # grid_values = {'gamma': [0.01, 0.1, 1, 10], 'C': [0.01, 0.1, 1, 10]}
+  # OR n_estimators, max_features from RandomForest
   
 
   # default metric to optimize over grid parameters: accuracy
@@ -350,4 +355,5 @@ You can work through many combination only changing parameters a bit.
   
   
   # gives break down of all permutations of gridsearch
-  fittedmodel.cv_results_
+  print fittedmodel.cv_results_
+  print CV.best_params_
