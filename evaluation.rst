@@ -305,6 +305,8 @@ From Stackoverflow: Systematically working through multiple combinations of para
 cross validate each and determine which one gives the best performance.
 You can work through many combination only changing parameters a bit.
 
+Print out the ``best_params_`` and rebuild the model with these optimal parameters. 
+
 .. code:: python
 
   from sklearn.svm import SVC
