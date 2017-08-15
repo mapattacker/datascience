@@ -356,4 +356,5 @@ You can work through many combination only changing parameters a bit.
   
   # gives break down of all permutations of gridsearch
   print fittedmodel.cv_results_
+  # gives parameters that gives the best indicated scoring type
   print CV.best_params_
