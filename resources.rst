@@ -31,6 +31,10 @@ Some useful websites and video series that I refer to:
 
 .. _FreeCodeCamp: https://medium.freecodecamp.org/the-hitchhikers-guide-to-machine-learning-algorithms-in-python-bfad66adb378
 
+8. YellowBricks_: Damn simple graphing package that is compatible with sklearn!
+
+.. _YellowBricks: https://github.com/DistrictDataLabs/yellowbricks
+
 |
 |
 **Sci-Kit Learn Cheat Sheet from Data Camp**
