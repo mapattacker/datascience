@@ -350,9 +350,17 @@ Key parameters, ``n_estimators``, ``learning_rate``, ``max_depth``.
 Naive Bayes
 ************
 
+Naive Bayes is a probabilistic model. 
+Features are assumed to be independent of each other in a given class. This makes the math very easy.
+E.g., words that are unrelated multiply together to form the final probability.
+
+**Prior Probability**: Pr(y). Probability that a class (y) occurred in entire training dataset
+
+**Liklihood**: Pr(y|xi) Probability of a class (y) occuring given all the features (xi).
+
 There are 3 types of Naive Bayes:
- * Bernouli: binary features (absence/presence)
- * Multinomial: discrete features (word count)
+ * Bernouli: binary features (absence/presence of words)
+ * Multinomial: discrete features (account for frequent of words too, TF-IDF [frequency–inverse document frequency])
  * Gaussian: continuous / real-value features
 
 .. figure:: images/naivebayes.png
@@ -480,6 +488,17 @@ A regularisation penlty L2, just like ridge regression is by default in ``sklear
 
 Support Vector Machine
 ***********************
+
+Support Vector Machines (SVM) involves locating the support vectors of two boundaries 
+to find a maximum tolerance hyperplane.
+
+.. figure:: images/svm.png
+    :width: 400px
+    :align: center
+
+    University of Michigan: Coursera Data Science in Python
+
+
 Have 3 tuning parameters. Need to normalize first too!
 
 1. Have regularisation using parameter C, just like logistic regression. Default to 1. Limits the importance of each point.
