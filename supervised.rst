@@ -371,7 +371,7 @@ There are 3 types of Naive Bayes:
 
 Sklearn allows **partial fitting**, i.e., fit the model incrementally if dataset is too large for memory.
 
-Only one smoothing parameter called ``alpha``. It adds a virtual data point that have positive values for all features. 
+Only one smoothing parameter called ``alpha`` (default 0.1). It adds a virtual data point that have positive values for all features. 
 This is necessary considering that if there are no positive feature, the entire probability will be 0 
 (since it is a multiplicative model). More alpha means more smoothing, and more generalisation (less complex) model.
 
