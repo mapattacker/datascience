@@ -360,8 +360,8 @@ E.g., words that are unrelated multiply together to form the final probability.
 
 There are 3 types of Naive Bayes:
  * Bernouli: binary features (absence/presence of words)
- * Multinomial: discrete features (account for frequent of words too, TF-IDF [frequency–inverse document frequency])
- * Gaussian: continuous / real-value features
+ * Multinomial: discrete features (account for frequency of words too, TF-IDF [frequency–inverse document frequency])
+ * Gaussian: continuous / real-value features (stores aerage avlue & standard deviation of each feature for each class)
 
 .. figure:: images/naivebayes.png
    :width: 400px
