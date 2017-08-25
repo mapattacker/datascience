@@ -112,3 +112,9 @@ accuarcy percentage score to obtain the predictive accuarcy.
   import sklearn.metrics
   print sklearn.metrics.accuracy_score(y_test, y_predict)*100, '%'
   >>> 97.3684210526 %
+  
+Cross Validation
+*****************
+When all code is working fine, remove the train-test portion and use Grid Search Cross Validation to compute
+the best parameters with cross validation.
+ 
