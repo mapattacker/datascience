@@ -45,4 +45,19 @@ Pipeline
 ---------
 Scaling have a chance of leaking the part of the test data in train-test split into the training data.
 This is especially inevitable when using cross-validation.
-A way to prevent data-leakage is to use the pipeline function in sklearn
+A way to prevent data-leakage is to use the pipeline function in sklearn, which wraps the scaler and classifier together,
+and scale them separately during cross validation.
+
+.. code:: python
+
+  from sklearn.pipeline import Pipeline
+  pipe = Pipeline([("scaler", MinMaxScaler()), ("svm", SVC())])
+
+  pipe.fit(X_train, y_train)
+  Pipeline(steps=[('scaler', MinMaxScaler(copy=True, feature_range=(0, 1))), ('svm', SVC(C=1.0, cac
+            decision_function_shape=None, degree=3, gamma='auto', kernel='rbf',
+            max_iter=-1, probability=False, random_state=None, shrinking=True,
+            tol=0.001, verbose=False))])
+
+  pipe.score(X_test, y_test)
+  0.95104895104895104
