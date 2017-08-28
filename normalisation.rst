@@ -40,3 +40,9 @@ Another way to normalise is to use the Min Max Scaler, as defined below:
   X_test_scaled = scaler.transform(X_test)
 
   linridge = Ridge(alpha=20.0).fit(X_train_scaled, y_train)
+
+Pipeline
+---------
+Scaling have a chance of leaking the part of the test data in train-test split into the training data.
+This is especially inevitable when using cross-validation.
+A way to prevent data-leakage is to use the pipeline function in sklearn
