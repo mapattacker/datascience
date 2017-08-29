@@ -327,7 +327,7 @@ Print out the ``best_params_`` and rebuild the model with these optimal paramete
   
 
   # default metric to optimize over grid parameters: accuracy
-  grid_clf_acc = GridSearchCV(clf, param_grid = grid_values)
+  grid_clf_acc = GridSearchCV(clf, param_grid = grid_values, random_state=0)
   
   grid_clf_acc.fit(X_train, y_train)
   y_decision_fn_scores_acc = grid_clf_acc.decision_function(X_test) 
@@ -338,7 +338,7 @@ Print out the ``best_params_`` and rebuild the model with these optimal paramete
 
   # alternative metric to optimize over grid parameters: AUC
   # other scoring parameters include 'recall' or 'precision'
-  grid_clf_auc = GridSearchCV(clf, param_grid = grid_values, scoring = 'roc_auc', cv=3) # indicate AUC
+  grid_clf_auc = GridSearchCV(clf, param_grid = grid_values, scoring = 'roc_auc', cv=3, random_state=0) # indicate AUC
   grid_clf_auc.fit(X_train, y_train)
   y_decision_fn_scores_auc = grid_clf_auc.decision_function(X_test) 
 
