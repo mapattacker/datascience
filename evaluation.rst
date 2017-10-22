@@ -312,6 +312,8 @@ Print out the ``best_params_`` and rebuild the model with these optimal paramete
   from sklearn.svm import SVC
   from sklearn.model_selection import GridSearchCV
   from sklearn.metrics import roc_auc_score
+  from sklearn.model_selection import train_test_split
+  
 
   dataset = load_digits()
   X, y = dataset.data, dataset.target == 1
@@ -324,8 +326,6 @@ Print out the ``best_params_`` and rebuild the model with these optimal paramete
   # other parameters can be input in the dictionary, e.g.,
   # grid_values = {'gamma': [0.01, 0.1, 1, 10], 'C': [0.01, 0.1, 1, 10]}
   # OR n_estimators, max_features from RandomForest
-  
-
   # default metric to optimize over grid parameters: accuracy
   grid_clf_acc = GridSearchCV(clf, param_grid = grid_values, random_state=0)
   
@@ -335,6 +335,10 @@ Print out the ``best_params_`` and rebuild the model with these optimal paramete
   print('Grid best parameter (max. accuracy): ', grid_clf_acc.best_params_)
   print('Grid best score (accuracy): ', grid_clf_acc.best_score_)
 
+
+Using other scoring metrics
+
+.. code:: python
 
   # alternative metric to optimize over grid parameters: AUC
   # other scoring parameters include 'recall' or 'precision'
