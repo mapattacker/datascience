@@ -277,7 +277,7 @@ By default, sklean uses stratified cross validation. Another type is leave one o
 
 More here_.
 
-.. _here:: https://medium.com/towards-data-science/train-test-split-and-cross-validation-in-python-80b61beca4b6
+.. _here: https://medium.com/towards-data-science/train-test-split-and-cross-validation-in-python-80b61beca4b6
 
 .. figure:: images/kfold.png
     :scale: 30 %
