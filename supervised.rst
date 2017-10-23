@@ -346,7 +346,38 @@ Key parameters, ``n_estimators``, ``learning_rate``, ``max_depth``.
   Breast cancer dataset (learning_rate=0.01, max_depth=2)
   Accuracy of GBDT classifier on training set: 0.97
   Accuracy of GBDT classifier on test set: 0.97
-       
+
+
+XGBoost
+********
+XGBoost or eXtreme Gradient Boosting, is a form of gradient boosted decision trees is 
+that designed to be highly efficient, flexible and portable. It is one of the highly dominative classifier in 
+competitive machine learning competitions.
+
+https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/#
+
+.. code:: python
+
+  from xgboost import XGBClassifier
+  from sklearn.model_selection import train_test_split
+  from sklearn.metrics import accuracy_score
+
+  X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state=0)
+  
+  # fit model no training data
+  model = XGBClassifier()
+  model.fit(X_train, y_train)
+  
+  # make predictions for test data
+  y_pred = model.predict(X_test)
+  predictions = [round(value) for value in y_pred]
+  
+  # evaluate predictions
+  accuracy = accuracy_score(y_test, predictions)
+  print("Accuracy: %.2f%%" % (accuracy * 100.0))
+ 
+ 
+ 
 Naive Bayes
 ************
 
