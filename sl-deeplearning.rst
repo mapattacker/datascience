@@ -13,7 +13,8 @@ Some basic concepts of Deep Learning include:
   
 Playground
 -----------
-Best applicaton to learn about NN without math. View it here_.
+Best applicaton to learn about NN without math. Note that this is a simple forward propagation.
+View it here_.
 
 .. figure:: images/tensorflow_pg.png
     :width: 600px
@@ -43,7 +44,7 @@ Here's an example output of using **1 hidden layer** with **1, 2 & 3 neurons** i
 1 neuron can only split by one straight line.
 
 .. figure:: images/tensorflow_pg1.png
-    :width: 500px
+    :width: 400px
     :align: center
 
 For more complicated datasets, more hidden layers need to be added.
@@ -55,5 +56,35 @@ For more complicated datasets, more hidden layers need to be added.
 From these examples, we can see that a **hidden layer** contains the intelligence
 in a distributed fashion using many ``neurons``, ``interconnection``, ``weights``,
 ``activation functions``, etc. **Deep NN** have multiple neutral networks.
+
+
+Backpropagation 
+---------------
+Backpropagation (BP) uses training iterations where **error size** is used
+to determine the updated value of each weight in the NN.
+
+.. figure:: images/backp1.png
+    :width: 600px
+    :align: center
+    
+    
+CNN
+----
+**Convolutional Neural Network** (CNN) is a Feedforward (FF) Neural Network (NN).
+  * Designed based on animals' visual cortex. Where visual neurons progressively focus on overlapping tiles & sequentially shifts **convulation process** to cover the entire visual field.
+  * Uses **Multi-Layer Perceptrons** (MLPs)
+  * **ReLU** activation is often used
+  * Image/video recognition, recommender systems, natural language processing
+
+Subsampling
+************
+Median Value
+
+
+RNN
+----
+**Recurrent Neural Network** (RNN)
+
+
 
 

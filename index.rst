@@ -5,7 +5,7 @@
 
 Data Science in Python
 ========================================
-This documentation summarises various statistics and machine learning techniques in Python.
+This documentation summarises various machine learning techniques in Python.
 
 
 .. toctree::
