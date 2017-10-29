@@ -52,3 +52,8 @@ For more complicated datasets, more hidden layers need to be added.
     :width: 600px
     :align: center
     
+From these examples, we can see that a **hidden layer** contains the intelligence
+in a distributed fashion using many ``neurons``, ``interconnection``, ``weights``,
+``activation functions``, etc. **Deep NN** have multiple neutral networks.
+
+
