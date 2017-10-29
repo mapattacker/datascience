@@ -48,7 +48,7 @@ Here's an example output of using **1 hidden layer** with **1, 2 & 3 neurons** i
 
 For more complicated datasets, more hidden layers need to be added.
 
-.. figure:: images/tensorflow_pg1.png
+.. figure:: images/tensorflow_pg2.png
     :width: 600px
     :align: center
     
