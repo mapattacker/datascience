@@ -18,10 +18,8 @@ This documentation summarises various statistics and machine learning techniques
    datasets
    normalisation
    dataleakage
-   difference
-   association
    supervised
+   sl-deeplearning
    unsupervised
    evaluation
-   decomposition
    resources
