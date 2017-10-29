@@ -13,16 +13,31 @@ Some basic concepts of Deep Learning include:
   
 Playground
 -----------
-Best applicaton to learn about NN without math. Note that this is a simple forward propagation.
+Tensorflow Playground is the best applicaton to learn about NN without math. Note that this is a simple forward propagation.
 View it here_.
 
 .. figure:: images/tensorflow_pg.png
     :width: 600px
     :align: center
 
-    University of Michigan: Coursera Data Science in Python
 
 .. _here: http://playground.tensorflow.org
+
+.. list-table::
+   :widths: 30 40 30
+
+   * - Learning Rate
+     - Determines the learning speed (0.00001 to 10)
+   * - Activation
+     - Select type of activation function 
+     - ReLU, Tanh, Sigmoid, Linear
+   * - Regularizaton
+     - Type of Regularization to reduce overfitting
+     - ``L1``: can reduce coefficients to 0. Useful for few features. ``L1``: useful for inputs that are correlated. 
+   * - Regularization Rate
+   * - Problem Type
+     - Classificatoin or Regression
+
 
   1. Learning Rate
     * Determines the learning speed (0.00001 to 10)
