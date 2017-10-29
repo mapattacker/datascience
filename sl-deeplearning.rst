@@ -43,7 +43,7 @@ Here's an example output of using **1 hidden layer** with **1, 2 & 3 neurons** i
 1 neuron can only split by one straight line.
 
 .. figure:: images/tensorflow_pg1.png
-    :width: 600px
+    :width: 500px
     :align: center
 
 For more complicated datasets, more hidden layers need to be added.
