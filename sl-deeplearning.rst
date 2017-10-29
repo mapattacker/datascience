@@ -41,7 +41,7 @@ Other variables include adjusting the # neurons (max: 8), # hidden layers (max: 
 
 Here's an example output of using **1 hidden layer** with **1, 2 & 3 neurons** in that layer.
 
-.. figure:: images/tensorflow_pg.png
+.. figure:: images/tensorflow_pg1.png
     :width: 600px
     :align: center
 
