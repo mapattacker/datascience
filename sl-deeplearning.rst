@@ -39,10 +39,16 @@ Best applicaton to learn about NN without math. View it here_.
 
 Other variables include adjusting the # neurons (max: 8), # hidden layers (max: 6), data type, noise, batch size.
 
-Here's an example output of using **1 hidden layer** with **1, 2 & 3 neurons** in that layer.
+Here's an example output of using **1 hidden layer** with **1, 2 & 3 neurons** in that layer. 
+1 neuron can only split by one straight line.
 
 .. figure:: images/tensorflow_pg1.png
     :width: 600px
     :align: center
 
+For more complicated datasets, more hidden layers need to be added.
 
+.. figure:: images/tensorflow_pg1.png
+    :width: 600px
+    :align: center
+    
