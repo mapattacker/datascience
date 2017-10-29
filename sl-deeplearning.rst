@@ -23,35 +23,14 @@ View it here_.
 
 .. _here: http://playground.tensorflow.org
 
-.. list-table::
-   :widths: 30 40 30
 
-   * - Learning Rate
-     - Determines the learning speed (0.00001 to 10)
-   * - Activation
-     - Select type of activation function 
-     - ReLU, Tanh, Sigmoid, Linear
-   * - Regularizaton
-     - Type of Regularization to reduce overfitting
-     - ``L1``: can reduce coefficients to 0. Useful for few features. ``L1``: useful for inputs that are correlated. 
-   * - Regularization Rate
-   * - Problem Type
-     - Classificatoin or Regression
+:Learning Rate: Determines the learning speed (0.00001 to 10)
+:Activation: Select type of activation function. (ReLU, Tanh, Sigmoid, Linear)
+:Regularizaton: Type of Regularization to reduce overfitting. ``L1``: can reduce coefficients to 0. Useful for few features. ``L1``: useful for inputs that are correlated. 
+:Regularization Rate: 0 to 10
+:Problem Type: Classificatoin or Regression
 
 
-  1. Learning Rate
-    * Determines the learning speed (0.00001 to 10)
-  2. Activation
-    * Select type of activation function 
-    * ReLU, Tanh, Sigmoid, Linear
-  3. Regularizaton
-    * Type of Regularization to reduce overfitting
-    * ``L1``: can reduce coefficients to 0. Useful for few features.
-    * ``L1``: useful for inputs that are correlated. 
-  4. Regularization Rate
-    * 0 to 10
-  5. Problem type
-    * Classificatoin or Regression
 
 Other variables include adjusting the # neurons (max: 8), # hidden layers (max: 6), data type, noise, batch size.
 
