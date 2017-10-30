@@ -3,21 +3,22 @@ Feature Preprocessing & Generation
 
 Numeric
 --------
-**Feature Proprocessing**
+Feature Proprocessing
+************************
 
-Scaling
-********
+**Scaling**
+
 Many ML algorithms require normalization or scaling. See more in here_.
 
 .. _here: http://python-data-science.readthedocs.io/en/latest/normalisation.html#
 
-Outliers
-********
+**Outliers**
+
 Especially sensitive in linear models. They can be (1) removed manually by
 defining the lower and upper bound limit, or (2) grouping the features into ranks.
 
-Transformation
-***************
+**Transformation**
+
 This helps in non-tree based and especially neural networks. 
 Helps to drive big values close to features' average value.
 
@@ -27,7 +28,8 @@ Another important moment which holds true for all preprocessings is that sometim
 it is beneficial to train a model on concatenated data frames produced by different preprocessings, or to mix models training differently-preprocessed data. 
 Again, linear models, KNN, and neural networks can benefit hugely from this. 
 
-**Feature Generation**
+Feature Generation
+************************
 Sometimes, we can engineer these new features using *prior knowledge and logic*, 
 or *using Exploratory Data Analysis*.
 
@@ -40,3 +42,7 @@ Examples include:
     :align: center
 
     Coursera: How to Win a Data Science Competition
+
+Categorical & Ordinal
+-----------------------
+Ordinal features are categorical but ranked in a meaningful way.
