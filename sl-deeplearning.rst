@@ -5,16 +5,16 @@ It is a Machine Learning technique that uses multiple internal layers (**hidden 
 non-linear processing units (**neurons**) to conduct supervised or unsupervised learning from data.
 
 Some basic concepts of Deep Learning include:
-  * Neutron, Perceptron
-  * Neutral Network (NN)
+  * Neuron, Perceptron
+  * Neural Network (NN)
   * Convolutional Neural Network (CNN)
   * Recurrent Neural Netowk (RNN)
   
   
 Playground
 -----------
-Tensorflow Playground is the best applicaton to learn about NN without math. Note that this is a simple forward propagation.
-View it here_.
+Tensorflow Playground is the best applicaton to learn about NN without math. 
+View it here_. An excellent guide_ also gives a great background on the basics.
 
 .. figure:: images/tensorflow_pg.png
     :width: 600px
@@ -22,6 +22,7 @@ View it here_.
 
 
 .. _here: http://playground.tensorflow.org
+.. _guide: https://cloud.google.com/blog/big-data/2016/07/understanding-neural-networks-with-tensorflow-playground
 
 
 :Learning Rate: Determines the learning speed (0.00001 to 10)
