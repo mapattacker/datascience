@@ -37,6 +37,11 @@ Some useful websites and video series that I refer to:
 
 |
 |
+**Decision Boundaries from Various Machine Learning Algorithm**
+
+.. image:: images/resource.png
+
+    
 **Sci-Kit Learn Cheat Sheet from Data Camp**
 
 .. image:: images/sklearn.PNG
