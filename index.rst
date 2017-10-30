@@ -14,7 +14,6 @@ This documentation summarises various machine learning techniques in Python.
    :numbered:
 
    general
-   assumptions
    datasets
    normalisation
    dataleakage
