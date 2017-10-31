@@ -58,14 +58,7 @@ There are 4 ways to encode.
       - Alphabetical order ``sklearn.preprocessing.LabelEncoder``
       - Order of appearance ``pd.factorize``
     - **Frequency Encoding**: conversion of catgory into frequencies.
-  2. Non-Tree Models
-    - **One-Hot Encoding**: each category is one field of 1 & 0. Not good if too many categories in a feature. Need to store in sparse matrix.
-      - Dummies: ``pd.get_dummies``
-      - sklearn: ``sklearn.preprocessing.OneHotEncoder``
-  3. Linear Models & KNN
-    - **Feature Interactions**: interactions btw categorical features
-
-
+    
 .. code:: python
   
   ### FREQUENCY ENCODING
@@ -79,6 +72,14 @@ There are 4 ways to encode.
   # if categories have same frequency it can be an issue
   # will need to change it to ranked frequency encoding
   from scipy.stats import rankdata
+  
+  2. Non-Tree Models
+    - **One-Hot Encoding**: each category is one field of 1 & 0. Not good if too many categories in a feature. Need to store in sparse matrix.
+      - Dummies: ``pd.get_dummies``
+      - sklearn: ``sklearn.preprocessing.OneHotEncoder``
+  3. Linear Models & KNN
+    - **Feature Interactions**: interactions btw categorical features
+
 
 
 .. figure:: images/preprocess2.png
