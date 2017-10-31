@@ -53,15 +53,17 @@ Categorical & Ordinal
 Ordinal features are categorical but ranked in a meaningful way.
 
 There are 4 ways to encode.
-  * Tree-Based Models
-    1) **Label Encoding**: or conversion of category into integers.
+  1. Tree-Based Models
+    - **Label Encoding**: or conversion of category into integers.
       * Alphabetical order ``sklearn.preprocessing.LabelEncoder``
-      * Order of appearance ``Pandas.factorize``
-    2) **Frequency Encoding**: conversion of catgory into frequencies.
-  * Non-Tree Models
-    3) **One-Hot Encoding**: Non-tree based
-  * Linear Models & KNN
-    4) **Feature Interactions**: interactions btw categorical features
+      * Order of appearance ``pd.factorize``
+    - **Frequency Encoding**: conversion of catgory into frequencies.
+  2. Non-Tree Models
+    - **One-Hot Encoding**: each category is one field of 1 & 0. Not good if too many categories in a feature.
+      * Dummies: ``pd.get_dummies``
+      * sklearn: ``sklearn.preprocessing.OneHotEncoder``
+  3. Linear Models & KNN
+    - **Feature Interactions**: interactions btw categorical features
 
 
 .. code:: python
@@ -77,6 +79,5 @@ There are 4 ways to encode.
   # if categories have same frequency it can be an issue
   # will need to change it to ranked frequency encoding
   from scipy.stats import rankdata
-  
 
 
