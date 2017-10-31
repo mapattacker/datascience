@@ -59,7 +59,7 @@ There are 4 ways to encode.
       * Order of appearance ``pd.factorize``
     - **Frequency Encoding**: conversion of catgory into frequencies.
   2. Non-Tree Models
-    - **One-Hot Encoding**: each category is one field of 1 & 0. Not good if too many categories in a feature.
+    - **One-Hot Encoding**: each category is one field of 1 & 0. Not good if too many categories in a feature. Need to store in sparse matrix.
       * Dummies: ``pd.get_dummies``
       * sklearn: ``sklearn.preprocessing.OneHotEncoder``
   3. Linear Models & KNN
@@ -81,3 +81,8 @@ There are 4 ways to encode.
   from scipy.stats import rankdata
 
 
+.. figure:: images/preprocess2.png
+    :width: 400px
+    :align: center
+
+    Coursera: How to Win a Data Science Competition
