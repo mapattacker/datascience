@@ -35,6 +35,10 @@ Some useful websites and video series that I refer to:
 
 .. _YellowBricks: https://github.com/DistrictDataLabs/yellowbricks
 
+9. Medium_: 10 Essential Statistical Techniques
+
+.. _Medium: https://towardsdatascience.com/the-10-statistical-techniques-data-scientists-need-to-master-1ef6dbd531f7
+
 |
 |
 **Decision Boundaries from Various Machine Learning Algorithm**
