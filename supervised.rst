@@ -7,6 +7,12 @@ Classification
 K Nearest Neighbours (KNN)
 **************************
 
+.. figure:: images/knn.gif
+    :width: 600px
+    :align: center
+
+    www.mathworks.com
+
 .. note::
 
   1. **Distance Metric**: Eclidean Distance (default). In sklearn it is known as (Minkowski with p = 2)
