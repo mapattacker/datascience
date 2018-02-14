@@ -8,7 +8,7 @@ K Nearest Neighbours (KNN)
 **************************
 
 .. figure:: images/knn.gif
-    :width: 600px
+    :width: 300px
     :align: center
 
     www.mathworks.com
