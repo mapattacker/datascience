@@ -16,11 +16,11 @@ Processes that extract or compute information.
 Kernel Density Estimation
 *************************
 
-.. figure:: images/knn.gif
+.. figure:: images/kerneldensity.png
     :width: 600px
     :align: center
 
-    www.mathworks.com
+    University of Michigan: Coursera Data Science in Python
 
 Dimensionality Reduction
 ************************
