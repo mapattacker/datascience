@@ -16,6 +16,12 @@ Processes that extract or compute information.
 Kernel Density Estimation
 *************************
 
+.. figure:: images/knn.gif
+    :width: 600px
+    :align: center
+
+    www.mathworks.com
+
 Dimensionality Reduction
 ************************
 
