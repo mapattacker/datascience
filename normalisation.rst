@@ -13,7 +13,7 @@ http://scikit-learn.org/stable/modules/preprocessing.html
     Introduction to Machine Learning in Python
 
 Standard Scaler
------
+----------------
 This changes the data to have means of 0 and standard error of 1.
 
 .. code:: python
@@ -28,7 +28,8 @@ This changes the data to have means of 0 and standard error of 1.
 
 Min Max Scale
 -------------
-Another way to normalise is to use the Min Max Scaler, as defined below:
+Another way to normalise is to use the Min Max Scaler, 
+which changes all features to be between 0 and 1, as defined below:
 
 .. figure:: images/minmaxscaler.png
 
