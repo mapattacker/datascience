@@ -6,7 +6,13 @@ More on sklearn website:
 
 http://scikit-learn.org/stable/modules/preprocessing.html
 
-Scale
+.. figure:: images/kerneldensity.png
+    :width: 600px
+    :align: center
+
+    Introduction to Machine Learning in Python
+
+Standard Scaler
 -----
 This changes the data to have means of 0 and standard error of 1.
 

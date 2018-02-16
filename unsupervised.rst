@@ -24,6 +24,10 @@ Kernel Density Estimation
 
 Dimensionality Reduction
 ************************
+  * Finds an approximate version of your dataset using fewer features
+  * Used for exploring and visualizing a dataset to understand grouping or relationships
+  * Often visualized using a 2-dimensional scatterplot
+  * Also used for compression, finding features for supervised learning
 
 Principal Component Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
