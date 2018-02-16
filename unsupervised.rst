@@ -172,7 +172,7 @@ and the solution occurring the most number of times is chosen.
 
     Introduction to Machine Learning with Python
 
-__Methodology__
+**Methodology**
   1. Specify number of clusters (3)
   2. 3 random data points are randomly selected as cluster centers
   3. Each data point is assigned to the cluster center it is cloest to
