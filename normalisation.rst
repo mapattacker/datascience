@@ -6,7 +6,7 @@ More on sklearn website:
 
 http://scikit-learn.org/stable/modules/preprocessing.html
 
-.. figure:: images/kerneldensity.png
+.. figure:: images/scaling.png
     :width: 600px
     :align: center
 
