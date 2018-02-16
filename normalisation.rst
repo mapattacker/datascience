@@ -12,8 +12,10 @@ http://scikit-learn.org/stable/modules/preprocessing.html
 
     Introduction to Machine Learning in Python
 
+Scaling
+-------
 Standard Scaler
-----------------
+****************
 This changes the data to have means of 0 and standard error of 1.
 
 .. code:: python
@@ -27,7 +29,7 @@ This changes the data to have means of 0 and standard error of 1.
 
 
 Min Max Scale
--------------
+**************
 Another way to normalise is to use the Min Max Scaler, 
 which changes all features to be between 0 and 1, as defined below:
 
@@ -49,12 +51,12 @@ which changes all features to be between 0 and 1, as defined below:
   linridge = Ridge(alpha=20.0).fit(X_train_scaled, y_train)
 
 RobustScaler
--------------
+************
 Works similarly to standard scaler except that it uses median and quartiles, instead of mean and variance.
 Good as it ignores data points that are outliers.
 
 Normalizer
-----------
+***********
 Scales each data point such that the feature vector has a Euclidean length of 1.
 Often used when the direction of the data matters, not the length of the feature vector.
 
