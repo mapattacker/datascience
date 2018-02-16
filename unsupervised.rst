@@ -32,6 +32,10 @@ Dimensionality Reduction
 Principal Component Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+PCA summarises multiple fields of data into principal components, 
+usually just 2 so that it is easier to visualise in a 2-dimensional plot. 
+These 2 components will show the most variance of the entire dataset.
+
 .. code:: python
 
   from sklearn.preprocessing import StandardScaler
