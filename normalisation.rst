@@ -48,6 +48,16 @@ which changes all features to be between 0 and 1, as defined below:
 
   linridge = Ridge(alpha=20.0).fit(X_train_scaled, y_train)
 
+RobustScaler
+-------------
+Works similarly to standard scaler except that it uses median and quartiles, instead of mean and variance.
+Good as it ignores data points that are outliers.
+
+Normalizer
+----------
+Scales each data point such that the feature vector has a Euclidean length of 1.
+Often used when the direction of the data matters, not the length of the feature vector.
+
 Pipeline
 ---------
 Scaling have a chance of leaking the part of the test data in train-test split into the training data.
