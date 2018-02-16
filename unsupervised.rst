@@ -166,6 +166,19 @@ One aspect of k means is that different random starting points for the cluster c
 So typically, the k-means algorithm is run in scikit-learn with ten different random initializations 
 and the solution occurring the most number of times is chosen. 
 
+.. figure:: images/kmeans4.png
+    :width: 600px
+    :align: center
+
+    Introduction to Machine Learning with Python
+
+__Methodology__
+  1. Specify number of clusters (3)
+  2. 3 random data points are randomly selected as cluster centers
+  3. Each data point is assigned to the cluster center it is cloest to
+  4. Cluster centers are updated to the mean of the assigned points
+  5. Steps 3-4 are repeated, till cluster centers remain unchanged
+
 .. figure:: images/kmeans2.png
     :width: 600px
     :align: center

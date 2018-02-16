@@ -7,7 +7,7 @@ More on sklearn website:
 http://scikit-learn.org/stable/modules/preprocessing.html
 
 .. figure:: images/scaling.png
-    :width: 600px
+    :width: 650px
     :align: center
 
     Introduction to Machine Learning in Python
