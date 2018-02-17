@@ -407,9 +407,27 @@ One of the benfits of this clustering is that a hierarchy can be built.
         
 DBSCAN
 *******
-Density-based spatial clustering of applications with noise (DBSCAN). Need to scale/normalise data.
+Density-Based Spatial Clustering of Applications with Noise (DBSCAN). 
+Need to scale/normalise data. DBSCAN works by identifying crowded regions
+referred to as dense regions.
 
-Key parameters are ``eps`` and ``min_samples``.
+Key parameters are ``eps`` and ``min_samples``. 
+If there are at least min_samples many data points within a distance of eps
+to a given data point, that point will be classified as a core sample.
+Core samples that are closer to each other than the distance eps are put into
+the same cluster by DBSCAN.
+
+**Methodology**
+  1. Pick an arbitrary point to start
+  2. Find all points with distance *eps* or less from that point
+  3. If points are more than *min_samples* within distance of *esp*, point is labelled as a core sample, and assigned a new cluster label
+  4. Then all neighbours within *eps* of the point are visited
+  5. If they are core samples their neighbours are visited in turn and so on
+  6. The cluster thus grows till there are no more core samples within distance *eps* of the cluster
+  7. Then, another point that has not been visited is picked, and step 1-6 is repeated
+  8. 3 kinds of points are generated in the end, core points, boundary points, and noise
+
+
 
 .. figure:: images/dbscan.png
     :width: 600px
