@@ -426,6 +426,7 @@ the same cluster by DBSCAN.
   6. The cluster thus grows till there are no more core samples within distance *eps* of the cluster
   7. Then, another point that has not been visited is picked, and step 1-6 is repeated
   8. 3 kinds of points are generated in the end, core points, boundary points, and noise
+  9. Boundary points are core clusters but not within distance of *esp*
 
 
 
