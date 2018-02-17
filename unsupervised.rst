@@ -34,7 +34,7 @@ Principal Component Analysis
 
 PCA summarises multiple fields of data into principal components, 
 usually just 2 so that it is easier to visualise in a 2-dimensional plot. 
-The 1st components will show the most variance of the entire dataset,
+The 1st component will show the most variance of the entire dataset,
 while the 2nd shows the 2nd shows the most variance.
 Because of the strong variance between data points, 
 patterns tend to be teased out from a high dimension to even when there's just two dimensions.
