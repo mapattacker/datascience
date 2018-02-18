@@ -417,6 +417,12 @@ to a given data point, that point will be classified as a core sample.
 Core samples that are closer to each other than the distance eps are put into
 the same cluster by DBSCAN.
 
+.. figure:: images/dbscan1.png
+    :width: 650px
+    :align: center
+
+    Introduction to Machine Learning with Python
+
 **Methodology**
   1. Pick an arbitrary point to start
   2. Find all points with distance *eps* or less from that point
