@@ -175,7 +175,10 @@ Find groups in data & assign every point in the dataset to one of the groups.
 
 K-Means
 **************************
-Need to specify K number of clusters. It is also important to scale the features before applying K-means.
+Need to specify K number of clusters. It is also important to scale the features before applying K-means,
+unless the fields are not meant to be scaled, like distances.
+Categorical data is not appropriate as clustering calculated using euclidean distance (means). 
+For long distances over an lat/long coordinates, they need to be projected to a flat surface.
 
 One aspect of k means is that different random starting points for the cluster centers often result in very different clustering solutions. 
 So typically, the k-means algorithm is run in scikit-learn with ten different random initializations 
