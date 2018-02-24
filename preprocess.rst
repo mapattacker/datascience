@@ -58,7 +58,7 @@ Tree-Based Models
 **Label Encoding**: or conversion of category into integers.
   * Alphabetical order ``sklearn.preprocessing.LabelEncoder``
   * Order of appearance ``pd.factorize``
-**Frequency Encoding**: conversion of catgory into frequencies.
+**Frequency Encoding**: conversion of category into frequencies.
     
 .. code:: python
   
