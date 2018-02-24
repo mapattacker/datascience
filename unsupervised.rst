@@ -35,7 +35,7 @@ Principal Component Analysis
 PCA summarises multiple fields of data into principal components, 
 usually just 2 so that it is easier to visualise in a 2-dimensional plot. 
 The 1st component will show the most variance of the entire dataset,
-while the 2nd shows the 2nd shows the most variance.
+while the 2nd shows the 2nd shows the most variance at a right angle to the 1st.
 Because of the strong variance between data points, 
 patterns tend to be teased out from a high dimension to even when there's just two dimensions.
 These 2 components can serve as new features for a supervised analysis.
@@ -184,7 +184,7 @@ One aspect of k means is that different random starting points for the cluster c
 So typically, the k-means algorithm is run in scikit-learn with ten different random initializations 
 and the solution occurring the most number of times is chosen. 
 
-.. figure:: images/kmeans4.png
+.. figure:: images/kmeans4.png1
     :width: 600px
     :align: center
 
