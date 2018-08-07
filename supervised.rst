@@ -771,7 +771,7 @@ Parameters include
 |
 Regression
 ----------
-When response is a numerical value.
+When response is a continuous value.
 
 OLS Regression
 ***************************************
@@ -1087,8 +1087,24 @@ Polynomial Regression
        .format(linreg.score(X_train, y_train)))
   print('(poly deg 2 + ridge) R-squared score (test): {:.3f}'
        .format(linreg.score(X_test, y_test)))
-       
-       
+
+Decision Tree Regressor
+************************
+Same as decision tree classifier but the target is continuous.
+
+.. code:: python
+
+  from sklearn.tree import DecisionTreeRegressor
+
+Random Forest Regressor
+************************
+Same as randomforest classifier but the target is continuous.
+
+.. code:: python
+
+  from sklearn.tree import RandomForestRegressor
+
+
 Neutral Networks
 *****************
 
