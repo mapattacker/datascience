@@ -3,6 +3,7 @@ Supervised Learning
 
 Classification
 --------------
+When response is a categorical value.
 
 K Nearest Neighbours (KNN)
 **************************
@@ -770,13 +771,14 @@ Parameters include
 |
 Regression
 ----------
+When response is a numerical value.
 
 OLS Regression
 ***************************************
 Ordinary Least Squares Regression or OLS Regression is the most basic form and fundamental of regression.
 Best fit line ``ŷ = a + bx`` is drawn based on the ordinary least squares method. i.e., least total area of squares (sum of squares) with length from each x,y point to regresson line.
 
-OLS can be conducted using statsmodel package...
+OLS can be conducted using statsmodel package.
 
 .. code:: python
 
