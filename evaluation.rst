@@ -321,12 +321,14 @@ Print out the ``best_params_`` and rebuild the model with these optimal paramete
 
   # choose a classifier
   clf = SVC(kernel='rbf')
+
   # input grid value range
   grid_values = {'gamma': [0.001, 0.01, 0.05, 0.1, 1, 10, 100]}
   # other parameters can be input in the dictionary, e.g.,
   # grid_values = {'gamma': [0.01, 0.1, 1, 10], 'C': [0.01, 0.1, 1, 10]}
   # OR n_estimators, max_features from RandomForest
   # default metric to optimize over grid parameters: accuracy
+  
   grid_clf_acc = GridSearchCV(clf, param_grid = grid_values, random_state=0)
   
   grid_clf_acc.fit(X_train, y_train)

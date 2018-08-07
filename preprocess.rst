@@ -58,6 +58,26 @@ Tree-Based Models
 **Label Encoding**: or conversion of category into integers.
   * Alphabetical order ``sklearn.preprocessing.LabelEncoder``
   * Order of appearance ``pd.factorize``
+
+.. code:: python
+
+  from sklearn import preprocessing    
+
+  # Test data
+  df = DataFrame(['A', 'B', 'B', 'C'], columns=['Col'])    
+
+  df['Fact'] = pd.factorize(df['Col'])[0]
+  
+  le = preprocessing.LabelEncoder()
+  df['Lab'] = le.fit_transform(df['Col'])
+
+  print(df)
+  #   Col  Fact  Lab
+  # 0   A     0    0
+  # 1   B     1    1
+  # 2   B     1    1
+  # 3   C     2    2
+
 **Frequency Encoding**: conversion of category into frequencies.
     
 .. code:: python
