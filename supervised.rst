@@ -66,10 +66,12 @@ Uses gini index to split the data at binary level.
 Pruning can be done to remove the leaves to prevent overfitting but that is not available in sklearn.
 Small changes in data can lead to different splits. Not very reproducible for future data (see random forest).
 
+More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuning-for-decision-tree-6753118a03c3
+
 
 .. code:: python
 
-  ###### IMPORT MODULES #### ###
+  ###### IMPORT MODULES #######
   import pandas as pd
   import numpy as np
   from sklearn.tree import DecisionTreeClassifier
@@ -128,8 +130,9 @@ Small changes in data can lead to different splits. Not very reproducible for fu
 
   ####### FEATURE IMPORTANCE #### ####
   df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
-
-  >>> df2.sort_values(by=0,ascending=False)
+  df2 = df2.sort_values(by=0,ascending=False)
+  df2.columns = ['feature importance']
+  >>> df2
   petal width (cm)	0.952542
   petal length (cm)	0.029591
   sepal length (cm)	0.017867
@@ -173,7 +176,7 @@ An ensemble of decision trees.
 
 Randomness is introduced by two ways:
  * **Bootstrap**: If your training set has N instances or samples in total, a bootstrap sample of size N is created by just repeatedly picking one of the N dataset rows at random with replacement, that is, allowing for the possibility of picking the same row again at each selection. You repeat this random selection process N times. The resulting bootstrap sample has N rows just like the original training set but with possibly some rows from the original dataset missing and others occurring multiple times just due to the nature of the random selection with replacement. This process is repeated to generate n samples, using the parameter ``n_estimators``, which will eventually generate n number decision trees.
- * **Splitting Features**:  When picking the best split for a node, instead of finding the best split across all possible features (decision tree), a random subset of features is chosen and the best split is found within that smaller subset of features. The number of features in the subset that are randomly considered at each stage is controlled by the ``max_features parameter``.    
+ * **Splitting Features**:  When picking the best split for a node, instead of finding the best split across all possible features (decision tree), a random subset of features is chosen and the best split is found within that smaller subset of features. The number of features in the subset that are randomly considered at each stage is controlled by the ``max_features`` parameter.    
 
 This randomness in selecting the bootstrap sample to train an individual tree in a forest ensemble, 
 combined with the fact that splitting a node in the tree is restricted to random subsets of the features of the split, 
@@ -254,7 +257,9 @@ Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jo
   ####### FEATURE IMPORTANCE #### ####
   # rank the importance of features
   df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
-  >>> df2.sort_values(by=0,ascending=False)
+  df2 = df2.sort_values(by=0,ascending=False)
+  df2.columns = ['feature importance']
+
   RM	0.225612
   LSTAT	0.192478
   CRIM	0.108510
