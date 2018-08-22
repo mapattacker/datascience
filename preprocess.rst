@@ -96,7 +96,11 @@ Tree-Based Models
 
 Non-Tree Based Models
 **********************
-**One-Hot Encoding**: each category is one field of 1 & 0. Not good if too many categories in a feature. Need to store in sparse matrix.
+**One-Hot Encoding**: We could use an integer encoding directly, rescaled where needed. 
+This may work for problems where there is a natural ordinal relationship between the categories, and in turn the integer values, such as labels for temperature ‘cold’, warm’, and ‘hot’.
+There may be problems when there is no *ordinal* relationship and allowing the representation to lean on any such relationship might be damaging to learning to solve the problem. An example might be the labels ‘dog’ and ‘cat’.
+
+Each category is one binary field of 1 & 0. Not good if too many categories in a feature. Need to store in sparse matrix.
   * Dummies: ``pd.get_dummies``
   * sklearn: ``sklearn.preprocessing.OneHotEncoder``
 

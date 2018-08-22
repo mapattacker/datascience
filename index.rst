@@ -19,7 +19,8 @@ This documentation summarises various machine learning techniques in Python.
    normalisation
    dataleakage
    supervised
-   sl-deeplearning
    unsupervised
+   sl-deeplearning
    evaluation
+   ethics
    resources

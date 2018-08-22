@@ -269,11 +269,14 @@ and some have both. Whichever one is available works fine for an ROC curve.
     :align: center
     
     
-Cross-Validation
+K-fold Cross-Validation
 ------------------
 
 Takes more time and computation to use k-fold, but well worth the cost. 
 By default, sklean uses stratified k-fold cross validation. Another type is 'leave one out' cross-validation.
+
+The mean of the final scores among each k model is the most generalised output.
+This output can be compared to model result from a initial simple train-test split to see if it is over or underfitting.
 
 More here_.
 
