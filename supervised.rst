@@ -139,7 +139,7 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
   sepal width (cm)	0.000000
 
 Viewing the decision tree requires installing of the two packages `conda install graphviz` &
-`conda install pydotplus`
+`conda install pydotplus`.
 
 .. code:: python
 

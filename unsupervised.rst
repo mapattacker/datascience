@@ -24,6 +24,7 @@ Kernel Density Estimation
 
 Dimensionality Reduction
 ************************
+  * __Curse of Dimensionality__: Very hard to visualise 
   * Finds an approximate version of your dataset using fewer features
   * Used for exploring and visualizing a dataset to understand grouping or relationships
   * Often visualized using a 2-dimensional scatterplot
@@ -34,7 +35,7 @@ Principal Component Analysis
 
 PCA summarises multiple fields of data into principal components, 
 usually just 2 so that it is easier to visualise in a 2-dimensional plot. 
-The 1st component will show the most variance of the entire dataset,
+The 1st component will show the most variance of the entire dataset in the hyperplane,
 while the 2nd shows the 2nd shows the most variance at a right angle to the 1st.
 Because of the strong variance between data points, 
 patterns tend to be teased out from a high dimension to even when there's just two dimensions.
@@ -66,6 +67,17 @@ quora_.
   
   # RESULTS
   (569, 30) (569, 2)
+
+To see how much variance is preserved for each dataset.
+
+.. code:: python
+
+   percent = X_pca.explained_variance_ratio_
+   print(percent)
+   print(sum(percent))
+
+   # [0.9246348, 0.05238923] 1st component explained variance of 92%, 2nd explained 5%
+   # 0.986 total variance explained from 2 components is 97%
 
 Plotting the PCA-transformed version of the breast cancer dataset. 
 We can see that malignant and benign cells cluster between two groups and can apply a linear classifier
