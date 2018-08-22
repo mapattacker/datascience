@@ -58,7 +58,7 @@ K Nearest Neighbours (KNN)
 
 Decision Tree
 **************************
-Uses gini index to split the data at binary level.
+Uses gini index (default) or entropy to split the data at binary level.
 
 **Strengths:** Can select a large number of features that best determine the targets.
 
@@ -155,6 +155,16 @@ Parameters to tune decision trees include **maxdepth** & **min sample leaf**.
   plot_decision_tree(clf, cancer.feature_names, cancer.target_names)
 
 
+Ensemble Learning
+**************************
+
+.. figure:: images/ensemble.png
+    :width: 600px
+    :align: center
+
+    Udemy Machine Learning Course by Frank Kane
+
+
 Random Forest
 **************************
 An ensemble of decision trees.
@@ -175,7 +185,7 @@ An ensemble of decision trees.
     University of Michigan: Coursera Data Science in Python
 
 Randomness is introduced by two ways:
- * **Bootstrap**: If your training set has N instances or samples in total, a bootstrap sample of size N is created by just repeatedly picking one of the N dataset rows at random with replacement, that is, allowing for the possibility of picking the same row again at each selection. You repeat this random selection process N times. The resulting bootstrap sample has N rows just like the original training set but with possibly some rows from the original dataset missing and others occurring multiple times just due to the nature of the random selection with replacement. This process is repeated to generate n samples, using the parameter ``n_estimators``, which will eventually generate n number decision trees.
+ * **Bootstrap**: AKA bagging. If your training set has N instances or samples in total, a bootstrap sample of size N is created by just repeatedly picking one of the N dataset rows at random with replacement, that is, allowing for the possibility of picking the same row again at each selection. You repeat this random selection process N times. The resulting bootstrap sample has N rows just like the original training set but with possibly some rows from the original dataset missing and others occurring multiple times just due to the nature of the random selection with replacement. This process is repeated to generate n samples, using the parameter ``n_estimators``, which will eventually generate n number decision trees.
  * **Splitting Features**:  When picking the best split for a node, instead of finding the best split across all possible features (decision tree), a random subset of features is chosen and the best split is found within that smaller subset of features. The number of features in the subset that are randomly considered at each stage is controlled by the ``max_features`` parameter.    
 
 This randomness in selecting the bootstrap sample to train an individual tree in a forest ensemble, 
