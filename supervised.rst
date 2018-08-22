@@ -138,6 +138,26 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
   sepal length (cm)	0.017867
   sepal width (cm)	0.000000
 
+Viewing the decision tree requires installing of the two packages `conda install graphviz` &
+`conda install pydotplus`
+
+.. code:: python
+
+  from sklearn.externals.six import StringIO  
+  from IPython.display import Image  
+  from sklearn.tree import export_graphviz
+  import pydotplus
+  dot_data = StringIO()
+  export_graphviz(dtree, out_file=dot_data,  
+                  filled=True, rounded=True,
+                  special_characters=True)
+  graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
+  Image(graph.create_png())
+
+
+.. figure:: images/decisiongraph.png
+    :width: 800px
+    :align: center
 
 Parameters to tune decision trees include **maxdepth** & **min sample leaf**.
 
