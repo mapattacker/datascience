@@ -42,7 +42,7 @@ patterns tend to be teased out from a high dimension to even when there's just t
 These 2 components can serve as new features for a supervised analysis.
 
 .. figure:: images/pca3.png
-    :width: 600px
+    :width: 500px
     :align: center
 
 In short, PCA finds the best possible characteristics, 
