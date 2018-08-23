@@ -59,15 +59,16 @@ quora_. The most challenging part of PCA is interpreting the components.
   from sklearn.datasets import load_breast_cancer
 
   cancer = load_breast_cancer()
-  (X_cancer, y_cancer) = load_breast_cancer(return_X_y = True)
+  df = pd.DataFrame(cancer['data'],columns=cancer['feature_names'])
 
   # Before applying PCA, each feature should be centered (zero mean) and with unit variance
-  X_normalized = StandardScaler().fit(X_cancer).transform(X_cancer)  
+  scaled_data = StandardScaler().fit(df).transform(df)  
 
-  pca = PCA(n_components = 2).fit(X_normalized)
+  pca = PCA(n_components = 2).fit(scaled_data)
+  # PCA(copy=True, n_components=2, whiten=False)
 
-  X_pca = pca.transform(X_normalized)
-  print(X_cancer.shape, X_pca.shape)
+  x_pca = pca.transform(scaled_data)
+  print(df.shape, x_pca.shape)
   
   # RESULTS
   (569, 30) (569, 2)
@@ -76,7 +77,7 @@ To see how much variance is preserved for each dataset.
 
 .. code:: python
 
-   percent = X_pca.explained_variance_ratio_
+   percent = x_pca.explained_variance_ratio_
    print(percent)
    print(sum(percent))
 
@@ -89,12 +90,10 @@ to this two dimensional representation of the dataset.
 
 .. code:: python
 
-  from adspy_shared_utilities import plot_labelled_scatter
-  plot_labelled_scatter(X_pca, y_cancer, ['malignant', 'benign'])
-
-  plt.xlabel('First principal component')
-  plt.ylabel('Second principal component')
-  plt.title('Breast Cancer Dataset PCA (n_components = 2)');
+    plt.figure(figsize=(8,6))
+    plt.scatter(x_pca[:,0], x_pca[:,1], c=cancer['target'], cmap='plasma', alpha=0.4, edgecolors='black', s=65);
+    plt.xlabel('First principal component')
+    plt.ylabel('Second Principal Component')
 
   
 .. figure:: images/pca1.png
@@ -103,6 +102,7 @@ to this two dimensional representation of the dataset.
       
       
 Plotting the magnitude of each feature value for the first two principal components.
+This gives the best explanation for the components for each field.
 
 .. code:: python
 

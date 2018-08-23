@@ -48,7 +48,7 @@ To view each dataset's description, use ``print boston['DESCR']``.
   # Load Iris data (https://en.wikipedia.org/wiki/Iris_flower_data_set)
   iris = load_iris()
   # Load iris into a dataframe and set the field names
-  df = pd.DataFrame(iris.data, columns=iris.feature_names)
+  df = pd.DataFrame(iris['data'], columns=iris['feature_names'])
   df.head()
   
   sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)
