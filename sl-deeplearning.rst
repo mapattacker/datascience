@@ -26,7 +26,7 @@ View it here_. An excellent guide_ also gives a great background on the basics.
 
 
 :Learning Rate: Determines the learning speed (0.00001 to 10)
-:Activation: Select type of activation function. (ReLU, Tanh, Sigmoid, Linear)
+:Activation: The activation function is what tells the perceptron to fire or not. eg. (ReLU, Tanh, Sigmoid, Linear)
 :Regularizaton: Type of Regularization to reduce overfitting. ``L1``: can reduce coefficients to 0. Useful for few features. ``L1``: useful for inputs that are correlated. 
 :Regularization Rate: 0 to 10
 :Problem Type: Classificatoin or Regression
