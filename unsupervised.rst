@@ -24,7 +24,7 @@ Kernel Density Estimation
 
 Dimensionality Reduction
 ************************
-  * __Curse of Dimensionality__: Very hard to visualise 
+  * **Curse of Dimensionality**: Very hard to visualise with many dimensions
   * Finds an approximate version of your dataset using fewer features
   * Used for exploring and visualizing a dataset to understand grouping or relationships
   * Often visualized using a 2-dimensional scatterplot
