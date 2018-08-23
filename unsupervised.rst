@@ -41,9 +41,13 @@ Because of the strong variance between data points,
 patterns tend to be teased out from a high dimension to even when there's just two dimensions.
 These 2 components can serve as new features for a supervised analysis.
 
+.. figure:: images/pca3.png
+    :width: 600px
+    :align: center
+
 In short, PCA finds the best possible characteristics, 
 that summarises the classes of a feature. Two excellent sites elaborate more: setosa_,
-quora_.
+quora_. The most challenging part of PCA is interpreting the components.
 
 .. _setosa: http://setosa.io/ev/principal-component-analysis/
 .. _quora: https://www.quora.com/What-is-an-intuitive-explanation-for-PCA
