@@ -97,7 +97,7 @@ to this two dimensional representation of the dataset.
 
   
 .. figure:: images/pca1.png
-    :width: 600px
+    :width: 500px
     :align: center
       
       
