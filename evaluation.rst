@@ -34,18 +34,25 @@ Search query suggestion, Document classification, customer-facing tasks.
 **1. Confusion Matrix**
 
 Plain vanilla matrix. Not very useful as does not show the labels. 
-However, matrix can be used to build a heatmap using plotly directly.
+However, the matrix can be used to build a heatmap using plotly directly.
 
-print (sklearn.metrics.confusion_matrix(test_target,predictions))
-[[14  0  0]
- [ 0 13  0]
- [ 0  1 10]]
+.. code:: python
+  
+  print (sklearn.metrics.confusion_matrix(test_target,predictions))
+  [[14  0  0]
+  [ 0 13  0]
+  [ 0  1 10]]
 
-# make heatmap using plotly
-layout = go.Layout(width=800, height=400)
-data = go.Heatmap(z=x,x=title,y=title)
-fig = go.Figure(data=[data], layout=layout)
-iplot(fig)
+  # make heatmap using plotly
+  from plotly.offline import iplot
+  from plotly.offline import init_notebook_mode
+  import plotly.graph_objs as go
+  init_notebook_mode(connected=True)
+
+  layout = go.Layout(width=800, height=400)
+  data = go.Heatmap(z=x,x=title,y=title)
+  fig = go.Figure(data=[data], layout=layout)
+  iplot(fig)
 
 
 .. image:: images/confusion4.png
