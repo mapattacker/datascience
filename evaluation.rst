@@ -33,12 +33,24 @@ Search query suggestion, Document classification, customer-facing tasks.
 
 **1. Confusion Matrix**
 
-Plain vanilla matrix. Not very useful as does not show the labels
+Plain vanilla matrix. Not very useful as does not show the labels. 
+However, matrix can be used to build a heatmap using plotly directly.
 
->>> print sklearn.metrics.confusion_matrix(test_target,predictions)
+print (sklearn.metrics.confusion_matrix(test_target,predictions))
 [[14  0  0]
  [ 0 13  0]
  [ 0  1 10]]
+
+# make heatmap using plotly
+layout = go.Layout(width=800, height=400)
+data = go.Heatmap(z=x,x=title,y=title)
+fig = go.Figure(data=[data], layout=layout)
+iplot(fig)
+
+
+.. image:: images/confusion4.png
+    :scale: 50 %
+    :align: center
 
 With pandas crosstab. Convert encoding into labels and put the two pandas series into a crosstab.
 
