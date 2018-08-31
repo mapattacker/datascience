@@ -40,6 +40,15 @@ Plain vanilla matrix.
  [ 0 13  0]
  [ 0  1 10]]
 
+With pandas crosstab
+
+confusion = pd.crosstab(Original, Predicted)
+confusion
+
+.. image:: images/confusion_crosstab.png
+    :scale: 40 %
+    :align: center
+
 Using a heatmap.
 
 .. code:: python
@@ -273,7 +282,7 @@ K-fold Cross-Validation
 ------------------
 
 Takes more time and computation to use k-fold, but well worth the cost. 
-By default, sklean uses stratified k-fold cross validation. Another type is 'leave one out' cross-validation.
+By default, sklearn uses stratified k-fold cross validation. Another type is 'leave one out' cross-validation.
 
 The mean of the final scores among each k model is the most generalised output.
 This output can be compared to different model results for comparison.
