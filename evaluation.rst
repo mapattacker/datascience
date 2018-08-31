@@ -33,14 +33,14 @@ Search query suggestion, Document classification, customer-facing tasks.
 
 **1. Confusion Matrix**
 
-Plain vanilla matrix.
+Plain vanilla matrix. Not very useful as does not show the labels
 
 >>> print sklearn.metrics.confusion_matrix(test_target,predictions)
 [[14  0  0]
  [ 0 13  0]
  [ 0  1 10]]
 
-With pandas crosstab
+With pandas crosstab. Convert encoding into labels and put the two pandas series into a crosstab.
 
 confusion = pd.crosstab(Original, Predicted)
 confusion
