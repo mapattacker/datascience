@@ -42,8 +42,10 @@ Plain vanilla matrix. Not very useful as does not show the labels
 
 With pandas crosstab. Convert encoding into labels and put the two pandas series into a crosstab.
 
-confusion = pd.crosstab(Original, Predicted)
-confusion
+.. code:: python
+
+  confusion = pd.crosstab(Original, Predicted)
+  confusion
 
 .. image:: images/confusion_crosstab.png
     :scale: 40 %
