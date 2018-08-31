@@ -54,6 +54,12 @@ However, the matrix can be used to build a heatmap using plotly directly.
   fig = go.Figure(data=[data], layout=layout)
   iplot(fig)
 
+  # this gives the values of each cell, but api unable to change the layout size
+  import plotly.figure_factory as ff
+  layout = go.Layout(width=800, height=500)
+  data = ff.create_annotated_heatmap(z=x,x=title,y=title)
+  iplot(data)
+
 
 .. image:: images/confusion4.png
     :scale: 50 %
