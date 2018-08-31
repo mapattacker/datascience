@@ -44,6 +44,31 @@ With pandas crosstab. Convert encoding into labels and put the two pandas series
 
 .. code:: python
 
+  def forest(x):
+    if x==1:
+        return 'Spruce/Fir'
+    elif x==2:
+        return 'Lodgepole Pine'
+    elif x==3:
+        return 'Ponderosa Pine'
+    elif x==4:
+        return 'Cottonwood/Willow'
+    elif x==5:
+        return 'Aspen'
+    elif x==6:
+        return 'Douglas-fir'
+    elif x==7:
+        return 'Krummholz'
+
+  # Create pd Series for Original
+  Original = test_target.apply(lambda x: forest(x))
+  Original.name = 'Original'
+
+  # Create pd Series for Predicted
+  Predicted = pd.DataFrame(predictions, columns=['Predicted'])
+  Predicted = Predicted[Predicted.columns[0]].apply(lambda x: forest(x))
+
+  # Create Confusion Matrix
   confusion = pd.crosstab(Original, Predicted)
   confusion
 
@@ -55,15 +80,8 @@ Using a heatmap.
 
 .. code:: python
   
-   # create confusion matrix
-   confusion_mc = confusion_matrix(y_test_mc, svm_predicted_mc)
-   # convert to a dataframe
-   df_cm = pd.DataFrame(confusion_mc, 
-                        index = [i for i in range(0,10)], 
-                        columns = [i for i in range(0,10)])
-   # plot graph
-   plt.figure(figsize=(5.5,4)) # define graph
-   sns.heatmap(df_cm, annot=True) # draw heatmap, add annotation
+   # add confusion matrix from pd.crosstab earlier
+   sns.heatmap(confusion,annot=True);
 
 
 .. image:: images/confusion3.png
