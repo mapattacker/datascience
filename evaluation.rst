@@ -276,7 +276,7 @@ Takes more time and computation to use k-fold, but well worth the cost.
 By default, sklean uses stratified k-fold cross validation. Another type is 'leave one out' cross-validation.
 
 The mean of the final scores among each k model is the most generalised output.
-This output can be compared to model result from a initial simple train-test split to see if it is over or underfitting.
+This output can be compared to different model results for comparison.
 
 More here_.
 
@@ -291,14 +291,25 @@ More here_.
 .. code:: python
 
   from sklearn.model_selection import cross_val_score
+  from sklearn.tree import DecisionTreeClassifier
+  from sklearn.ensemble import RandomForestClassifier
+  from sklearn.neighbors import KNeighborsClassifier
 
-  clf = KNeighborsClassifier(n_neighbors = 5)
-  X = X_fruits_2d.as_matrix()
-  y = y_fruits_2d.as_matrix()
-  cv_scores = cross_val_score(clf, X, y)
+  models = [('Decision Tree\t',DecisionTreeClassifier()),\
+            ('Random Forest\t', RandomForestClassifier()), \
+            ('KNN\t\t', KNeighborsClassifier())]
 
-  print('Cross-validation scores (3-fold):', cv_scores)
-  print('Mean cross-validation score (3-fold): {:.3f}'.format(np.mean(cv_scores)))
+  predictor = df[df.columns[1:-1]]
+  target = df['Cover_Type']
+
+  # using 5-fold cross validation mean scores
+  for clf in models:
+      cv_scores = cross_val_score(clf[1], predictor, target, cv=5)
+      print(clf[0], np.mean(cv_scores))
+
+  # Decision Tree	 0.707473544974
+  # Random Forest	 0.753571428571
+  # KNN		         0.691005291005
 
 
 Grid-Search

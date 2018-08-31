@@ -101,8 +101,8 @@ This may work for problems where there is a natural ordinal relationship between
 There may be problems when there is no *ordinal* relationship and allowing the representation to lean on any such relationship might be damaging to learning to solve the problem. An example might be the labels ‘dog’ and ‘cat’.
 
 Each category is one binary field of 1 & 0. Not good if too many categories in a feature. Need to store in sparse matrix.
-  * Dummies: ``pd.get_dummies``
-  * sklearn: ``sklearn.preprocessing.OneHotEncoder``
+  * Dummies: ``pd.get_dummies``, this converts a string into binary, and splits the columns according to n categories
+  * sklearn: ``sklearn.preprocessing.OneHotEncoder``, string has to be converted into numeric, then stored in a sparse matrix.
 
 **Feature Interactions**: interactions btw categorical features
   * Linear Models & KNN
