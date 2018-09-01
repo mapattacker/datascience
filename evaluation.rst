@@ -39,9 +39,13 @@ However, the matrix can be used to build a heatmap using plotly directly.
 .. code:: python
   
   print (sklearn.metrics.confusion_matrix(test_target,predictions))
-  [[14  0  0]
-  [ 0 13  0]
-  [ 0  1 10]]
+  array([[288,  64,   1,   0,   7,   3,  31],
+         [104, 268,  11,   0,  43,  15,   5],
+         [  0,   5, 367,  15,   6,  46,   0],
+         [  0,   0,  11, 416,   0,   4,   0],
+         [  1,  13,   5,   0, 424,   4,   0],
+         [  0,   5,  75,  22,   4, 337,   0],
+         [ 20,   0,   0,   0,   0,   0, 404]])
 
   # make heatmap using plotly
   from plotly.offline import iplot
