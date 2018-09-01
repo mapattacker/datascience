@@ -5,6 +5,9 @@ Exploratory data analysis (EDA) is an essential step to understand the data bett
 to make adjustments, and engineer features before modelling.
 This often requires skills in visualisation to better interprete the data.
 
+Correlation Plots
+------------------
+Using plot.ly
 
 .. code:: python
 
@@ -23,6 +26,7 @@ This often requires skills in visualisation to better interprete the data.
     fig = go.Figure(data=[data], layout=layout)
     iplot(fig)
 
+Using seaborn
 
 .. image:: images/corr1.png
     :scale: 60 %
