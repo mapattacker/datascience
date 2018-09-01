@@ -26,11 +26,11 @@ Using plot.ly
     fig = go.Figure(data=[data], layout=layout)
     iplot(fig)
 
-Using seaborn
-
 .. image:: images/corr1.png
     :scale: 60 %
     :align: center
+
+Using seaborn
 
 .. code:: python
 
