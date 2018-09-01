@@ -65,6 +65,10 @@ However, the matrix can be used to build a heatmap using plotly directly.
     :scale: 50 %
     :align: center
 
+.. image:: images/confusion5.png
+    :scale: 50 %
+    :align: center
+
 With pandas crosstab. Convert encoding into labels and put the two pandas series into a crosstab.
 
 .. code:: python
