@@ -90,7 +90,7 @@ With pandas crosstab. Convert encoding into labels and put the two pandas series
         return 'Krummholz'
 
   # Create pd Series for Original
-  # need to reset index as it train_test is randomised
+  # need to reset index as train_test is randomised
   Original = test_target.apply(lambda x: forest(x)).reset_index(drop=True)
   Original.name = 'Original'
 
