@@ -385,6 +385,27 @@ You can work through many combination only changing parameters a bit.
 
 Print out the ``best_params_`` and rebuild the model with these optimal parameters. 
 
+Simple example.
+
+.. code:: python
+  from sklearn.model_selection import GridSearchCV
+  from sklearn.ensemble import RandomForestClassifier
+
+  model = RandomForestClassifier()
+
+  grid_values = {'n_estimators':[150,175,200,225]}
+  grid = GridSearchCV(model, param_grid = grid_values, cv=5)
+  grid.fit(predictor, target)
+
+  print(grid.best_params_)
+  print(grid.best_score_)
+
+  # {'n_estimators': 200}
+  # 0.786044973545
+
+
+Others.
+
 .. code:: python
 
   from sklearn.svm import SVC

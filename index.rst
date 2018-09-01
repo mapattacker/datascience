@@ -15,6 +15,7 @@ This documentation summarises various machine learning techniques in Python.
 
    general
    datasets
+   exploratory
    preprocess
    normalisation
    dataleakage
