@@ -1,8 +1,8 @@
 Exploratory Data Analysis
 =========================
 
-Exploratory data analysis (EDA) is an essential step to understand the data better,
-to make adjustments, and engineer features before modelling.
+Exploratory data analysis (EDA) is an essential step to understand the data better;
+in order to make adjustments, and engineer features before modelling.
 This often requires skills in visualisation to better interprete the data.
 
 Correlation Plots
