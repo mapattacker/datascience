@@ -90,7 +90,8 @@ With pandas crosstab. Convert encoding into labels and put the two pandas series
         return 'Krummholz'
 
   # Create pd Series for Original
-  Original = test_target.apply(lambda x: forest(x))
+  # need to reset index as it train_test is randomised
+  Original = test_target.apply(lambda x: forest(x)).reset_index(drop=True)
   Original.name = 'Original'
 
   # Create pd Series for Predicted
@@ -110,7 +111,8 @@ Using a heatmap.
 .. code:: python
   
    # add confusion matrix from pd.crosstab earlier
-   sns.heatmap(confusion,annot=True);
+   plt.figure(figsize=(10, 5))
+   sns.heatmap(confusion,annot=True,cmap=sns.cubehelix_palette(8));
 
 
 .. image:: images/confusion3.png
