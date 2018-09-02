@@ -16,11 +16,11 @@ can have high prediction importance if they do not overlap. Also can be use for 
 
     plt.figure(figsize=(7, 5))
     cmap = sns.color_palette("Set3")
-    sns.boxplot(x='cover_names', y='Elevation', data=df, palette=cmap);
+    sns.boxplot(x='Cover_Type', y='Elevation', data=df, palette=cmap);
     plt.xticks(rotation=45);
 
 .. image:: images/box1.png
-    :scale: 60 %
+    :scale: 50 %
     :align: center
 
 
