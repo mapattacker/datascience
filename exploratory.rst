@@ -23,6 +23,25 @@ can have high prediction importance if they do not overlap. Also can be use for 
     :scale: 50 %
     :align: center
 
+Multiple Plots
+
+.. code:: python
+
+    cmap = sns.color_palette("Set2")
+
+    fig, axes = plt.subplots(ncols=2, nrows=5, figsize=(10, 18))
+    a = [i for i in axes for i in i]
+    for i, ax in enumerate(a):
+        sns.boxplot(x='Cover_Type', y=eda2.columns[i], data=eda, palette=cmap, width=0.5, ax=ax);
+
+    # rotate x-axis for every single plot
+    for ax in fig.axes:
+        plt.sca(ax)
+        plt.xticks(rotation=45)
+
+    # set spacing for every subplot, else x-axis will be covered
+    plt.tight_layout()
+
 
 Correlation Plots
 ------------------
