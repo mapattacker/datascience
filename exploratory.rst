@@ -8,7 +8,7 @@ This often requires skills in visualisation to better interpret the data.
 
 Count Plots
 ------------
-For **categorical** features, you may want to compare them 
+For **categorical** features, you may want to see if they have enough sample size for each category.
 
 .. code:: python
 
