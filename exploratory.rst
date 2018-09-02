@@ -5,6 +5,23 @@ Exploratory data analysis (EDA) is an essential step to understand the data bett
 in order to engineer and select features before modelling.
 This often requires skills in visualisation to better interpret the data.
 
+
+Box Plots
+----------
+Using the 50 percentile to compare among different classes, it is easy to find feature that
+can have high prediction importance if they do not overlap. Also can be use for outlier detection.
+
+.. code:: python
+
+    plt.figure(figsize=(7, 5))
+    cmap = sns.color_palette("Set3")
+    sns.boxplot(x='cover_names', y='Elevation', data=df, palette=cmap);
+    plt.xticks(rotation=45);
+
+.. image:: images/box1.png
+    :align: center
+
+
 Correlation Plots
 ------------------
 
