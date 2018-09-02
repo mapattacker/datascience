@@ -42,7 +42,7 @@ To check for possible relationships with the target, place the feature under hue
     plt.xticks(rotation=45);
 
 .. image:: images/countplot2.png
-    :scale: 50 %
+    :scale: 40 %
     :align: center
 
 Box Plots
@@ -59,7 +59,7 @@ Features have to be **continuous**.
     plt.xticks(rotation=45);
 
 .. image:: images/box1.png
-    :scale: 50 %
+    :scale: 40 %
     :align: center
 
 Multiple Plots
