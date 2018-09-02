@@ -11,6 +11,10 @@ Count Plots
 For **categorical** features, you may want to see if they have enough sample size for each category.
 
 .. code:: python
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    %config InlineBackend.figure_format = 'retina'
+    %matplotlib inline
 
     df['Wildnerness'].value_counts()
 
@@ -28,6 +32,18 @@ For **categorical** features, you may want to see if they have enough sample siz
     :scale: 50 %
     :align: center
 
+
+To check for possible relationships with the target, place the feature under hue.
+
+.. code:: python
+
+    plt.figure(figsize=(12,6))
+    sns.countplot(x='Cover_Type',data=wild, hue='Wilderness');
+    plt.xticks(rotation=45);
+
+.. image:: images/countplot2.png
+    :scale: 50 %
+    :align: center
 
 Box Plots
 ----------
