@@ -10,6 +10,7 @@ Box Plots
 ----------
 Using the 50 percentile to compare among different classes, it is easy to find feature that
 can have high prediction importance if they do not overlap. Also can be use for outlier detection.
+**Features have to be continuous.**
 
 .. code:: python
 
