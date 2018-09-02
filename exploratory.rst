@@ -6,11 +6,34 @@ in order to engineer and select features before modelling.
 This often requires skills in visualisation to better interpret the data.
 
 
+Count Plots
+------------
+For **categorical** features, you may want to compare them 
+
+.. code:: python
+
+    df['Wildnerness'].value_counts()
+
+    Comanche Peak      6349
+    Cache la Poudre    4675
+    Rawah              3597
+    Neota               499
+    Name: Wildnerness, dtype: int64
+
+    cmap = sns.color_palette("Set2")
+    sns.countplot(x='Wildnerness',data=df, palette=cmap);
+    plt.xticks(rotation=45);
+
+.. image:: images/countplot.png
+    :scale: 50 %
+    :align: center
+
+
 Box Plots
 ----------
 Using the 50 percentile to compare among different classes, it is easy to find feature that
 can have high prediction importance if they do not overlap. Also can be use for outlier detection.
-**Features have to be continuous.**
+Features have to be **continuous**.
 
 .. code:: python
 
