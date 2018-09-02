@@ -20,6 +20,7 @@ can have high prediction importance if they do not overlap. Also can be use for 
     plt.xticks(rotation=45);
 
 .. image:: images/box1.png
+    :scale: 60 %
     :align: center
 
 
