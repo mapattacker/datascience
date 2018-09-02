@@ -42,6 +42,9 @@ Multiple Plots
     # set spacing for every subplot, else x-axis will be covered
     plt.tight_layout()
 
+.. image:: images/box2.png
+    :scale: 50 %
+    :align: center
 
 Correlation Plots
 ------------------
