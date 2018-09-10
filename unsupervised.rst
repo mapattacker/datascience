@@ -125,6 +125,7 @@ This gives the best explanation for the components for each field.
 
 
 We can also plot the feature magnitudes in the scatterplot like in R into two separate axes, also known as a biplot.
+This shows the relationship of each feature's magnitude clearer in a 2D space.
 
 .. code:: python
 
