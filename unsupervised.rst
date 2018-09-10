@@ -92,7 +92,7 @@ to this two dimensional representation of the dataset.
 
     plt.figure(figsize=(8,6))
     plt.scatter(x_pca[:,0], x_pca[:,1], c=cancer['target'], cmap='plasma', alpha=0.4, edgecolors='black', s=65);
-    plt.xlabel('First principal component')
+    plt.xlabel('First Principal Component')
     plt.ylabel('Second Principal Component')
 
   
@@ -120,6 +120,41 @@ This gives the best explanation for the components for each field.
 
                                                 
 .. figure:: images/pca2.png
+    :width: 600px
+    :align: center
+
+
+We can also plot the feature magnitudes in the scatterplot like in R into two separate axes, also known as a biplot.
+
+.. code:: python
+
+    # put feature values into dataframe
+    components = pd.DataFrame(pca.components_.T, index=df.columns, columns=['PCA1','PCA2'])
+
+    # plot size
+    plt.figure(figsize=(10,8))
+
+    # main scatterplot
+    plt.scatter(x_pca[:,0], x_pca[:,1], c=cancer['target'], cmap='plasma', alpha=0.4, edgecolors='black', s=40);
+    plt.xlabel('First Principal Component')
+    plt.ylabel('Second Principal Component')
+    plt.ylim(15,-15);
+    plt.xlim(20,-20);
+
+    # individual feature values
+    ax2 = plt.twinx().twiny();
+    ax2.set_ylim(-0.5,0.5);
+    ax2.set_xlim(-0.5,0.5);
+
+    # offset for labels
+    offset = 1.07
+
+    # arrow & text
+    for a, i in enumerate(components.index):
+        ax2.arrow(0, 0, components['PCA1'][a], -components['PCA2'][a])
+        ax2.annotate(i, (components['PCA1'][a]*offset, -components['PCA2'][a]*offset), color='orange')
+        
+.. figure:: images/pca4.png
     :width: 600px
     :align: center
 
