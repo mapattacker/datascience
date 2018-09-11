@@ -152,7 +152,8 @@ This shows the relationship of each feature's magnitude clearer in a 2D space.
 
     # arrow & text
     for a, i in enumerate(components.index):
-        ax2.arrow(0, 0, components['PCA1'][a], -components['PCA2'][a])
+        ax2.arrow(0, 0, components['PCA1'][a], -components['PCA2'][a], \
+                alpha=0.5, facecolor='white', head_width=.01)
         ax2.annotate(i, (components['PCA1'][a]*offset, -components['PCA2'][a]*offset), color='orange')
         
 .. figure:: images/pca4.png
