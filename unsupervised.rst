@@ -147,6 +147,10 @@ This shows the relationship of each feature's magnitude clearer in a 2D space.
     ax2.set_ylim(-0.5,0.5);
     ax2.set_xlim(-0.5,0.5);
 
+    # reference lines
+    ax2.hlines(0,-0.5,0.5, linestyles='dotted', colors='grey')
+    ax2.vlines(0,-0.5,0.5, linestyles='dotted', colors='grey')
+
     # offset for labels
     offset = 1.07
 
@@ -192,7 +196,7 @@ in most cases, a two-dimensional page. PCA is weak in this aspect.
 
 t-SNE
 ^^^^^^
-t-Distributed Stochastic Neighbor Embedding (t-SNE) is a powerful manifold learning algorithm. It finds a two-dimensional representation of your data, 
+t-Distributed Stochastic Neighbor Embedding (t-SNE) is a powerful manifold learning algorithm for visualizing clusters. It finds a two-dimensional representation of your data, 
 such that the distances between points in the 2D scatterplot match as closely as possible the distances 
 between the same points in the original high dimensional dataset. In particular, 
 t-SNE gives much more weight to preserving information about distances between points that are neighbors. 
