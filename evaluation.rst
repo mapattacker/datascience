@@ -20,7 +20,14 @@ Confusion Matrix
     :align: center
 
     Wikipedia
-        
+
+.. figure:: images/roc1.png
+    :width: 400px
+    :align: center
+    
+    https://www.youtube.com/watch?v=21Igj5Pr6u4
+
+
 **Recall|Sensitivity**: (True Positive / True Positive + False Negative) High recall means to get all 
 positives (i.e., True Positive + False Negative) despite having some false positives.
 Search & extraction in legal cases, Tumour detection. Often need humans to filter false positives.
@@ -298,6 +305,12 @@ Precision-Recall Curves
 
 ROC Curves
 ----------------
+
+.. figure:: images/roc1.png
+    :width: 400px
+    :align: center
+
+    Sensitivity vs 1-Specificity; or TP rate vs FP rate
 
 Receiver Operating Characteristic (ROC) is used to show the performance of a binary classifier. 
 Y-axis is True Positive Rate (Recall) & X-axis is False Positive Rate (Fall-Out). 

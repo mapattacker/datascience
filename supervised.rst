@@ -334,7 +334,9 @@ Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jo
 Gradient Boosted Decision Trees
 ********************************
 Gradient Boosted Decision Trees (GBDT) builds a series of small decision trees,
-with each tree attempting to correct errors from previous stage.
+with each tree attempting to correct errors from previous stage. Here's a good video_ on it, which describes AdaBoost.
+
+.. _video: https://www.youtube.com/watch?v=GM3CDQfQ4sw
 
 Typically, gradient boosted tree ensembles use lots of shallow trees known in machine learning as weak learners. 
 Built in a nonrandom way, to create a model that makes fewer and fewer mistakes as more trees are added. 
