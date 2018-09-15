@@ -306,7 +306,7 @@ Precision-Recall Curves
 ROC Curves
 ----------------
 
-.. figure:: images/roc1.png
+.. figure:: images/roc2.png
     :width: 400px
     :align: center
 
