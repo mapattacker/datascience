@@ -276,6 +276,9 @@ There are many other evaluation metrics, a list can be found here:
 Precision-Recall Curves
 ------------------------
 
+If your problem involves kind of searching a needle in the haystack; 
+the positive class samples are very rare compared to the negative classes, use a precision recall curve. 
+
 .. code:: python
 
   from sklearn.metrics import precision_recall_curve
