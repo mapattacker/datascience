@@ -364,7 +364,7 @@ If a feature is important, the model accuarcy will be reduced more.
 If not important, the accuarcy should be affected a lot less.
 
 .. image:: images/permutation_impt.png
-    :scale: 40 %
+    :scale: 60 %
     :align: center
     
     From Kaggle
@@ -384,7 +384,7 @@ Negative values is possible, but actually refer to 0; though random chance cause
 
 
 .. image:: images/permutation_impt2.png
-    :scale: 40 %
+    :scale: 60 %
     :align: center
     
     From Kaggle
