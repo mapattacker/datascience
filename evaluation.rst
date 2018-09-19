@@ -349,12 +349,6 @@ and some have both. Whichever one is available works fine for an ROC curve.
     :align: center
 
 
-.. image:: images/permutation_impt.png
-    :scale: 40 %
-    :align: center
-    
-    From Kaggle
-
 Permutation Importance
 ----------------------------------
 
@@ -363,7 +357,7 @@ However, this is only available by default in sklean tree models.
 This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
 called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
 
-
+.. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
 
 How it works is the shuffling of individual features and see how it affects model accuarcy.
 If a feature is important, the model accuarcy will be reduced more. 
@@ -384,7 +378,7 @@ If not important, the accuarcy should be affected a lot less.
     perm = PermutationImportance(my_model, random_state=1).fit(test_X, test_y)
     eli5.show_weights(perm, feature_names = test_X.columns.tolist())
 
-The output is as below. The +/- refers to the randomness that shuffling resulted in.
+The output is as below. +/- refers to the randomness that shuffling resulted in.
 The higher the weight, the more important the feature is. 
 Negative values is possible, but actually refer to 0; though random chance caused the predictions on shuffled data to be more accurate.
 
