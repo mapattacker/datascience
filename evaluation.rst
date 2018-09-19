@@ -363,7 +363,7 @@ However, this is only available by default in sklean tree models.
 This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
 called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
 
-.. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
+
 
 How it works is the shuffling of individual features and see how it affects model accuarcy.
 If a feature is important, the model accuarcy will be reduced more. 
