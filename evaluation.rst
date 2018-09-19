@@ -361,7 +361,7 @@ How it works is the shuffling of individual features and see how it affects mode
 If a feature is important, the model accuarcy will be reduced more. 
 If not important, the accuarcy should be affected a lot less.
 
-.. image:: images/permutation_impt.PNG
+.. image:: images/roc-curve.png
     :scale: 40 %
     :align: center
     
