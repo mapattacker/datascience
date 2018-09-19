@@ -353,7 +353,7 @@ Permutation Importance
 Feature importance is a useful evaluation metric to find the strength of each feature in a model.
 However, this is only available in tree models. 
 This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
-called permutation importance, which can be used for any model. This is a third party library that needs to be installed via `pip install eli5`.
+called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
 
 .. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
 
@@ -361,7 +361,7 @@ How it works is the shuffling of individual features and see how it affects mode
 If a feature is important, the model accuarcy will be reduced more. 
 If not important, the accuarcy should be affected a lot less.
 
-.. image:: images/permutation_impt.png
+.. image:: images/permutation_impt.PNG
     :scale: 40 %
     :align: center
     
