@@ -349,18 +349,19 @@ and some have both. Whichever one is available works fine for an ROC curve.
     :align: center
 
 
-Permutation Importance
-----------------------------------
-Feature importance is a useful evaluation metric to find the strength of each feature in a model.
-However, this is only available by default in sklean tree models. 
-This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
-called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
-
 .. image:: images/permutation_impt.png
     :scale: 40 %
     :align: center
     
     From Kaggle
+
+Permutation Importance
+----------------------------------
+
+Feature importance is a useful evaluation metric to find the strength of each feature in a model.
+However, this is only available by default in sklean tree models. 
+This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
+called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
 
 .. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
 
