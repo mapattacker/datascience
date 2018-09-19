@@ -445,6 +445,7 @@ Print out the ``best_params_`` and rebuild the model with these optimal paramete
 Simple example.
 
 .. code:: python
+
   from sklearn.model_selection import GridSearchCV
   from sklearn.ensemble import RandomForestClassifier
 
