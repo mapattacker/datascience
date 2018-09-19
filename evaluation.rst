@@ -344,7 +344,7 @@ and some have both. Whichever one is available works fine for an ROC curve.
   plt.axes().set_aspect('equal')
   plt.show()
 
-.. image:: images/roc-curve.png
+.. figure:: images/roc-curve.png
     :scale: 40 %
     :align: center
 
@@ -363,7 +363,7 @@ How it works is the shuffling of individual features and see how it affects mode
 If a feature is important, the model accuarcy will be reduced more. 
 If not important, the accuarcy should be affected a lot less.
 
-.. image:: images/permutation_impt.png
+.. figure:: images/permutation_impt.png
     :scale: 60 %
     :align: center
     
@@ -383,7 +383,7 @@ The higher the weight, the more important the feature is.
 Negative values is possible, but actually refer to 0; though random chance caused the predictions on shuffled data to be more accurate.
 
 
-.. image:: images/permutation_impt2.png
+.. figure:: images/permutation_impt2.png
     :scale: 60 %
     :align: center
     
