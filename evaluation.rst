@@ -531,11 +531,11 @@ Logarithmic Loss, or Log Loss is a popular Kaggle evaluation metric,
 which measures the performance of a classification model where the prediction input is a probability value between 0 and 1
 
 .. figure:: images/logloss.png
-    :scale: 80 %
+    :scale: 60 %
     :align: center
     
     From datawookie
-    
+
 Log Loss quantifies the accuracy of a classifier by penalising false classifications;
 the catch is that Log Loss ramps up very rapidly as the predicted probability approaches 0. 
 This article from datawookie_ gives a very good explanation.
