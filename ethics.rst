@@ -17,7 +17,8 @@ Is it Better than a Human?
 ----------------------------------
 Do not oversell the model capabilities.
 Eg. A model can predict cancer from a mammogram, 
-but a doctor should always be there to verify the result.
+but a doctor should always be there to verify the result. 
+You never know when you need to tune the model again because of some new features that were not included in the training sample.
 
 
 Model used for Unintended Purposes
