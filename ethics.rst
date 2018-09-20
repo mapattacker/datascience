@@ -36,4 +36,5 @@ Then, the question comes again, should we even collect personal data in the firs
 Lets say it is mandatory to collect data from patients with mental issues, we should probably prevent
 collecting their identity as doing so will prevent patients from seeking help in the first place.
 Having high assurance of their confidentially might be the way to reduce and control their illness 
-from escalating, and this is more important than collecting their data for analysis.
+from escalating, and this is more important than collecting their data for analysis. After all, 
+that is the purpose of data analysis right?
