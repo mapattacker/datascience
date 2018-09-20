@@ -538,7 +538,7 @@ This article from datawookie_ gives a very good explanation.
 
 
 .. figure:: images/logloss.png
-    :scale: 40 %
+    :scale: 80 %
     :align: center
     
     From datawookie
