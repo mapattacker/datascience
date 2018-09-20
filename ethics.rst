@@ -23,3 +23,17 @@ but a doctor should always be there to verify the result.
 Model used for Unintended Purposes
 -----------------------------------
 The user might end up using your model for other purposes that might be unethical or wrong.
+
+
+Keeping Data Confidential
+--------------------------
+While data science has the potential to help businesses and humanity in general, 
+there are many potential issues in confidentially as personal data can be collected. 
+An internet restricted environment should be conducted where such data is being extracted for analysis,
+or if not all sensitive data should be hashed.
+
+Then, the question comes again, should we even collect personal data in the first place?
+Lets say it is mandatory to collect data from patients with mental issues, we should probably prevent
+collect their identity as doing so will prevent patients from seeking help in the first place.
+Having high assurance on their confidentially might be the way to reduce and control their illness 
+from escalating, and this is more important than collecting their data for analysis.
