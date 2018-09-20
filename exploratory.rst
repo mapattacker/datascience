@@ -5,6 +5,11 @@ Exploratory data analysis (EDA) is an essential step to understand the data bett
 in order to engineer and select features before modelling.
 This often requires skills in visualisation to better interpret the data.
 
+Distribution Plots
+------------------------
+When plotting distributions, it is important to compare the distribution of both train and test sets.
+If the test set very specific to certain features, the model will underfit and have a low accuarcy.
+
 
 Count Plots
 ------------
