@@ -1,6 +1,8 @@
 Data Leakage
 ============
 
+Data leakage is a serious bane in machine learning, which usually results in overly optimistic model results.
+
 Examples
 --------
 Some subtle examples of data leakages.
