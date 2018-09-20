@@ -140,7 +140,7 @@ Using a heatmap.
   # Accuracy = TP + TN / (TP + TN + FP + FN)
   # Precision = TP / (TP + FP)
   # Recall = TP / (TP + FN)  Also known as sensitivity, or True Positive Rate
-  # F1 = 2 * Precision * Recall / (Precision + Recall) 
+  # F1 = 2 * (Precision * Recall) / (Precision + Recall) 
   
   print('Accuracy:', accuracy_score(y_test, tree_predicted)
   print('Precision:', precision_score(y_test, tree_predicted)
