@@ -34,6 +34,6 @@ or if not all sensitive data should be hashed.
 
 Then, the question comes again, should we even collect personal data in the first place?
 Lets say it is mandatory to collect data from patients with mental issues, we should probably prevent
-collect their identity as doing so will prevent patients from seeking help in the first place.
-Having high assurance on their confidentially might be the way to reduce and control their illness 
+collecting their identity as doing so will prevent patients from seeking help in the first place.
+Having high assurance of their confidentially might be the way to reduce and control their illness 
 from escalating, and this is more important than collecting their data for analysis.
