@@ -575,16 +575,17 @@ it is common to use R-Squared and RMSE (Root Mean Squared Error) as evaluation m
     print('r2 train:', r2_trains)
     print('r2 test:', r2_tests)
 
-    # RMSE
+    # get predictions
     y_predicted_total = model3.predict(predictor)
     y_predicted_train = model3.predict(X_train)
     y_predicted_test = model3.predict(X_test)
 
+    # get MSE
     MSE_total = mean_squared_error(target, y_predicted_total)
     MSE_train = mean_squared_error(y_train, y_predicted_train)
     MSE_test = mean_squared_error(y_test, y_predicted_test)
 
-    # get RMSE by square root
+    # get RMSE by squared root
     print('\nTotal RMSE:', format(np.sqrt(MSE_total), 'e'))
     print('Train RMSE:', format(np.sqrt(MSE_train), 'e'))
     print('Test RMSE:', format(np.sqrt(MSE_test), 'e'))
