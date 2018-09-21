@@ -5,9 +5,188 @@ Accuarcy is widely used as a metric for evalution, but others like precision, re
 different use cases.
 
 
+Permutation Importance
+----------------------------------
+
+Feature importance is a useful evaluation metric to find the strength of each feature in a model.
+However, this is only available by default in sklean tree models. 
+This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
+called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
+
+.. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
+
+How it works is the shuffling of individual features and see how it affects model accuarcy.
+If a feature is important, the model accuarcy will be reduced more. 
+If not important, the accuarcy should be affected a lot less.
+
+.. figure:: images/permutation_impt.png
+    :scale: 60 %
+    :align: center
+    
+    From Kaggle
+
+
+.. code:: python
+    
+    import eli5
+    from eli5.sklearn import PermutationImportance
+
+    perm = PermutationImportance(my_model, random_state=1).fit(test_X, test_y)
+    eli5.show_weights(perm, feature_names = test_X.columns.tolist())
+
+The output is as below. +/- refers to the randomness that shuffling resulted in.
+The higher the weight, the more important the feature is. 
+Negative values are possible, but actually refer to 0; though random chance caused the predictions on shuffled data to be more accurate.
+
+
+.. figure:: images/permutation_impt2.png
+    :scale: 40 %
+    :align: center
+    
+    From Kaggle
+
+
+K-fold Cross-Validation
+------------------------
+
+Takes more time and computation to use k-fold, but well worth the cost. 
+By default, sklearn uses stratified k-fold cross validation. Another type is 'leave one out' cross-validation.
+
+The mean of the final scores among each k model is the most generalised output.
+This output can be compared to different model results for comparison.
+
+More here_.
+
+.. _here: https://medium.com/towards-data-science/train-test-split-and-cross-validation-in-python-80b61beca4b6
+
+.. figure:: images/kfold.png
+    :scale: 30 %
+    :align: center
+
+    k-fold cross validation, with 5-folds
+
+.. code:: python
+
+  from sklearn.model_selection import cross_val_score
+  from sklearn.tree import DecisionTreeClassifier
+  from sklearn.ensemble import RandomForestClassifier
+  from sklearn.neighbors import KNeighborsClassifier
+
+  models = [('Decision Tree\t',DecisionTreeClassifier()),\
+            ('Random Forest\t', RandomForestClassifier()), \
+            ('KNN\t\t', KNeighborsClassifier())]
+
+  predictor = df[df.columns[1:-1]]
+  target = df['Cover_Type']
+
+  # using 5-fold cross validation mean scores
+  for clf in models:
+      cv_scores = cross_val_score(clf[1], predictor, target, cv=5)
+      print(clf[0], np.mean(cv_scores))
+
+  # Decision Tree	 0.707473544974
+  # Random Forest	 0.753571428571
+  # KNN		         0.691005291005
+
+
+Grid-Search
+----------------
+
+From Stackoverflow: Systematically working through multiple combinations of parameter tunes, 
+cross validate each and determine which one gives the best performance.
+You can work through many combination only changing parameters a bit.
+
+Print out the ``best_params_`` and rebuild the model with these optimal parameters. 
+
+Simple example.
+
+.. code:: python
+
+  from sklearn.model_selection import GridSearchCV
+  from sklearn.ensemble import RandomForestClassifier
+
+  model = RandomForestClassifier()
+
+  grid_values = {'n_estimators':[150,175,200,225]}
+  grid = GridSearchCV(model, param_grid = grid_values, cv=5)
+  grid.fit(predictor, target)
+
+  print(grid.best_params_)
+  print(grid.best_score_)
+
+  # {'n_estimators': 200}
+  # 0.786044973545
+
+
+Others.
+
+.. code:: python
+
+  from sklearn.svm import SVC
+  from sklearn.model_selection import GridSearchCV
+  from sklearn.metrics import roc_auc_score
+  from sklearn.model_selection import train_test_split
+  
+
+  dataset = load_digits()
+  X, y = dataset.data, dataset.target == 1
+  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+  # choose a classifier
+  clf = SVC(kernel='rbf')
+
+  # input grid value range
+  grid_values = {'gamma': [0.001, 0.01, 0.05, 0.1, 1, 10, 100]}
+  # other parameters can be input in the dictionary, e.g.,
+  # grid_values = {'gamma': [0.01, 0.1, 1, 10], 'C': [0.01, 0.1, 1, 10]}
+  # OR n_estimators, max_features from RandomForest
+  # default metric to optimize over grid parameters: accuracy
+  
+  grid_clf_acc = GridSearchCV(clf, param_grid = grid_values, random_state=0)
+  
+  grid_clf_acc.fit(X_train, y_train)
+  y_decision_fn_scores_acc = grid_clf_acc.decision_function(X_test) 
+
+  print('Grid best parameter (max. accuracy): ', grid_clf_acc.best_params_)
+  print('Grid best score (accuracy): ', grid_clf_acc.best_score_)
+
+
+Using other scoring metrics
+
+.. code:: python
+
+  # alternative metric to optimize over grid parameters: AUC
+  # other scoring parameters include 'recall' or 'precision'
+  grid_clf_auc = GridSearchCV(clf, param_grid = grid_values, scoring = 'roc_auc', cv=3, random_state=0) # indicate AUC
+  grid_clf_auc.fit(X_train, y_train)
+  y_decision_fn_scores_auc = grid_clf_auc.decision_function(X_test) 
+
+  print('Test set AUC: ', roc_auc_score(y_test, y_decision_fn_scores_auc))
+  print('Grid best parameter (max. AUC): ', grid_clf_auc.best_params_)
+  print('Grid best score (AUC): ', grid_clf_auc.best_score_)
+
+
+  # results 1
+  ('Grid best parameter (max. accuracy): ', {'gamma': 0.001})
+  ('Grid best score (accuracy): ', 0.99628804751299183)
+  # results 2
+  ('Test set AUC: ', 0.99982858122393004)
+  ('Grid best parameter (max. AUC): ', {'gamma': 0.001})
+  ('Grid best score (AUC): ', 0.99987412783021423)
+  
+  
+  # gives break down of all permutations of gridsearch
+  print fittedmodel.cv_results_
+  # gives parameters that gives the best indicated scoring type
+  print CV.best_params_
+
+
+
+Classification
+---------------
 
 Confusion Matrix
------------------
+*****************
 
 .. figure:: images/confusion.png
     :width: 300px
@@ -274,7 +453,7 @@ There are many other evaluation metrics, a list can be found here:
    (0, 5.9441185633886803e-12)]
 
 Precision-Recall Curves
-------------------------
+**********************************
 
 If your problem involves kind of searching a needle in the haystack; 
 the positive class samples are very rare compared to the negative classes, use a precision recall curve. 
@@ -307,7 +486,7 @@ the positive class samples are very rare compared to the negative classes, use a
     :align: center
 
 ROC Curves
-----------------
+*****************
 
 .. figure:: images/roc2.png
     :width: 400px
@@ -349,184 +528,8 @@ and some have both. Whichever one is available works fine for an ROC curve.
     :align: center
 
 
-Permutation Importance
-----------------------------------
-
-Feature importance is a useful evaluation metric to find the strength of each feature in a model.
-However, this is only available by default in sklean tree models. 
-This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
-called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
-
-.. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
-
-How it works is the shuffling of individual features and see how it affects model accuarcy.
-If a feature is important, the model accuarcy will be reduced more. 
-If not important, the accuarcy should be affected a lot less.
-
-.. figure:: images/permutation_impt.png
-    :scale: 60 %
-    :align: center
-    
-    From Kaggle
-
-
-.. code:: python
-    
-    import eli5
-    from eli5.sklearn import PermutationImportance
-
-    perm = PermutationImportance(my_model, random_state=1).fit(test_X, test_y)
-    eli5.show_weights(perm, feature_names = test_X.columns.tolist())
-
-The output is as below. +/- refers to the randomness that shuffling resulted in.
-The higher the weight, the more important the feature is. 
-Negative values are possible, but actually refer to 0; though random chance caused the predictions on shuffled data to be more accurate.
-
-
-.. figure:: images/permutation_impt2.png
-    :scale: 40 %
-    :align: center
-    
-    From Kaggle
-
-
-K-fold Cross-Validation
-------------------------
-
-Takes more time and computation to use k-fold, but well worth the cost. 
-By default, sklearn uses stratified k-fold cross validation. Another type is 'leave one out' cross-validation.
-
-The mean of the final scores among each k model is the most generalised output.
-This output can be compared to different model results for comparison.
-
-More here_.
-
-.. _here: https://medium.com/towards-data-science/train-test-split-and-cross-validation-in-python-80b61beca4b6
-
-.. figure:: images/kfold.png
-    :scale: 30 %
-    :align: center
-
-    k-fold cross validation, with 5-folds
-
-.. code:: python
-
-  from sklearn.model_selection import cross_val_score
-  from sklearn.tree import DecisionTreeClassifier
-  from sklearn.ensemble import RandomForestClassifier
-  from sklearn.neighbors import KNeighborsClassifier
-
-  models = [('Decision Tree\t',DecisionTreeClassifier()),\
-            ('Random Forest\t', RandomForestClassifier()), \
-            ('KNN\t\t', KNeighborsClassifier())]
-
-  predictor = df[df.columns[1:-1]]
-  target = df['Cover_Type']
-
-  # using 5-fold cross validation mean scores
-  for clf in models:
-      cv_scores = cross_val_score(clf[1], predictor, target, cv=5)
-      print(clf[0], np.mean(cv_scores))
-
-  # Decision Tree	 0.707473544974
-  # Random Forest	 0.753571428571
-  # KNN		         0.691005291005
-
-
-Grid-Search
-----------------
-
-From Stackoverflow: Systematically working through multiple combinations of parameter tunes, 
-cross validate each and determine which one gives the best performance.
-You can work through many combination only changing parameters a bit.
-
-Print out the ``best_params_`` and rebuild the model with these optimal parameters. 
-
-Simple example.
-
-.. code:: python
-
-  from sklearn.model_selection import GridSearchCV
-  from sklearn.ensemble import RandomForestClassifier
-
-  model = RandomForestClassifier()
-
-  grid_values = {'n_estimators':[150,175,200,225]}
-  grid = GridSearchCV(model, param_grid = grid_values, cv=5)
-  grid.fit(predictor, target)
-
-  print(grid.best_params_)
-  print(grid.best_score_)
-
-  # {'n_estimators': 200}
-  # 0.786044973545
-
-
-Others.
-
-.. code:: python
-
-  from sklearn.svm import SVC
-  from sklearn.model_selection import GridSearchCV
-  from sklearn.metrics import roc_auc_score
-  from sklearn.model_selection import train_test_split
-  
-
-  dataset = load_digits()
-  X, y = dataset.data, dataset.target == 1
-  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
-
-  # choose a classifier
-  clf = SVC(kernel='rbf')
-
-  # input grid value range
-  grid_values = {'gamma': [0.001, 0.01, 0.05, 0.1, 1, 10, 100]}
-  # other parameters can be input in the dictionary, e.g.,
-  # grid_values = {'gamma': [0.01, 0.1, 1, 10], 'C': [0.01, 0.1, 1, 10]}
-  # OR n_estimators, max_features from RandomForest
-  # default metric to optimize over grid parameters: accuracy
-  
-  grid_clf_acc = GridSearchCV(clf, param_grid = grid_values, random_state=0)
-  
-  grid_clf_acc.fit(X_train, y_train)
-  y_decision_fn_scores_acc = grid_clf_acc.decision_function(X_test) 
-
-  print('Grid best parameter (max. accuracy): ', grid_clf_acc.best_params_)
-  print('Grid best score (accuracy): ', grid_clf_acc.best_score_)
-
-
-Using other scoring metrics
-
-.. code:: python
-
-  # alternative metric to optimize over grid parameters: AUC
-  # other scoring parameters include 'recall' or 'precision'
-  grid_clf_auc = GridSearchCV(clf, param_grid = grid_values, scoring = 'roc_auc', cv=3, random_state=0) # indicate AUC
-  grid_clf_auc.fit(X_train, y_train)
-  y_decision_fn_scores_auc = grid_clf_auc.decision_function(X_test) 
-
-  print('Test set AUC: ', roc_auc_score(y_test, y_decision_fn_scores_auc))
-  print('Grid best parameter (max. AUC): ', grid_clf_auc.best_params_)
-  print('Grid best score (AUC): ', grid_clf_auc.best_score_)
-
-
-  # results 1
-  ('Grid best parameter (max. accuracy): ', {'gamma': 0.001})
-  ('Grid best score (accuracy): ', 0.99628804751299183)
-  # results 2
-  ('Test set AUC: ', 0.99982858122393004)
-  ('Grid best parameter (max. AUC): ', {'gamma': 0.001})
-  ('Grid best score (AUC): ', 0.99987412783021423)
-  
-  
-  # gives break down of all permutations of gridsearch
-  print fittedmodel.cv_results_
-  # gives parameters that gives the best indicated scoring type
-  print CV.best_params_
-
-
 Log Loss
----------
+*****************
 Logarithmic Loss, or Log Loss is a popular Kaggle evaluation metric, 
 which measures the performance of a classification model where the prediction input is a probability value between 0 and 1
 
@@ -541,3 +544,7 @@ the catch is that Log Loss ramps up very rapidly as the predicted probability ap
 This article from datawookie_ gives a very good explanation.
 
 .. _datawookie: https://datawookie.netlify.com/blog/2015/12/making-sense-of-logarithmic-loss/
+
+
+Regression
+-----------
