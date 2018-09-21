@@ -6,7 +6,7 @@ different use cases.
 
 
 Permutation Importance
-----------------------------------
+-----------------------
 
 Feature importance is a useful evaluation metric to find the strength of each feature in a model.
 However, this is only available by default in sklean tree models. 
@@ -498,6 +498,9 @@ Receiver Operating Characteristic (ROC) is used to show the performance of a bin
 Y-axis is True Positive Rate (Recall) & X-axis is False Positive Rate (Fall-Out). 
 Area Under Curve (AUC) of a ROC is used. Higher AUC better.
 
+The term came about in WWII where this metrics is used to determined a receiver operator's ability to distinguish
+false positive and true postive correctly in the radar signals.
+
 Some classifiers have a decision_function method while others have a probability prediction method, 
 and some have both. Whichever one is available works fine for an ROC curve.
 
@@ -548,3 +551,40 @@ This article from datawookie_ gives a very good explanation.
 
 Regression
 -----------
+For regression problems, where the response or y is a continuous value, 
+it is common to use R-Squared and RMSE (Root Mean Squared Error) as evaluation metrics.
+
+**R-squared**: Percentage of variability of dataset that can be explained by the model.
+
+**MSE**. Mean squared error. Mean squaring of all absolute error (so change negatives into positives).
+
+**RMSE**: Squared root of MSE so that it gives back the absolute error (as it was initially squared).
+
+.. code:: python
+
+    forest = RandomForestRegressor(n_estimators= 375)
+    model3 = forest.fit(X_train, y_train)
+    fullmodel = forest.fit(predictor, target)
+    print(model3)
+
+    # R2
+    r2_full = fullmodel.score(predictor, target)
+    r2_trains = model3.score(X_train, y_train)
+    r2_tests = model3.score(X_test, y_test)
+    print('\nr2 full:', r2_full)
+    print('r2 train:', r2_trains)
+    print('r2 test:', r2_tests)
+
+    # RMSE
+    y_predicted_total = model3.predict(predictor)
+    y_predicted_train = model3.predict(X_train)
+    y_predicted_test = model3.predict(X_test)
+
+    MSE_total = mean_squared_error(target, y_predicted_total)
+    MSE_train = mean_squared_error(y_train, y_predicted_train)
+    MSE_test = mean_squared_error(y_test, y_predicted_test)
+
+    # get RMSE by square root
+    print('\nTotal RMSE:', format(np.sqrt(MSE_total), 'e'))
+    print('Train RMSE:', format(np.sqrt(MSE_train), 'e'))
+    print('Test RMSE:', format(np.sqrt(MSE_test), 'e'))
