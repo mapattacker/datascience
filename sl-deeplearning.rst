@@ -8,7 +8,7 @@ non-linear processing units (**neurons**) to conduct supervised or unsupervised 
 ANN
 -----------
 An artifical neural network consists of an input layer, hidden layers, and an output layer. 
-This writeup by Berkeley gave an excellent introduction to the theory. 
+This writeup by Berkeley_ gave an excellent introduction to the theory. 
 Most of the diagrams are taken from the site.
 
 .. _Berkeley https://ml.berkeley.edu/blog/2017/02/04/tutorial-3/
@@ -30,7 +30,7 @@ An **activation function** tells the perception what outcome it is.
 
     Structure of a single perceptron
 
-Activation functions consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*.
+Activation functions consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*, **Softmax**.
 
 .. figure:: images/deeplearning3.png
     :width: 400px
@@ -54,6 +54,7 @@ loss and improve the accuarcy of the model.
   2. For every training example, perform a forward pass using the current weights, and calculate the output of each node going from left to right. The final output is the value of the last node.
   3. Compare the final output with the actual target in the training data, and measure the error using a loss function.
   4. Perform a backwards pass from right to left and propagate the error to every individual node using backpropagation. Calculate each weight’s contribution to the error, and adjust the weights accordingly using gradient descent. Propagate the error gradients back starting from the last layer.
+
 
 
 .. code:: python
@@ -141,15 +142,8 @@ loss and improve the accuarcy of the model.
 
 CNN
 ----
-**Convolutional Neural Network** (CNN) is a Feedforward (FF) Neural Network (NN).
-  * Designed based on animals' visual cortex. Where visual neurons progressively focus on overlapping tiles & sequentially shifts **convulation process** to cover the entire visual field.
-  * Uses **Multi-Layer Perceptrons** (MLPs)
-  * **ReLU** activation is often used
-  * Image/video recognition, recommender systems, natural language processing
+**Convolutional Neural Network** (CNN)
 
-Subsampling
-************
-Median Value
 
 
 RNN
