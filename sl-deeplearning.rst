@@ -61,6 +61,10 @@ loss and improve the accuarcy of the model.
 
 Keras Model
 ***************
+An ANN model in Keras library requires the definition of 
+    * input & hidden layers
+    * model compliation, & 
+    * model fitting.
 
 
 Before training, the model needs to be compiled with the learning hyperparameters of optimizer, loss, and metric functions.
