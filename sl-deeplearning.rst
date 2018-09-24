@@ -114,7 +114,7 @@ Before training, the model needs to be compiled with the learning hyperparameter
     model.compile(optimizer=rmsprop, loss='mse')
 
 
-We can also use sklearn's **cross-validation**
+We can also use sklearn's **cross-validation**.
 
 .. code:: python
 
@@ -186,9 +186,9 @@ The below gives a compiled code example code.
 
 
     history = model.fit(train_images, train_labels,
-                        batch_size=100,
-                        epochs=10,
-                        verbose=2,
+                        batch_size=100, #no of samples per gradient update
+                        epochs=10, #iteration
+                        verbose=2, #0=no printout, 1=progress bar, 2=step-by-step printout
                         validation_data=(test_images, test_labels))
 
     # Train on 60000 samples, validate on 10000 samples
