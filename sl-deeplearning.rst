@@ -34,7 +34,7 @@ An **activation function** tells the perception what outcome it is.
 
     Structure of a single perceptron
 
-Activation functions consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*, **Softmax**.
+Activation functions consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*, **Softmax** and many others.
 
 .. figure:: images/deeplearning3.png
     :width: 400px
@@ -67,6 +67,9 @@ An ANN model in Keras library requires the definition of
     * model compliation, & 
     * model fitting
     * model evalution
+
+Definition of layers are typically done using the typical Dense, or regularization layer called Dropout.
+The latter prevents overfitting as it randomly selects neurons to be ignored during training.
 
 
 Before training, the model needs to be compiled with the learning hyperparameters of optimizer, loss, and metric functions.
