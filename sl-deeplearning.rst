@@ -229,6 +229,9 @@ CNN
 ----
 **Convolutional Neural Network** (CNN)
 
+Keras Model
+***************
+
 .. code:: python
 
     import tensorflow
