@@ -337,6 +337,8 @@ RNN
 **Recurrent Neural Network** (RNN)
 
 
+The code below uses LSTM (long short-term memory) for sentiment analysis.
+
 .. code:: python
 
     from tensorflow.keras.preprocessing import sequence
