@@ -74,6 +74,9 @@ The latter prevents overfitting as it randomly selects neurons to be ignored dur
 
 .. code:: python
 
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense, Dropout
+
     # using dropout layers
     model = Sequential()
     model.add(Dense(512, activation='relu', input_shape=(784,)))
@@ -103,6 +106,31 @@ Before training, the model needs to be compiled with the learning hyperparameter
     # For a mean squared error regression problem
     model.compile(optimizer='rmsprop',
                   loss='mse')
+
+
+We can also use sklearn's **cross-validation**
+
+.. code:: python
+
+    from tensorflow.keras.layers import Dense
+    from tensorflow.keras.models import Sequential
+
+    def create_model():
+        model = Sequential()
+        model.add(Dense(6, input_dim=4, kernel_initializer='normal', activation='relu'))
+        #model.add(Dense(4, kernel_initializer='normal', activation='relu'))
+        model.add(Dense(1, kernel_initializer='normal', activation='sigmoid'))
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        return model
+
+    from sklearn.model_selection import cross_val_score
+    from tensorflow.keras.wrappers.scikit_learn import KerasClassifier
+
+    # Wrap our Keras model in an estimator compatible with scikit_learn
+    estimator = KerasClassifier(build_fn=create_model, epochs=100, verbose=0)
+    cv_scores = cross_val_score(estimator, all_features_scaled, all_classes, cv=10)
+    cv_scores.mean()
+
 
 
 The below gives a compiled code example code.
