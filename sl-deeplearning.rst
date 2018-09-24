@@ -74,6 +74,7 @@ The latter prevents overfitting as it randomly selects neurons to be ignored dur
 
 .. code:: python
 
+    # using dropout layers
     model = Sequential()
     model.add(Dense(512, activation='relu', input_shape=(784,)))
     model.add(Dropout(0.2))
@@ -85,6 +86,7 @@ The latter prevents overfitting as it randomly selects neurons to be ignored dur
 Before training, the model needs to be compiled with the learning hyperparameters of optimizer, loss, and metric functions.
 
 .. code:: python
+
     # from keras documentation
     # https://keras.io/getting-started/sequential-model-guide/
 
