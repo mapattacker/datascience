@@ -230,6 +230,11 @@ CNN
 **Convolutional Neural Network** (CNN) is suitable for unstructured data like image classification,
 machine translation, sentence classification, and sentiment analysis.
 
+There are many topologies, or CNN architecture to build on as the hyperparameters, layers etc. are endless. Some specialized
+architecture includes LeNet-5 (handwriting recognition), AlexNet (deeper than LeNet, image classification), 
+GoogLeNet (deeper than AlexNet, includes inception modules, or groups of convolution), 
+ResNet (even deeper, maintains performance using skip connections)
+
 Keras Model
 ***************
 
@@ -332,5 +337,72 @@ RNN
 **Recurrent Neural Network** (RNN)
 
 
+.. code:: python
+
+    from tensorflow.keras.preprocessing import sequence
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense, Embedding
+    from tensorflow.keras.layers import LSTM
+    from tensorflow.keras.datasets import imdb
 
 
+    x_train = sequence.pad_sequences(x_train, maxlen=80)
+    x_test = sequence.pad_sequences(x_test, maxlen=80)
+
+    model = Sequential()
+    model.add(Embedding(20000, 128))
+    model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
+    model.add(Dense(1, activation='sigmoid'))
+
+    model.compile(loss='binary_crossentropy',
+                optimizer='adam',
+                metrics=['accuracy'])
+
+    model.fit(x_train, y_train,
+            batch_size=32,
+            epochs=15,
+            verbose=2,
+            validation_data=(x_test, y_test))
+
+    Train on 25000 samples, validate on 25000 samples
+    # Epoch 1/15
+    #  - 139s - loss: 0.6580 - acc: 0.5869 - val_loss: 0.5437 - val_acc: 0.7200
+    # Epoch 2/15
+    #  - 138s - loss: 0.4652 - acc: 0.7772 - val_loss: 0.4024 - val_acc: 0.8153
+    # Epoch 3/15
+    #  - 136s - loss: 0.3578 - acc: 0.8446 - val_loss: 0.4024 - val_acc: 0.8172
+    # Epoch 4/15
+    #  - 134s - loss: 0.2902 - acc: 0.8784 - val_loss: 0.3875 - val_acc: 0.8276
+    # Epoch 5/15
+    #  - 135s - loss: 0.2342 - acc: 0.9055 - val_loss: 0.4063 - val_acc: 0.8308
+    # Epoch 6/15
+    #  - 132s - loss: 0.1818 - acc: 0.9292 - val_loss: 0.4571 - val_acc: 0.8308
+    # Epoch 7/15
+    #  - 124s - loss: 0.1394 - acc: 0.9476 - val_loss: 0.5458 - val_acc: 0.8177
+    # Epoch 8/15
+    #  - 126s - loss: 0.1062 - acc: 0.9609 - val_loss: 0.5950 - val_acc: 0.8133
+    # Epoch 9/15
+    #  - 133s - loss: 0.0814 - acc: 0.9712 - val_loss: 0.6440 - val_acc: 0.8218
+    # Epoch 10/15
+    #  - 134s - loss: 0.0628 - acc: 0.9783 - val_loss: 0.6525 - val_acc: 0.8138
+    # Epoch 11/15
+    #  - 136s - loss: 0.0514 - acc: 0.9822 - val_loss: 0.7252 - val_acc: 0.8143
+    # Epoch 12/15
+    #  - 137s - loss: 0.0414 - acc: 0.9869 - val_loss: 0.7997 - val_acc: 0.8035
+    # Epoch 13/15
+    #  - 136s - loss: 0.0322 - acc: 0.9890 - val_loss: 0.8717 - val_acc: 0.8120
+    # Epoch 14/15
+    #  - 132s - loss: 0.0279 - acc: 0.9905 - val_loss: 0.9776 - val_acc: 0.8114
+    # Epoch 15/15
+    #  - 140s - loss: 0.0231 - acc: 0.9918 - val_loss: 0.9317 - val_acc: 0.8090
+    # Out[8]:
+    # <tensorflow.python.keras.callbacks.History at 0x21c29ab8630>
+
+    score, acc = model.evaluate(x_test, y_test,
+                                batch_size=32,
+                                verbose=2)
+    print('Test score:', score)
+    print('Test accuracy:', acc)
+
+    # Test score: 0.9316869865119457
+    # Test accuracy: 0.80904
