@@ -7,6 +7,10 @@ non-linear processing units (**neurons**) to conduct supervised or unsupervised 
 
 ANN
 -----------
+
+Theory
+*******
+
 An **artifical neural network** consists of an input layer, hidden layers, and an output layer. 
 This writeup by Berkeley_ gave an excellent introduction to the theory. 
 Most of the diagrams are taken from the site.
@@ -55,8 +59,32 @@ loss and improve the accuarcy of the model.
   3. Compare the final output with the actual target in the training data, and measure the error using a loss function.
   4. Perform a backwards pass from right to left and propagate the error to every individual node using backpropagation. Calculate each weight’s contribution to the error, and adjust the weights accordingly using gradient descent. Propagate the error gradients back starting from the last layer.
 
+Keras Model
+***************
 
 
+Before training, the model needs to be compiled with the learning hyperparameters of optimizer, loss, and metric functions.
+
+.. code:: python
+    # from keras documentation
+    # https://keras.io/getting-started/sequential-model-guide/
+
+    # For a multi-class classification problem
+    model.compile(optimizer='rmsprop',
+                loss='categorical_crossentropy',
+                metrics=['accuracy'])
+
+    # For a binary classification problem
+    model.compile(optimizer='rmsprop',
+                loss='binary_crossentropy',
+                metrics=['accuracy'])
+
+    # For a mean squared error regression problem
+    model.compile(optimizer='rmsprop',
+                loss='mse')
+
+Code
+*****
 .. code:: python
 
     from tensorflow import keras
