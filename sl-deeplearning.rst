@@ -15,7 +15,9 @@ An **artifical neural network** consists of an input layer, hidden layers, and a
 This writeup by Berkeley_ gave an excellent introduction to the theory. 
 Most of the diagrams are taken from the site.
 
-.. _Berkeley https://ml.berkeley.edu/blog/2017/02/04/tutorial-3/
+
+.. _Berkeley: https://ml.berkeley.edu/blog/2017/02/04/tutorial-3/
+
 
 .. figure:: images/deeplearning1.png
     :width: 400px
@@ -227,6 +229,97 @@ CNN
 ----
 **Convolutional Neural Network** (CNN)
 
+.. code:: python
+
+    import tensorflow
+    from tensorflow.keras.datasets import mnist
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense, Dropout, Conv2D, MaxPooling2D, Flatten
+    from tensorflow.keras.optimizers import RMSprop
+
+    model = Sequential()
+    model.add(Conv2D(32, kernel_size=(3, 3),
+                    activation='relu',
+                    input_shape=input_shape))
+    # 64 3x3 kernels
+    model.add(Conv2D(64, (3, 3), activation='relu'))
+    # Reduce by taking the max of each 2x2 block
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    # Dropout to avoid overfitting
+    model.add(Dropout(0.25))
+    # Flatten the results to one dimension for passing into our final layer
+    model.add(Flatten())
+    # A hidden layer to learn with
+    model.add(Dense(128, activation='relu'))
+    # Another dropout
+    model.add(Dropout(0.5))
+    # Final categorization from 0-9 with softmax
+    model.add(Dense(10, activation='softmax'))
+
+    model.summary()
+
+    # _________________________________________________________________
+    # Layer (type)                 Output Shape              Param #   
+    # =================================================================
+    # conv2d (Conv2D)              (None, 26, 26, 32)        320       
+    # _________________________________________________________________
+    # conv2d_1 (Conv2D)            (None, 24, 24, 64)        18496     
+    # _________________________________________________________________
+    # max_pooling2d (MaxPooling2D) (None, 12, 12, 64)        0         
+    # _________________________________________________________________
+    # dropout (Dropout)            (None, 12, 12, 64)        0         
+    # _________________________________________________________________
+    # flatten (Flatten)            (None, 9216)              0         
+    # _________________________________________________________________
+    # dense (Dense)                (None, 128)               1179776   
+    # _________________________________________________________________
+    # dropout_1 (Dropout)          (None, 128)               0         
+    # _________________________________________________________________
+    # dense_1 (Dense)              (None, 10)                1290      
+    # =================================================================
+    # Total params: 1,199,882
+    # Trainable params: 1,199,882
+    # Non-trainable params: 0
+    # _________________________________________________________________
+
+    model.compile(loss='categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
+
+    history = model.fit(train_images, train_labels,
+                        batch_size=32,
+                        epochs=10,
+                        verbose=2,
+                        validation_data=(test_images, test_labels))
+
+    # Train on 60000 samples, validate on 10000 samples
+    # Epoch 1/10
+    #  - 1026s - loss: 0.1926 - acc: 0.9418 - val_loss: 0.0499 - val_acc: 0.9834
+    # Epoch 2/10
+    #  - 995s - loss: 0.0817 - acc: 0.9759 - val_loss: 0.0397 - val_acc: 0.9874
+    # Epoch 3/10
+    #  - 996s - loss: 0.0633 - acc: 0.9811 - val_loss: 0.0339 - val_acc: 0.9895
+    # Epoch 4/10
+    #  - 991s - loss: 0.0518 - acc: 0.9836 - val_loss: 0.0302 - val_acc: 0.9909
+    # Epoch 5/10
+    #  - 996s - loss: 0.0442 - acc: 0.9861 - val_loss: 0.0322 - val_acc: 0.9905
+    # Epoch 6/10
+    #  - 994s - loss: 0.0395 - acc: 0.9878 - val_loss: 0.0303 - val_acc: 0.9898
+    # Epoch 7/10
+    #  - 1001s - loss: 0.0329 - acc: 0.9890 - val_loss: 0.0328 - val_acc: 0.9907
+    # Epoch 8/10
+    #  - 993s - loss: 0.0298 - acc: 0.9907 - val_loss: 0.0336 - val_acc: 0.9916
+    # Epoch 9/10
+    #  - 998s - loss: 0.0296 - acc: 0.9911 - val_loss: 0.0281 - val_acc: 0.9915
+    # Epoch 10/10
+    #  - 996s - loss: 0.0252 - acc: 0.9917 - val_loss: 0.0340 - val_acc: 0.9918
+
+    score = model.evaluate(test_images, test_labels, verbose=0)
+    print('Test loss:', score[0])
+    print('Test accuracy:', score[1])
+
+    # Test loss: 0.034049834153382426
+    # Test accuracy: 0.9918
 
 
 RNN
