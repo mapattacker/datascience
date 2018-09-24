@@ -29,7 +29,7 @@ The user might end up using your model for other purposes that might be unethica
 Keeping Data Confidential
 --------------------------
 While data science has the potential to help businesses and humanity in general, 
-there are many potential issues in confidentially as personal data can be collected. 
+there are many issues in confidentially as personal data can be collected. 
 An internet restricted environment should be conducted where such data is being extracted for analysis,
 or if not all sensitive data should be hashed.
 
