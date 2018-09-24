@@ -30,7 +30,7 @@ An **activation function** tells the perception what outcome it is.
 
     Structure of a single perceptron
 
- Activation functinos consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*.
+Activation functinos consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*.
 
 .. figure:: images/deeplearning3.png
     :width: 400px
