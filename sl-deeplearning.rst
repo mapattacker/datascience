@@ -30,7 +30,7 @@ An **activation function** tells the perception what outcome it is.
 
     Structure of a single perceptron
 
-Activation functinos consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*.
+Activation functions consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*.
 
 .. figure:: images/deeplearning3.png
     :width: 400px
@@ -40,7 +40,7 @@ Activation functinos consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*.
 
 The backward propagation algorithm works in such that the slopes of gradient descent is calculated by 
 working backwards from the output layer back to the input layer. The weights are readjusted to reduce the 
-loss and improve the accuarcy of the model..
+loss and improve the accuarcy of the model.
 
 .. figure:: images/deeplearning4.png
     :width: 400px
@@ -48,7 +48,7 @@ loss and improve the accuarcy of the model..
 
     Backward propagation
 
-A summary is as follows.
+**A summary is as follows**
 
   1. Randomly initialize the weights for all the nodes.
   2. For every training example, perform a forward pass using the current weights, and calculate the output of each node going from left to right. The final output is the value of the last node.
