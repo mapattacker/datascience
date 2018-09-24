@@ -114,11 +114,14 @@ Each category is one binary field of 1 & 0. Not good if too many categories in a
 
     Coursera: How to Win a Data Science Competition
     
-    
-    
+
 Datetime
 ---------
 
 
 Coordinates
 -------------
+It is necessary to define a projection for a coordinate reference system if there is a classification in space,
+eg k-means clustering. This basically change the coordinates from a spherical component to a flat surface.
+
+Also take note of spatial auto-correlation.

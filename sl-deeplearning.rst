@@ -3,67 +3,58 @@ Deep Learning
 Deep Learning falls under the broad class of Articial Intelligence > Machine Learning.
 It is a Machine Learning technique that uses multiple internal layers (**hidden layers**) of
 non-linear processing units (**neurons**) to conduct supervised or unsupervised learning from data.
+  
 
-Some basic concepts of Deep Learning include:
-  * Neuron, Perceptron
-  * Neural Network (NN)
-  * Convolutional Neural Network (CNN)
-  * Recurrent Neural Netowk (RNN)
-  
-  
-Playground
+ANN
 -----------
-Tensorflow Playground is the best applicaton to learn about NN without math. 
-View it here_. An excellent guide_ also gives a great background on the basics.
+An artifical neural network consists of an input layer, hidden layers, and an output layer. 
+This writeup by Berkeley_ gave an excellent introduction to the theory. 
+Most of the diagrams are taken from the site.
 
-.. figure:: images/tensorflow_pg.png
-    :width: 600px
-    :align: center
+.. _Berkeley https://ml.berkeley.edu/blog/2017/02/04/tutorial-3/
 
-
-.. _here: http://playground.tensorflow.org
-.. _guide: https://cloud.google.com/blog/big-data/2016/07/understanding-neural-networks-with-tensorflow-playground
-
-
-:Learning Rate: Determines the learning speed (0.00001 to 10)
-:Activation: The activation function is what tells the perceptron to fire or not. eg. (ReLU, Tanh, Sigmoid, Linear)
-:Regularizaton: Type of Regularization to reduce overfitting. ``L1``: can reduce coefficients to 0. Useful for few features. ``L1``: useful for inputs that are correlated. 
-:Regularization Rate: 0 to 10
-:Problem Type: Classification or Regression
-
-
-
-Other variables include adjusting the # neurons (max: 8), # hidden layers (max: 6), data type, noise, batch size.
-
-Here's an example output of using **1 hidden layer** with **1, 2 & 3 neurons** in that layer. 
-1 neuron can only split by one straight line.
-
-.. figure:: images/tensorflow_pg1.png
+.. figure:: images/deeplearning1.png
     :width: 400px
     :align: center
 
-For more complicated datasets, more hidden layers need to be added.
+    Structure of an artificial neutral network
 
-.. figure:: images/tensorflow_pg2.png
-    :width: 600px
-    :align: center
-    
-From these examples, we can see that a **hidden layer** contains the intelligence
-in a distributed fashion using many ``neurons``, ``interconnection``, ``weights``,
-``activation functions``, etc. **Deep NN** have multiple neutral networks.
+Zooming in at a single perceptron, the input layer consists of every individual features, 
+each with an assigned weight feeding to the hidden layer. 
+An **activation function** tells the perception what outcome it is.
 
 
-Backpropagation 
----------------
-Backpropagation (BP) uses training iterations where **error size** is used
-to determine the updated value of each weight in the NN.
-
-.. figure:: images/backp1.png
-    :width: 600px
+.. figure:: images/deeplearning2.png
+    :width: 400px
     :align: center
 
-NN
-----
+    Structure of a single perceptron
+
+ Activation functinos consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*.
+
+.. figure:: images/deeplearning3.png
+    :width: 400px
+    :align: center
+
+    An activation function, using sigmoid function
+
+The backward propagation algorithm works in such that the slopes of gradient descent is calculated by 
+working backwards from the output layer back to the input layer. The weights are readjusted to reduce the 
+loss and improve the accuarcy of the model..
+
+.. figure:: images/deeplearning4.png
+    :width: 400px
+    :align: center
+
+    Backward propagation
+
+A summary is as follows.
+
+  1. Randomly initialize the weights for all the nodes.
+  2. For every training example, perform a forward pass using the current weights, and calculate the output of each node going from left to right. The final output is the value of the last node.
+  3. Compare the final output with the actual target in the training data, and measure the error using a loss function.
+  4. Perform a backwards pass from right to left and propagate the error to every individual node using backpropagation. Calculate each weight’s contribution to the error, and adjust the weights accordingly using gradient descent. Propagate the error gradients back starting from the last layer.
+
 
 .. code:: python
 
