@@ -34,7 +34,8 @@ An **activation function** tells the perception what outcome it is.
 
     Structure of a single perceptron
 
-Activation functions consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*, **Softmax** and many others.
+Activation functions consists of *ReLU*, *Tanh*, *Linear*, *Sigmoid*, *Softmax* and many others.
+Sigmoid is used for binary classifications, while softmax is used for multi-class classifications.
 
 .. figure:: images/deeplearning3.png
     :width: 400px
@@ -44,7 +45,7 @@ Activation functions consists of *ReLU*, *Tanh*, *Sigmoid*, *Linear*, **Softmax*
 
 The backward propagation algorithm works in such that the slopes of gradient descent is calculated by 
 working backwards from the output layer back to the input layer. The weights are readjusted to reduce the 
-loss and improve the accuarcy of the model.
+loss and improve the accuracy of the model.
 
 .. figure:: images/deeplearning4.png
     :width: 400px
@@ -62,14 +63,23 @@ loss and improve the accuarcy of the model.
 Keras Model
 ***************
 
-An ANN model in Keras library requires the definition of 
+Building an ANN model in Keras library requires
     * input & hidden layers
-    * model compliation, & 
+    * model compliation
     * model fitting
     * model evalution
 
-Definition of layers are typically done using the typical Dense, or regularization layer called Dropout.
+Definition of layers are typically done using the typical Dense layer, or regularization layer called Dropout.
 The latter prevents overfitting as it randomly selects neurons to be ignored during training.
+
+.. code:: python
+
+    model = Sequential()
+    model.add(Dense(512, activation='relu', input_shape=(784,)))
+    model.add(Dropout(0.2))
+    model.add(Dense(512, activation='relu'))
+    model.add(Dropout(0.2))
+    model.add(Dense(10, activation='softmax'))
 
 
 Before training, the model needs to be compiled with the learning hyperparameters of optimizer, loss, and metric functions.
@@ -80,17 +90,17 @@ Before training, the model needs to be compiled with the learning hyperparameter
 
     # For a multi-class classification problem
     model.compile(optimizer='rmsprop',
-                loss='categorical_crossentropy',
-                metrics=['accuracy'])
+                  loss='categorical_crossentropy',
+                  metrics=['accuracy'])
 
     # For a binary classification problem
     model.compile(optimizer='rmsprop',
-                loss='binary_crossentropy',
-                metrics=['accuracy'])
+                  loss='binary_crossentropy',
+                  metrics=['accuracy'])
 
     # For a mean squared error regression problem
     model.compile(optimizer='rmsprop',
-                loss='mse')
+                  loss='mse')
 
 
 The below gives a compiled code example code.
@@ -134,7 +144,8 @@ The below gives a compiled code example code.
     Non-trainable params: 0
     _________________________________________________________________
 
-
+    # set optimizer parameters
+    keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
     model.compile(loss='categorical_crossentropy',
                     optimizer=RMSprop(),
                     metrics=['accuracy'])
