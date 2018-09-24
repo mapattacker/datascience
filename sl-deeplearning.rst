@@ -108,6 +108,12 @@ Before training, the model needs to be compiled with the learning hyperparameter
                   loss='mse')
 
 
+    # we can also set optimizer's parameters
+    from tensorflow.keras.optimizers import RMSprop
+    rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
+    model.compile(optimizer=rmsprop, loss='mse')
+
+
 We can also use sklearn's **cross-validation**
 
 .. code:: python
@@ -174,8 +180,6 @@ The below gives a compiled code example code.
     Non-trainable params: 0
     _________________________________________________________________
 
-    # set optimizer parameters
-    # RMSprop = keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay=0.0)
     model.compile(loss='categorical_crossentropy',
                     optimizer=RMSprop(),
                     metrics=['accuracy'])
