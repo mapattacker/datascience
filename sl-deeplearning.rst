@@ -64,7 +64,8 @@ Keras Model
 An ANN model in Keras library requires the definition of 
     * input & hidden layers
     * model compliation, & 
-    * model fitting.
+    * model fitting
+    * model evalution
 
 
 Before training, the model needs to be compiled with the learning hyperparameters of optimizer, loss, and metric functions.
@@ -86,6 +87,9 @@ Before training, the model needs to be compiled with the learning hyperparameter
     # For a mean squared error regression problem
     model.compile(optimizer='rmsprop',
                 loss='mse')
+
+
+The below gives a compiled code example code
 
 Code
 *****
