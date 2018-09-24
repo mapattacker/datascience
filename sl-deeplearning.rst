@@ -61,6 +61,7 @@ loss and improve the accuarcy of the model.
 
 Keras Model
 ***************
+
 An ANN model in Keras library requires the definition of 
     * input & hidden layers
     * model compliation, & 
@@ -89,10 +90,8 @@ Before training, the model needs to be compiled with the learning hyperparameter
                 loss='mse')
 
 
-The below gives a compiled code example code
+The below gives a compiled code example code.
 
-Code
-*****
 .. code:: python
 
     from tensorflow import keras
