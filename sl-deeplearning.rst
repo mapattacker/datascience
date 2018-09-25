@@ -365,7 +365,7 @@ The output of one unit goes into the next one and the information is passed.
 
     from medium
 
-Long Short Term Memory (LSTM) is a 
+Long Short Term Memory (LSTM) is a special kind of Recurrent Neural Networks (RNN) with the capability of learning long-term dependencies. 
 
 .. figure:: images/rnn2.jpg
     :width: 450px
