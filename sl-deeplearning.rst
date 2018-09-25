@@ -228,6 +228,9 @@ CNN
 **Convolutional Neural Network** (CNN) is suitable for unstructured data like image classification,
 machine translation, sentence classification, and sentiment analysis.
 
+Theory
+******
+
 This article from medium_ gives a good introduction of CNN. The steps goes something like this:
 
 .. _medium: https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148
