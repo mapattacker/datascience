@@ -356,7 +356,7 @@ Keras Model
 
 RNN
 ----
-**Recurrent Neural Network** (RNN). A typical RNN looks like above-where X(t) is input, h(t) is output and A is the neural network which gains information from the previous step in a loop. 
+**Recurrent Neural Network** (RNN). A typical RNN looks like below, where X(t) is input, h(t) is output and A is the neural network which gains information from the previous step in a loop. 
 The output of one unit goes into the next one and the information is passed.
 
 .. figure:: images/rnn1.png
@@ -365,10 +365,13 @@ The output of one unit goes into the next one and the information is passed.
 
     from medium
 
-Long Short Term Memory (LSTM) is a special kind of Recurrent Neural Networks (RNN) with the capability of learning long-term dependencies. 
+**Long Short Term Memory (LSTM)** is a special kind of Recurrent Neural Networks (RNN) with the capability of learning long-term dependencies.
+The intricacies lie within the cell. This medium article_ gives a good description of it.
+
+.. _article: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
 
 .. figure:: images/rnn2.png
-    :width: 450px
+    :width: 400px
     :align: center
 
     from medium
