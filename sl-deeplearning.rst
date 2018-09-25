@@ -233,7 +233,7 @@ This article from medium_ gives a good introduction of CNN.
 .. _medium: https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148
 
 
-.. figure:: images/cnn1.png
+.. figure:: images/cnn1.jpg
     :width: 400px
     :align: center
 
