@@ -359,7 +359,7 @@ RNN
 **Recurrent Neural Network** (RNN). A typical RNN looks like above-where X(t) is input, h(t) is output and A is the neural network which gains information from the previous step in a loop. 
 The output of one unit goes into the next one and the information is passed.
 
-.. figure:: images/rnn1.jpg
+.. figure:: images/rnn1.png
     :width: 450px
     :align: center
 
@@ -367,7 +367,7 @@ The output of one unit goes into the next one and the information is passed.
 
 Long Short Term Memory (LSTM) is a special kind of Recurrent Neural Networks (RNN) with the capability of learning long-term dependencies. 
 
-.. figure:: images/rnn2.jpg
+.. figure:: images/rnn2.png
     :width: 450px
     :align: center
 
