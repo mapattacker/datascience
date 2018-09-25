@@ -233,19 +233,19 @@ This article from medium_ gives a good introduction of CNN.
 .. _medium: https://medium.com/@RaghavPrabhu/understanding-of-convolutional-neural-network-cnn-deep-learning-99760835f148
 
 
-.. figure:: images/cnn1.jpg
-    :width: 400px
-    :align: center
-
-    from medium
-
-
     1. Provide input image into convolution layer
     2. Choose parameters, apply filters with strides, padding if requires. Perform convolution on the image and apply ReLU activation to the matrix.
     3. Perform pooling to reduce dimensionality size. Max-pooling is most commonly used
     4. Add as many convolutional layers until satisfied
     5. Flatten the output and feed into a fully connected layer (FC Layer)
     6. Output the class using an activation function (Logistic Regression with cost functions) and classifies images.
+
+
+.. figure:: images/cnn1.jpg
+    :width: 400px
+    :align: center
+
+    from medium
 
 There are many topologies, or CNN architecture to build on as the hyperparameters, layers etc. are endless. Some specialized
 architecture includes LeNet-5 (handwriting recognition), AlexNet (deeper than LeNet, image classification), 
