@@ -356,8 +356,22 @@ Keras Model
 
 RNN
 ----
-**Recurrent Neural Network** (RNN)
+**Recurrent Neural Network** (RNN). A typical RNN looks like above-where X(t) is input, h(t) is output and A is the neural network which gains information from the previous step in a loop. 
+The output of one unit goes into the next one and the information is passed.
 
+.. figure:: images/rnn1.jpg
+    :width: 450px
+    :align: center
+
+    from medium
+
+Long Short Term Memory (LSTM) is a 
+
+.. figure:: images/rnn2.jpg
+    :width: 450px
+    :align: center
+
+    from medium
 
 The code below uses LSTM (long short-term memory) for sentiment analysis.
 
