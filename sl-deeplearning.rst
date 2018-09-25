@@ -251,9 +251,9 @@ This article from medium_ gives a good introduction of CNN. The steps goes somet
     from medium
 
 There are many topologies, or CNN architecture to build on as the hyperparameters, layers etc. are endless. Some specialized
-architecture includes LeNet-5 (handwriting recognition), AlexNet (deeper than LeNet, image classification), 
-GoogLeNet (deeper than AlexNet, includes inception modules, or groups of convolution), 
-ResNet (even deeper, maintains performance using skip connections). This article_ gives a good summary of each architecture.
+architecture includes **LeNet-5** (handwriting recognition), **AlexNet** (deeper than LeNet, image classification), 
+**GoogLeNet** (deeper than AlexNet, includes inception modules, or groups of convolution), 
+**ResNet** (even deeper, maintains performance using skip connections). This article_ gives a good summary of each architecture.
 
 .. _article: https://medium.com/@RaghavPrabhu/cnn-architectures-lenet-alexnet-vgg-googlenet-and-resnet-7c81c017b848
 
