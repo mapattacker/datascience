@@ -366,19 +366,12 @@ The output of one unit goes into the next one and the information is passed.
     from medium
 
 **Long Short Term Memory (LSTM)** is a special kind of Recurrent Neural Networks (RNN) with the capability of learning long-term dependencies.
-The intricacies lie within the cell. This medium from article_ gives a good description of it.
+The intricacies lie within the cell, where internal mechanisms called gates that can regulate the flow of information. 
+This medium from article_ gives a good description of it.
 
 .. _article: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
 
 .. figure:: images/rnn2.png
-    :width: 400px
-    :align: center
-
-    from medium
-
-LSTM have internal mechanisms called gates that can regulate the flow of information.
-
-.. figure:: images/rnn3.png
     :width: 400px
     :align: center
 
