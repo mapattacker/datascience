@@ -380,6 +380,9 @@ This medium from article_ gives a good description of it.
 
     from medium. An alternative to LSTM is GRU.
 
+Keras
+******
+
 The code below uses LSTM (long short-term memory) for sentiment analysis.
 
 .. code:: python
