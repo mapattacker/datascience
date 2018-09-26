@@ -370,7 +370,7 @@ Theory
 
 **Long Short Term Memory (LSTM)** is a special kind of Recurrent Neural Networks (RNN) with the capability of learning long-term dependencies.
 The intricacies lie within the cell, where internal mechanisms called gates that can regulate the flow of information. 
-This consists of 4 activation functions, 3 sigmoid and 1 tanh.
+This consists of 4 activation functions, 3 sigmoid and 1 tanh, instead of the typical 1 activation function.
 This medium from article_ gives a good description of it.
 
 .. _article: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
