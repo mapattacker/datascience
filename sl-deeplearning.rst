@@ -382,10 +382,10 @@ This medium from article_ gives a good description of it. An alternative, or sim
 
     from medium.
 
-Keras
-******
+Keras Model
+***********
 
-The code below uses LSTM (long short-term memory) for sentiment analysis.
+The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB movie reviews.
 
 .. code:: python
 
@@ -395,13 +395,16 @@ The code below uses LSTM (long short-term memory) for sentiment analysis.
     from tensorflow.keras.layers import LSTM
     from tensorflow.keras.datasets import imdb
 
-
+    # words in sentences are encoded into integers
+    # response is in binary 1-0
     (x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=20000)
 
+    # limit the sentence to first 80 words
     x_train = sequence.pad_sequences(x_train, maxlen=80)
     x_test = sequence.pad_sequences(x_test, maxlen=80)
-    
 
+    
+    # embedding layer converts input data into dense vectors of fixed size of 20k words & 128 hidden neurons, better suited for neural network
     model = Sequential()
     model.add(Embedding(20000, 128))
     model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
