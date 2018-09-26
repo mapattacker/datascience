@@ -377,7 +377,7 @@ This medium from article_ gives a good description of it. An alternative, or sim
 .. _article: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
 
 .. figure:: images/rnn2.png
-    :width: 500px
+    :width: 5550px
     :align: center
 
     from medium.
