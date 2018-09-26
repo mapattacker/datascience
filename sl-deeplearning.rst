@@ -372,7 +372,7 @@ Theory
 The intricacies lie within the cell, where 3 internal mechanisms called gates that can regulate the flow of information. 
 This consists of 4 activation functions, 3 sigmoid and 1 tanh, instead of the typical 1 activation function.
 This medium from article_ gives a good description of it. An alternative, or simplified form of LSTM is 
-Gated Recurrent Unit (GRU).
+**Gated Recurrent Unit (GRU)**.
 
 .. _article: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
 
