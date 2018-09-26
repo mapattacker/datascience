@@ -372,10 +372,10 @@ This medium from article_ gives a good description of it.
 .. _article: https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21
 
 .. figure:: images/rnn2.png
-    :width: 400px
+    :width: 500px
     :align: center
 
-    from medium
+    from medium. An alternative to LSTM is GRU.
 
 The code below uses LSTM (long short-term memory) for sentiment analysis.
 
