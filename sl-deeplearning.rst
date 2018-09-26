@@ -253,9 +253,9 @@ This article from medium_ gives a good introduction of CNN. The steps goes somet
 There are many topologies, or CNN architecture to build on as the hyperparameters, layers etc. are endless. Some specialized
 architecture includes **LeNet-5** (handwriting recognition), **AlexNet** (deeper than LeNet, image classification), 
 **GoogLeNet** (deeper than AlexNet, includes inception modules, or groups of convolution), 
-**ResNet** (even deeper, maintains performance using skip connections). This article_ gives a good summary of each architecture.
+**ResNet** (even deeper, maintains performance using skip connections). This article1_ gives a good summary of each architecture.
 
-.. _article: https://medium.com/@RaghavPrabhu/cnn-architectures-lenet-alexnet-vgg-googlenet-and-resnet-7c81c017b848
+.. _article1: https://medium.com/@RaghavPrabhu/cnn-architectures-lenet-alexnet-vgg-googlenet-and-resnet-7c81c017b848
 
 Keras Model
 ***************
@@ -387,8 +387,11 @@ The code below uses LSTM (long short-term memory) for sentiment analysis.
     from tensorflow.keras.datasets import imdb
 
 
+    (x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=20000)
+
     x_train = sequence.pad_sequences(x_train, maxlen=80)
     x_test = sequence.pad_sequences(x_test, maxlen=80)
+    
 
     model = Sequential()
     model.add(Embedding(20000, 128))
