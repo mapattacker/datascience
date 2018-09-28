@@ -369,7 +369,7 @@ Theory
     from medium
 
 **Long Short Term Memory (LSTM)** is a special kind of Recurrent Neural Networks (RNN) with the capability of learning long-term dependencies.
-The intricacies lie within the cell, where 3 internal mechanisms called gates that can regulate the flow of information. 
+The intricacies lie within the cell, where 3 internal mechanisms called gates regulate the flow of information. 
 This consists of 4 activation functions, 3 sigmoid and 1 tanh, instead of the typical 1 activation function.
 This medium from article_ gives a good description of it. An alternative, or simplified form of LSTM is 
 **Gated Recurrent Unit (GRU)**.

@@ -381,6 +381,9 @@ Regression
 -----------
 For regression problems, where the response or y is a continuous value, 
 it is common to use R-Squared and RMSE (Root Mean Squared Error) as evaluation metrics.
+This website_ gives an excellent description on all the variants of errors metrics. 
+
+.. _website.. https://www.dataquest.io/blog/understanding-regression-error-metrics/
 
 **R-squared**: Percentage of variability of dataset that can be explained by the model.
 
