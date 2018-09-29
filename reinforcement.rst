@@ -7,8 +7,7 @@ with jupyter notebook descriptions for various games. This includes deep learnin
 .. _medium: https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0
 
 
-Markov Decision Problem
-------------------------
+**Markov Decision Problem**
 
 Reinforcement learning helps to solve Markov Decision Problems (MDP).
 The core problem of MDPs is to find a "policy" for the decision maker: a function π that specifies the action 
