@@ -19,11 +19,8 @@ The core problem of MDPs is to find a "policy" for the decision maker: a functio
 
     Udacity, Machine Learning for Trading
 
-There are two ways to determine the policy.
-    1. Model based
-        * using value/policy iteration
-    2. Model free
+
 
 Q-Learning
 -----------
-Q-Learning is an example of model free reinforcement learning.
+Q-Learning is an example of model-free reinforcement learning to solve the Markov Decision Problem.
