@@ -10,6 +10,7 @@ with jupyter notebook descriptions for various games. This includes deep learnin
 Markov Decision Problem
 ------------------------
 
+Reinforcement learning helps to solve Markov Decision Problems (MDP).
 The core problem of MDPs is to find a "policy" for the decision maker: a function π that specifies the action 
 π(s) that the decision maker will choose when in state s. The diagram illustrate the Markov Decision Problem.
 
@@ -24,3 +25,13 @@ The core problem of MDPs is to find a "policy" for the decision maker: a functio
 Q-Learning
 -----------
 Q-Learning is an example of model-free reinforcement learning to solve the Markov Decision Problem.
+It derives the policy by directly looking at the data instead of developing a model.
+
+
+Updating the function Q uses the following equation.
+
+.. figure:: images/reinforce2.png
+    :width: 400px
+    :align: center
+
+    from Medium
