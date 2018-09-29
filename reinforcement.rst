@@ -27,9 +27,19 @@ Q-Learning is an example of model-free reinforcement learning to solve the Marko
 It derives the policy by directly looking at the data instead of developing a model.
 
 
-Updating the function Q uses the following equation.
+We first build a Q-table with each column as the type of action possible,
+and then each row as the number of possible states.
 
 .. figure:: images/reinforce2.png
+    :width: 400px
+    :align: center
+
+    from Medium
+
+
+Updating the function Q uses the following equation.
+
+.. figure:: images/reinforce3.png
     :width: 400px
     :align: center
 
