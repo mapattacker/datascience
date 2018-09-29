@@ -28,7 +28,7 @@ It derives the policy by directly looking at the data instead of developing a mo
 
 
 We first build a Q-table with each column as the type of action possible,
-and then each row as the number of possible states.
+and then each row as the number of possible states. And initialise the table with all zeros.
 
 .. figure:: images/reinforce2.png
     :width: 400px
@@ -44,3 +44,8 @@ Updating the function Q uses the following equation.
     :align: center
 
     from Medium
+
+There are two important learning parameters to define in the equation.
+
+ * **learning rate, alpha**: how quickly a network abandons the former value for the new. If the learning rate is 1, the new estimate will be the new Q-value.
+ * **discount rate, gamma**: how much to discount the future reward.
