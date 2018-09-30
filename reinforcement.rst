@@ -60,9 +60,13 @@ and the bot starts to exploit the environment.
 
 There are other algothrims to manage the exploration vs exploiation problem, like softmax.
 
+**Code**
+
+Start the environment and training parameters for frozen lake in AI gym.
+
 .. code:: python
 
-    code snippets from https://gist.github.com/simoninithomas/baafe42d1a665fb297ca669aa2fa6f92#file-q-learning-with-frozenlake-ipynb
+    #code snippets from https://gist.github.com/simoninithomas/baafe42d1a665fb297ca669aa2fa6f92#file-q-learning-with-frozenlake-ipynb
 
     import numpy as np
     import gym
@@ -88,6 +92,10 @@ There are other algothrims to manage the exploration vs exploiation problem, lik
     min_epsilon = 0.01            # Minimum exploration probability 
     decay_rate = 0.005             # Exponential decay rate for exploration prob
 
+
+Train and generate the Q-table.
+
+.. code:: python
 
     # generate Q-table ------------
     # List of rewards
@@ -136,3 +144,33 @@ There are other algothrims to manage the exploration vs exploiation problem, lik
 
     print ("Score over time: " +  str(sum(rewards)/total_episodes))
     print(qtable)
+
+Rerun the game using the Q-table generated.
+
+.. code:: python
+    
+    env.reset()
+
+    for episode in range(5):
+        state = env.reset()
+        step = 0
+        done = False
+        print("****************************************************")
+        print("EPISODE ", episode)
+
+        for step in range(max_steps):
+            
+            # Take the action (index) that have the maximum expected future reward given that state
+            action = np.argmax(qtable[state,:])
+            
+            new_state, reward, done, info = env.step(action)
+            
+            if done:
+                # Here, we decide to only print the last state (to see if our agent is on the goal or fall into an hole)
+                env.render()
+                
+                # We print the number of step it took.
+                print("Number of steps", step)
+                break
+            state = new_state
+    env.close()
