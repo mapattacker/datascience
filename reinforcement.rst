@@ -61,6 +61,17 @@ and the bot starts to exploit the environment.
 .. code:: python
     code snippets from https://gist.github.com/simoninithomas/baafe42d1a665fb297ca669aa2fa6f92#file-q-learning-with-frozenlake-ipynb
 
+    import numpy as np
+    import gym
+    import random
+
+    env = gym.make("FrozenLake-v0")
+    
+    action_size = env.action_space.n
+    state_size = env.observation_space.n
+
+    qtable = np.zeros((state_size, action_size))
+    print(qtable)
 
     # define hyperparameters ----------
     total_episodes = 15000        # Total episodes
