@@ -58,6 +58,8 @@ The logic behind this is that the bot does not know anything about the environme
 However the more the bot explores the environment, the more the epsilon rate will decreases 
 and the bot starts to exploit the environment.
 
+There are other algothrims to manage the exploration vs exploiation problem, like softmax.
+
 .. code:: python
     code snippets from https://gist.github.com/simoninithomas/baafe42d1a665fb297ca669aa2fa6f92#file-q-learning-with-frozenlake-ipynb
 
@@ -66,7 +68,7 @@ and the bot starts to exploit the environment.
     import random
 
     env = gym.make("FrozenLake-v0")
-    
+
     action_size = env.action_space.n
     state_size = env.observation_space.n
 
