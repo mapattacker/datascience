@@ -61,6 +61,7 @@ and the bot starts to exploit the environment.
 There are other algothrims to manage the exploration vs exploiation problem, like softmax.
 
 .. code:: python
+
     code snippets from https://gist.github.com/simoninithomas/baafe42d1a665fb297ca669aa2fa6f92#file-q-learning-with-frozenlake-ipynb
 
     import numpy as np
