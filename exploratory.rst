@@ -50,6 +50,24 @@ To check for possible relationships with the target, place the feature under hue
     :scale: 40 %
     :align: center
 
+Multiple Plots
+
+.. code:: python
+
+    fig, axes = plt.subplots(ncols=3, nrows=1, figsize=(15, 5))
+    col = ['Winner','Second','Third']
+
+    for cnt, ax in enumerate(axes):
+        sns.countplot(x=col[cnt], data=df2, ax=ax, order=df2[col[cnt]].value_counts().index);
+        
+    for ax in fig.axes:
+        plt.sca(ax)
+        plt.xticks(rotation=90)
+
+.. image:: images/countplot3.png
+    :scale: 40 %
+    :align: center
+
 Box Plots
 ----------
 Using the 50 percentile to compare among different classes, it is easy to find feature that
@@ -74,7 +92,7 @@ Multiple Plots
     cmap = sns.color_palette("Set2")
 
     fig, axes = plt.subplots(ncols=2, nrows=5, figsize=(10, 18))
-    a = [i for i in axes for i in i]
+    a = [i for i in axes for i in i] # axes is nested if >1 row & >1 col, need to flatten
     for i, ax in enumerate(a):
         sns.boxplot(x='Cover_Type', y=eda2.columns[i], data=eda, palette=cmap, width=0.5, ax=ax);
 
