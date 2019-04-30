@@ -54,7 +54,7 @@ Multiple Plots
 
 .. code:: python
 
-    fig, axes = plt.subplots(ncols=3, nrows=1, figsize=(15, 5))
+    fig, axes = plt.subplots(ncols=3, nrows=1, figsize=(15, 5)) # note only for 1 row or 1 col, else need to flatten nested list in axes
     col = ['Winner','Second','Third']
 
     for cnt, ax in enumerate(axes):

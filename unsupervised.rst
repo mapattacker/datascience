@@ -465,6 +465,8 @@ One of the benfits of this clustering is that a hierarchy can be built.
     :width: 600px
     :align: center
         
+More in this link: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/`
+
 DBSCAN
 *******
 Density-Based Spatial Clustering of Applications with Noise (DBSCAN). 
