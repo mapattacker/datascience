@@ -396,6 +396,52 @@ and the solution occurring the most number of times is chosen.
   :scale: 40 %
   
 
+Gaussian Mixture Model
+************************
+
+GMM is, in essence a density estimation model but can function like clustering. It has a probabilistic model under the hood so it 
+returns a matrix of probabilities belonging to each cluster for each data point.
+
+
+We can input the `covariance_type` argument such that it can choose between `diag` (the default, ellipse constrained to the axes), 
+`spherical` (like k-means), or `full` (ellipse without a specific orientation).
+
+.. code:: python
+  from sklearn.mixture import GMM
+
+  gmm = GMM(n_components=4, covariance_type='full', random_state=42)
+  plot_gmm(gmm, X_stretched)
+
+.. image:: images/gmm1.png
+  :scale: 40 %
+
+  from Python Data Science Handbook by Jake VanderPlas
+
+
+`BIC` or `AIC` are used to determine the optimal number of clusters, the former usually recommends a simpler model. 
+Note that number of clusters or components measures how well GMM works as a density estimator, not as a clustering algorithm.
+
+.. code:: python
+  from sklearn.mixture import GMM
+
+  n_components = np.arange(1, 21)
+  models = [GMM(n, covariance_type='full', random_state=0).fit(Xmoon)
+            for n in n_components]
+
+  plt.plot(n_components, [m.bic(Xmoon) for m in models], label='BIC')
+  plt.plot(n_components, [m.aic(Xmoon) for m in models], label='AIC')
+  plt.legend(loc='best')
+  plt.xlabel('n_components');
+
+.. image:: images/gmm2.png
+  :scale: 40 %
+
+  from Python Data Science Handbook by Jake VanderPlas
+
+
+https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html
+
+
 Agglomerative Clustering
 ************************
 
