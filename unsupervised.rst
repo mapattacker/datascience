@@ -29,6 +29,7 @@ Dimensionality Reduction
   * Used for exploring and visualizing a dataset to understand grouping or relationships
   * Often visualized using a 2-dimensional scatterplot
   * Also used for compression, finding features for supervised learning
+  * Can be classified into simple PCA, or manifold techniques
 
 Principal Component Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +78,7 @@ To see how much variance is preserved for each dataset.
 
 .. code:: python
 
-   percent = x_pca.explained_variance_ratio_
+   percent = pca.explained_variance_ratio_
    print(percent)
    print(sum(percent))
 
@@ -170,6 +171,8 @@ Multi-Dimensional Scaling
 Multi-Dimensional Scaling (MDS) is a type of manifold learning algorithm that to visualize 
 a high dimensional dataset and project it onto a lower dimensional space - 
 in most cases, a two-dimensional page. PCA is weak in this aspect.
+
+sklearn gives a good overview of various manifold techniques. https://scikit-learn.org/stable/modules/manifold.html
 
 .. code:: python
 

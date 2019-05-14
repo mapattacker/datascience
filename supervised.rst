@@ -129,10 +129,10 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
 
 
   ####### FEATURE IMPORTANCE #### ####
-  df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
-  df2 = df2.sort_values(by=0,ascending=False)
-  df2.columns = ['feature importance']
-  >>> df2
+  f_impt= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
+  f_impt = f_impt.sort_values(by=0,ascending=False)
+  f_impt.columns = ['feature importance']
+  >>> f_impt
   petal width (cm)	0.952542
   petal length (cm)	0.029591
   sepal length (cm)	0.017867
@@ -286,9 +286,9 @@ Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jo
 
   ####### FEATURE IMPORTANCE #### ####
   # rank the importance of features
-  df2= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
-  df2 = df2.sort_values(by=0,ascending=False)
-  df2.columns = ['feature importance']
+  f_impt= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
+  f_impt = f_impt.sort_values(by=0,ascending=False)
+  f_impt.columns = ['feature importance']
 
   RM	0.225612
   LSTAT	0.192478
