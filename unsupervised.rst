@@ -434,6 +434,9 @@ Note that number of clusters or components measures how well GMM works as a dens
 .. code:: python
 
   from sklearn.mixture import GaussianMixture
+  import matplotlib.pyplot as plt
+  %matplotlib inline 
+  %config InlineBackend.figure_format = 'retina'
 
   input_gmm = normal.values
 
