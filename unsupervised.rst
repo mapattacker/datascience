@@ -414,10 +414,9 @@ We can input the `covariance_type` argument such that it can choose between `dia
   from sklearn.mixture import GMM
 
   gmm = GMM(n_components=4, covariance_type='full', random_state=42)
-  plot_gmm(gmm, X_stretched)
 
 
-.. image:: images/gmm1.png
+.. image:: images/gmm1.PNG
   :scale: 40 %
 
   from Python Data Science Handbook by Jake VanderPlas
@@ -452,7 +451,7 @@ Note that number of clusters or components measures how well GMM works as a dens
 
 
 
-.. image:: images/gmm2.png
+.. image:: images/gmm2.PNG
   :scale: 40 %
 
   from Python Data Science Handbook by Jake VanderPlas
