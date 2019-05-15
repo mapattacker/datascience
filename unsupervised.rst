@@ -421,7 +421,7 @@ We can input the `covariance_type` argument such that it can choose between `dia
 
 
 
-.. figure:: images/gmm2.PNG
+.. figure:: images/gmm1.PNG
   :width: 500px
   :align: center
 
@@ -461,7 +461,7 @@ Note that number of clusters or components measures how well GMM works as a dens
 
 
 .. figure:: images/gmm2.PNG
-  :width: 500px
+  :width: 450px
   :align: center
 
   from Python Data Science Handbook by Jake VanderPlas
