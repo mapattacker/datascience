@@ -403,7 +403,7 @@ Gaussian Mixture Model
 ************************
 
 GMM is, in essence a density estimation model but can function like clustering. It has a probabilistic model under the hood so it 
-returns a matrix of probabilities belonging to each cluster for each data point.
+returns a matrix of probabilities belonging to each cluster for each data point. More https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html
 
 
 We can input the `covariance_type` argument such that it can choose between `diag` (the default, ellipse constrained to the axes), 
@@ -415,6 +415,7 @@ We can input the `covariance_type` argument such that it can choose between `dia
 
   gmm = GMM(n_components=4, covariance_type='full', random_state=42)
   plot_gmm(gmm, X_stretched)
+
 
 .. image:: images/gmm1.png
   :scale: 40 %
@@ -429,22 +430,35 @@ Note that number of clusters or components measures how well GMM works as a dens
 
   from sklearn.mixture import GMM
 
-  n_components = np.arange(1, 21)
-  models = [GMM(n, covariance_type='full', random_state=0).fit(Xmoon)
-            for n in n_components]
+  input_gmm = normal.values
 
-  plt.plot(n_components, [m.bic(Xmoon) for m in models], label='BIC')
-  plt.plot(n_components, [m.aic(Xmoon) for m in models], label='AIC')
-  plt.legend(loc='best')
-  plt.xlabel('n_components');
-`
+  bic_list = []
+  aic_list = []
+  ranges = range(1,30)
+
+  for i in ranges:
+      gmm = GaussianMixture(n_components=i).fit(input_gmm)
+      # BIC
+      bic = gmm.bic(input_gmm)
+      bic_list.append(bic)
+      # AIC
+      aic = gmm.aic(input_gmm)
+      aic_list.append(aic)
+
+  plt.figure(figsize=(10, 5))
+  plt.plot(ranges, bic_list, label='BIC');
+  plt.plot(ranges, aic_list, label='AIC');
+  plt.legend(loc='best');
+
+
+
 .. image:: images/gmm2.png
   :scale: 40 %
 
   from Python Data Science Handbook by Jake VanderPlas
 
 
-https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html
+
 
 
 Agglomerative Clustering
