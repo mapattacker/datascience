@@ -403,7 +403,7 @@ Gaussian Mixture Model
 ************************
 
 GMM is, in essence a density estimation model but can function like clustering. It has a probabilistic model under the hood so it 
-returns a matrix of probabilities belonging to each cluster for each data point. More https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html
+returns a matrix of probabilities belonging to each cluster for each data point. More: https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html
 
 
 We can input the `covariance_type` argument such that it can choose between `diag` (the default, ellipse constrained to the axes), 
@@ -455,8 +455,9 @@ Note that number of clusters or components measures how well GMM works as a dens
 
 
 
-.. image:: images/gmm2.PNG
-  :scale: 40 %
+.. figure:: images/gmm2.PNG
+  :width: 600px
+  :align: center
 
   from Python Data Science Handbook by Jake VanderPlas
 
