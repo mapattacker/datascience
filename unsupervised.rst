@@ -419,7 +419,7 @@ We can input the `covariance_type` argument such that it can choose between `dia
   input_gmm = normal.values
 
   gmm = GaussianMixture(n_components=4, covariance_type='full', random_state=42)
-  gmm.fit(input_gmm)
+  result = gmm.fit_predict(input_gmm)
 
 
 

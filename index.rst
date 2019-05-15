@@ -23,6 +23,7 @@ This documentation summarises various machine learning techniques in Python.
    unsupervised
    sl-deeplearning
    reinforcement
+   classimbalance
    evaluation
    ethics
    resources
