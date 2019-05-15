@@ -368,7 +368,8 @@ and the solution occurring the most number of times is chosen.
   # doesn't decrease the average distance as much
   
 .. image:: images/elbowchart.png
-  :scale: 40 %
+  :scale: 50 %
+  :align: center
 
 
 .. code:: python
@@ -396,7 +397,8 @@ and the solution occurring the most number of times is chosen.
   plt.show()
   
 .. image:: images/kmeans.png
-  :scale: 40 %
+  :scale: 50 %
+  :align: center
   
 
 Gaussian Mixture Model
