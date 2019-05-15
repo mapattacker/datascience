@@ -420,7 +420,8 @@ We can input the `covariance_type` argument such that it can choose between `dia
   gmm.fit(input_gmm)
 
 
-.. figure:: images/gmm1.PNG
+
+.. figure:: images/gmm2.PNG
   :width: 500px
   :align: center
 
