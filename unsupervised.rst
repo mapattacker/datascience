@@ -437,7 +437,7 @@ Note that number of clusters or components measures how well GMM works as a dens
   plt.plot(n_components, [m.aic(Xmoon) for m in models], label='AIC')
   plt.legend(loc='best')
   plt.xlabel('n_components');
-
+`
 .. image:: images/gmm2.png
   :scale: 40 %
 
