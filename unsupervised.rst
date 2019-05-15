@@ -410,6 +410,7 @@ We can input the `covariance_type` argument such that it can choose between `dia
 `spherical` (like k-means), or `full` (ellipse without a specific orientation).
 
 .. code:: python
+
   from sklearn.mixture import GMM
 
   gmm = GMM(n_components=4, covariance_type='full', random_state=42)
@@ -425,6 +426,7 @@ We can input the `covariance_type` argument such that it can choose between `dia
 Note that number of clusters or components measures how well GMM works as a density estimator, not as a clustering algorithm.
 
 .. code:: python
+
   from sklearn.mixture import GMM
 
   n_components = np.arange(1, 21)
