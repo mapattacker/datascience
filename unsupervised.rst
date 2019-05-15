@@ -420,8 +420,9 @@ We can input the `covariance_type` argument such that it can choose between `dia
   gmm.fit(input_gmm)
 
 
-.. image:: images/gmm1.PNG
-  :scale: 40 %
+.. figure:: images/gmm1.PNG
+  :width: 500px
+  :align: center
 
   from Python Data Science Handbook by Jake VanderPlas
 
@@ -456,7 +457,7 @@ Note that number of clusters or components measures how well GMM works as a dens
 
 
 .. figure:: images/gmm2.PNG
-  :width: 600px
+  :width: 500px
   :align: center
 
   from Python Data Science Handbook by Jake VanderPlas
