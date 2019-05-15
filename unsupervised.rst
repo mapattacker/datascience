@@ -411,9 +411,13 @@ We can input the `covariance_type` argument such that it can choose between `dia
 
 .. code:: python
 
-  from sklearn.mixture import GMM
+  from sklearn.mixture import GaussianMixture
 
-  gmm = GMM(n_components=4, covariance_type='full', random_state=42)
+  # gmm accepts input as array, so have to convert dataframe to numpy
+  input_gmm = normal.values
+
+  gmm = GaussianMixture(n_components=4, covariance_type='full', random_state=42)
+  gmm.fit(input_gmm)
 
 
 .. image:: images/gmm1.PNG
@@ -427,7 +431,7 @@ Note that number of clusters or components measures how well GMM works as a dens
 
 .. code:: python
 
-  from sklearn.mixture import GMM
+  from sklearn.mixture import GaussianMixture
 
   input_gmm = normal.values
 
