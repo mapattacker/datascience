@@ -39,7 +39,7 @@ Mahalanobis Distance
 Dynamic Time Warping
 ---------------------
 
-DTW is a technique that finds the optimal alignment between two time series 
+DTW is a technique that finds the optimal alignment between two time series, 
 if one time series may be “warped” non-linearly by stretching or shrinking it along its time axis.
 Dynamic time warping is often used in speech recognition to determine if two waveforms 
 represent the same spoken phrase. In a speech waveform, 
@@ -50,6 +50,7 @@ From Stan Salvador and Philip Chan, the creators of FastDTW,
 they said that it produces an accurate minimum-distance warp path between two time series than is nearly optimal 
 (standard DTW is optimal, but has a quadratic time and space complexity).
 
+Output: Identical = 0, Difference > 0
 
 .. code:: python
 
@@ -61,3 +62,5 @@ they said that it produces an accurate minimum-distance warp path between two ti
     y = np.array([[2,2], [3,3], [4,4]])
     distance, path = fastdtw(x, y, dist=euclidean)
     print(distance)
+
+    # 2.8284271247461903
