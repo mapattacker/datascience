@@ -8,7 +8,7 @@ Euclidean distance is the straight line distance between points, while cosine di
 between these two points.
 
 .. figure:: images/distance1.png
-  :width: 500px
+  :width: 400px
   :align: center
 
 
