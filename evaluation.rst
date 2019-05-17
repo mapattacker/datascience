@@ -159,6 +159,12 @@ Using a heatmap.
   Recall: 0.60
   F1: 0.68
 
+  # for precision/recall/f1 in multi-class classification
+  # need to add average=None or will prompt an error
+  # scoring will be for each label, and averaging them is necessary
+  from statistics import mean
+  mean(f1_score(y_test, y_predict, average=None))
+
 There are many other evaluation metrics, a list can be found here:
 
 .. code:: python
@@ -597,9 +603,41 @@ Using other scoring metrics
   # gives parameters that gives the best indicated scoring type
   print CV.best_params_
 
+
 Auto-Hyperparameters Tuning
 -----------------------------
 Bayesian Tuning and Bandits (BTB) is a package used for auto-tuning ML models hyperparameters.
-It uses Gaussian Process to do this. It was born from a Master Thesis by Laura Gustafson in 2018.
+It uses Gaussian Process to do this, though there is an option for Uniform. 
+It was born from a Master Thesis by Laura Gustafson in 2018.
 
 https://github.com/HDI-Project/BTB
+
+.. code:: python
+
+    from btb.tuning import GP, Uniform
+    from btb import HyperParameter, ParamTypes
+
+    tunables = [('n_estimators', HyperParameter(ParamTypes.INT, [500, 2000])),
+                ('max_depth', HyperParameter(ParamTypes.INT, [3, 20]))]
+    tuner = GP(tunables)
+    parameters = tuner.propose()
+    parameters
+
+    for i in range(10):
+        model = XGBClassifier(**parameters, n_jobs=-1)
+        model.fit(X_train, y_train)
+        y_predict = model.predict(X_test)
+        score = accuracy_score(y_test, y_predict)
+        tuner.add(parameters, score)
+        print(score, parameters)
+        parameters = tuner.propose()
+        
+    tuner._best_score
+
+    # 0.9492307692307692 {'n_estimators': 1200, 'max_depth': 13}
+    # 0.9507692307692308 {'n_estimators': 1659, 'max_depth': 15}
+    # 0.9492307692307692 {'n_estimators': 1661, 'max_depth': 14}
+    # 0.9492307692307692 {'n_estimators': 1654, 'max_depth': 13}
+    # 0.9492307692307692 {'n_estimators': 1658, 'max_depth': 16}
+    # 0.9476923076923077 {'n_estimators': 923, 'max_depth': 13}
+    # 0.9507692307692308 {'n_estimators': 1658, 'max_depth': 11}

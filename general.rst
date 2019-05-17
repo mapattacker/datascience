@@ -118,3 +118,59 @@ Cross Validation
 When all code is working fine, remove the train-test portion and use Grid Search Cross Validation to compute
 the best parameters with cross validation.
 
+
+Quick-Analysis for Multi-Models
+********************************
+
+.. code:: python
+
+  import pandas as pd
+  from sklearn.preprocessing import StandardScaler
+  from sklearn.model_selection import train_test_split
+
+  from sklearn.svm import LinearSVC
+  from sklearn.svm import SVC
+  from sklearn.ensemble import RandomForestClassifier
+  from sklearn.ensemble import ExtraTreesClassifier
+  from xgboost import XGBClassifier
+
+  from sklearn.metrics import accuracy_score, f1_score
+  from statistics import mean 
+  import seaborn as sns
+
+  # models to test
+  svml = LinearSVC()
+  svm = SVC()
+  rf = RandomForestClassifier()
+  xg = XGBClassifier()
+  xr = ExtraTreesClassifier()
+
+  # iterations
+  classifiers = [svml, svm, rf, xr, xg]
+  names = ['Linear SVM', 'RBF SVM', 'Random Forest', 'Extremely Randomized Trees', 'XGBoost']
+  results = []
+
+  # train-test split
+  X = df[df.columns[:-1]]
+  # normalise data for SVM    
+  X = StandardScaler().fit(X).transform(X)
+  y = df['label']
+  X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+  for name, clf in zip(names, classifiers):
+      model = clf.fit(X_train, y_train)
+      y_predict = model.predict(X_test)
+      accuracy = accuracy_score(y_test, y_predict)
+      f1 = mean(f1_score(y_test, y_predict, average=None))
+      results.append([fault, name, accuracy, f1])
+
+A final heatmap to compare the outcomes.
+
+.. code:: python
+
+  final = pd.DataFrame(results, columns=['Fault Type','Model','Accuracy','F1 Score'])
+  final.style.background_gradient(cmap='Greens')
+
+.. figure:: images/quick_analysis.PNG
+    :width: 500px
+    :align: center
