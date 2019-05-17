@@ -596,3 +596,10 @@ Using other scoring metrics
   print fittedmodel.cv_results_
   # gives parameters that gives the best indicated scoring type
   print CV.best_params_
+
+Auto-Hyperparameters Tuning
+-----------------------------
+Bayesian Tuning and Bandits (BTB) is a package used for auto-tuning ML models hyperparameters.
+It uses Gaussian Process to do this. It was born from a Master Thesis by Laura Gustafson in 2018.
+
+https://github.com/HDI-Project/BTB
