@@ -423,8 +423,8 @@ https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgb
 
 Light Gradient Boosting
 *************************
-LightGBM is a lightweight version of gradient boosting. It has similar performance to XGBoost but
-can run much faster than it.
+LightGBM is a lightweight version of gradient boosting developed by Microsoft. 
+It has similar performance to XGBoost but can run much faster than it.
 
 https://lightgbm.readthedocs.io/en/latest/index.html
 

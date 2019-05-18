@@ -39,11 +39,12 @@ The best model with the highest accuarcy is the middle ground between the two.
 
 Steps to Build a Predictive Model
 --------------------------------------------
-Feature Selection & Preprocessing
+Feature Selection, Preprocessing, Extraction
 **********************************
  1. Remove features that have too many NAN or fill NAN with another value
  2. Remove features that will introduce data leakage
  3. Encode categorical features into integers
+ 4. Extract new useful features (between and within current features)
 
 Normalise the Features
 ***********************
@@ -104,7 +105,7 @@ Use a confusion matrix and...
  [ 0 13  0]
  [ 0  1 10]]
 
-accuarcy percentage score to obtain the predictive accuarcy.
+accuarcy percentage, and f1 score to obtain the predictive accuarcy.
 
 
 .. code:: python
@@ -118,9 +119,13 @@ Cross Validation
 When all code is working fine, remove the train-test portion and use Grid Search Cross Validation to compute
 the best parameters with cross validation.
 
+Final Model
+**************
+Finally, rebuild the model using the full dataset, and the chosen parameters tested.
+
 
 Quick-Analysis for Multi-Models
-********************************
+----------------------------------
 
 .. code:: python
 
@@ -172,5 +177,5 @@ A final heatmap to compare the outcomes.
   final.style.background_gradient(cmap='Greens')
 
 .. figure:: images/quick_analysis.PNG
-    :width: 500px
+    :width: 400px
     :align: center

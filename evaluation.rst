@@ -512,9 +512,15 @@ More here_.
   # KNN		         0.691005291005
 
 
+
 .. code:: python
 
     from sklearn.model_selection import StratifiedKFold
+
+    skf = StratifiedKFold(n_splits=2)
+    skf.get_n_splits(X, y)
+
+    for i in skf:
 
 Grid-Search
 ----------------
