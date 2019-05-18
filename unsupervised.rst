@@ -228,7 +228,41 @@ More information here_.
     
     You can see how some dimensionality reduction methods may be less successful on some datasets. 
     Here, it doesn't work as well at finding structure in the small fruits dataset, compared to other methods like MDS.
-    
+
+Decomposition
+**************
+
+Time-Series
+^^^^^^^^^^^^^^
+Decomposing a time-series into trend (long-term), seaonality (short-term), residuals (noise).
+There are two methods to decompose:
+ * Additive—The component is present and is added to the other components to create the overall forecast value.
+ * Multiplicative—The component is present and is multiplied by the other components to create the overall forecast value
+
+Usually an additive time-series will be used if there are no seasonal variations over time.
+
+.. code:: python
+
+  import statsmodels.api as sm
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  %matplotlib inline
+
+  res = sm.tsa.seasonal_decompose(final2['avg_mth_elect'], model='multiplicative')
+  res.plot();
+
+.. figure:: images/ts_decompose1.PNG
+    :width: 600px
+    :align: center
+
+.. code:: python
+
+  # set decomposed parts into dataframe
+  decomp=pd.concat([res.observed, res.trend, res.seasonal, res.resid], axis=1)
+  decomp.columns = ['avg_mth','trend','seasonal','residual']
+  decomp.head()
+
+
 Clustering
 ----------
 Find groups in data & assign every point in the dataset to one of the groups.

@@ -617,6 +617,7 @@ https://github.com/HDI-Project/BTB
     from btb.tuning import GP, Uniform
     from btb import HyperParameter, ParamTypes
 
+    # remember to change INT to FLOAT where necessary
     tunables = [('n_estimators', HyperParameter(ParamTypes.INT, [500, 2000])),
                 ('max_depth', HyperParameter(ParamTypes.INT, [3, 20]))]
     tuner = GP(tunables)
