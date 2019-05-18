@@ -420,7 +420,45 @@ https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgb
   accuracy = accuracy_score(y_test, predictions)
   print("Accuracy: %.2f%%" % (accuracy * 100.0))
  
- 
+
+Light Gradient Boosting
+*************************
+LightGBM is a lightweight version of gradient boosting. It has similar performance to XGBoost but
+can run much faster than it.
+
+https://lightgbm.readthedocs.io/en/latest/index.html
+
+.. code:: python
+
+  import lightgbm
+
+  X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42, stratify=y)
+
+  # Create the LightGBM data containers
+  train_data = lightgbm.Dataset(X_train, label=y)
+  test_data = lightgbm.Dataset(X_test, label=y_test)
+
+  parameters = {
+    'application': 'binary',
+    'objective': 'binary',
+    'metric': 'auc',
+    'is_unbalance': 'true',
+    'boosting': 'gbdt',
+    'num_leaves': 31,
+    'feature_fraction': 0.5,
+    'bagging_fraction': 0.5,
+    'bagging_freq': 20,
+    'learning_rate': 0.05,
+    'verbose': 0
+  }
+
+  model = lightgbm.train(parameters,
+                        train_data,
+                        valid_sets=test_data,
+                        num_boost_round=5000,
+                        early_stopping_rounds=100)
+
+
  
 Naive Bayes
 ************

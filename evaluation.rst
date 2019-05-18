@@ -512,6 +512,10 @@ More here_.
   # KNN		         0.691005291005
 
 
+.. code:: python
+
+    from sklearn.model_selection import StratifiedKFold
+
 Grid-Search
 ----------------
 

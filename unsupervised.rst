@@ -29,7 +29,7 @@ Dimensionality Reduction
   * Used for exploring and visualizing a dataset to understand grouping or relationships
   * Often visualized using a 2-dimensional scatterplot
   * Also used for compression, finding features for supervised learning
-  * Can be classified into simple PCA, or manifold techniques
+  * Can be classified into linear (PCA), or non-linear (manifold) reduction techniques
 
 Principal Component Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
