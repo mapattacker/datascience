@@ -575,9 +575,9 @@ One of the benfits of this clustering is that a hierarchy can be built.
     :width: 600px
     :align: center
         
-More in this link: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/`
+More in this link: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/
 
-sklearn agglomerative clustering is very slow, and an alternative `fastcluster` library
+sklearn agglomerative clustering is very slow, and an alternative ``fastcluster`` library
 performs much faster as it is a C++ library with a python interface.
 
 .. code:: python
@@ -599,13 +599,13 @@ performs much faster as it is a C++ library with a python interface.
   dendrogram(ward(X))
   plt.show();
   
-  .. figure:: images/aggocluster5.png
-    :width: 400px
-    :align: center
+.. figure:: images/aggocluster5.png
+  :width: 400px
+  :align: center
 
-  .. figure:: images/aggocluster6.png
-    :width: 400px
-    :align: center
+.. figure:: images/aggocluster6.png
+  :width: 400px
+  :align: center
 
 Then we select the distance threshold to cut the dendrogram to obtain the selected clustering level.
 The output is the cluster labelled for each row of data.
