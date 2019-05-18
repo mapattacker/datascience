@@ -566,7 +566,7 @@ One of the benfits of this clustering is that a hierarchy can be built.
    
    # BUILD DENDROGRAM
    from scipy.cluster.hierarchy import ward, dendrogram
-   plt.figure()
+   plt.figure(figsize=(10,5))
    dendrogram(ward(X))
    plt.show()
 
@@ -576,6 +576,47 @@ One of the benfits of this clustering is that a hierarchy can be built.
     :align: center
         
 More in this link: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/`
+
+sklearn agglomerative clustering is very slow, and an alternative `fastcluster` library
+performs much faster as it is a C++ library with a python interface.
+
+.. code:: python
+
+  import fastcluster
+  from scipy.cluster.hierarchy import fcluster
+  from scipy.cluster.hierarchy import dendrogram, ward
+  from scipy.spatial.distance import pdist
+
+  Z = fastcluster.linkage_vector(df, method='ward', metric='euclidean')
+
+  # get dendrogram details into dataframe
+  Z_df = pd.DataFrame(data=Z, \
+                      columns=['clusterOne','clusterTwo','distance','newClusterSize'])
+
+
+  # plot dendrogram
+  plt.figure(figsize=(10, 5))
+  dendrogram(ward(X))
+  plt.show();
+  
+  .. figure:: images/aggocluster5.png
+    :width: 400px
+    :align: center
+
+  .. figure:: images/aggocluster6.png
+    :width: 400px
+    :align: center
+
+Then we select the distance threshold to cut the dendrogram to obtain the selected clustering level.
+The output is the cluster labelled for each row of data.
+
+  distance_threshold = 2000
+  clusters = fcluster(Z, distance_threshold, criterion='distance')
+  chosen_clusters = pd.DataFrame(data=clusters, columns=['cluster'])
+
+  chosen_clusters['cluster'].unique()
+  # array([4, 5, 2, 3, 1], dtype=int64)
+
 
 DBSCAN
 *******
