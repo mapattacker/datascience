@@ -590,8 +590,7 @@ performs much faster as it is a C++ library with a python interface.
   Z = fastcluster.linkage_vector(df, method='ward', metric='euclidean')
 
   # get dendrogram details into dataframe
-  Z_df = pd.DataFrame(data=Z, \
-                      columns=['clusterOne','clusterTwo','distance','newClusterSize'])
+  Z_df = pd.DataFrame(data=Z, columns=['clusterOne','clusterTwo','distance','newClusterSize'])
 
 
   # plot dendrogram
@@ -599,16 +598,18 @@ performs much faster as it is a C++ library with a python interface.
   dendrogram(ward(X))
   plt.show();
   
-.. figure:: images/aggocluster5.png
+.. figure:: images/aggocluster5.PNG
   :width: 400px
   :align: center
 
-.. figure:: images/aggocluster6.png
+.. figure:: images/aggocluster6.PNG
   :width: 400px
   :align: center
 
 Then we select the distance threshold to cut the dendrogram to obtain the selected clustering level.
 The output is the cluster labelled for each row of data.
+
+.. code:: python
 
   distance_threshold = 2000
   clusters = fcluster(Z, distance_threshold, criterion='distance')
