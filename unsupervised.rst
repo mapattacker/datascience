@@ -229,6 +229,26 @@ More information here_.
     You can see how some dimensionality reduction methods may be less successful on some datasets. 
     Here, it doesn't work as well at finding structure in the small fruits dataset, compared to other methods like MDS.
 
+LDA
+^^^^^^^
+Latent Dirichlet Allocation is another unsupervised method, commonly used for topic modelling. 
+Other LDA methods like Labeled-LDA & Multi-Grained LDA are supervised algorithms.
+
+.. python::
+
+  # from sklearn documentation
+  from sklearn.decomposition import LatentDirichletAllocation
+  from sklearn.datasets import make_multilabel_classification
+
+  # This produces a feature matrix of token counts, similar to what
+  # CountVectorizer would produce on text.
+  X, _ = make_multilabel_classification(random_state=0)
+  lda = LatentDirichletAllocation(n_components=5, random_state=0)
+  lda.fit(X) 
+  LatentDirichletAllocation(...)
+  # get topics for some given samples:
+  lda.transform(X[-2:])
+
 Decomposition
 **************
 
@@ -356,7 +376,7 @@ and the solution occurring the most number of times is chosen.
 
 
   #### A LOOK AT THE MODEL ####
-  >>> KMeans(n_clusters=2)
+  KMeans(n_clusters=2)
   KMeans(copy_x=True, init='k-means++', max_iter=300, n_clusters=2, n_init=10,
       n_jobs=1, precompute_distances='auto', random_state=None, tol=0.0001,
       verbose=0)
@@ -607,7 +627,8 @@ performs much faster as it is a C++ library with a python interface.
   :align: center
 
 Then we select the distance threshold to cut the dendrogram to obtain the selected clustering level.
-The output is the cluster labelled for each row of data.
+The output is the cluster labelled for each row of data. As expected from the dendrogram, a cut at
+2000 gives us 5 clusters.
 
 .. code:: python
 
@@ -617,6 +638,8 @@ The output is the cluster labelled for each row of data.
 
   chosen_clusters['cluster'].unique()
   # array([4, 5, 2, 3, 1], dtype=int64)
+
+Evaluating the best number of clusters can be done through the elbow plot & BIC.
 
 
 DBSCAN
@@ -667,7 +690,7 @@ the same cluster by DBSCAN.
 
   cls = dbscan.fit_predict(X)
   print("Cluster membership values:\n{}".format(cls))
-  >>> Cluster membership values:
+  Cluster membership values:
       [ 0  1  0  2  0  0  0  2  2 -1  1  2  0  0 -1  0  0  1 -1  1  1  2  2  2  1]
       # -1 indicates noise or outliers
 
