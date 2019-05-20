@@ -6,6 +6,9 @@ More on sklearn website:
 
 http://scikit-learn.org/stable/modules/preprocessing.html
 
+`Tree-based models is not dependent on scaling, but non-tree models models,
+very often are hugely dependent on it.`
+
 .. figure:: images/scaling.png
     :width: 650px
     :align: center

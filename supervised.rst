@@ -459,7 +459,16 @@ https://lightgbm.readthedocs.io/en/latest/index.html
                         early_stopping_rounds=100)
 
 
- 
+CatBoost
+************
+Category Boosting has high performance compared to other popular models,
+and does not require conversion of categorical values into numbers.
+It is also, like LightGBM, faster than XGBoost.
+
+.. python::
+
+  from CatBoost import CatBoostClassifier()
+
 Naive Bayes
 ************
 

@@ -1,5 +1,5 @@
-Feature Preprocessing & Generation
-===================================
+Feature Preprocessing
+==========================
 
 Numeric
 --------
