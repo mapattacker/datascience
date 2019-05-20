@@ -69,6 +69,8 @@ We then use something called **Deep Feature Synthesis (dfs)** to generate featur
 The list can be found via ``ft.primitives.list_primitives()``.
 External primitives like tsfresh, or custom calculations can also be input into FeatureTools.
 
+.. code:: python
+
     feature_matrix, feature_names = ft.dfs(entityset=es, 
                                         target_entity = 'normal',
                                         agg_primitives=['last', 'max', 'min'],
