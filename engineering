@@ -34,7 +34,6 @@ FeatureTools
 *************
 FeatureTools is extremely useful if you have datasets with a base data, with other tables
 that have relationships to it. This is a multivariate feature extractor.
-tsfresh calculations can also be input into FeatureTools.
 
 We first create an **EntitySet**, which is like a database. Then we create **entities**, i.e., individual
 tables with a unique id for each table, and showing their **relationships** between each other.
@@ -64,15 +63,23 @@ https://github.com/Featuretools/featuretools
     es
 
 We then use something called **Deep Feature Synthesis (dfs)** to generate features automatically.
+
 **Primitives** are the type of new features to be extracted from the datasets. They can be 
 aggregations (data is combined) or transformation (data is changed via a function) type of extractors.
 The list can be found via ``ft.primitives.list_primitives()``.
+External primitives like tsfresh, or custom calculations can also be input into FeatureTools.
 
     feature_matrix, feature_names = ft.dfs(entityset=es, 
-                                        target_entity = 'normal', 
+                                        target_entity = 'normal',
+                                        agg_primitives=['last', 'max', 'min'],
+                                        trans_primitives=[], 
                                         max_depth = 2, 
                                         verbose = 1, 
                                         n_jobs = 3)
     # see all old & new features created
     feature_matrix.columns
 
+FeatureTools appears to be a very powerful auto-feature extractor. Some resources to 
+read further are as follows:
+
+ * https://medium.com/@rrfd/simple-automatic-feature-engineering-using-featuretools-in-python-for-classification-b1308040e183
