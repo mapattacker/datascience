@@ -737,11 +737,18 @@ Mahalanobis Distance
 ****************************************
 
 Mahalanobis distances are based on both the mean and variance of the predictor variables, 
-plus the covariance matrix of all the variables, and therefore take advantage of the covariance among variables.
+plus the covariance matrix (correlations) of all the variables, and therefore take advantage of the covariance among variables.
 Computation time is much longer than normal Euclidean distance.
 More in the link below.
 
 http://www.jennessent.com/arcview/mahalanobis_description.htm
+
+.. figure:: images/distance2.png
+  :width: 300px
+  :align: center
+
+  Formula of Mahalanobis distance
+
 
 .. code:: python
 
@@ -754,10 +761,10 @@ http://www.jennessent.com/arcview/mahalanobis_description.htm
       x = pd.DataFrame(x)
       y = pd.DataFrame(y)
       
-      pre_cov = pd.concat([x, y], axis=1)
+      df_concat = pd.concat([x, y], axis=1)
       
       # calculate inverse covariance
-      pre_cov = pre_cov.T.cov()
+      pre_cov = df_concat.T.cov()
       inv = sp.linalg.inv(pre_cov)
       
       # get mahalanobis dist
