@@ -736,9 +736,27 @@ between these two points.
 Mahalanobis Distance
 ****************************************
 
+
 .. code:: python
 
+    import pandas as pd
+    import scipy as sp
     from scipy.spatial.distance import mahalanobis
+
+    # change from array to df
+    x = pd.DataFrame(normal_pca)
+    y = pd.DataFrame(cf45_pca)
+
+    # merge x & y into a df
+    x = pd.concat([normalx,cfx], axis=1)
+    x.columns = ['normal','cf']
+
+    # transpose them & find the covariance, then inverse covariance
+    y = x.T.cov()
+    inv = sp.linalg.inv(y)
+
+    # and then finally their mahalanobis distance
+    mahalanobis(x, y, inv)
 
 
 Dynamic Time Warping
