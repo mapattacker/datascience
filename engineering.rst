@@ -2,7 +2,7 @@ Feature Engineering
 =====================
 Feature Engineering is one of the most important part of model building.
 Collecting and creating of relevant features are most often the determinant of 
-a high prediction of the outcome.
+a high prediction value.
 
 Manual 
 --------
@@ -72,12 +72,12 @@ External primitives like tsfresh, or custom calculations can also be input into 
 .. code:: python
 
     feature_matrix, feature_names = ft.dfs(entityset=es, 
-                                        target_entity = 'normal',
-                                        agg_primitives=['last', 'max', 'min'],
-                                        trans_primitives=[], 
-                                        max_depth = 2, 
-                                        verbose = 1, 
-                                        n_jobs = 3)
+                                            target_entity = 'normal',
+                                            agg_primitives=['last', 'max', 'min'],
+                                            trans_primitives=[], 
+                                            max_depth = 2, 
+                                            verbose = 1, 
+                                            n_jobs = 3)
     # see all old & new features created
     feature_matrix.columns
 
