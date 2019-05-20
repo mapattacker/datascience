@@ -23,7 +23,7 @@ and filter out features that are deemed relevant. In essence, it is a univariate
 
 https://tsfresh.readthedocs.io/en/latest/
 
-.. python::
+.. code:: python
 
     from tsfresh import extract_relevant_features
 
@@ -40,7 +40,7 @@ tables with a unique id for each table, and showing their **relationships** betw
 
 https://github.com/Featuretools/featuretools
 
-.. python::
+.. code:: python
 
     import featuretools as ft
 
