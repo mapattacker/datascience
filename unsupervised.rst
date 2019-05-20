@@ -736,6 +736,12 @@ between these two points.
 Mahalanobis Distance
 ****************************************
 
+Mahalanobis distances are based on both the mean and variance of the predictor variables, 
+plus the covariance matrix of all the variables, and therefore take advantage of the covariance among variables.
+Computation time is much longer than normal Euclidean distance.
+More in the link below.
+
+http://www.jennessent.com/arcview/mahalanobis_description.htm
 
 .. code:: python
 
@@ -743,20 +749,21 @@ Mahalanobis Distance
     import scipy as sp
     from scipy.spatial.distance import mahalanobis
 
-    # change from array to df
-    x = pd.DataFrame(normal_pca)
-    y = pd.DataFrame(cf45_pca)
+    def mahalanobis_dist(x,y):
+      # convert 2D arrays into df
+      x = pd.DataFrame(x)
+      y = pd.DataFrame(y)
+      
+      pre_cov = pd.concat([x, y], axis=1)
+      
+      # calculate inverse covariance
+      pre_cov = pre_cov.T.cov()
+      inv = sp.linalg.inv(pre_cov)
+      
+      # get mahalanobis dist
+      return mahalanobis(x,y,inv)
 
-    # merge x & y into a df
-    x = pd.concat([normalx,cfx], axis=1)
-    x.columns = ['normal','cf']
-
-    # transpose them & find the covariance, then inverse covariance
-    y = x.T.cov()
-    inv = sp.linalg.inv(y)
-
-    # and then finally their mahalanobis distance
-    mahalanobis(x, y, inv)
+    mahalanobis_dist(array1, array2)
 
 
 Dynamic Time Warping
