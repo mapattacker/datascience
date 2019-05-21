@@ -744,10 +744,10 @@ More in the link below.
 http://www.jennessent.com/arcview/mahalanobis_description.htm
 
 .. figure:: images/distance2.png
-  :width: 300px
+  :width: 250px
   :align: center
 
-  Formula of Mahalanobis distance
+  Formula
 
 
 .. code:: python
