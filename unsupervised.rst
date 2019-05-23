@@ -249,6 +249,18 @@ Other LDA methods like Labeled-LDA & Multi-Grained LDA are supervised algorithms
   # get topics for some given samples:
   lda.transform(X[-2:])
 
+Self-Organzing Maps
+^^^^^^^^^^^^^^^^^^^^^^^
+SOM is a special type of neural network that is trained using unsupervised learning to produce a two-dimensional map.
+They differ from other artificial neural networks as 
+ 1. they apply competitive learning as opposed to error-correction learning (such as backpropagation with gradient descent) 
+ 2. in the sense that they use a neighborhood function to preserve the topological properties of the input space.
+ 3. Consist of only one visible output layer
+
+Requires scaling or normalization of all features first.
+
+https://github.com/JustGlowing/minisom
+
 Decomposition
 **************
 
@@ -736,41 +748,88 @@ between these two points.
 Mahalanobis Distance
 ****************************************
 
-Mahalanobis distances are based on both the mean and variance of the predictor variables, 
-plus the covariance matrix (correlations) of all the variables, and therefore take advantage of the covariance among variables.
-Computation time is much longer than normal Euclidean distance.
-More in the link below.
+Mahalonobis distance is the distance between a point and a distribution, not between two distinct points.
+Therefore, it is effectively a multivariate equivalent of the Euclidean distance.
 
-http://www.jennessent.com/arcview/mahalanobis_description.htm
+https://www.machinelearningplus.com/statistics/mahalanobis-distance/
+
+ * ``x``: is the vector of the observation (row in a dataset), 
+ * ``m``: is the vector of mean values of independent variables (mean of each column), 
+ * ``C^(-1)``: is the inverse covariance matrix of independent variables.
+
+Multiplying by the inverse covariance (correlation) matrix essentially means dividing the 
+input with the matrix. This is so that if features in your dataset are strongly correlated, the covariance will be high. 
+Dividing by a large covariance will effectively reduce the distance.
+
+While powerful, its use of correlation can be detrimantal when there is multicollinearity 
+(strong correlations among features). 
+
+There are various ways of computing:
+ 1. Individual MD from each row of a dataset with N features
+ 2. Single MD between two 1D arrays
+ 3. Single MD between two groups of dataset, each with N features
+
+The Mahalanobis distance between two groups of vectors is the distance between their centers, 
+computed in the equivalent of a principal component space that accounts for different variances.
 
 .. figure:: images/distance2.png
   :width: 250px
   :align: center
 
-  Formula
-
+Individual MD from each row of a dataset with N features. Covariance matrix for each feature is calculated from the dataset, 
+and individual rows are recursively fed into the function to obtain the MD.
 
 .. code:: python
 
-    import pandas as pd
-    import scipy as sp
-    from scipy.spatial.distance import mahalanobis
+    # from https://www.machinelearningplus.com/statistics/mahalanobis-distance/
 
-    def mahalanobis_dist(x,y):
-      # convert 2D arrays into df
-      x = pd.DataFrame(x)
-      y = pd.DataFrame(y)
-      
-      df_concat = pd.concat([x, y], axis=1)
-      
-      # calculate inverse covariance
-      pre_cov = df_concat.T.cov()
-      inv = sp.linalg.inv(pre_cov)
-      
-      # get mahalanobis dist
-      return mahalanobis(x,y,inv)
+    def mahalanobis(x=None, data=None, cov=None):
+        """Compute the Mahalanobis Distance between each row of x and the data  
+        x    : vector or matrix of data with, say, p columns.
+        data : ndarray of the distribution from which Mahalanobis distance of each observation of x is to be computed.
+        cov  : covariance matrix (p x p) of the distribution. If None, will be computed from data.
+        """
+        x_minus_mu = x - np.mean(data)
+        if not cov:
+            cov = np.cov(data.values.T)
+        inv_covmat = sp.linalg.inv(cov)
+        left_term = np.dot(x_minus_mu, inv_covmat)
+        mahal = np.dot(left_term, x_minus_mu.T)
+        return mahal.diagonal()
 
-    mahalanobis_dist(array1, array2)
+
+Single MD between two 1D arrays. Basically testing 
+
+
+Single MD output between two input dataframes. It is done by pooling the covariance together,
+and input data as means.
+
+.. code:: python
+
+    def mahalanobis_group(x,y):
+    '''x & y are dataframes'''
+
+      # get covariance matrix from each dataframe
+      x_cov = x.cov()
+      y_cov = y.cov()
+
+      # first compute the total rows
+      x_total = x.shape[0]
+      y_total = y.shape[0]
+      total = x_total + y_total
+
+      # pooled covariance
+      pooled_cov = (x_cov * x_total/total) + (y_cov * y_total/total)
+      # inverse cov in array
+      inv_cov = np.linalg.pinv(pooled_cov)
+
+      # get mean difference in array
+      mean_diff = np.array(x.mean() - y.mean())
+
+      m_sq = np.dot(np.dot(mean_diff, inv_cov), mean_diff)
+      m = sqrt(m_sq)
+
+      return m
 
 
 Dynamic Time Warping

@@ -11,6 +11,9 @@ Fourier Transformation
 ***********************
 Converts amplitudes into frequencies
 
+Wavelet Package Analysis
+***************************
+
 Auto
 -----
 Automatic generation of new features from existing ones are starting to gain popularity,
