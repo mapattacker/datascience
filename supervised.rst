@@ -861,6 +861,15 @@ Auto Keras
 ^^^^^^^^^^^
 Uses neural network for training. Similar to Google's AutoML approach.
 
+.. code:: python
+
+  import autokeras as ak
+
+  clf = ak.ImageClassifier()
+  clf.fit(x_train, y_train)
+  results = clf.predict(x_test)
+
+
 Auto Sklearn
 ^^^^^^^^^^^^^
 Said to run similar to Auto WEKA, using Bayesian optimizer, but does not have as wide a range of models
