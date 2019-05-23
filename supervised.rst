@@ -872,8 +872,7 @@ Uses neural network for training. Similar to Google's AutoML approach.
 
 Auto Sklearn
 ^^^^^^^^^^^^^
-Said to run similar to Auto WEKA, using Bayesian optimizer, but does not have as wide a range of models
-and hyperparameters due to limits of sklearn library.
+Using Bayesian optimizer, this automation trains using models within sklearn.
 
 .. code:: python
 
@@ -896,7 +895,8 @@ and hyperparameters due to limits of sklearn library.
 Auto WEKA
 ^^^^^^^^^^
 WEKA is a GUI-based software for easy quick analysis of datasets.
-The automation is not just restricted to neural networks but all other classic algorithms.
+It is the same in concept as Auto Sklearn but have a wider range of models
+and hyperparameters.
 
 |
 Regression
