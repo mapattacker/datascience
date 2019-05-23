@@ -52,7 +52,7 @@ K Nearest Neighbours (KNN)
 
   #### TEST MODEL ####
   knn.score(X_test, y_test)
-  >>> 0.53333333333333333
+  0.53333333333333333
 
 
 
@@ -82,8 +82,8 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
   train_predictor, test_predictor, train_target, test_target = \
   train_test_split(predictor, target, test_size=0.25)
 
-  >>> print test_predictor.shape
-  >>> print train_predictor.shape
+  print test_predictor.shape
+  print train_predictor.shape
   (38, 4)
   (112, 4)
 
@@ -96,8 +96,8 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
 
   #### FIT MODEL ####
   model = clf.fit(train_predictor, train_target)
-  >>> print model
-  >>> DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
+  print model
+  DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
               max_features=None, max_leaf_nodes=None, min_samples_leaf=1,
               min_samples_split=2, min_weight_fraction_leaf=0.0,
               presort=False, random_state=None, splitter='best')
@@ -107,8 +107,8 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
   #### TEST MODEL ####
   predictions = model.predict(test_predictor)
 
-  >>> print sklearn.metrics.confusion_matrix(test_target,predictions)
-  >>> print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
+  print sklearn.metrics.confusion_matrix(test_target,predictions)
+  print sklearn.metrics.accuracy_score(test_target, predictions)*100, '%'
   [[14  0  0]
    [ 0 13  0]
    [ 0  1 10]]
@@ -118,7 +118,7 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
   #### SCORE MODEL ####
   # it is easier to use this package that does everything nicely for a perfect confusion matrix
   from pandas_confusion import ConfusionMatrix
-  >>> ConfusionMatrix(test_target, predictions)
+  ConfusionMatrix(test_target, predictions)
   Predicted   setosa  versicolor  virginica  __all__
   Actual
   setosa          14           0          0       14
@@ -132,7 +132,7 @@ More more tuning parameters https://medium.com/@mohtedibf/indepth-parameter-tuni
   f_impt= pd.DataFrame(model.feature_importances_, index=df.columns[:-2])
   f_impt = f_impt.sort_values(by=0,ascending=False)
   f_impt.columns = ['feature importance']
-  >>> f_impt
+  f_impt
   petal width (cm)	0.952542
   petal length (cm)	0.029591
   sepal length (cm)	0.017867
@@ -243,8 +243,8 @@ Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jo
   train_feature, test_feature, train_target, test_target = \
   train_test_split(feature, target, test_size=0.2)
 
-  >>> print train_feature.shape
-  >>> print test_feature.shape
+  print train_feature.shape
+  print test_feature.shape
   (404, 13)
   (102, 13)
 
@@ -257,7 +257,7 @@ Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jo
 
   #### FIT MODEL ####
   model = clf.fit(train_feature, train_target)
-  >>> print model
+  print model
   RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
               max_depth=None, max_features='auto', max_leaf_nodes=None,
               min_samples_leaf=1, min_samples_split=2,
@@ -273,8 +273,8 @@ Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jo
 
 
   #### SCORE MODEL ####
-  >>> print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
-  >>> print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
+  print 'accuracy', '\n', sklearn.metrics.accuracy_score(test_target, predictions)*100, '%', '\n'
+  print 'confusion matrix', '\n', sklearn.metrics.confusion_matrix(test_target,predictions)
   accuracy
   82.3529411765 %
   confusion matrix
@@ -852,6 +852,43 @@ Parameters include
   Accuracy of NN classifier on training set: 0.98
   Accuracy of NN classifier on test set: 0.97
 
+Auto-ML
+********
+Quite a number of open-sourced automatic machine learning packages have been released.
+It selects the best models and their hyperparameters, making it extremely easy to train supervised models.
+
+Auto Keras
+^^^^^^^^^^^
+Uses neural network for training. Similar to Google's AutoML approach.
+
+Auto Sklearn
+^^^^^^^^^^^^^
+Said to run similar to Auto WEKA, using Bayesian optimizer, but does not have as wide a range of models
+and hyperparameters due to limits of sklearn library.
+
+.. code:: python
+
+  import autosklearn.classification
+  import sklearn.model_selection
+  import sklearn.datasets
+  import sklearn.metrics
+
+  X, y = sklearn.datasets.load_digits(return_X_y=True)
+  X_train, X_test, y_train, y_test = \
+          sklearn.model_selection.train_test_split(X, y, random_state=1)
+
+  # default runs 360sec (1hr)
+  automl = autosklearn.classification.AutoSklearnClassifier(per_run_time_limit=360)
+  automl.fit(X_train, y_train)
+  y_hat = automl.predict(X_test)
+  print("Accuracy score", sklearn.metrics.accuracy_score(y_test, y_hat))
+
+
+Auto WEKA
+^^^^^^^^^^
+WEKA is a GUI-based software for easy quick analysis of datasets.
+The automation is not just restricted to neural networks but all other classic algorithms.
+
 |
 Regression
 ----------
@@ -907,9 +944,9 @@ or sci-kit learn package
   reg = linear_model.LinearRegression()
   model = reg.fit ([[0, 0], [1, 1], [2, 2]], [0, 1, 2])
   
-  >>> model
+  model
   LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
-  >>> reg.coef_
+  reg.coef_
   array([ 0.5,  0.5])
   
   # R2 scores
@@ -1019,7 +1056,7 @@ d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors 
   # standardise the means to 0 and standard error to 1
   for i in df.columns[:-1]: # df.columns[:-1] = dataframe for all features
     df[i] = preprocessing.scale(df[i].astype('float64'))
-  >>> df.describe()
+  df.describe()
 
 
 
@@ -1027,10 +1064,10 @@ d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors 
   train_feature, test_feature, train_target, test_target = \
   train_test_split(feature, target, random_state=123, test_size=0.2)
 
-  >>> print train_feature.shape
-  >>> print test_feature.shape
-  >>> (404, 13)
-  >>> (102, 13)
+  print train_feature.shape
+  print test_feature.shape
+  (404, 13)
+  (102, 13)
 
 
 
@@ -1044,7 +1081,7 @@ d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors 
 
   #### FIT MODEL ####
   model = model.fit(train_feature,train_target)
-  >>> print model
+  print model
   LassoLarsCV(copy_X=True, cv=10, eps=2.2204460492503131e-16,
         fit_intercept=True, max_iter=500, max_n_alphas=1000, n_jobs=1,
         normalize=True, positive=False, precompute=False, verbose=False)
@@ -1055,8 +1092,8 @@ d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors 
   Compare the regression coefficients, and see which one LASSO removed.
   LSTAT is the most important predictor, followed by RM, DIS, and RAD. AGE is removed by LASSO
 
-  >>> df2=pd.DataFrame(model.coef_, index=feature.columns)
-  >>> df2.sort_values(by=0,ascending=False)
+  df2=pd.DataFrame(model.coef_, index=feature.columns)
+  df2.sort_values(by=0,ascending=False)
   RM	3.050843
   RAD	2.040252
   ZN	1.004318
@@ -1086,10 +1123,10 @@ d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors 
 
   # MSE closer to 0 are better
   # test dataset is less accurate as expected
-  >>> training data MSE
-  >>> 20.7279948891
-  >>> test data MSE
-  >>> 28.3767672242
+  training data MSE
+  20.7279948891
+  test data MSE
+  28.3767672242
 
 
   # R-square from training and test data
@@ -1101,10 +1138,10 @@ d. Have several algorithms: LAR (Least Angle Regression). Starts w 0 predictors 
   print(rsquared_test)
 
   # test data explained 65% of the predictors
-  >>> training data R-square
-  >>> 0.755337444405
-  >>> test data R-square
-  >>> 0.657019301268
+  training data R-square
+  0.755337444405
+  test data R-square
+  0.657019301268
   
   
 Polynomial Regression
