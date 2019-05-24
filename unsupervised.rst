@@ -535,9 +535,6 @@ Note that number of clusters or components measures how well GMM works as a dens
   from Python Data Science Handbook by Jake VanderPlas
 
 
-
-
-
 Agglomerative Clustering
 ************************
 
@@ -715,7 +712,50 @@ the same cluster by DBSCAN.
     :align: center
 
 
-Distance Measure
+Outlier Detection
+--------------------
+
+One Class SVM
+**************
+
+One-class SVM is an unsupervised algorithm that learns a decision function for outlier detection: 
+classifying new data as similar or different to the training set.
+
+Besides the kernel, two other parameters are impt:
+The nu parameter should be the proportion of outliers you expect to observe (in our case around 2%), 
+the gamma parameter determines the smoothing of the contour lines.
+
+
+.. code:: python
+
+  from sklearn.svm import OneClassSVM
+
+  train, test = train_test_split(data, test_size=.2)
+  train_normal = train[train['y']==0]
+  train_outliers = train[train['y']==1]
+  outlier_prop = len(train_outliers) / len(train_normal)
+
+  model = OneClassSVM(kernel='rbf', nu=outlier_prop, gamma=0.000001)
+  svm.fit(train_normal[['x1','x4','x5']])
+
+
+
+Isolation Forest
+*****************
+
+.. code:: python
+
+  from sklearn.ensemble import IsolationForest
+
+  clf = IsolationForest(behaviour='new', max_samples=100,
+                      random_state=rng, contamination='auto')
+  y_pred_train = clf.predict(X_train)
+  y_pred_test = clf.predict(X_test)
+  y_pred_outliers = clf.predict(X_outliers)
+
+
+
+Distance Metrics
 ------------------
 
 Euclidean Distance & Cosine Similarity
@@ -832,8 +872,12 @@ and input data as means.
       return m
 
 
+Jaccard’s Distance
+*********************
+
+
 Dynamic Time Warping
-****************************************
+***********************
 
 If two time series are identical, but one is shifted slightly along the time axis, 
 then Euclidean distance may consider them to be very different from each other. 
@@ -866,3 +910,5 @@ Output: Identical = 0, Difference > 0
     # 2.8284271247461903
 
 Stan Salvador & Philip ChanFast. DTW: Toward Accurate Dynamic Time Warping in Linear Time and Space. Florida Institude of Technology. https://cs.fit.edu/~pkc/papers/tdm04.pdf
+
+
