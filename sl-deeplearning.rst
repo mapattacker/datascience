@@ -5,6 +5,46 @@ It is a Machine Learning technique that uses multiple internal layers (**hidden 
 non-linear processing units (**neurons**) to conduct supervised or unsupervised learning from data.
   
 
+Preprocessing
+---------------
+
+Keras accepts numpy input, so we have to convert. Also, for multi-class classification,
+we need to convert them into binary values; i.e., using one-hot encoding
+
+.. code:: python
+
+    X = np.array(X)
+    # one-hot encoding for multi-class y labels
+    Y = pd.get_dummies(y)
+
+
+Model architecture can also be displayed in a graph. Or we can print as a summary
+
+.. code:: python
+
+    from IPython.display import SVG
+    from tensorflow.python.keras.utils.vis_utils import model_to_dot
+
+    SVG(model_to_dot(model, show_shapes=True).create(prog='dot', format='svg'))
+
+
+.. figure:: images/neuralnetwork_pre1.png
+    :width: 400px
+    :align: center
+
+    model architecture printout
+
+
+.. code:: python
+
+    model.summary()
+
+.. figure:: images/neuralnetwork_pre2.png
+    :width: 400px
+    :align: center
+
+    model summary printout
+
 ANN
 -----------
 
@@ -190,7 +230,7 @@ The below gives a compiled code example code.
     history = model.fit(train_images, train_labels,
                         batch_size=100, #no of samples per gradient update
                         epochs=10, #iteration
-                        verbose=2, #0=no printout, 1=progress bar, 2=step-by-step printout
+                        verbose=1, #0=no printout, 1=progress bar, 2=step-by-step printout
                         validation_data=(test_images, test_labels))
 
     # Train on 60000 samples, validate on 10000 samples
@@ -321,7 +361,7 @@ Keras Model
     history = model.fit(train_images, train_labels,
                         batch_size=32,
                         epochs=10,
-                        verbose=2,
+                        verbose=1,
                         validation_data=(test_images, test_labels))
 
     # Train on 60000 samples, validate on 10000 samples
@@ -385,6 +425,12 @@ This medium from article_ gives a good description of it. An alternative, or sim
 Keras Model
 ***********
 
+LSTM requires input needs to be of shape ``(num_sample, time_steps, num_features)`` if using tensorflow backend.
+
+.. code:: python
+
+    
+
 The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB movie reviews.
 
 .. code:: python
@@ -406,9 +452,9 @@ The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB
     
     # embedding layer converts input data into dense vectors of fixed size of 20k words & 128 hidden neurons, better suited for neural network
     model = Sequential()
-    model.add(Embedding(20000, 128))
-    model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Embedding(20000, 128)) #for nlp
+    model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2)) #128 memory cells
+    model.add(Dense(1, activation='sigmoid')) #1 class classification, sigmoid for binary classification
 
     model.compile(loss='binary_crossentropy',
                 optimizer='adam',
@@ -417,7 +463,7 @@ The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB
     model.fit(x_train, y_train,
             batch_size=32,
             epochs=15,
-            verbose=2,
+            verbose=1,
             validation_data=(x_test, y_test))
 
     Train on 25000 samples, validate on 25000 samples
@@ -456,7 +502,7 @@ The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB
 
     score, acc = model.evaluate(x_test, y_test,
                                 batch_size=32,
-                                verbose=2)
+                                verbose=1)
     print('Test score:', score)
     print('Test accuracy:', acc)
 

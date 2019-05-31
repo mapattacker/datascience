@@ -885,11 +885,30 @@ Using Bayesian optimizer, this automation trains using models within sklearn.
   X_train, X_test, y_train, y_test = \
           sklearn.model_selection.train_test_split(X, y, random_state=1)
 
-  # default runs 360sec (1hr)
-  automl = autosklearn.classification.AutoSklearnClassifier(per_run_time_limit=360)
+  # time_left_for_this_task (total) must be more than per_run_time_limit
+  automl = autosklearn.classification.AutoSklearnClassifier(time_left_for_this_task=60, 
+                                                            per_run_time_limit=30)
   automl.fit(X_train, y_train)
   y_hat = automl.predict(X_test)
   print("Accuracy score", sklearn.metrics.accuracy_score(y_test, y_hat))
+
+We can see the total results
+
+.. code:: python
+
+  print(automl.sprint_statistics())
+
+  # auto-sklearn results:
+  #   Dataset name: cb9e4c17575300e0bcdb85c0920f3385
+  #   Metric: accuracy
+  #   Best validation score: 1.000000
+  #   Number of target algorithm runs: 51
+  #   Number of successful target algorithm runs: 47
+  #   Number of crashed target algorithm runs: 3
+  #   Number of target algorithms that exceeded the time limit: 1
+  #   Number of target algorithms that exceeded the memory limit: 0
+
+
 
 
 Auto WEKA

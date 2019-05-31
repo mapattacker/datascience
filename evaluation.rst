@@ -219,6 +219,42 @@ There are many other evaluation metrics, a list can be found here:
 
   avg / total       0.94      0.95      0.94       450
 
+Classification report shows the details of precision, recall & f1-scores. 
+It might be misleading to just print out a binary classification as their determination of True Positive, False Positive
+might differ from us. The report will tease out the details as shown below. We can also set
+``average=None`` & compute the mean when printing out each individual scoring.
+
+
+.. code:: python
+
+    accuracy = accuracy_score(y_test, y_predict)
+    confusion = confusion_matrix(y_test,y_predict)
+    f1 = f1_score(y_test, y_predict)
+    recall = recall_score(y_test, y_predict)
+    precision = precision_score(y_test, y_predict)
+
+    f1_avg = mean(f1_score(y_test, y_predict, average=None))
+    recall_avg = mean(recall_score(y_test, y_predict, average=None))
+    precision_avg = mean(precision_score(y_test, y_predict, average=None))
+
+    print('accuracy:\t', accuracy)
+    print('\nf1:\t\t',f1)
+    print('recall\t\t',recall)
+    print('precision\t',precision)
+
+    print('\nf1_avg:\t\t',f1_avg)
+    print('recall_avg\t',recall_avg)
+    print('precision_avg\t',precision_avg)
+
+    print('\nConfusion Matrix')
+    print(confusion)
+    print('\n',classification_report(y_test, y_predict))
+
+.. figure:: images/classi_report.PNG
+    :width: 400px
+    :align: center
+
+    University of Michigan: Coursera Data Science in Python
 
 **4. Decision Function**
 
