@@ -1,7 +1,36 @@
 General Notes
 =============
 
+Virtual Environment
+--------------------
+Every project has a different set of requirements and different set of python packages to support it.
+The versions of each package can differ or break with each python or dependent packages update, so it is important 
+to isolate every project within an enclosed virtual environment. Anaconda provides a straight forward way to manage this.
+
+
+.. code:: Python
+
+  # create environment
+  conda create -n yourenvname
+  # activate environment
+  source activate yourenvname
+  # install package
+  conda install -n yourenvname [package]
+  # deactivate environment
+  source deactivate
+  # conda remove -n yourenvname -all
+
+  # see all environments
+  conda info -e
+
+
+
+
+Modeling
+---------
+
 A parsimonious model is a the model that accomplishes the desired level of prediction with as few predictor variables as possible.
+
 
 Variables
 ---------
