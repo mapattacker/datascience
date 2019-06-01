@@ -27,7 +27,7 @@ to isolate every project within an enclosed virtual environment. Anaconda provid
 An asterisk (*) will be placed at the current active environment.
 
 .. figure:: images/virtualen.png
-    :width: 300px
+    :width: 450px
     :align: center
 
     Current active environment
