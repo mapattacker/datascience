@@ -40,14 +40,14 @@ A parsimonious model is a the model that accomplishes the desired level of predi
 
 
 Variables
----------
+***********
 ``x`` = independent variable = explanatory = predictor
 
 ``y`` = dependent variable = response = target
 
 
 Data Types
-----------
+***********
 The type of data is essential as it determines what kind of tests can be applied to it.
 
 ``Continuous:`` Also known as quantitative. Unlimited number of values
@@ -56,7 +56,7 @@ The type of data is essential as it determines what kind of tests can be applied
 
 
 Bias-Variance Tradeoff
------------------------
+**********************
 The best predictive algorithm is one that has good *Generalization Ability*.
 With that, it will be able to give accurate predictions to new and previously unseen data.
 
@@ -74,21 +74,22 @@ The best model with the highest accuarcy is the middle ground between the two.
     from Andrew Ng's lecture
 
 Steps to Build a Predictive Model
---------------------------------------------
+********************************************
+
 Feature Selection, Preprocessing, Extraction
-**********************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  1. Remove features that have too many NAN or fill NAN with another value
  2. Remove features that will introduce data leakage
  3. Encode categorical features into integers
  4. Extract new useful features (between and within current features)
 
 Normalise the Features
-***********************
-With the exception of Decision Trees and Naive Bayes, other machine learning techniques like
+^^^^^^^^^^^^^^^^^^^^^^^^
+With the exception of Tree models and Naive Bayes, other machine learning techniques like
 Neural Networks, KNN, Support Vector Machines should have their features scaled.
 
 Train Test Split
-*****************
+^^^^^^^^^^^^^^^^^^^^^^^^
 Split the dataset into *Train* and *Test* datasets.
 By default, sklearn assigns 75% to train & 25% to test randomly.
 A random state (seed) can be selected to fixed the randomisation
@@ -101,7 +102,7 @@ A random state (seed) can be selected to fixed the randomisation
   = train_test_split(predictor, target, test_size=0.25, random_state=0)
 
 Create Model
-************
+^^^^^^^^^^^^
 Choose model and set model parameters (if any).
 
 .. code:: Python
@@ -110,7 +111,7 @@ Choose model and set model parameters (if any).
 
 
 Fit Model
-************
+^^^^^^^^^^^^
 Fit the model using the training dataset.
 
 .. code:: Python
@@ -124,7 +125,7 @@ DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
             presort=False, random_state=None, splitter='best')
 
 Test Model
-**********
+^^^^^^^^^^^^
 Test the model by predicting identity of unseen data using the testing dataset.
 
 .. code:: Python
@@ -133,7 +134,7 @@ Test the model by predicting identity of unseen data using the testing dataset.
 
 
 Score Model
-***********
+^^^^^^^^^^^^
 Use a confusion matrix and...
 
 >>> print sklearn.metrics.confusion_matrix(y_test, predictions)
@@ -151,17 +152,17 @@ accuarcy percentage, and f1 score to obtain the predictive accuarcy.
   >>> 97.3684210526 %
   
 Cross Validation
-*****************
+^^^^^^^^^^^^^^^^^^^^^^^^
 When all code is working fine, remove the train-test portion and use Grid Search Cross Validation to compute
 the best parameters with cross validation.
 
 Final Model
-**************
+^^^^^^^^^^^^
 Finally, rebuild the model using the full dataset, and the chosen parameters tested.
 
 
 Quick-Analysis for Multi-Models
-----------------------------------
+*********************************
 
 .. code:: python
 
