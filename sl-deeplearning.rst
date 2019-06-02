@@ -33,7 +33,7 @@ Model architecture can also be displayed in a graph. Or we can print as a summar
     SVG(model_to_dot(model, show_shapes=True).create(prog='dot', format='svg'))
 
 
-.. figure:: images/neuralnetwork_pre1.png
+.. figure:: images/neuralnetwork_pre1.PNG
     :width: 400px
     :align: center
 
@@ -44,7 +44,7 @@ Model architecture can also be displayed in a graph. Or we can print as a summar
 
     model.summary()
 
-.. figure:: images/neuralnetwork_pre2.png
+.. figure:: images/neuralnetwork_pre2.PNG
     :width: 400px
     :align: center
 
