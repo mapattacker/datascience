@@ -19,6 +19,9 @@ we need to convert them into binary values; i.e., using one-hot encoding
 .. code:: python
 
     X = np.array(X)
+    # OR
+    X = X.values
+
     # one-hot encoding for multi-class y labels
     Y = pd.get_dummies(y)
 
