@@ -34,7 +34,7 @@ Model architecture can also be displayed in a graph. Or we can print as a summar
 
 
 .. figure:: images/neuralnetwork_pre1.PNG
-    :width: 400px
+    :width: 350px
     :align: center
 
     model architecture printout
