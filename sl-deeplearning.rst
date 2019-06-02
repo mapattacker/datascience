@@ -8,7 +8,7 @@ non-linear processing units (**neurons**) to conduct supervised or unsupervised 
 GPU
 -----
 
-Tensorflow was able to run faster and more effeciently using Nivida's GPU ``pip install tensorflow-gpu``.
+Tensorflow is able to run faster and more effeciently using Nivida's GPU ``pip install tensorflow-gpu``.
 
 Preprocessing
 ---------------
