@@ -5,6 +5,11 @@ It is a Machine Learning technique that uses multiple internal layers (**hidden 
 non-linear processing units (**neurons**) to conduct supervised or unsupervised learning from data.
   
 
+GPU
+-----
+
+Tensorflow was able to run faster and more effeciently using Nivida's GPU ``pip install tensorflow-gpu``.
+
 Preprocessing
 ---------------
 
