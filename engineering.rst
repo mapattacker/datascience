@@ -9,7 +9,7 @@ Manual
 
 Fourier Transformation
 ***********************
-Converts amplitudes into frequencies
+The Fourier transform (FT) decomposes a function of time (a signal) into its constituent frequencies, i.e., converts amplitudes into frequencies.
 
 Wavelet Package Analysis
 ***************************

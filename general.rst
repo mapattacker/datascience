@@ -13,7 +13,7 @@ to isolate every project within an enclosed virtual environment. Anaconda provid
   # create environment
   conda create -n yourenvname
   # activate environment
-  conda activate yourenvname
+  source activate yourenvname
   # install package
   conda install -n yourenvname [package]
   # deactivate environment
@@ -86,7 +86,7 @@ Feature Selection, Preprocessing, Extraction
 Normalise the Features
 ^^^^^^^^^^^^^^^^^^^^^^^^
 With the exception of Tree models and Naive Bayes, other machine learning techniques like
-Neural Networks, KNN, Support Vector Machines should have their features scaled.
+Neural Networks, KNN, SVM should have their features scaled.
 
 Train Test Split
 ^^^^^^^^^^^^^^^^^^^^^^^^
