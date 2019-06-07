@@ -475,6 +475,7 @@ Downsides
   :scale: 50 %
   :align: center
 
+We can visualise the clusters by reducing the dimensions into 2 using PCA.
 
 .. code:: python
 
