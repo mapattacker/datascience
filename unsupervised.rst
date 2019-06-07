@@ -343,8 +343,7 @@ One aspect of k means is that different random starting points for the cluster c
 So typically, the k-means algorithm is run in scikit-learn with ten different random initializations 
 and the solution occurring the most number of times is chosen. 
 
-Downsides
-
+**Downsides**
  * Very sensitive to outliers. Have to remove before running the model
  * Might need to reduce dimensions if very high no. of features or the distance separation might not be obvious
 
