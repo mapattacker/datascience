@@ -483,8 +483,9 @@ Downsides
 
   plt.figure(figsize=(8,8))
   plt.scatter(pd.DataFrame(pca)[0],pd.DataFrame(pca)[1], c=labels, cmap='plasma', alpha=0.5);
-  
-.. image:: images/kmeans.PNG
+
+
+.. image:: images/kmeans.png
   :scale: 80 %
   :align: center
 
