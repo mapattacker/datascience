@@ -232,9 +232,9 @@ More information here_.
 LDA
 ^^^^^^^
 Latent Dirichlet Allocation is another unsupervised method, commonly used for topic modelling. 
-Other LDA methods like Labeled-LDA & Multi-Grained LDA are supervised algorithms.
+Other LDA methods like Labeled-LDA & Multi-Grained LDA are supervised algorithms. Only positive values can be processed by LDA.
 
-.. python::
+.. code:: python
 
   # from sklearn documentation
   from sklearn.decomposition import LatentDirichletAllocation
@@ -245,14 +245,30 @@ Other LDA methods like Labeled-LDA & Multi-Grained LDA are supervised algorithms
   X, _ = make_multilabel_classification(random_state=0)
   lda = LatentDirichletAllocation(n_components=5, random_state=0)
   lda.fit(X) 
+
+
   LatentDirichletAllocation(...)
   # get topics for some given samples:
   lda.transform(X[-2:])
 
+
+  # check the explained variance
+  percent = lda.explained_variance_ratio_
+  print(percent)
+  print(sum(percent))
+
+
 Self-Organzing Maps
 ^^^^^^^^^^^^^^^^^^^^^^^
 SOM is a special type of neural network that is trained using unsupervised learning to produce a two-dimensional map.
-They differ from other artificial neural networks as 
+Each row of data is assigned to its Best Matching Unit (BMU) neuron. Neighbourhood effect to create a topographic map
+
+
+.. figure:: images/som.PNG
+    :width: 600px
+    :align: center
+
+They differ from other artificial neural networks as:
  1. they apply competitive learning as opposed to error-correction learning (such as backpropagation with gradient descent) 
  2. in the sense that they use a neighborhood function to preserve the topological properties of the input space.
  3. Consist of only one visible output layer
@@ -261,38 +277,55 @@ Requires scaling or normalization of all features first.
 
 https://github.com/JustGlowing/minisom
 
-Decomposition
-**************
-
-Time-Series
-^^^^^^^^^^^^^^
-Decomposing a time-series into trend (long-term), seaonality (short-term), residuals (noise).
-There are two methods to decompose:
- * Additive—The component is present and is added to the other components to create the overall forecast value.
- * Multiplicative—The component is present and is multiplied by the other components to create the overall forecast value
-
-Usually an additive time-series will be used if there are no seasonal variations over time.
+We first need to calculate the number of neurons and how many of them making up each side.
+The ratio of the side lengths of the map is approximately the ratio of the two largest eigenvalues of the training data’s covariance matrix.
 
 .. code:: python
 
-  import statsmodels.api as sm
-  import matplotlib.pyplot as plt
-  import seaborn as sns
-  %matplotlib inline
+  # total no. of neurons required
+  total_neurons = 5*sqrt(normal.shape[1])
 
-  res = sm.tsa.seasonal_decompose(final2['avg_mth_elect'], model='multiplicative')
-  res.plot();
+  # calculate eigen_values
+  normal_cov = np.cov(data_normal)
+  eigen_values = np.linalg.eigvals(normal_cov)
 
-.. figure:: images/ts_decompose1.PNG
-    :width: 600px
-    :align: center
+  # 2 largest eigenvalues
+  result = sorted([i.real for i in eigen_values])[-2:]
+  ratio_2_largest_eigen = result[1]/result[0]
+
+  side = total_neurons/ratio_2_largest_eigen
+
+  # two sides
+  print(total_neurons)
+  print('1st side', side)
+  print('2nd side', ratio_2_largest_eigen)
+
+
+Then we build the model.
 
 .. code:: python
 
-  # set decomposed parts into dataframe
-  decomp=pd.concat([res.observed, res.trend, res.seasonal, res.resid], axis=1)
-  decomp.columns = ['avg_mth','trend','seasonal','residual']
-  decomp.head()
+  # 1st side, 2nd side, # features
+  model = MiniSom(5, 4, 66, sigma=1.5, learning_rate=0.5, 
+                neighborhood_function='gaussian', random_seed=10)
+
+  # initialise weights to the map
+  model.pca_weights_init(data_normal)
+  # train the model
+  model.train_batch(df, 60000, verbose=True)
+
+Plot out the map.
+
+.. code:: python
+
+  plt.figure(figsize=(6, 5))
+  plt.pcolor(som.distance_map().T, cmap='bone_r') 
+
+Quantization error is the distance between each vector and the BMU.
+
+.. code:: python
+
+  som.quantization_error(array)
 
 
 Clustering
@@ -309,6 +342,11 @@ For long distances over an lat/long coordinates, they need to be projected to a 
 One aspect of k means is that different random starting points for the cluster centers often result in very different clustering solutions. 
 So typically, the k-means algorithm is run in scikit-learn with ten different random initializations 
 and the solution occurring the most number of times is chosen. 
+
+Downsides
+
+ * Very sensitive to outliers. Have to remove before running the model
+ * Might need to reduce dimensions if very high no. of features or the distance separation might not be obvious
 
 .. figure:: images/kmeans4.png
     :width: 600px
@@ -439,33 +477,26 @@ and the solution occurring the most number of times is chosen.
 
 
 .. code:: python
-  
-  #### VIEW CLUSTER USING PCA ####
-  # Interpret 3 cluster solution
-  model3=KMeans(n_clusters=3)
-  model3.fit(train_feature)
-  clusassign=model3.predict(train_feature)
-  # plot clusters
 
-  # Use Canonical Discriminate Analysis to reduce the dimensions (into 2)
-  # Creates a smaller no. of variables, with canonical variables ordered by proportion of variable accounted
-  # i.e., 1st canonical variable is most importance & so on
+  pca = PCA(n_components = 2).fit(df).transform(df)
+  labels = kmeans.labels_
 
-  from sklearn.decomposition import PCA
-  pca_2 = PCA(2) #return first two canonical variables
-  plot_columns = pca_2.fit_transform(train_feature)
-  # plot 1st canonical v in x axis, 2nd variable on y axis
-  # color code variables based on cluster assignments (i.e., predicted targets)
-  plt.scatter(x=plot_columns[:,0], y=plot_columns[:,1], c=model3.labels_)
-  plt.xlabel('Canonical variable 1')
-  plt.ylabel('Canonical variable 2')
-  plt.title('Scatterplot of Canonical Variables for 3 Clusters')
-  plt.show()
+  plt.figure(figsize=(8,8))
+  plt.scatter(pd.DataFrame(pca)[0],pd.DataFrame(pca)[1], c=labels, cmap='plasma', alpha=0.5);
   
-.. image:: images/kmeans.png
-  :scale: 50 %
+.. image:: images/kmeans.PNG
+  :scale: 80 %
   :align: center
-  
+
+
+Sometimes we need to find the cluster centres so that we can get an absolute distance measure of centroids to new data. 
+Each feature will have a defined centre for each cluster.
+
+.. code:: python
+
+  centroids = model.cluster_centers_
+  centroid_labels = [centroids[i] for i in labels]
+
 
 Gaussian Mixture Model
 ************************

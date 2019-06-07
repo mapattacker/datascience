@@ -7,12 +7,87 @@ a high prediction value.
 Manual 
 --------
 
-Fourier Transformation
-***********************
-The Fourier transform (FT) decomposes a function of time (a signal) into its constituent frequencies, i.e., converts amplitudes into frequencies.
+Decomposition
+**************
 
-Wavelet Package Analysis
-***************************
+Time-Series
+^^^^^^^^^^^^^^
+Decomposing a time-series into trend (long-term), seaonality (short-term), residuals (noise).
+There are two methods to decompose:
+ * Additive—The component is present and is added to the other components to create the overall forecast value.
+ * Multiplicative—The component is present and is multiplied by the other components to create the overall forecast value
+
+Usually an additive time-series will be used if there are no seasonal variations over time.
+
+.. code:: python
+
+  import statsmodels.api as sm
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+  %matplotlib inline
+
+  res = sm.tsa.seasonal_decompose(final2['avg_mth_elect'], model='multiplicative')
+  res.plot();
+
+.. figure:: images/ts_decompose1.PNG
+    :width: 500px
+    :align: center
+
+.. code:: python
+
+  # set decomposed parts into dataframe
+  decomp=pd.concat([res.observed, res.trend, res.seasonal, res.resid], axis=1)
+  decomp.columns = ['avg_mth','trend','seasonal','residual']
+  decomp.head()
+
+
+Fourier Transformation
+^^^^^^^^^^^^^^^^^^^^^^^
+The Fourier transform (FT) decomposes a function of time (a signal) into its constituent frequencies, 
+i.e., converts amplitudes into frequencies.
+
+
+Wavelet Transform
+^^^^^^^^^^^^^^^^^^^^^^
+Wavelet transforms are time-frequency transforms employing wavelets. 
+They are similar to Fourier transforms, the difference being that Fourier transforms 
+are localized only in frequency instead of in time and frequency.
+There are various considerations for wavelet transform, including:
+
+ * Which wavelet transform will you use, CWT or DWT? 
+ * Which wavelet family will you use? 
+ * Up to which level of decomposition will you go? 
+ * Number of coefficients (vanishing moments)
+ * What is the right range of scales to use?
+
+ * http://ataspinar.com/2018/12/21/a-guide-for-using-the-wavelet-transform-in-machine-learning/
+ * https://www.kaggle.com/jackvial/dwt-signal-denoising
+ * https://www.kaggle.com/tarunpaparaju/lanl-earthquake-prediction-signal-denoising
+
+.. code:: python
+
+    import pywt
+
+    # there are 14 wavelets families
+    print(pywt.families(short=False))
+    #['Haar', 'Daubechies', 'Symlets', 'Coiflets', 'Biorthogonal', 'Reverse biorthogonal', 
+    #'Discrete Meyer (FIR Approximation)', 'Gaussian', 'Mexican hat wavelet', 'Morlet wavelet', 
+    #'Complex Gaussian wavelets', 'Shannon wavelets', 'Frequency B-Spline wavelets', 'Complex Morlet wavelets']
+
+    # short form used in pywt
+    print(pywt.families())
+    #['haar', 'db', 'sym', 'coif', 'bior', 'rbio', 
+    #'dmey', 'gaus', 'mexh', 'morl', 
+    #'cgau', 'shan', 'fbsp', 'cmor']
+
+    # input wavelet family, coefficient no., level of decompositions
+    arrays = pywt.wavedec(array, 'sym5', level=5)
+    df3 = pd.DataFrame(arrays).T
+
+    # gives two arrays, decomposed & residuals
+    decompose, residual = pywt.dwt(signal,'sym5')
+
+
 
 Auto
 -----

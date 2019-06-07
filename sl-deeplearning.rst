@@ -437,6 +437,13 @@ LSTM requires input needs to be of shape ``(num_sample, time_steps, num_features
 
 .. code:: python
 
+    from skimage.util import view_as_windows
+
+    window_size = 5
+    timeseries = np.array([1,2,3,4,5,6,7,8,9,10])
+
+    trajectory_matrix = view_as_windows(timeseries, window_shape=window_size)
+
     
 
 The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB movie reviews.
