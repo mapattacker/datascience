@@ -44,7 +44,7 @@ Negative values are possible, but actually refer to 0; though random chance caus
 
 
 .. figure:: images/permutation_impt2.png
-    :scale: 40 %
+    :scale: 60 %
     :align: center
     
     From Kaggle
@@ -73,7 +73,7 @@ https://www.kaggle.com/dansbecker/partial-plots
 
 
 .. figure:: images/partial_dependence.PNG
-    :scale: 40 %
+    :scale: 60 %
     :align: center
     
     From Kaggle Learn
