@@ -94,7 +94,7 @@ https://www.kaggle.com/dansbecker/partial-plots
     plt.show()
 
 .. figure:: images/partial_dependence2.PNG
-    :scale: 40 %
+    :scale: 80 %
     :align: center
     
     From Kaggle Learn
