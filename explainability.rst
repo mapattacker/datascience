@@ -107,9 +107,9 @@ SHapley Additive exPlanations (SHAP) **break down a prediction to show the impac
 https://www.kaggle.com/dansbecker/shap-values
 
 The explainer differs with the model type:
- * `shap.TreeExplainer(my_model)` for tree models
- * `shap.DeepExplainer(my_model)` for neural networks
- * `shap.KernelExplainer(my_model)` for all models, but slower, and gives approximate SHAP values
+ * ``shap.TreeExplainer(my_model)` for tree models
+ * ``shap.DeepExplainer(my_model)`` for neural networks
+ * ``shap.KernelExplainer(my_model)`` for all models, but slower, and gives approximate SHAP values
 
 .. code:: python
 
