@@ -44,7 +44,7 @@ Negative values are possible, but actually refer to 0; though random chance caus
 
 
 .. figure:: images/permutation_impt2.png
-    :scale: 60 %
+    :scale: 50 %
     :align: center
     
     From Kaggle
