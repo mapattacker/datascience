@@ -464,46 +464,6 @@ This website_ gives an excellent description on all the variants of errors metri
     print('Test RMSE:', format(np.sqrt(MSE_test), 'e'))
 
 
-Permutation Importance
------------------------
-
-Feature importance is a useful evaluation metric to find the strength of each feature in a model.
-However, this is only available by default in sklean tree models. 
-This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
-called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
-
-.. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
-
-How it works is the shuffling of individual features and see how it affects model accuarcy.
-If a feature is important, the model accuarcy will be reduced more. 
-If not important, the accuarcy should be affected a lot less.
-
-.. figure:: images/permutation_impt.png
-    :scale: 60 %
-    :align: center
-    
-    From Kaggle
-
-
-.. code:: python
-    
-    import eli5
-    from eli5.sklearn import PermutationImportance
-
-    perm = PermutationImportance(my_model, random_state=1).fit(test_X, test_y)
-    eli5.show_weights(perm, feature_names = test_X.columns.tolist())
-
-The output is as below. +/- refers to the randomness that shuffling resulted in.
-The higher the weight, the more important the feature is. 
-Negative values are possible, but actually refer to 0; though random chance caused the predictions on shuffled data to be more accurate.
-
-
-.. figure:: images/permutation_impt2.png
-    :scale: 40 %
-    :align: center
-    
-    From Kaggle
-
 
 K-fold Cross-Validation
 ------------------------
@@ -557,6 +517,15 @@ More here_.
     skf.get_n_splits(X, y)
 
     for i in skf:
+
+
+There are many other variants of cross validations as shown below.
+
+.. figure:: images/kfold2.png
+    :scale: 30 %
+    :align: center
+
+    Types of cross-validation available in sklearn
 
 Grid-Search
 ----------------

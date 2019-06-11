@@ -232,7 +232,14 @@ More information here_.
 LDA
 ^^^^^^^
 Latent Dirichlet Allocation is another unsupervised method, commonly used for topic modelling. 
+It attempts to find a feature subspace that maximizes class separability
 Other LDA methods like Labeled-LDA & Multi-Grained LDA are supervised algorithms. Only positive values can be processed by LDA.
+
+.. figure:: images/lda.PNG
+    :width: 600px
+    :align: center
+
+Differences of PCA & LDA, from https://sebastianraschka.com/Articles/2014_python_lda.html
 
 .. code:: python
 
@@ -695,6 +702,10 @@ to a given data point, that point will be classified as a core sample.
 Core samples that are closer to each other than the distance eps are put into
 the same cluster by DBSCAN.
 
+There is recently a new method called HDBSCAN (H = Hierarchical). 
+https://hdbscan.readthedocs.io/en/latest/index.html
+
+
 .. figure:: images/dbscan1.png
     :width: 650px
     :align: center
@@ -744,7 +755,7 @@ the same cluster by DBSCAN.
     :align: center
 
 
-Outlier Detection
+One-Class Classification
 --------------------
 
 One Class SVM
@@ -850,6 +861,28 @@ computed in the equivalent of a principal component space that accounts for diff
 
 Individual MD from each row of a dataset with N features. Covariance matrix for each feature is calculated from the dataset, 
 and individual rows are recursively fed into the function to obtain the MD.
+
+.. code:: python
+
+    import pandas as pd
+    import numpy as np
+    from scipy.spatial.distance import mahalanobis
+
+    def mahalanobisD(normal_df, y_df):
+        # calculate inverse covariance from normal state
+        x_cov = normal_df.cov().cov()
+        inv_cov = np.linalg.pinv(x_cov)
+        
+        # get mean of normal state df
+        x_mean = normal_df.mean()
+        
+        # calculate mahalanobis distance from each row of y_df
+        distanceMD = []
+        for i in range(len(y_df)):
+            MD = mahalanobis(x_mean, y_df.iloc[i], inv_cov)
+            distanceMD.append(MD)
+            
+        return distanceMD
 
 .. code:: python
 
