@@ -1,8 +1,15 @@
 Feature Engineering
 =====================
 Feature Engineering is one of the most important part of model building.
-Collecting and creating of relevant features are most often the determinant of 
-a high prediction value.
+Collecting and creating of relevant features from existing ones are most often the determinant of a high prediction value.
+
+They can be classified broadly as:
+    * Aggregations
+        * Rolling/sliding Window (overlapping)
+        * Tumbling Window (non-overlapping)
+    * Transformations
+    * Decompositions
+    * Interactions
 
 Manual 
 --------
