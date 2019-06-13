@@ -1,18 +1,35 @@
-Exploratory Data Analysis
+Exploratory Analysis
 =========================
 
 Exploratory data analysis (EDA) is an essential step to understand the data better;
 in order to engineer and select features before modelling.
 This often requires skills in visualisation to better interpret the data.
 
+Univariate
+------------
+
 Distribution Plots
-------------------------
+*******************
 When plotting distributions, it is important to compare the distribution of both train and test sets.
 If the test set very specific to certain features, the model will underfit and have a low accuarcy.
 
+.. code:: python
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    %config InlineBackend.figure_format = 'retina'
+    %matplotlib inline
+
+    for i in X.columns:
+        plt.figure(figsize=(15,5))
+        sns.distplot(X[i])
+        sns.distplot(pred[i])
+
+.. image:: images/distplot.png
+    :scale: 80 %
+    :align: center
 
 Count Plots
-------------
+*******************
 For **categorical** features, you may want to see if they have enough sample size for each category.
 
 .. code:: python
@@ -69,7 +86,7 @@ Multiple Plots
     :align: center
 
 Box Plots
-----------
+*******************
 Using the 50 percentile to compare among different classes, it is easy to find feature that
 can have high prediction importance if they do not overlap. Also can be use for outlier detection.
 Features have to be **continuous**.
@@ -108,11 +125,12 @@ Multiple Plots
     :scale: 50 %
     :align: center
 
-Correlation Plots
-------------------
+Multi-Variate
+----------------
 
-Heat-Map
-*********
+Correlation Plots
+*******************
+
 Heatmaps show a quick overall correlation between features.
 
 Using plot.ly

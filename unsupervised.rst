@@ -524,7 +524,8 @@ We can input the `covariance_type` argument such that it can choose between `dia
   input_gmm = normal.values
 
   gmm = GaussianMixture(n_components=4, covariance_type='full', random_state=42)
-  result = gmm.fit_predict(input_gmm)
+  gmm.fit(input_gmm)
+  result = gmm.predict(test_set)
 
 
 
@@ -756,7 +757,8 @@ https://hdbscan.readthedocs.io/en/latest/index.html
 
 
 One-Class Classification
---------------------
+-------------------------
+These requires the training of a normal state(s), allows outliers to be detected when they lie outside trained state.
 
 One Class SVM
 **************
@@ -792,14 +794,26 @@ Isolation Forest
 
   clf = IsolationForest(behaviour='new', max_samples=100,
                       random_state=rng, contamination='auto')
-  y_pred_train = clf.predict(X_train)
+            
+  clf.fit(X_train)
   y_pred_test = clf.predict(X_test)
-  y_pred_outliers = clf.predict(X_outliers)
+  
+  # -1 are outliers
+  # array([ 1,  1,  1,  1,  1,  1,  1,  1,  1, -1,  1,  1,  1,  1,  1,  1])
+
+  # average anomaly scores. the lower, the more abnormal. negative scores represent outliers, positive scores represent inliers.
+  clf.decision_function(X_test)
+  array([ 0.14528263,  0.14528263, -0.08450298,  0.14528263,  0.14528263,
+        0.14528263,  0.14528263,  0.14528263,  0.14528263, -0.14279962,
+        0.14528263,  0.14528263, -0.05483886, -0.10086102,  0.14528263,
+        0.14528263])
+
 
 
 
 Distance Metrics
 ------------------
+
 
 Euclidean Distance & Cosine Similarity
 ****************************************
