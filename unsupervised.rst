@@ -851,8 +851,6 @@ While powerful, its use of correlation can be detrimantal when there is multicol
   :width: 250px
   :align: center
 
-Individual MD from each row of a dataset with N features. Covariance matrix for each feature is calculated from the dataset, 
-and individual rows are recursively fed into the function to obtain the MD.
 
 .. code:: python
 
@@ -862,7 +860,7 @@ and individual rows are recursively fed into the function to obtain the MD.
 
     def mahalanobisD(normal_df, y_df):
         # calculate inverse covariance from normal state
-        x_cov = normal_df.cov().cov()
+        x_cov = normal_df.cov()
         inv_cov = np.linalg.pinv(x_cov)
         
         # get mean of normal state df

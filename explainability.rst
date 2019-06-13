@@ -6,7 +6,7 @@ While sklearn's supervised models are black boxes, we can derive certain plots a
 
 Feature Importance
 -------------------
-Decision tree and other tree ensemble models allow us to obtain the importance of features.
+Decision trees and other tree ensemble models, by default, allow us to obtain the importance of features.
 
 .. code:: python
 
