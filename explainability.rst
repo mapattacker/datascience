@@ -8,6 +8,35 @@ Feature Importance
 -------------------
 Decision tree and other tree ensemble models allow us to obtain the importance of features.
 
+.. code:: python
+
+    import pandas as pd
+    from sklearn.ensemble import RandomForestClassifier
+
+    rf = RandomForestClassifier()
+    model = rf.fit(X_train, y_train)
+
+    # evaluation metrics
+    y_predict = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_predict)
+    f1 = mean(f1_score(y_test, y_predict, average=None))
+
+    # sort feature importance in df
+    f_impt= pd.DataFrame(model.feature_importances_, index=dataframe.columns[:-1])
+    f_impt = f_impt.sort_values(by=0,ascending=False)
+    f_impt.columns = ['feature importance']
+
+    # plot bar chart
+    plt.figure(figsize=(18,2))
+    plt.bar(f_impt.index,f_impt['feature importance'])
+    plt.xticks(rotation='vertical')
+    plt.title(fault)
+
+
+.. figure:: images/feature_importance.PNG
+    :scale: 80 %
+    :align: center
+    
 
 Permutation Importance
 -----------------------

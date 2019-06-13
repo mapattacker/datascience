@@ -847,14 +847,6 @@ Dividing by a large covariance will effectively reduce the distance.
 While powerful, its use of correlation can be detrimantal when there is multicollinearity 
 (strong correlations among features). 
 
-There are various ways of computing:
- 1. Individual MD from each row of a dataset with N features
- 2. Single MD between two 1D arrays
- 3. Single MD between two groups of dataset, each with N features
-
-The Mahalanobis distance between two groups of vectors is the distance between their centers, 
-computed in the equivalent of a principal component space that accounts for different variances.
-
 .. figure:: images/distance2.png
   :width: 250px
   :align: center
@@ -883,58 +875,6 @@ and individual rows are recursively fed into the function to obtain the MD.
             distanceMD.append(MD)
             
         return distanceMD
-
-.. code:: python
-
-    # from https://www.machinelearningplus.com/statistics/mahalanobis-distance/
-
-    def mahalanobis(x=None, data=None, cov=None):
-        """Compute the Mahalanobis Distance between each row of x and the data  
-        x    : vector or matrix of data with, say, p columns.
-        data : ndarray of the distribution from which Mahalanobis distance of each observation of x is to be computed.
-        cov  : covariance matrix (p x p) of the distribution. If None, will be computed from data.
-        """
-        x_minus_mu = x - np.mean(data)
-        if not cov:
-            cov = np.cov(data.values.T)
-        inv_covmat = sp.linalg.inv(cov)
-        left_term = np.dot(x_minus_mu, inv_covmat)
-        mahal = np.dot(left_term, x_minus_mu.T)
-        return mahal.diagonal()
-
-
-Single MD between two 1D arrays. Basically testing 
-
-
-Single MD output between two input dataframes. It is done by pooling the covariance together,
-and input data as means.
-
-.. code:: python
-
-    def mahalanobis_group(x,y):
-    '''x & y are dataframes'''
-
-      # get covariance matrix from each dataframe
-      x_cov = x.cov()
-      y_cov = y.cov()
-
-      # first compute the total rows
-      x_total = x.shape[0]
-      y_total = y.shape[0]
-      total = x_total + y_total
-
-      # pooled covariance
-      pooled_cov = (x_cov * x_total/total) + (y_cov * y_total/total)
-      # inverse cov in array
-      inv_cov = np.linalg.pinv(pooled_cov)
-
-      # get mean difference in array
-      mean_diff = np.array(x.mean() - y.mean())
-
-      m_sq = np.dot(np.dot(mean_diff, inv_cov), mean_diff)
-      m = sqrt(m_sq)
-
-      return m
 
 
 Jaccard’s Distance
