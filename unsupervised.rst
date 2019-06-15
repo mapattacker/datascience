@@ -818,7 +818,16 @@ Isolation Forest
   # -1 are outliers
   # array([ 1,  1,  1,  1,  1,  1,  1,  1,  1, -1,  1,  1,  1,  1,  1,  1])
 
-  # average anomaly scores. the lower, the more abnormal. negative scores represent outliers, positive scores represent inliers.
+  # calculate the no. of anomalies
+  pd.DataFrame(save)[0].value_counts()
+  # -1    23330
+  # 1      687
+  # Name: 0, dtype: int64
+
+We can get the average anomaly scores. The lower, the more abnormal. Negative scores represent outliers, positive scores represent inliers.
+
+.. code:: python
+
   clf.decision_function(X_test)
   array([ 0.14528263,  0.14528263, -0.08450298,  0.14528263,  0.14528263,
         0.14528263,  0.14528263,  0.14528263,  0.14528263, -0.14279962,
