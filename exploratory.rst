@@ -27,7 +27,7 @@ If the test set very specific to certain features, the model will underfit and h
 
 
 .. figure:: images/distplot.png
-    :scale: 80 %
+    :scale: 100 %
     :align: center
 
 Count Plots
