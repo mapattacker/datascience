@@ -493,35 +493,6 @@ We can visualise the clusters by reducing the dimensions into 2 using PCA.
   :align: center
 
 
-Code from Python Data Science Handbook by Jake VanderPlas to visualise 
-
-.. code:: python
-
-  from sklearn.cluster import KMeans
-  from scipy.spatial.distance import cdist
-
-  def plot_kmeans(kmeans, X, n_clusters=4, rseed=0, ax=None):
-      # X is in numpy array
-      labels = kmeans.fit_predict(X)
-
-      # plot the input data
-      plt.figure(figsize=(8,6))
-      ax = ax or plt.gca()
-      ax.axis('equal')
-      ax.scatter(X[:, 0], X[:, 1], c=labels, s=40, cmap='viridis', edgecolor='black', zorder=2)
-
-      # plot the representation of the KMeans model
-      centers = kmeans.cluster_centers_
-      radii = [cdist(X[labels == i], [center]).max()
-              for i, center in enumerate(centers)]
-      for c, r in zip(centers, radii):
-          ax.add_patch(plt.Circle(c, r, fc='#CCCCCC', lw=1, edgecolor='black', alpha=0.5, zorder=1))
-
-.. figure:: images/kmeans5.png
-  :scale: 100 %
-  :align: center
-
-
 
 Sometimes we need to find the cluster centres so that we can get an absolute distance measure of centroids to new data. 
 Each feature will have a defined centre for each cluster.
