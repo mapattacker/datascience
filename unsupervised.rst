@@ -165,6 +165,14 @@ This shows the relationship of each feature's magnitude clearer in a 2D space.
     :width: 600px
     :align: center
 
+Lastly, we can specify the percentage explained variance, and let PCA decide on the number components.
+
+.. code:: python
+
+  from sklearn.decomposition import PCA
+  pca = PCA(0.99, whiten=True)
+  data = pca.fit_transform(digits.data)
+
 
 Multi-Dimensional Scaling
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
