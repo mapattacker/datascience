@@ -170,8 +170,11 @@ Lastly, we can specify the percentage explained variance, and let PCA decide on 
 .. code:: python
 
   from sklearn.decomposition import PCA
-  pca = PCA(0.99, whiten=True)
-  data = pca.fit_transform(digits.data)
+  pca = PCA(0.99)
+  df_pca = pca.fit_transform(df)
+
+  # check no. of resulting features
+  df_pca.shape
 
 
 Multi-Dimensional Scaling
