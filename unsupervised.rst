@@ -479,6 +479,8 @@ and the solution occurring the most number of times is chosen.
   :align: center
 
 We can visualise the clusters by reducing the dimensions into 2 using PCA.
+They are separate by theissen polygons, though at a multi-dimensional space.
+
 
 .. code:: python
 
@@ -493,15 +495,22 @@ We can visualise the clusters by reducing the dimensions into 2 using PCA.
   :align: center
 
 
-
 Sometimes we need to find the cluster centres so that we can get an absolute distance measure of centroids to new data. 
 Each feature will have a defined centre for each cluster.
 
 .. code:: python
 
+  # get cluster centres
   centroids = model.cluster_centers_
-  centroid_labels = [centroids[i] for i in labels]
+  # for each row, define cluster centre
+  centroid_labels = [centroids[i] for i in model.labels_]
 
+
+If we have labels or y, and want to determine which y belongs to which cluster for an evaluation score,
+we can use a groupby to find the most number of labels that fall in a cluster and manually label them as such.
+
+df = concat.groupby(['label','cluster'])['cluster'].count()
+df
 
 Gaussian Mixture Model
 ************************

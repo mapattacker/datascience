@@ -14,6 +14,7 @@ When plotting distributions, it is important to compare the distribution of both
 If the test set very specific to certain features, the model will underfit and have a low accuarcy.
 
 .. code:: python
+
     import seaborn as sns
     import matplotlib.pyplot as plt
     %config InlineBackend.figure_format = 'retina'
@@ -24,7 +25,8 @@ If the test set very specific to certain features, the model will underfit and h
         sns.distplot(X[i])
         sns.distplot(pred[i])
 
-.. image:: images/distplot.png
+
+.. figure:: images/distplot.png
     :scale: 80 %
     :align: center
 
@@ -33,6 +35,7 @@ Count Plots
 For **categorical** features, you may want to see if they have enough sample size for each category.
 
 .. code:: python
+
     import seaborn as sns
     import matplotlib.pyplot as plt
     %config InlineBackend.figure_format = 'retina'
