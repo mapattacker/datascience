@@ -816,6 +816,7 @@ Isolation Forest
   y_pred_test = clf.predict(X_test)
   
   # -1 are outliers
+  y_pred_test
   # array([ 1,  1,  1,  1,  1,  1,  1,  1,  1, -1,  1,  1,  1,  1,  1,  1])
 
   # calculate the no. of anomalies
