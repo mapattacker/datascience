@@ -94,7 +94,8 @@ https://www.kaggle.com/dansbecker/partial-plots
     from pdpbox import pdp, get_dataset, info_plots
 
     # Create the data that we will plot
-    pdp_goals = pdp.pdp_isolate(model=tree_model, dataset=val_X, model_features=feature_names, feature='Goal Scored')
+    pdp_goals = pdp.pdp_isolate(model=tree_model, dataset=val_X, 
+                                model_features=feature_names, feature='Goal Scored')
 
     # plot it
     pdp.pdp_plot(pdp_goals, 'Goal Scored')
@@ -102,7 +103,7 @@ https://www.kaggle.com/dansbecker/partial-plots
 
 
 .. figure:: images/partial_dependence.PNG
-    :scale: 60 %
+    :scale: 80 %
     :align: center
     
     From Kaggle Learn

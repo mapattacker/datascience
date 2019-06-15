@@ -231,15 +231,18 @@ More information here_.
 
 LDA
 ^^^^^^^
-Latent Dirichlet Allocation is another unsupervised method, commonly used for topic modelling. 
-It attempts to find a feature subspace that maximizes class separability
-Other LDA methods like Labeled-LDA & Multi-Grained LDA are supervised algorithms. Only positive values can be processed by LDA.
+Latent Dirichlet Allocation is another dimension reduction method, but unlike PCA, it is a supervised method. 
+It attempts to find a feature subspace or decision boundary that maximizes class separability.
+It then projects the data points to new dimensions in a way that the clusters are as separate from each other 
+as possible and the individual elements within a cluster are as close to the centroid of the cluster as possible. 
 
 .. figure:: images/lda.PNG
     :width: 600px
     :align: center
 
-Differences of PCA & LDA, from https://sebastianraschka.com/Articles/2014_python_lda.html
+Differences of PCA & LDA, from:
+ * https://sebastianraschka.com/Articles/2014_python_lda.html
+ * https://stackabuse.com/implementing-lda-in-python-with-scikit-learn/
 
 .. code:: python
 
@@ -251,13 +254,7 @@ Differences of PCA & LDA, from https://sebastianraschka.com/Articles/2014_python
   # CountVectorizer would produce on text.
   X, _ = make_multilabel_classification(random_state=0)
   lda = LatentDirichletAllocation(n_components=5, random_state=0)
-  lda.fit(X) 
-
-
-  LatentDirichletAllocation(...)
-  # get topics for some given samples:
-  lda.transform(X[-2:])
-
+  X_lda = lda.fit_transform(X, y)
 
   # check the explained variance
   percent = lda.explained_variance_ratio_
@@ -491,10 +488,39 @@ We can visualise the clusters by reducing the dimensions into 2 using PCA.
   plt.figure(figsize=(8,8))
   plt.scatter(pd.DataFrame(pca)[0],pd.DataFrame(pca)[1], c=labels, cmap='plasma', alpha=0.5);
 
-
 .. image:: images/kmeans.png
   :scale: 80 %
   :align: center
+
+
+Code from Python Data Science Handbook by Jake VanderPlas to visualise 
+
+.. code:: python
+
+  from sklearn.cluster import KMeans
+  from scipy.spatial.distance import cdist
+
+  def plot_kmeans(kmeans, X, n_clusters=4, rseed=0, ax=None):
+      # X is in numpy array
+      labels = kmeans.fit_predict(X)
+
+      # plot the input data
+      plt.figure(figsize=(8,6))
+      ax = ax or plt.gca()
+      ax.axis('equal')
+      ax.scatter(X[:, 0], X[:, 1], c=labels, s=40, cmap='viridis', edgecolor='black', zorder=2)
+
+      # plot the representation of the KMeans model
+      centers = kmeans.cluster_centers_
+      radii = [cdist(X[labels == i], [center]).max()
+              for i, center in enumerate(centers)]
+      for c, r in zip(centers, radii):
+          ax.add_patch(plt.Circle(c, r, fc='#CCCCCC', lw=1, edgecolor='black', alpha=0.5, zorder=1))
+
+.. figure:: images/kmeans5.png
+  :scale: 100 %
+  :align: center
+
 
 
 Sometimes we need to find the cluster centres so that we can get an absolute distance measure of centroids to new data. 
