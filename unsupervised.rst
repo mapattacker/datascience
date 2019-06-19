@@ -825,7 +825,8 @@ Isolation Forest
   # 1      687
   # Name: 0, dtype: int64
 
-We can get the average anomaly scores. The lower, the more abnormal. Negative scores represent outliers, positive scores represent inliers.
+We can also get the average anomaly scores. 
+The lower, the more abnormal. Negative scores represent outliers, positive scores represent inliers.
 
 .. code:: python
 
