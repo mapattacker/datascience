@@ -13,6 +13,10 @@ Decision trees and other tree ensemble models, by default, allow us to obtain th
     import pandas as pd
     from sklearn.ensemble import RandomForestClassifier
 
+    import matplotlib.pyplot as plt
+    %config InlineBackend.figure_format = 'retina'
+    %matplotlib inline
+
     rf = RandomForestClassifier()
     model = rf.fit(X_train, y_train)
 
