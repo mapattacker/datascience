@@ -94,6 +94,20 @@ Using the 50 percentile to compare among different classes, it is easy to find f
 can have high prediction importance if they do not overlap. Also can be use for outlier detection.
 Features have to be **continuous**.
 
+From different dataframes, displaying the same feature.
+
+.. code:: python
+
+    df = pd.DataFrame({'normal': normal['Pressure'], 's1': cf6['Pressure'], 's2': cf12['Pressure'], 
+                        's3': cf20['Pressure'], 's4': cf30['Pressure'],'s5': cf45['Pressure']})
+    df.boxplot(figsize=(10,5));
+
+.. image:: images/box3.png
+    :scale: 50 %
+    :align: center
+
+From same dataframe with of a feature split by different y-labels
+
 .. code:: python
 
     plt.figure(figsize=(7, 5))

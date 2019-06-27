@@ -53,6 +53,37 @@ Model architecture can also be displayed in a graph. Or we can print as a summar
 
     model summary printout
 
+Activation Functions
+----------------------
+
+Hidden Layers
+***************
+
+ReLu (Rectified Linear units) is very popular compared to the now mostly obsolete sigmoid & tanh functions because it
+avoids vanishing gradient problem and has faster convergence. However, ReLu can only be used in hidden layers.
+Also, some gradients can be fragile during training and can die. 
+It can cause a weight update which will makes it never activate on any data point again. Simply saying that ReLu could result in Dead Neurons.
+
+To fix this problem another modification was introduced called Leaky ReLu to fix the problem of dying neurons. 
+It introduces a small slope to keep the updates alive.
+We then have another variant made form both ReLu and Leaky ReLu called Maxout function .
+
+.. figure:: images/deep-activation.png
+    :width: 500px
+    :align: center
+
+    https://towardsdatascience.com/activation-functions-and-its-types-which-is-better-a9a5310cc8f
+
+
+
+Output Layer
+************
+
+Sigmoid: Binary Classification
+Softmax: Multi-Class Classification
+
+
+
 ANN
 -----------
 
