@@ -4,7 +4,8 @@ Normalisation is another important concept needed to change all features to the 
 This allows for faster convergence on learning, and more uniform influence for all weights.
 More on sklearn website:
 
-http://scikit-learn.org/stable/modules/preprocessing.html
+ * http://scikit-learn.org/stable/modules/preprocessing.html
+
 
 `Tree-based models is not dependent on scaling, but non-tree models models,
 very often are hugely dependent on it.`
@@ -15,20 +16,33 @@ very often are hugely dependent on it.`
 
     Introduction to Machine Learning in Python
 
+Outliers can affect certain scalers, and it is important to either remove them or choose a scalar that is robust towards them.
+
+ * https://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html
+ * http://benalexkeen.com/feature-scaling-with-scikit-learn/
+
+
 Scaling
 -------
 Standard Scaler
 ****************
-This changes the data to have means of 0 and standard error of 1.
+It standardize features by removing the mean and scaling to unit variance
+The standard score of a sample x is calculated as:
+
+z = (x - u) / s
 
 .. code:: python
 
   import pandas pd
-  from sklearn import preprocessing
+  from sklearn.preprocessing import StandardScaler
 
-  # standardise the means to 0 and standard error to 1
-  for i in df.columns[:-1]: # df.columns[:-1] = dataframe for all features
-    df[i] = preprocessing.scale(df[i].astype('float64'))
+  X_train, X_test, y_train, y_test = train_test_split(X_crime, y_crime,
+                                                     random_state = 0)
+  scaler = StandardScaler()
+  X_train_scaled = scaler.fit_transform(X_train)
+  # note that the test set using the fitted scaler in train dataset to transform in the test set
+  X_test_scaled = scaler.transform(X_test)
+
 
 
 Min Max Scale
@@ -67,6 +81,9 @@ Pipeline
 ---------
 Scaling have a chance of leaking the part of the test data in train-test split into the training data.
 This is especially inevitable when using cross-validation.
+
+
+
 We can scale the train and test datasets separately to avoid this.
 However, a more convenient way is to use the pipeline function in sklearn, which wraps the scaler and classifier together,
 and scale them separately during cross validation.
@@ -88,3 +105,7 @@ Any other functions can also be input here, e.g., rolling window feature extract
 
   pipe.score(X_test, y_test)
   0.95104895104895104
+
+Persistance
+------------
+To save the fitted scaler to normalize new datasets, we can save it using pickle or joblib for reusing in the future.

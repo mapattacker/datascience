@@ -637,25 +637,52 @@ https://github.com/HDI-Project/BTB
     # remember to change INT to FLOAT where necessary
     tunables = [('n_estimators', HyperParameter(ParamTypes.INT, [500, 2000])),
                 ('max_depth', HyperParameter(ParamTypes.INT, [3, 20]))]
-    tuner = GP(tunables)
-    parameters = tuner.propose()
-    parameters
 
-    for i in range(10):
-        model = XGBClassifier(**parameters, n_jobs=-1)
-        model.fit(X_train, y_train)
-        y_predict = model.predict(X_test)
-        score = accuracy_score(y_test, y_predict)
-        tuner.add(parameters, score)
-        print(score, parameters)
+    def auto_tuning(tunables, epoch, X_train, X_test, y_train, y_test, verbose=0):
+        """Auto-tuner using BTB library"""
+        tuner = GP(tunables)
         parameters = tuner.propose()
-        
-    tuner._best_score
+    
+        score_list = []
+        param_list = []
 
-    # 0.9492307692307692 {'n_estimators': 1200, 'max_depth': 13}
-    # 0.9507692307692308 {'n_estimators': 1659, 'max_depth': 15}
-    # 0.9492307692307692 {'n_estimators': 1661, 'max_depth': 14}
-    # 0.9492307692307692 {'n_estimators': 1654, 'max_depth': 13}
-    # 0.9492307692307692 {'n_estimators': 1658, 'max_depth': 16}
-    # 0.9476923076923077 {'n_estimators': 923, 'max_depth': 13}
-    # 0.9507692307692308 {'n_estimators': 1658, 'max_depth': 11}
+        for i in range(epoch):
+            # ** unpacks dict in a argument
+            model = RandomForestClassifier(**parameters, n_jobs=-1)
+            model.fit(X_train, y_train)
+            y_predict = model.predict(X_test)
+            score = accuracy_score(y_test, y_predict)
+            print('epoch: {}, accuracy: {}'.format(i+1,score))
+
+            # store scores & parameters
+            score_list.append(score)
+            param_list.append(parameters)
+
+            if verbose==0:
+                pass
+            elif verbose==1:
+                print('epoch: {}, accuracy: {}'.format(i+1,score))
+            elif verbose==2:
+                print('epoch: {}, accuracy: {}, param: {}'.format(i+1,score,parameters))
+
+            # get new parameters
+            tuner.add(parameters, score)
+            parameters = tuner.propose()
+
+        best_s = tuner._best_score
+        best_score_index = score_list.index(best_s)
+        best_param = param_list[best_score_index]
+        print('\nbest accuracy: {}'.format(best_s))
+        print('best parameters: {}'.format(best_param))        
+        return best_param
+
+    best_param = auto_tuning(tunables, 5, X_train, X_test, y_train, y_test)
+
+    # epoch: 1, accuracy: 0.7437106918238994
+    # epoch: 2, accuracy: 0.779874213836478
+    # epoch: 3, accuracy: 0.7940251572327044
+    # epoch: 4, accuracy: 0.7908805031446541
+    # epoch: 5, accuracy: 0.7987421383647799
+
+    # best accuracy: 0.7987421383647799
+    # best parameters: {'n_estimators': 1939, 'max_depth': 18}

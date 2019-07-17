@@ -15,6 +15,18 @@ An important thing to note is that **resampling must be done AFTER the train-tes
 Over-Sampling
 ---------------
 
+SMOTE (synthetic minority over-sampling technique) is a common and popular up-sampling technique.
+
+.. code:: python
+
+    from imblearn.over_sampling import SMOTE
+    
+    smote = SMOTE()
+    X_resampled, y_resampled = smote.fit_sample(X_train, y_train)
+    clf = LogisticRegression()
+    clf.fit(X_resampled, y_resampled)
+
+
 ADASYN is one of the more advanced over sampling algorithms.
 
 .. code:: python
@@ -42,7 +54,7 @@ Under-Sampling
 Under/Over-Sampling
 --------------------
 
-SMOTEENN combines SMOTE (synthetic over sampling) with Edited Nearest Neighbours, 
+SMOTEENN combines SMOTE with Edited Nearest Neighbours, 
 which is used to pare down and centralise the negative cases.
 
 .. code:: python

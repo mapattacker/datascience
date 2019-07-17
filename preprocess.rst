@@ -6,6 +6,23 @@ Numeric
 Feature Proprocessing
 ************************
 
+**Missing Values**
+^^^^^^^^^^^^^^^^^^^
+
+We can change missing values for the entire dataframe into their individual column means or medians.
+
+.. code:: python
+
+  import pandas as pd
+  import numpy as np
+  from sklearn.impute import SimpleImputer
+
+  impute = SimpleImputer(missing_values=np.nan, strategy='median', copy=False)
+  imp_mean.fit(df)
+  # output is in numpy, so convert to df
+  df2 = pd.DataFrame(imp_mean.transform(df),columns=df.columns)
+
+
 **Scaling**
 ^^^^^^^^^^^^
 

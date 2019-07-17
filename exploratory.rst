@@ -102,7 +102,7 @@ From different dataframes, displaying the same feature.
                         's3': cf20['Pressure'], 's4': cf30['Pressure'],'s5': cf45['Pressure']})
     df.boxplot(figsize=(10,5));
 
-.. image:: images/box3.png
+.. image:: images/box3.PNG
     :scale: 50 %
     :align: center
 
