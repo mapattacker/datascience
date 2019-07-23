@@ -5,13 +5,16 @@ It is a Machine Learning technique that uses multiple internal layers (**hidden 
 non-linear processing units (**neurons**) to conduct supervised or unsupervised learning from data.
   
 
+Introduction
+-------------
+
 GPU
------
+******
 
 Tensorflow is able to run faster and more effeciently using Nivida's GPU ``pip install tensorflow-gpu``.
 
 Preprocessing
----------------
+******************
 
 Keras accepts numpy input, so we have to convert. Also, for multi-class classification,
 we need to convert them into binary values; i.e., using one-hot encoding
@@ -53,11 +56,61 @@ Model architecture can also be displayed in a graph. Or we can print as a summar
 
     model summary printout
 
+Evaluation
+******************
+
+The model compiled has a history method (``model.history.history``) that gives the accuracy and loss for both train & test sets for each time step.
+We can plot it out for a better visualization. Alternatively we can also use TensorBoard, which is installed together with TensorFlow package. 
+It will also draw the model architecture.
+
+.. code:: python
+
+    def plot_validate(model, loss_acc, epoch):
+
+        if loss_acc == 'loss':
+            axis_title = 'loss'
+            title = 'Loss'
+        elif loss_acc == 'acc':
+            axis_title = 'acc'
+            title = 'Accuracy'
+        
+        plt.figure(figsize=(15,4))
+        plt.plot(model.history.history[axis_title])
+        plt.plot(model.history.history['val_' + axis_title])
+        plt.title('Model ' + title)
+        plt.ylabel(title)
+        plt.xlabel('Epoch')
+
+        plt.xticks(np.arange(0, epoch, epoch/10))
+        plt.grid()
+
+        plt.legend(['Train', 'Test'])
+        plt.show()
+
+
+    plot_validate(model, 'acc', epoch)
+    plot_validate(model, 'loss', epoch)
+
+
+.. figure:: images/deeplearning5.PNG
+    :width: 400px
+    :align: center
+
+Auto-Tuning
+************
+Unlike grid-search we can use Bayesian optimization for a faster hyperparameter tuning.
+
+https://www.dlology.com/blog/how-to-do-hyperparameter-search-with-baysian-optimization-for-keras-model/
+https://medium.com/@crawftv/parameter-hyperparameter-tuning-with-bayesian-optimization-7acf42d348e1
+
+Model Compiling
+-----------------
+
 Activation Functions
-----------------------
+***********************
 
 Hidden Layers
-***************
+^^^^^^^^^^^^^^^
 
 ReLu (Rectified Linear units) is very popular compared to the now mostly obsolete sigmoid & tanh functions because it
 avoids vanishing gradient problem and has faster convergence. However, ReLu can only be used in hidden layers.
@@ -77,11 +130,24 @@ We then have another variant made form both ReLu and Leaky ReLu called Maxout fu
 
 
 Output Layer
-************
+^^^^^^^^^^^^^^^
 
 Sigmoid: Binary Classification
 Softmax: Multi-Class Classification
 
+
+Optimizers
+*************
+
+Optimizers is used to find the minimium value of the cost function to perform backward propagation.
+There are more advanced adaptive optimizers, like AdaGrad/RMSprop/Adam, that allow the learning rate to adapt to the size of the gradient.
+The hyperparameters are essential to get the model to perform well.
+
+.. figure:: images/dl-optimizers1.PNG
+    :width: 500px
+    :align: center
+
+    From Udemy, Zero to Hero Deep Learning with Python & Keras
 
 
 ANN

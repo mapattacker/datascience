@@ -23,6 +23,18 @@ We can change missing values for the entire dataframe into their individual colu
   df2 = pd.DataFrame(imp_mean.transform(df),columns=df.columns)
 
 
+We can also use interpolation via pandas default function to fill in the missing values.
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.interpolate.html
+
+
+.. code:: python
+
+  import pandas as pd
+
+  df['colname'].interpolate(method='linear', limit=2)
+
+
+
 **Scaling**
 ^^^^^^^^^^^^
 
