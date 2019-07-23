@@ -93,7 +93,7 @@ It will also draw the model architecture.
 
 
 .. figure:: images/deeplearning5.PNG
-    :width: 400px
+    :width: 600px
     :align: center
 
 Auto-Tuning
@@ -121,7 +121,7 @@ To fix this problem another modification was introduced called Leaky ReLu to fix
 It introduces a small slope to keep the updates alive.
 We then have another variant made form both ReLu and Leaky ReLu called Maxout function .
 
-.. figure:: images/deep-activation.png
+.. figure:: images/deep-activation1.png
     :width: 500px
     :align: center
 
