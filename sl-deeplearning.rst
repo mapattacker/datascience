@@ -51,7 +51,7 @@ Model architecture can also be displayed in a graph. Or we can print as a summar
     model.summary()
 
 .. figure:: images/neuralnetwork_pre2.PNG
-    :width: 400px
+    :width: 500px
     :align: center
 
     model summary printout
@@ -80,9 +80,11 @@ It will also draw the model architecture.
         plt.title('Model ' + title)
         plt.ylabel(title)
         plt.xlabel('Epoch')
-
-        plt.xticks(np.arange(0, epoch, epoch/10))
-        plt.grid()
+        
+        # add grids
+        plt.grid(b=True, which='major')
+        plt.minorticks_on()
+        plt.grid(b=True, which='minor', alpha=0.2)
 
         plt.legend(['Train', 'Test'])
         plt.show()
@@ -93,7 +95,7 @@ It will also draw the model architecture.
 
 
 .. figure:: images/deeplearning5.PNG
-    :width: 600px
+    :width: 650px
     :align: center
 
 Auto-Tuning
@@ -109,8 +111,8 @@ Model Compiling
 Activation Functions
 ***********************
 
-Hidden Layers
-^^^^^^^^^^^^^^^
+Input & Hidden Layers
+^^^^^^^^^^^^^^^^^^^^^^^
 
 ReLu (Rectified Linear units) is very popular compared to the now mostly obsolete sigmoid & tanh functions because it
 avoids vanishing gradient problem and has faster convergence. However, ReLu can only be used in hidden layers.
@@ -136,8 +138,14 @@ Sigmoid: Binary Classification
 Softmax: Multi-Class Classification
 
 
-Optimizers
-*************
+Gradient Descent
+******************
+
+Backpropagation, short for "backward propagation of errors," is an algorithm for supervised learning of artificial neural networks using gradient descent.
+
+ * **Optimizer** is a learning algorithm called gradient descent, refers to the calculation of an error gradient or slope of error and “descent” refers to the moving down along that slope towards some minimum level of error.
+ * **Batch Size** is a hyperparameter of gradient descent that controls the number of training samples to work through before the model’s internal parameters are updated.
+ * **Epoch** is a hyperparameter of gradient descent that controls the number of complete passes through the training dataset.
 
 Optimizers is used to find the minimium value of the cost function to perform backward propagation.
 There are more advanced adaptive optimizers, like AdaGrad/RMSprop/Adam, that allow the learning rate to adapt to the size of the gradient.
@@ -148,6 +156,15 @@ The hyperparameters are essential to get the model to perform well.
     :align: center
 
     From Udemy, Zero to Hero Deep Learning with Python & Keras
+
+Assume you have a dataset with 200 samples (rows of data) and you choose a batch size of 5 and 1,000 epochs.
+This means that the dataset will be divided into 40 batches, each with 5 samples. The model weights will be updated after each batch of 5 samples.
+This also means that one epoch will involve 40 batches or 40 updates to the model.
+
+More here:
+ * https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/.
+ * https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/
+
 
 
 ANN
@@ -367,6 +384,57 @@ The below gives a compiled code example code.
     print('Test accuracy:', score[1])
 
 
+Here's another example using the Iris dataset.
+
+.. code:: python
+
+    import pandas as pd
+    import numpy as np
+
+    from keras.models import Sequential
+    from keras.layers import Dense, Dropout, Activation
+    from sklearn.model_selection import train_test_split
+    from sklearn.datasets import load_iris
+    import matplotlib.pyplot as plt
+
+    
+    def modeling(X_train, y_train, X_test, y_test, features, classes, epoch, batch, verbose, dropout):
+        
+        model = Sequential()
+        
+        #first layer input dim as number of features
+        model.add(Dense(100, activation='relu', input_dim=features))
+        model.add(Dropout(dropout))
+        model.add(Dense(50, activation='relu'))
+        #nodes must be same as no. of labels classes
+        model.add(Dense(classes, activation='softmax'))
+        
+        model.compile(loss='sparse_categorical_crossentropy', 
+                        optimizer='adam', 
+                        metrics=['accuracy'])
+        
+        model.fit(X_train, y_train,
+                batch_size=batch,
+                epochs= epoch, 
+                verbose=verbose,
+                validation_data=(X_test, y_test))
+        
+        return model
+
+    iris = load_iris()
+    X = pd.DataFrame(iris['data'], columns=iris['feature_names'])
+    y = iris.target
+    X_train, X_test, y_train, y_test = train_test_split(X,y,random_state=0)
+
+    # define ANN model parameters
+    features = X_train.shape[1]
+    classes = len(np.unique(y_train))
+    epoch = 100
+    batch = 25
+    verbose = 0
+    dropout = 0.2
+
+    model = modeling(X_train, y_train, X_test, y_test, features, classes, epoch, batch, verbose, dropout)
 
 CNN
 ----
