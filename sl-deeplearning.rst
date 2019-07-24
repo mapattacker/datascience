@@ -599,17 +599,19 @@ Keras Model
 ***********
 
 LSTM requires input needs to be of shape ``(num_sample, time_steps, num_features)`` if using tensorflow backend.
+This can be processed using keras's ``TimeseriesGenerator``.
 
 .. code:: python
 
     from keras.preprocessing.sequence import TimeseriesGenerator
 
+    ### UNIVARIATE ---------------------
     num_features = 6
     time_steps = 1
     num_sample = 4
 
     X = [1,2,3,4,5,6,7,8,9,10]
-    y = [1,0,1,0,1,0,1,0,1,0]
+    y = [5,6,7,8,9,1,2,3,4,5]
 
     data = TimeseriesGenerator(X, y,
                                length=num_features, 
@@ -617,10 +619,28 @@ LSTM requires input needs to be of shape ``(num_sample, time_steps, num_features
                                batch_size=num_sample)
     data[0]
 
-    #(array([[1, 2, 3, 4, 5, 6],
-    #        [2, 3, 4, 5, 6, 7],
-    #        [3, 4, 5, 6, 7, 8],
-    #        [4, 5, 6, 7, 8, 9]]), array([1, 0, 1, 0]))
+    # (array([[1, 2, 3, 4, 5, 6],
+    #         [2, 3, 4, 5, 6, 7],
+    #         [3, 4, 5, 6, 7, 8],
+    #         [4, 5, 6, 7, 8, 9]]), array([2, 3, 4, 5]))
+    # note that y-label is the next time step away
+
+
+    ### MULTIVARIATE ---------------------
+    # from pandas df
+    df = pd.DataFrame(np.random.randint(1, 5, (10,3)), columns=['col1','col2','label']) 
+    X = df[['col1','col2']].values
+    y = df['label'].values
+
+    data = TimeseriesGenerator(X, y,
+                               length=num_features, 
+                               sampling_rate=time_steps,
+                               batch_size=num_sample)
+
+    X = data[0][0]
+    y = data[0][1]
+
+
 
     
 
