@@ -94,7 +94,7 @@ It will also draw the model architecture.
     plot_validate(model, 'loss', epoch)
 
 
-.. figure:: images/deeplearning4.PNG
+.. figure:: images/deeplearning5.PNG
     :width: 650px
     :align: center
 
