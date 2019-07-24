@@ -602,12 +602,25 @@ LSTM requires input needs to be of shape ``(num_sample, time_steps, num_features
 
 .. code:: python
 
-    from skimage.util import view_as_windows
+    from keras.preprocessing.sequence import TimeseriesGenerator
 
-    window_size = 5
-    timeseries = np.array([1,2,3,4,5,6,7,8,9,10])
+    num_features = 6
+    time_steps = 1
+    num_sample = 4
 
-    trajectory_matrix = view_as_windows(timeseries, window_shape=window_size)
+    X = [1,2,3,4,5,6,7,8,9,10]
+    y = [1,0,1,0,1,0,1,0,1,0]
+
+    data = TimeseriesGenerator(X, y,
+                               length=num_features, 
+                               sampling_rate=time_steps,
+                               batch_size=num_sample)
+    data[0]
+
+    #(array([[1, 2, 3, 4, 5, 6],
+    #        [2, 3, 4, 5, 6, 7],
+    #        [3, 4, 5, 6, 7, 8],
+    #        [4, 5, 6, 7, 8, 9]]), array([1, 0, 1, 0]))
 
     
 
@@ -625,7 +638,7 @@ The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB
     # response is in binary 1-0
     (x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=20000)
 
-    # limit the sentence to first 80 words
+    # limit the sentence to backpropagate back 80 words through time
     x_train = sequence.pad_sequences(x_train, maxlen=80)
     x_test = sequence.pad_sequences(x_test, maxlen=80)
 
