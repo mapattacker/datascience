@@ -17,10 +17,12 @@ Preprocessing
 ******************
 
 Keras accepts numpy input, so we have to convert. Also, for multi-class classification,
-we need to convert them into binary values; i.e., using one-hot encoding
+we need to convert them into binary values; i.e., using one-hot encoding. For the latter, we can in-place use
+``sparse_categorical_crossentropy`` for the loss function which will can 
+process the multi-class label without converting to one-hot encoding.
 
 .. code:: python
-
+    # convert to numpy arrays
     X = np.array(X)
     # OR
     X = X.values
@@ -65,23 +67,29 @@ It will also draw the model architecture.
 
 .. code:: python
 
-    def plot_validate(model, loss_acc, epoch):
+    def plot_validate(model, loss_acc):
+        '''Plot model accuracy or loss for both train and test validation per epoch
+        model = fitted model
+        loss_acc = input 'loss' or 'acc' to plot respective graph
+        '''
+        history = model.history.history
 
         if loss_acc == 'loss':
             axis_title = 'loss'
             title = 'Loss'
+            epoch = len(history['loss'])
         elif loss_acc == 'acc':
-            axis_title = 'acc'
+            axis_title = 'accuracy'
             title = 'Accuracy'
-        
+            epoch = len(history['loss'])
+
         plt.figure(figsize=(15,4))
-        plt.plot(model.history.history[axis_title])
-        plt.plot(model.history.history['val_' + axis_title])
+        plt.plot(history[axis_title])
+        plt.plot(history['val_' + axis_title])
         plt.title('Model ' + title)
         plt.ylabel(title)
         plt.xlabel('Epoch')
-        
-        # add grids
+
         plt.grid(b=True, which='major')
         plt.minorticks_on()
         plt.grid(b=True, which='minor', alpha=0.2)
@@ -606,16 +614,16 @@ This can be processed using keras's ``TimeseriesGenerator``.
     from keras.preprocessing.sequence import TimeseriesGenerator
 
     ### UNIVARIATE ---------------------
-    num_features = 6
-    time_steps = 1
+    time_steps = 6
+    sampling_rate = 1
     num_sample = 4
 
     X = [1,2,3,4,5,6,7,8,9,10]
     y = [5,6,7,8,9,1,2,3,4,5]
 
     data = TimeseriesGenerator(X, y,
-                               length=num_features, 
-                               sampling_rate=time_steps,
+                               length=time_steps, 
+                               sampling_rate=sampling_rate,
                                batch_size=num_sample)
     data[0]
 
@@ -632,9 +640,13 @@ This can be processed using keras's ``TimeseriesGenerator``.
     X = df[['col1','col2']].values
     y = df['label'].values
 
+    time_steps = 6
+    sampling_rate = 1
+    num_sample = 4
+
     data = TimeseriesGenerator(X, y,
-                               length=num_features, 
-                               sampling_rate=time_steps,
+                               length=time_steps, 
+                               sampling_rate=sampling_rate,
                                batch_size=num_sample)
 
     X = data[0][0]
