@@ -158,9 +158,9 @@ Output Layer
 
 Activation function
 
- * Sigmoid: Binary Classification
- * Softmax: Multi-Class Classification
- * Linear: Regression
+ * Binary Classification: Sigmoid
+ * Multi-Class Classification: Softmax
+ * Regression: Linear
 
 
 Gradient Descent
