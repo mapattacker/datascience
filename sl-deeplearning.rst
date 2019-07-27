@@ -156,8 +156,11 @@ We then have another variant made form both ReLu and Leaky ReLu called Maxout fu
 Output Layer
 ^^^^^^^^^^^^^^^
 
-Sigmoid: Binary Classification
-Softmax: Multi-Class Classification
+Activation function
+
+ * Sigmoid: Binary Classification
+ * Softmax: Multi-Class Classification
+ * Linear: Regression
 
 
 Gradient Descent
