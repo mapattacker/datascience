@@ -529,8 +529,13 @@ There are many other variants of cross validations as shown below.
 
     Types of cross-validation available in sklearn
 
+Hyperparameters Tuning
+--------------------------
+There are generally 3 methods of hyperparameters tuning, i.e., Grid-Search, Random-Search,
+or the more automated Bayesian tuning.
+
 Grid-Search
-----------------
+************
 
 From Stackoverflow: Systematically working through multiple combinations of parameter tunes, 
 cross validate each and determine which one gives the best performance.
@@ -621,11 +626,11 @@ Using other scoring metrics
   print CV.best_params_
 
 
-Auto-Hyperparameters Tuning
------------------------------
+Auto-Tuning
+*****************************
 Bayesian Tuning and Bandits (BTB) is a package used for auto-tuning ML models hyperparameters.
 It uses Gaussian Process to do this, though there is an option for Uniform. 
-It was born from a Master Thesis by Laura Gustafson in 2018.
+It was born from a Master thesis by Laura Gustafson in 2018.
 
 https://github.com/HDI-Project/BTB
 

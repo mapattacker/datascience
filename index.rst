@@ -20,12 +20,12 @@ A lot of the content are compiled from various resources, so please cite them ap
    preprocess
    normalisation
    engineering
+   classimbalance
    dataleakage
    supervised
    unsupervised
    sl-deeplearning
    reinforcement
-   classimbalance
    evaluation
    explainability
    ethics

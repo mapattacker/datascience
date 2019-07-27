@@ -22,6 +22,7 @@ we need to convert them into binary values; i.e., using one-hot encoding. For th
 process the multi-class label without converting to one-hot encoding.
 
 .. code:: python
+
     # convert to numpy arrays
     X = np.array(X)
     # OR
@@ -29,6 +30,19 @@ process the multi-class label without converting to one-hot encoding.
 
     # one-hot encoding for multi-class y labels
     Y = pd.get_dummies(y)
+
+
+It is important to scale or normalise the dataset before putting in the neural network.
+
+.. code:: python
+
+    from sklearn.preprocessing import StandardScaler
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                                        random_state = 0)
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
 
 
 Model architecture can also be displayed in a graph. Or we can print as a summary
@@ -79,7 +93,7 @@ It will also draw the model architecture.
             title = 'Loss'
             epoch = len(history['loss'])
         elif loss_acc == 'acc':
-            axis_title = 'accuracy'
+            axis_title = 'acc'
             title = 'Accuracy'
             epoch = len(history['loss'])
 
@@ -172,6 +186,7 @@ This also means that one epoch will involve 40 batches or 40 updates to the mode
 More here:
  * https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/.
  * https://machinelearningmastery.com/gentle-introduction-mini-batch-gradient-descent-configure-batch-size/
+ * https://blog.usejournal.com/stock-market-prediction-by-recurrent-neural-network-on-lstm-model-56de700bff68
 
 
 
@@ -691,7 +706,7 @@ The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB
             verbose=1,
             validation_data=(x_test, y_test))
 
-    Train on 25000 samples, validate on 25000 samples
+    # Train on 25000 samples, validate on 25000 samples
     # Epoch 1/15
     #  - 139s - loss: 0.6580 - acc: 0.5869 - val_loss: 0.5437 - val_acc: 0.7200
     # Epoch 2/15
@@ -733,3 +748,81 @@ The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB
 
     # Test score: 0.9316869865119457
     # Test accuracy: 0.80904
+
+
+This example uses a stock daily output for prediction.
+
+.. code:: python
+
+    def stock(code, years_back):
+        end = datetime.now()
+        start = datetime(end.year-years_back, end.month, end.day)
+
+        code = '{}.SI'.format(code)
+        df = web.DataReader(code, 'yahoo', start, end)
+        
+        return df
+
+
+    def lstm(X_train, y_train, X_test, y_test, classes, epoch, batch, verbose, dropout):
+    
+        model = Sequential()
+        
+        # return sequences refer to all the outputs of the memory cells, True if next layer is LSTM
+        model.add(LSTM(50, dropout=dropout, recurrent_dropout=0.2, return_sequences=True, input_shape=X.shape[1:]))
+        model.add(LSTM(50, dropout=dropout, recurrent_dropout=0.2, return_sequences=False))
+        model.add(Dense(1, activation='sigmoid'))
+        
+        model.compile(loss='binary_crossentropy',
+                        optimizer='adam',
+                        metrics=['accuracy'])
+
+        model.fit(X, y,
+                    batch_size=batch,
+                    epochs= epoch,
+                    verbose=verbose,
+                    validation_data=(X_test, y_test))
+
+        return model
+
+    df = stock('S68', 10)
+    df['change_per'] = df['Close'].pct_change()
+    df['change'] = df['change_per'].apply(lambda x: 1 if x > 0 else 0)
+
+    df1 = df[:2400]
+    df2 = df[2400:]
+
+    X_train = df1[['High','Low','Open','Close','Volume']].values
+    y_train = df1['change'].values
+    X_test = df2[['High','Low','Open','Close','Volume']].values
+    y_test = df2['change'].values
+
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    time_steps = 10
+    sampling_rate = 1
+    num_sample = 1200
+
+    data = TimeseriesGenerator(X, y,
+                            length=time_steps, 
+                            sampling_rate=sampling_rate,
+                            batch_size=num_sample)
+    X_train = data[0][0]
+    y_train = data[0][1]
+
+    data = TimeseriesGenerator(X_test, y_test,
+                            length=time_steps, 
+                            sampling_rate=sampling_rate,
+                            batch_size=num_sample)
+    X_test = data[0][0]
+    y_test = data[0][1]
+
+
+    classes = 1
+    epoch = 2000
+    batch = 200
+    verbose = 0
+    dropout = 0.2
+
+    model = lstm(X_train, y_train, X_test, y_test, classes, epoch, batch, verbose, dropout)
