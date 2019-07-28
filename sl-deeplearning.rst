@@ -760,32 +760,25 @@ This example uses a stock daily output for prediction.
     def stock(code, years_back):
         end = datetime.now()
         start = datetime(end.year-years_back, end.month, end.day)
-
         code = '{}.SI'.format(code)
         df = web.DataReader(code, 'yahoo', start, end)
-        
         return df
 
 
-    def lstm(X_train, y_train, X_test, y_test, classes, epoch, batch, verbose, dropout):
-    
+    def lstm(X_train, y_train, X_test, y_test, classes, epoch, batch, verbose, dropout)
         model = Sequential()
-        
         # return sequences refer to all the outputs of the memory cells, True if next layer is LSTM
         model.add(LSTM(50, dropout=dropout, recurrent_dropout=0.2, return_sequences=True, input_shape=X.shape[1:]))
         model.add(LSTM(50, dropout=dropout, recurrent_dropout=0.2, return_sequences=False))
         model.add(Dense(1, activation='sigmoid'))
-        
         model.compile(loss='binary_crossentropy',
                         optimizer='adam',
                         metrics=['accuracy'])
-
         model.fit(X, y,
                     batch_size=batch,
                     epochs= epoch,
                     verbose=verbose,
                     validation_data=(X_test, y_test))
-
         return model
 
 
