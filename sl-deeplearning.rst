@@ -870,4 +870,4 @@ This example uses a stock daily output for prediction.
     :width: 650px
     :align: center
 
-    Prediction graph
+    Prediction graphs
