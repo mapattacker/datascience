@@ -788,10 +788,10 @@ This example uses a stock daily output for prediction.
 
         return model
 
-    # preprocess data
+
     df = stock('S68', 10)
     
-    # train-test split
+    # train-test split-------------
     df1 = df[:2400]
     df2 = df[2400:]
 
@@ -800,9 +800,11 @@ This example uses a stock daily output for prediction.
     X_test = df2[['High','Low','Open','Close','Volume']].values
     y_test = df2['change'].values
 
+    # normalisation-------------
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
+    # Conversion to keras LSTM data format-------------
     time_steps = 10
     sampling_rate = 1
     num_sample = 1200
@@ -822,7 +824,7 @@ This example uses a stock daily output for prediction.
     y_test = data[0][1]
 
 
-    # model validation
+    # model validation-------------
     classes = 1
     epoch = 2000
     batch = 200
@@ -847,10 +849,14 @@ This example uses a stock daily output for prediction.
         plt.legend(['Real', 'Predict']);
 
 .. figure:: images/lstm1.png
-    :width: 500px
+    :width: 600px
     :align: center
+
+    Loss graph
 
 
 .. figure:: images/lstm2.png
-    :width: 500px
+    :width: 600px
     :align: center
+
+    Prediction graph
