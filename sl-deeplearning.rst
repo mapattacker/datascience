@@ -674,7 +674,7 @@ This can be processed using keras's ``TimeseriesGenerator``.
 
     
 
-The code below uses LSTM (long short-term memory) for sentiment analysis in IMDB movie reviews.
+The code below uses LSTM for sentiment analysis in IMDB movie reviews.
 
 .. code:: python
 
@@ -859,14 +859,14 @@ This example uses a stock daily output for prediction.
         plt.legend(['Real', 'Predict']);
 
 .. figure:: images/lstm1.png
-    :width: 600px
+    :width: 650px
     :align: center
 
     Loss graph
 
 
 .. figure:: images/lstm2.png
-    :width: 600px
+    :width: 650px
     :align: center
 
     Prediction graph
