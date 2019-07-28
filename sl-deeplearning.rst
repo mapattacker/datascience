@@ -757,6 +757,23 @@ This example uses a stock daily output for prediction.
 
 .. code:: python
 
+    from tensorflow.keras.preprocessing import sequence
+    from keras.preprocessing.sequence import TimeseriesGenerator
+
+    from tensorflow.keras.models import Sequential
+    from tensorflow.keras.layers import Dense, Embedding
+    from tensorflow.keras.layers import LSTM, GRU
+
+    import numpy as np
+    import pandas as pd
+
+    import matplotlib.pyplot as plt
+    import pandas_datareader.data as web
+    from datetime import datetime
+
+    from sklearn.preprocessing import StandardScaler
+    scaler = StandardScaler()
+
     def stock(code, years_back):
         end = datetime.now()
         start = datetime(end.year-years_back, end.month, end.day)
