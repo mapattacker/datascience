@@ -788,10 +788,10 @@ This example uses a stock daily output for prediction.
 
         return model
 
+    # preprocess data
     df = stock('S68', 10)
-    df['change_per'] = df['Close'].pct_change()
-    df['change'] = df['change_per'].apply(lambda x: 1 if x > 0 else 0)
-
+    
+    # train-test split
     df1 = df[:2400]
     df2 = df[2400:]
 
@@ -822,6 +822,7 @@ This example uses a stock daily output for prediction.
     y_test = data[0][1]
 
 
+    # model validation
     classes = 1
     epoch = 2000
     batch = 200
@@ -829,3 +830,27 @@ This example uses a stock daily output for prediction.
     dropout = 0.2
 
     model = lstm(X_train, y_train, X_test, y_test, classes, epoch, batch, verbose, dropout)
+
+    # draw loss graph
+    plot_validate(model, 'loss')
+
+    
+    # draw train & test prediction
+    predict_train = model.predict(X_train)
+    predict_test = model.predict(X_test)
+
+    for real, predict in [(y_train, predict_train),(y_test, predict_test)]:
+        plt.figure(figsize=(15,4))
+        plt.plot(real)
+        plt.plot(predict)
+        plt.ylabel('Close Price');
+        plt.legend(['Real', 'Predict']);
+
+.. figure:: images/lstm1.png
+    :width: 500px
+    :align: center
+
+
+.. figure:: images/lstm2.png
+    :width: 500px
+    :align: center
