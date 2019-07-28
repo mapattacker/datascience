@@ -199,7 +199,8 @@ ANN
 Theory
 *******
 
-An **artifical neural network** consists of an input layer, hidden layers, and an output layer. 
+An **artifical neural network** is the most basic form of neural network. 
+It consists of an input layer, hidden layers, and an output layer. 
 This writeup by Berkeley_ gave an excellent introduction to the theory. 
 Most of the diagrams are taken from the site.
 
