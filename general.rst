@@ -80,6 +80,8 @@ Steps to Build a Predictive Model
     :width: 600px
     :align: center
 
+    Typical architecture for model building for supervised classification
+
 Feature Selection, Preprocessing, Extraction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  1. Remove features that have too many NAN or fill NAN with another value
