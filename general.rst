@@ -76,6 +76,10 @@ The best model with the highest accuarcy is the middle ground between the two.
 Steps to Build a Predictive Model
 ********************************************
 
+.. figure:: images/architecture.png
+    :width: 500px
+    :align: center
+
 Feature Selection, Preprocessing, Extraction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  1. Remove features that have too many NAN or fill NAN with another value
