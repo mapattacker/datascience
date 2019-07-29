@@ -77,7 +77,7 @@ Steps to Build a Predictive Model
 ********************************************
 
 .. figure:: images/architecture.png
-    :width: 500px
+    :width: 600px
     :align: center
 
 Feature Selection, Preprocessing, Extraction
