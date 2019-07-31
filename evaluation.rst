@@ -429,13 +429,22 @@ This website_ gives an excellent description on all the variants of errors metri
 
 **R-squared**: Percentage of variability of dataset that can be explained by the model.
 
-**MSE**. Mean squared error. Mean squaring of all absolute error (so change negatives into positives).
+**MSE**. Mean squared error. Squaring then getting the mean of all errors (so change negatives into positives).
 
-**RMSE**: Squared root of MSE so that it gives back the absolute error (as it was initially squared).
+**RMSE**: Squared root of MSE so that it gives back the error at the same scale (as it was initially squared).
+
+**MAE**: Mean Absolute Error. For negative errors, convert them to positive and obtain all error means.
+
+
+The RMSE result will always be larger or equal to the MAE. If all of the errors have the same magnitude, then RMSE=MAE.
+Since the errors are squared before they are averaged, the RMSE gives a relatively high weight to large errors. 
+This means the RMSE should be more useful when large errors are particularly undesirable.
+
 
 .. code:: python
 
     from sklearn.metrics import mean_squared_error
+    from sklearn.metrics import mean_absolute_error
 
     forest = RandomForestRegressor(n_estimators= 375)
     model3 = forest.fit(X_train, y_train)
@@ -461,10 +470,21 @@ This website_ gives an excellent description on all the variants of errors metri
     MSE_test = mean_squared_error(y_test, y_predicted_test)
 
     # get RMSE by squared root
-    print('\nTotal RMSE:', format(np.sqrt(MSE_total), 'e'))
-    print('Train RMSE:', format(np.sqrt(MSE_train), 'e'))
-    print('Test RMSE:', format(np.sqrt(MSE_test), 'e'))
+    print('\nTotal RMSE:', np.sqrt(MSE_total))
+    print('Train RMSE:', np.sqrt(MSE_train))
+    print('Test RMSE:', np.sqrt(MSE_test))
 
+    # get MAE
+    MAE_total = mean_absolute_error(target, y_predicted_total)
+    MAE_train = mean_absolute_error(y_train, y_predicted_train)
+    MAE_test = mean_absolute_error(y_test, y_predicted_test)
+
+
+    # Train RMSE: 11.115272389673631
+    # Test RMSE: 34.872611746182706
+        
+    # Train MAE 8.067078668023848
+    # Train MAE 24.541799999999995
 
 
 K-fold Cross-Validation

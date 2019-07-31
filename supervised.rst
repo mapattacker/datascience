@@ -1251,7 +1251,7 @@ Same as randomforest classifier but the target is continuous.
 
 .. code:: python
 
-  from sklearn.tree import RandomForestRegressor
+  from sklearn.ensemble import RandomForestRegressor
 
 
 Neutral Networks
