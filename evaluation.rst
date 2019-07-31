@@ -422,7 +422,7 @@ This article from datawookie_ gives a very good explanation.
 Regression
 -----------
 For regression problems, where the response or y is a continuous value, 
-it is common to use R-Squared and RMSE (Root Mean Squared Error) as evaluation metrics.
+it is common to use R-Squared and RMSE, or MAE as evaluation metrics.
 This website_ gives an excellent description on all the variants of errors metrics. 
 
 .. _website: https://www.dataquest.io/blog/understanding-regression-error-metrics/
@@ -544,7 +544,7 @@ More here_.
 There are many other variants of cross validations as shown below.
 
 .. figure:: images/kfold2.PNG
-    :scale: 80 %
+    :scale: 100 %
     :align: center
 
     Types of cross-validation available in sklearn
