@@ -543,7 +543,7 @@ More here_.
 
 There are many other variants of cross validations as shown below.
 
-.. figure:: images/kfold2.png
+.. figure:: images/kfold2.PNG
     :scale: 30 %
     :align: center
 
