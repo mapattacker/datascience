@@ -544,7 +544,7 @@ More here_.
 There are many other variants of cross validations as shown below.
 
 .. figure:: images/kfold2.PNG
-    :scale: 30 %
+    :scale: 80 %
     :align: center
 
     Types of cross-validation available in sklearn
