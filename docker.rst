@@ -20,7 +20,7 @@ A dockerfile, is a file without extension type. It contains commands to tell doc
 create an image. It consists of instructions & arguments.
 
 .. figure:: images/docker_build1.png
-    :scale: 100 %
+    :scale: 60 %
     :align: center
 
     from Udemy's Docker for the Absolute Beginner - Hands On
