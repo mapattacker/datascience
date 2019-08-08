@@ -19,10 +19,18 @@ Dockerfile
 A dockerfile, is a file without extension type. It contains commands to tell docker what are the steps to do to
 create an image. It consists of instructions & arguments.
 
-.. figure:: images/docker_build.png
+.. figure:: images/docker_build1.png
     :scale: 100 %
     :align: center
 
+    from Udemy's Docker for the Absolute Beginner - Hands On
+
+The commands run sequentially when building the image, also known as a layered architecture. 
+Each layer is cached, such that when any layer fails and is fixed, rebuilding it will start from the last built layer.
+
+.. figure:: images/docker_build2.png
+    :scale: 100 %
+    :align: center
 
  * ``FROM`` tells Docker which image you base your image on (eg, Python 3 or continuumio/miniconda3).
  * ``RUN`` tells Docker which additional commands to execute.
@@ -58,6 +66,8 @@ Build the Image
 
 Push to Dockerhub
 ********************
+
+``docker push image_name``
 
 Commands
 ----------
