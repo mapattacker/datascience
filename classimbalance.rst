@@ -70,3 +70,8 @@ which is used to pare down and centralise the negative cases.
 Cost Sensitive Classification
 ------------------------------
 
+One can also make the classifier aware of the imbalanced data by incorporating the weights 
+of the classes into a cost function. 
+Intuitively, we want to give higher weight to minority class and lower weight to majority class.
+
+http://albahnsen.github.io/CostSensitiveClassification/index.html

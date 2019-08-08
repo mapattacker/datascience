@@ -1,6 +1,28 @@
 Reinforcement Learning
 =======================
 
+Concepts
+--------------
+
+Definitions
+************
+ * **argmax(x)**: position where the first max value occurs
+
+Exploration vs Exploitation
+****************************
+
+Elements
+*********
+ * Agent
+ * Environment
+    * Model of the environment
+ * Policy
+ * Reward signal
+ * Value function
+ 
+
+Introduction
+---------------
 This series of medium_ articles gave a good description of various types of reinforcement learning
 with jupyter notebook descriptions for various games. This includes deep learning using tensorflow.
 

@@ -677,7 +677,6 @@ https://github.com/HDI-Project/BTB
             model.fit(X_train, y_train)
             y_predict = model.predict(X_test)
             score = accuracy_score(y_test, y_predict)
-            print('epoch: {}, accuracy: {}'.format(i+1,score))
 
             # store scores & parameters
             score_list.append(score)
