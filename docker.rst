@@ -19,6 +19,8 @@ Dockerfile
 A dockerfile, is a file without extension type. It contains commands to tell docker what are the steps to do to
 create an image. It consists of instructions & arguments.
 
+:code:`a = b + c`
+
 .. figure:: images/docker_build1.png
     :width: 600px
     :align: center
@@ -93,7 +95,7 @@ Other Run Commands
  * ``docker run -v /local/storage/folder:/image/data/folder mysql`` --(-v = volume mapping) all data will be destroyed if container is stopped
 
 .. figure:: images/docker_cmd.PNG
-    :scale: 100 %
+    :width: 600px
     :align: center
 
     running docker with a command. each container has a unique container ID, container name, and their base image name
