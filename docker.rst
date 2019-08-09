@@ -10,7 +10,7 @@ Preprocessing scripts and models can be created as a docker image snapshot, and 
 https://runnable.com/docker/python/dockerize-your-python-application
 https://docs.docker.com/get-started/part2/
 
-Creating New Images
+Creating Images
 --------------------
 To start of a new project, create a new folder. This should only contain your docker file and related python files.
 
@@ -20,6 +20,7 @@ A dockerfile, is a file without extension type. It contains commands to tell doc
 create an image. It consists of instructions & arguments.
 
 .. figure:: images/docker_build1.png
+
     :scale: 60 %
     :align: center
 
