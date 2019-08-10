@@ -28,7 +28,7 @@ create an image. It consists of instructions & arguments.
     from Udemy's Docker for the Absolute Beginner - Hands On
 
 .. figure:: images/docker_build2.png
-    :width: 400px
+    :width: 650px
     :align: center
 
     from Udemy's Docker for the Absolute Beginner - Hands On
