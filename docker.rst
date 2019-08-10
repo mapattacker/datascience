@@ -31,13 +31,6 @@ The commands run sequentially when building the image, also known as a layered a
 Each layer is cached, such that when any layer fails and is fixed, rebuilding it will start from the last built layer.
 
 
-.. figure:: images/docker_build1.png
-    :width: 400px
-    :align: center
-
-    from Udemy's Docker for the Absolute Beginner - Hands On
-
-
  * ``FROM`` tells Docker which image you base your image on (eg, Python 3 or continuumio/miniconda3).
  * ``RUN`` tells Docker which additional commands to execute.
  * ``CMD`` tells Docker to execute the command when the image loads.
