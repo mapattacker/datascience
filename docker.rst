@@ -30,7 +30,7 @@ create an image. It consists of instructions & arguments.
 The commands run sequentially when building the image, also known as a layered architecture. 
 Each layer is cached, such that when any layer fails and is fixed, rebuilding it will start from the last built layer.
 
-.. figure:: images/docker_build2.png
+.. figure:: images/docker_build1.png
     :width: 400px
     :align: center
 
