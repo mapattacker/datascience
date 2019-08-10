@@ -31,7 +31,7 @@ The commands run sequentially when building the image, also known as a layered a
 Each layer is cached, such that when any layer fails and is fixed, rebuilding it will start from the last built layer.
 
 .. figure:: images/docker_build2.png
-    :width: 600px
+    :width: 400px
     :align: center
 
     from Udemy's Docker for the Absolute Beginner - Hands On
