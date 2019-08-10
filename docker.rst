@@ -2,10 +2,12 @@ Docker
 =================
 
 Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, 
-and ship it all out as one package. They allow a modular construction of an application architecture, or microservice in short.
+and ship it all out as one package. They allow a modular construction of an application, or microservice in short.
 Docker is a popular tool designed to make it easier to create, deploy, and run applications by using containers.
 
 Preprocessing scripts and models can be created as a docker image snapshot, and launched as a container in production.
+For models that require to be consistently updated, we need to use volume mapping such that it is not removed when the container stops
+running.
 
 https://runnable.com/docker/python/dockerize-your-python-application
 https://docs.docker.com/get-started/part2/
@@ -20,7 +22,7 @@ A dockerfile, is a file without extension type. It contains commands to tell doc
 create an image. It consists of instructions & arguments.
 
 .. figure:: images/docker_build1.png
-    :width: 600px
+    :width: 400px
     :align: center
 
     from Udemy's Docker for the Absolute Beginner - Hands On
@@ -69,7 +71,12 @@ Build the Image
 Push to Dockerhub
 ********************
 
-``docker push image_name``
+Dockerhub is similar to Github whereby it is a repository for your images to be shared with the community.
+Note that Dockerhub can only allow a single image to be made private for the free account.
+
+``docker login`` --login into dockerhub, before you can push your image to the server
+
+``docker push account/image_name`` --account refers to your dockerhub account name, this tag needs to created during docker build command when building the image
 
 Commands
 ----------
