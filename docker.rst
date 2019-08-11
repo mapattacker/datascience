@@ -65,6 +65,21 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
     # Run app.py when the container launches
     CMD ["python", "app.py"]
 
+Environment Variable
+*********************
+
+To pass environment variables from ``docker RUN`` to the python code, we can use ``os.environment.get``.
+
+.. code:: python
+
+    import os
+    color = os.environment.get('APP_COLOR')
+
+Then specify in docker run the variable for user input.
+
+.. code:: bash
+
+    docker run -e APP_COLOR=green image_name
 
 Build the Image
 *******************
@@ -79,6 +94,20 @@ Note that Dockerhub can only allow a single image to be made private for the fre
 ``docker login`` --login into dockerhub, before you can push your image to the server
 
 ``docker push account/image_name`` --account refers to your dockerhub account name, this tag needs to created during docker build command when building the image
+
+
+Docker Compose
+----------------
+
+In a production environment, a docker compose file can be used to run all separate docker containers (which interact with each other) 
+together. It consists of all necessary configurations that a ``docker run`` command provides in a yaml file.
+
+.. figure:: images/docker_compose1.png
+    :width: 650px
+    :align: center
+
+    from Udemy's Docker for the Absolute Beginner - Hands On
+
 
 Commands
 ----------
