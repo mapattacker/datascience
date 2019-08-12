@@ -123,9 +123,9 @@ Below is an example using wordpress blog, where both the wordpress and mysql dat
     web:
         image: "wordpress"
         ports:
-        - "8080:80"
+            - "8080:80"
         environment:
-                - WORDPRESS_DB_PASSWORD=password
+            - WORDPRESS_DB_PASSWORD=password
 
 
 Docker Swarm
