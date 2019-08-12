@@ -108,6 +108,28 @@ together. It consists of all necessary configurations that a ``docker run`` comm
 
     from Udemy's Docker for the Absolute Beginner - Hands On
 
+Below is an example using wordpress blog, where both the wordpress and mysql database are needed to get it working.
+
+.. code:: bash
+
+    version: '3'
+    services:
+    mysql:
+        image: "mysql"
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+        volumes:
+            - "/data/mysql:/var/lib/mysql"
+    web:
+        image: "wordpress"
+        ports:
+        - "8080:80"
+        environment:
+                - WORDPRESS_DB_PASSWORD=password
+
+
+Docker Swarm
+--------------
 
 Commands
 ----------
