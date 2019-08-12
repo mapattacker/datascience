@@ -110,14 +110,16 @@ together. It consists of all necessary configurations that a ``docker run`` comm
 
 Below is an example using wordpress blog, where both the wordpress and mysql database are needed to get it working.
 
-.. code:: bash
-
+.. code:: python
+    # ":" represents dictionary
+    # "-" represents list
+    # note that spaces matter in a yaml file
     version: '3'
     services:
     mysql:
         image: "mysql"
         environment:
-            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_ROOT_PASSWORD=password 
         volumes:
             - "/data/mysql:/var/lib/mysql"
     web:
@@ -130,6 +132,37 @@ Below is an example using wordpress blog, where both the wordpress and mysql dat
 
 Docker Swarm
 --------------
+
+Docker Swarm allows management of multiple docker containers as clones in a cluster to ensure high availability in case of failure.
+This is similar to Apache Spark whereby there is a Cluster Manager (Swarm Manager), and worker nodes.
+
+.. code:: bash
+
+    web:
+        image: "webapp"
+        deploy:
+            replicas: 5
+    database:
+        image: "mysql"
+
+Use the command ``docker stack deploy -c docker_compose.yml`` to launch the swarm.
+
+Networking
+-------------
+
+The **Bridge Network** is a private internal network created by Docker. All containers are attached to this network by default and 
+they get an IP of 172.17.xxx. They are thus able to communicate with each other internally. 
+However, to access these networks from the outside world, we need to 
+ * map ports of these containers to the docker host.
+ * or associate the containers to the network host, meaning the container use the same port as the host network
+
+.. figure:: images/docker_network1.png
+    :width: 650px
+    :align: center
+
+    from Udemy's Docker for the Absolute Beginner - Hands On
+
+If we want to separate the internal bridge networks, we can create our own internal bridge networks.
 
 Commands
 ----------
