@@ -170,16 +170,16 @@ Commands
 **Help**
 
 +---------------------------+-----------------------------------+
-| ``docker --help``         |  --list all base commands         |
+| ``docker --help``         |    list all base commands         |
 +---------------------------+-----------------------------------+
-| ``docker COMMAND --help`` |  --list all options for a command |
+| ``docker COMMAND --help`` |    list all options for a command |
 +---------------------------+-----------------------------------+
 
 **Create Image**
 
 +----------------------------------------------+------------------------------------------------------------+
-| ``docker build -t image_name .``             |  --(-t = tag the image as) build and name                  |
-|                                              |   image, "." is the location of the dockerfile             |
+| ``docker build -t image_name .``             |    (-t = tag the image as) build and name image,           |
+|                                              |     "." is the location of the dockerfile                  |
 +----------------------------------------------+------------------------------------------------------------+
 
 **Get Image from Docker Hub**
