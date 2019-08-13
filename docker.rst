@@ -45,10 +45,10 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
     # Use an official Python runtime as a parent image
     FROM python:2.7-slim
 
-    # Set the working directory to /app
+    # Set the working directory inside image to /app
     WORKDIR /app
 
-    # Copy the current directory contents into the container at /app
+    # Copy the current directory contents into the image at /app
     COPY . /app
 
     # Install any needed packages specified in requirements.txt
@@ -71,7 +71,7 @@ To pass environment variables from ``docker RUN`` to the python code, we can use
 .. code:: python
 
     import os
-    color = os.environment.get('APP_COLOR')
+    color = os.environ.get('APP_COLOR')
 
 Then specify in docker run the variable for user input.
 
