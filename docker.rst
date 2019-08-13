@@ -9,8 +9,6 @@ Preprocessing scripts and models can be created as a docker image snapshot, and 
 For models that require to be consistently updated, we need to use volume mapping such that it is not removed when the container stops
 running.
 
-https://runnable.com/docker/python/dockerize-your-python-application
-https://docs.docker.com/get-started/part2/
 
 Creating Images
 --------------------
