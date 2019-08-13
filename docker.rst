@@ -210,7 +210,7 @@ Commands
 +------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 .. figure:: images/docker_cmd.PNG
-    :width: 600px
+    :width: 700px
     :align: center
 
     running docker with a command. each container has a unique container ID, container name, and their base image name
