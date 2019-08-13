@@ -66,7 +66,7 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
 Environment Variable
 *********************
 
-To pass environment variables from ``docker RUN`` to the python code, we can use ``os.environment.get``.
+To pass environment variables from ``docker run`` to the python code, we can use ``os.environ.get``.
 
 .. code:: python
 
