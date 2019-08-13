@@ -195,10 +195,20 @@ Commands
 +----------------------------------------------+----------------------------------------------------------+
 
 **Other Run Commands**
- * ``docker run Ubuntu:17.04`` --semicolon specifies the version (known as tags as listed in Dockerhub), else will pull the latest
- * ``docker run ubuntu`` vs ``docker run mmumshad/ubuntu`` --the first is an official image, the 2nd with the / is created by the community
- * ``docker run -d image_name`` --(-d = detach) docker runs in background, and you can continue typing other commands in the bash. Else need to open another terminal.
- * ``docker run -v /local/storage/folder:/image/data/folder mysql`` --(-v = volume mapping) all data will be destroyed if container is stopped
+
++----------------------------------------------------+--------------------------------------------------------------------------+
+| ``docker run Ubuntu:17.04``                        | semicolon specifies the version (known as                                |
+|                                                    |   tags as listed in Dockerhub), else will pull the latest                |
++----------------------------------------------------+--------------------------------------------------------------------------+
+| ``docker run ubuntu`` vs                           | the first is an official image, the 2nd with the / is created by the     |
+| ``docker run mmumshad/ubuntu``                     |   community                                                              |
++----------------------------------------------------+--------------------------------------------------------------------------+
+| ``docker run -d image_name``                       | (-d = detach) docker runs in background, and you can continue typing     |
+|                                                    |   other commands in the bash. Else need to open another terminal.        |
++----------------------------------------------------+--------------------------------------------------------------------------+
+| ``docker run -v                                    | (-v = volume mapping) all data will be destroyed if container is stopped |
+|   /local/storage/folder:/image/data/folder mysql`` |                                                                          |
++----------------------------------------------------+--------------------------------------------------------------------------+
 
 .. figure:: images/docker_cmd.PNG
     :width: 600px
