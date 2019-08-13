@@ -167,8 +167,7 @@ If we want to separate the internal bridge networks, we can create our own inter
 Commands
 ----------
 
-Help
-
+**Help**
 +---------------------------+-----------------------------------+
 | ``docker --help``         |  --list all base commands         |
 +---------------------------+-----------------------------------+
