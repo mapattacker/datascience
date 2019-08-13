@@ -25,7 +25,7 @@ Dockerfile
 
     from Udemy's Docker for the Absolute Beginner - Hands On
 
-A dockerfile, is a file without extension type. It contains commands to tell docker what are the steps to do to
+A ``Dockerfile`` named as such, is a file without extension type. It contains commands to tell docker what are the steps to do to
 create an image. It consists of instructions & arguments.
 
 .. figure:: images/docker_build2.png
@@ -83,7 +83,7 @@ Then specify in docker run the variable for user input.
 
 Build the Image
 *******************
-``docker build -t image-name .`` --(-t = tag the image as) build and name image
+``docker build -t image-name .`` --(-t = tag the image as) build and name image, "." as current directory to look for Dockerfile
 
 Push to Dockerhub
 ********************
