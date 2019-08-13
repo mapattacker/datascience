@@ -177,23 +177,22 @@ Commands
 
 **Create Image**
 
-+----------------------------------------------+------------------------------------------------------------+
-| ``docker build -t image_name .``             |    (-t = tag the image as) build and name image,           |
-|                                              |     "." is the location of the dockerfile                  |
-+----------------------------------------------+------------------------------------------------------------+
++----------------------------------------------+----------------------------------------------------------+
+| ``docker build -t image_name .``             | (-t = tag the image as) build and name                   |
+|                                              | image, "." is the location of the dockerfile             |
++----------------------------------------------+----------------------------------------------------------+
 
 **Get Image from Docker Hub**
 
-+----------------------------------------------+------------------------------------------------------------+
-| ``docker pull image_name``                   |  --pull image from dockerhub into docker                   |
-+----------------------------------------------+------------------------------------------------------------+
-| ``docker run image_name COMMAND``            |  --check if image in docker, if not                        |
-|                                              |   pull & run image from dockerhub into docker.             |
-|                                              |   If no command is given, the container will stop running. |
-+----------------------------------------------+------------------------------------------------------------+
-| ``docker run image_name cat /etc/*release*`` |  --run image and print out the version of image            |
-|                                              |                                                            |
-+----------------------------------------------+------------------------------------------------------------+
++----------------------------------------------+----------------------------------------------------------+
+| ``docker pull image_name``                   | pull image from dockerhub into docker                    |
++----------------------------------------------+----------------------------------------------------------+
+| ``docker run image_name COMMAND``            | check if image in docker, if not                         |
+|                                              | pull & run image from dockerhub into docker.             |
+|                                              | If no command is given, the container will stop running. |
++----------------------------------------------+----------------------------------------------------------+
+| ``docker run image_name cat /etc/*release*`` | run image and print out the version of image             |
++----------------------------------------------+----------------------------------------------------------+
 
 **Other Run Commands**
  * ``docker run Ubuntu:17.04`` --semicolon specifies the version (known as tags as listed in Dockerhub), else will pull the latest
