@@ -214,25 +214,53 @@ Commands
     running docker with a command. each container has a unique container ID, container name, and their base image name
 
 **IPs & Ports**
- * ``192.168.1.14`` --IP address of docker host
- * ``docker inspect container_id`` --dump of container info, as well as at the bottom, under Network, the internal IP address. to view server in web browser, enter the ip and the exposed port. eg. 172.17.0.2:8080
- * ``docker run -p 80:5000 image_name`` --(host_port:container_port) map host service port with the container port on docker host
+
++--------------------------------------+--------------------------------------------------------------------------+
+| ``192.168.1.14``                     | IP address of docker host                                                |
++--------------------------------------+--------------------------------------------------------------------------+
+| ``docker inspect container_id``      | dump of container info, as well as at the bottom, under Network, the     |
+|                                      | internal IP address. to view server in web browser, enter the ip and the |
+|                                      | exposed port. eg. 172.17.0.2:8080                                        |
++--------------------------------------+--------------------------------------------------------------------------+
+| ``docker run -p 80:5000 image_name`` | (host_port:container_port) map host service port with the container port |
+|                                      | on docker host                                                           |
++--------------------------------------+--------------------------------------------------------------------------+
 
 **See Images & Containers in Docker**
- * ``docker images`` --see all installed docker images
- * ``docker ps`` --(ps = process status) show status of images which are running
- * ``docker ps -a`` --(-a = all) show status of all images including those that had exited
+
++-------------------+----------------------------------------------------------------------+
+| ``docker images`` | see all installed docker images                                      |
++-------------------+----------------------------------------------------------------------+
+| ``docker ps``     | (ps = process status) show status of images which are running        |
++-------------------+----------------------------------------------------------------------+
+| ``docker ps -a``  | (-a = all) show status of all images including those that had exited |
++-------------------+----------------------------------------------------------------------+
 
 **Start/Stop Containers**
- * ``docker start container_name`` --run container
- * ``docker stop container_name`` --stop container from running, but container still lives in the disk
- * ``docker stop container_name1 container_name2`` --stop multiple container from running in a single line
- * ``docker stop container_id`` --stop container using the ID. There is no need to type the id in full, just the first few char suffices.
+
++-------------------------------------------------+------------------------------------------------------------------------+
+| ``docker start container_name``                 | run container                                                          |
++-------------------------------------------------+------------------------------------------------------------------------+
+| ``docker stop container_name``                  | stop container from running, but container still lives in the disk     |
++-------------------------------------------------+------------------------------------------------------------------------+
+| ``docker stop container_name1 container_name2`` | stop multiple container from running in a single line                  |
++-------------------------------------------------+------------------------------------------------------------------------+
+| ``docker stop container_id``                    | stop container using the ID. There is no need to type the id in full,  |
+|                                                 | just the first few char suffices.                                      |
++-------------------------------------------------+------------------------------------------------------------------------+
 
 **Remove Containers/Images**
- * ``docker rm container_name`` --remove container from docker
- * ``docker rmi image_name`` --(rmi = remove image) from docker. must remove container b4 removing image.
- * ``docker -f rmi image_name`` --(-f = force) force remove image even if container is running
+
++------------------------------+----------------------------------------------------------------------------+
+| ``docker rm container_name`` | remove container from docker                                               |
++------------------------------+----------------------------------------------------------------------------+
+| ``docker rmi image_name``    | (rmi = remove image) from docker. must remove container b4 removing image. |
++------------------------------+----------------------------------------------------------------------------+
+| ``docker -f rmi image_name`` | (-f = force) force remove image even if container is running               |
++------------------------------+----------------------------------------------------------------------------+
 
 **Execute Commands for Containers**
- * ``docker exec container_nm COMMAND`` --execute a command within container
+
++--------------------------------------+------------------------------------+
+| ``docker exec container_nm COMMAND`` | execute a command within container |
++--------------------------------------+------------------------------------+
