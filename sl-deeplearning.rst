@@ -871,3 +871,23 @@ This example uses a stock daily output for prediction.
     :align: center
 
     Prediction graphs
+
+
+Saving the Model
+-----------------
+From Keras documentation, it is not recommended to save the model in a pickle format.
+Keras allows saving in a HDF5 format. This saves the entire model architecture, weights and optimizers.
+
+
+.. code:: python
+
+    from keras.models import load_model
+
+    model.save('my_model.h5')  # creates a HDF5 file 'my_model.h5'
+    del model  # deletes the existing model
+
+    # returns a compiled model
+    # identical to the previous one
+    model = load_model('my_model.h5')
+
+To save just the architecture, see https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model.
