@@ -24,6 +24,7 @@ A lot of the content are compiled from various resources, so please cite them ap
    dataleakage
    supervised
    unsupervised
+   activelearning
    sl-deeplearning
    reinforcement
    evaluation
