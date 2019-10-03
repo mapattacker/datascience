@@ -108,12 +108,55 @@ and filter out features that are deemed relevant. In essence, it is a univariate
 
 https://tsfresh.readthedocs.io/en/latest/
 
+Extract all possible features
+.. code:: python
+
+    from tsfresh import extract_features
+
+    def list_union_df(fault_list):
+    '''
+    Description
+    ------------
+    Convert list of faults with a single signal value into a dataframe with an id for each fault sample
+    Data transformation prior to feature extraction
+    '''
+    # convert nested list into dataframe
+    dflist = []
+    # give an id field for each fault sample
+    for a, i in enumerate(verified_faults):
+        df = pd.DataFrame(i)
+        df['id'] = a
+        dflist.append(df)
+
+    df = pd.concat(dflist)
+    return df
+
+    df = list_union_df(fault_list)
+
+    # tsfresh
+    extracted_features = extract_features(df, column_id='id')
+    # delete columns which only have one value for all rows
+    for i in extracted_features.columns:
+        col = extracted_features[i]
+        if len(col.unique()) == 1:
+            del extracted_features[i]
+
+Generate only relevant features
+
 .. code:: python
 
     from tsfresh import extract_relevant_features
 
+    # y = is the target vector
+        # length of y = no. of samples in timeseries, not length of the entire timeseries
+    # column_sort = for each sample in timeseries, time_steps column will restart
+    # fdr_level = false discovery rate, is default at 0.05, 
+        # it is the expected percentage of irrelevant features
+        # tune up to reduce number of created features retained, tune down to increase
     features_filtered_direct = extract_relevant_features(timeseries, y,
-                                                        column_id='id', column_sort='time')
+                                                         column_id='id', 
+                                                         column_sort='time_steps',
+                                                         fdr_level=0.05)
 
 FeatureTools
 *************
