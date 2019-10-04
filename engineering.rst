@@ -101,7 +101,7 @@ Auto
 Automatic generation of new features from existing ones are starting to gain popularity,
 as it can save a lot of time. 
 
-tsfresh
+Tsfresh
 ********
 tsfresh is a feature extraction package for time-series. It can extract more than 1200 different features,
 and filter out features that are deemed relevant. In essence, it is a univariate feature extractor.
@@ -109,6 +109,7 @@ and filter out features that are deemed relevant. In essence, it is a univariate
 https://tsfresh.readthedocs.io/en/latest/
 
 Extract all possible features
+
 .. code:: python
 
     from tsfresh import extract_features
