@@ -87,7 +87,7 @@ and then each row as the number of possible states. And initialise the table wit
 Updating the function Q uses the following equation.
 
 .. figure:: images/reinforce3.png
-    :width: 400px
+    :width: 500px
     :align: center
 
     from Medium
