@@ -8,6 +8,12 @@ Definitions
 ************
  * **argmax(x)**: position where the first max value occurs
 
+Agent & the Environment
+***********************
+Reinforcement learning is an area of machine learning concerned 
+with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
+
+
 Exploration vs Exploitation
 ****************************
 A central dilemma of reinforcement learning is to *exploit* what it has already experienced in order to obtain a reward.
