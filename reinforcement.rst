@@ -10,16 +10,35 @@ Definitions
 
 Exploration vs Exploitation
 ****************************
+A central dilemma of reinforcement learning is to *exploit* what it has already experienced in order to obtain a reward.
+But in order to do that, it has to *explore* in order to make better actions in the future.
 
-Elements
-*********
- * Agent
- * Environment
-    * Model of the environment
+
+Elements of Reinforcement Learning
+************************************
+
  * Policy
- * Reward signal
- * Value function
+ * Reward Signal
+ * Value Function
+ * Model of Environment
  
+ A **policy** defines the learning agent's way of behaving at a given time. 
+
+ A **reward** signal defines the goal of a reinforcement learning problem. 
+ On each step, the environment sends to the agent a single number called reward.
+
+ A **value function** is the total amount of reward an agent is predicted to accumulate over the future, starting from a state.
+ It is the values which we are most concerned when making decisions.
+
+ A **model of the environment** mimics the behavior of the enviornment. E.g., given a state & action, what is the next state and reward.
+ Such an approach is called a model-based method, in contrast with model-free methods.
+
+
+.. figure:: images/reinforce4.jpeg
+    :width: 400px
+    :align: center
+
+    https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html
 
 Introduction
 ---------------
