@@ -40,7 +40,7 @@ Elements of Reinforcement Learning
  Such an approach is called a model-based method, in contrast with model-free methods.
 
 
-.. figure:: images/reinforce4.jpeg
+.. figure:: images/reinforce4.jpg
     :width: 400px
     :align: center
 
