@@ -8,6 +8,23 @@ Definitions
 ************
  * **argmax(x)**: position where the first max value occurs
 
+Terms
+*******
+
+.. list-table::
+   :header-rows: 1
+
+   * - Term
+     - Description
+   * - Agent
+     - A model/algorithm that is taked with learning to accomplish a task
+   * - Environment
+     - The world where agent acts in.
+   * - Action
+     - A decision the agent makes in an environment
+   * - Reward Signal
+     - A scalar indication of how well the agent is performing a task
+
 Agent & the Environment
 ***********************
 Reinforcement learning is an area of machine learning concerned 
