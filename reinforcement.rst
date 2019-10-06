@@ -14,6 +14,7 @@ Definitions
 Elements of Reinforcement Learning
 ************************************
 
+
 .. list-table::
    :header-rows: 1
 
@@ -34,7 +35,7 @@ Elements of Reinforcement Learning
 
 
 
-
+Something
 
  * Policy
  * Reward Signal
