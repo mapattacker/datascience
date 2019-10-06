@@ -34,6 +34,11 @@ Basic Elements
    * - Terminal State
      - A state at which no further actions can be made by an agent
 
+.. figure:: images/reinforce4.jpg
+    :width: 400px
+    :align: center
+
+    https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html
 
 Algorithms for the Agent
 
@@ -49,12 +54,6 @@ Algorithms for the Agent
    * - Model of Environment
      - Predicts how the environment will reac tto the agent's actions. In given a state & action, what is the next state and reward. Such an approach is called a model-based method, in contrast with model-free methods.
 
-
-.. figure:: images/reinforce4.jpg
-    :width: 400px
-    :align: center
-
-    https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html
 
 
 **Markov Decision Problem**
