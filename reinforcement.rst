@@ -50,13 +50,6 @@ Algorithms for the Agent
      - Predicts how the environment will reac tto the agent's actions. In given a state & action, what is the next state and reward. Such an approach is called a model-based method, in contrast with model-free methods.
 
 
-Exploration vs Exploitation
-****************************
-A central dilemma of reinforcement learning is to *exploit* what it has already experienced in order to obtain a reward.
-But in order to do that, it has to *explore* in order to make better actions in the future.
-
-
-
 .. figure:: images/reinforce4.jpg
     :width: 400px
     :align: center
@@ -115,6 +108,9 @@ Updating the function Q uses the following equation.
  * **Discount Rate** (``γ``): how much to discount the future reward. The idea is that the later a reward comes, the less valuable it becomes. Think inflation of money in the real world.
 
 **Exploration vs Exploitation**
+
+A central dilemma of reinforcement learning is to *exploit* what it has already experienced in order to obtain a reward.
+But in order to do that, it has to *explore* in order to make better actions in the future.
 
 This is known as the epsilon greedy strategy. In the beginning, the epsilon rates will be higher. 
 The bot will explore the environment and randomly choose actions. 
