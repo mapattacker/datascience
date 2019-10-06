@@ -40,12 +40,16 @@ Algorithms for the Agent
 .. list-table::
    :header-rows: 1
 
-   * - Policy Function (`π`)
+   * - Term
      - Description
+   * - Policy Function (`π`)
+     - Function that outputs decisions the agent makes.
+   * - Value Function
+     - Function that describes how good or bad a state is.
+   * - Model of Environment
+     - Predicts how the environment will reac to the agent's actions.
 
- * Policy
- * Value Function
- * Model of Environment
+
  
 A **policy** defines the learning agent's way of behaving at a given time. 
 Or in simple terms, instructs what the agent should do at each state.
