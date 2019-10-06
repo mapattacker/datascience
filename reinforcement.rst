@@ -83,7 +83,7 @@ and then each row as the number of possible states. And initialise the table wit
     from Medium
 
 
-Updating the function Q uses the following Bellman equation. Algorithms using such equation as an iterative update are called value iteration algorithms.
+Updating the function Q uses the following Bellman equation. Algorithms using such equation as an iterative update are called ``value iteration`` algorithms.
 
 .. figure:: images/reinforce3.png
     :width: 500px
