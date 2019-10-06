@@ -7,10 +7,6 @@ with how software agents ought to take actions in an environment so as to maximi
 Concepts
 --------------
 
-Definitions
-************
- * **argmax(x)**: position where the first max value occurs
-
 Elements of Reinforcement Learning
 ************************************
 
@@ -112,6 +108,10 @@ However the more the bot explores the environment, the more the epsilon rate wil
 and the bot starts to exploit the environment.
 
 There are other algothrims to manage the exploration vs exploiation problem, like softmax.
+
+**Definitions**
+
+ * **argmax(x)**: position where the first max value occurs
 
 **Code**
 
