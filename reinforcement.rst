@@ -42,7 +42,7 @@ Algorithms for the Agent
 
    * - Term
      - Description
-   * - Policy Function (`π`)
+   * - Policy Function (``π``)
      - Function that outputs decisions the agent makes. In simple terms, it instructs what the agent should do at each state.
    * - Value Function
      - Function that describes how good or bad a state is. It is the total amount of reward an agent is predicted to accumulate over the future, starting from a state.
