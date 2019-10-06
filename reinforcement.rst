@@ -43,31 +43,17 @@ Algorithms for the Agent
    * - Term
      - Description
    * - Policy Function (`π`)
-     - Function that outputs decisions the agent makes.
+     - Function that outputs decisions the agent makes. In simple terms, it instructs what the agent should do at each state.
    * - Value Function
-     - Function that describes how good or bad a state is.
+     - Function that describes how good or bad a state is. It is the total amount of reward an agent is predicted to accumulate over the future, starting from a state.
    * - Model of Environment
-     - Predicts how the environment will reac to the agent's actions.
-
-
- 
-A **policy** defines the learning agent's way of behaving at a given time. 
-Or in simple terms, instructs what the agent should do at each state.
-
-
-A **value function** is the total amount of reward an agent is predicted to accumulate over the future, starting from a state.
-It is the values which we are most concerned when making decisions.
-
-A **model of the environment** mimics the behavior of the enviornment. E.g., given a state & action, what is the next state and reward.
-Such an approach is called a model-based method, in contrast with model-free methods.
+     - Predicts how the environment will reac tto the agent's actions. In given a state & action, what is the next state and reward. Such an approach is called a model-based method, in contrast with model-free methods.
 
 
 Exploration vs Exploitation
 ****************************
 A central dilemma of reinforcement learning is to *exploit* what it has already experienced in order to obtain a reward.
 But in order to do that, it has to *explore* in order to make better actions in the future.
-
-
 
 
 
