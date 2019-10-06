@@ -112,8 +112,8 @@ Updating the function Q uses the following equation.
 
 **Learning Hyperparameters**
 
- * learning rate, alpha: how quickly a network abandons the former value for the new. If the learning rate is 1, the new estimate will be the new Q-value.
- * discount rate, gamma: how much to discount the future reward.
+ * **Learning Rate** (alpha): how quickly a network abandons the former value for the new. If the learning rate is 1, the new estimate will be the new Q-value.
+ * **Discount Rate** (gamma): how much to discount the future reward. The idea is that the later a reward comes, the less valuable it becomes. Think inflation of money in the real world.
 
 **Exploration vs Exploitation**
 
