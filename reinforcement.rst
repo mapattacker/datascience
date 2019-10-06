@@ -56,13 +56,6 @@ Algorithms for the Agent
 
     https://www.kdnuggets.com/2018/03/5-things-reinforcement-learning.html
 
-Introduction
----------------
-This series of medium_ articles gave a good description of various types of reinforcement learning
-with jupyter notebook descriptions for various games. This includes deep learning using tensorflow.
-
-.. _medium: https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0
-
 
 **Markov Decision Problem**
 
@@ -239,3 +232,4 @@ Resources
 ----------
  * https://towardsdatascience.com/reinforcement-learning-implement-grid-world-from-scratch-c5963765ebff
  * https://medium.com/@m.alzantot/deep-reinforcement-learning-demysitifed-episode-2-policy-iteration-value-iteration-and-q-978f9e89ddaa
+ * https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0
