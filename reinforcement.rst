@@ -14,6 +14,7 @@ Definitions
 Elements of Reinforcement Learning
 ************************************
 
+Basic Elements
 
 .. list-table::
    :header-rows: 1
@@ -34,19 +35,21 @@ Elements of Reinforcement Learning
      - A state at which no further actions can be made by an agent
 
 
+Algorithms for the Agent
 
-Something
+.. list-table::
+   :header-rows: 1
+
+   * - Policy Function (`π`)
+     - Description
 
  * Policy
- * Reward Signal
  * Value Function
  * Model of Environment
  
 A **policy** defines the learning agent's way of behaving at a given time. 
 Or in simple terms, instructs what the agent should do at each state.
 
-A **reward** signal defines the goal of a reinforcement learning problem. 
-On each step, the environment sends to the agent a single number called reward.
 
 A **value function** is the total amount of reward an agent is predicted to accumulate over the future, starting from a state.
 It is the values which we are most concerned when making decisions.
