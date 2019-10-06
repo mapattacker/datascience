@@ -56,7 +56,8 @@ Algorithms for the Agent
 
 
 
-**Markov Decision Problem**
+Markov Decision Problem
+************************
 
 Reinforcement learning helps to solve Markov Decision Problems (MDP).
 The core problem of MDPs is to find a "policy" for the decision maker: a function π that specifies the action 
