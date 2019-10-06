@@ -1,6 +1,9 @@
 Reinforcement Learning
 =======================
 
+Reinforcement learning is an area of machine learning concerned 
+with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
+
 Concepts
 --------------
 
@@ -8,8 +11,8 @@ Definitions
 ************
  * **argmax(x)**: position where the first max value occurs
 
-Terms
-*******
+Elements of Reinforcement Learning
+************************************
 
 .. list-table::
    :header-rows: 1
@@ -24,21 +27,14 @@ Terms
      - A decision the agent makes in an environment
    * - Reward Signal
      - A scalar indication of how well the agent is performing a task
-
-Agent & the Environment
-***********************
-Reinforcement learning is an area of machine learning concerned 
-with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward.
-
-
-Exploration vs Exploitation
-****************************
-A central dilemma of reinforcement learning is to *exploit* what it has already experienced in order to obtain a reward.
-But in order to do that, it has to *explore* in order to make better actions in the future.
+   * - State
+     - A description of the environment that can be perceived by the agent
+   * - Terminal State
+     - A state at which no further actions can be made by an agent
 
 
-Elements of Reinforcement Learning
-************************************
+
+
 
  * Policy
  * Reward Signal
@@ -56,6 +52,15 @@ It is the values which we are most concerned when making decisions.
 
 A **model of the environment** mimics the behavior of the enviornment. E.g., given a state & action, what is the next state and reward.
 Such an approach is called a model-based method, in contrast with model-free methods.
+
+
+Exploration vs Exploitation
+****************************
+A central dilemma of reinforcement learning is to *exploit* what it has already experienced in order to obtain a reward.
+But in order to do that, it has to *explore* in order to make better actions in the future.
+
+
+
 
 
 .. figure:: images/reinforce4.jpg
