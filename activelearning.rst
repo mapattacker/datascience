@@ -21,11 +21,11 @@ This helps the model learn faster, and lets the experts skip labeling data that 
 Sampling Methods
 -----------------
 
-1) **Membership Query Synthesis**: a synethsized sample is sent to an oracle for labeling.
+1. **Membership Query Synthesis**: a synethsized sample is sent to an oracle for labeling.
 
-2) **Stream-Based Selective Sampling**: each sample is presented one at a time to a predictive model to be decided whether or not to be labeled or not. There are no assumptions on data distribution, and therefore it is adaptive to change.
+2. **Stream-Based Selective Sampling**: each sample is presented one at a time to a predictive model to be decided whether or not to be labeled or not. There are no assumptions on data distribution, and therefore it is adaptive to change.
 
-3) **Pool-Based Sampling**: This is similar to stream-based, except that it starts a large pool of unlabelled data.
+3. **Pool-Based Sampling**: This is similar to stream-based, except that it starts a large pool of unlabelled data.
 
 The main difference between stream-based and pool-based active learning is that the former scans 
 through the data sequentially and makes query decisions individually, 
@@ -34,10 +34,10 @@ whereas the latter evaluates and ranks the entire collection before selecting th
 Query Strategies
 ----------------
 
-1) **Uncertainiy Sampling**: Learner will choose instances which it is least certain how to label. There are 3 methods in this sampling, i.e.,
+1. **Uncertainiy Sampling**: Learner will choose instances which it is least certain how to label. There are 3 methods in this sampling, i.e.,
 Least Confidence, Margin Sampling, and Entropy Sampling, with the latter being the best among the 3 due to its consideration of utilizing all the possible label probabilities for the selection process.
 
-2) **Query by Committee**: Using an ensemble of models to vote on which candidates to label.
+2. **Query by Committee**: Using an ensemble of models to vote on which candidates to label.
 
 
 Stop Criteria
