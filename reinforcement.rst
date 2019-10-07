@@ -43,7 +43,7 @@ Algorithms for the Agent
 
    * - Term
      - Description
-   * - Policy Function (``π``)
+   * - Policy (``π``)
      - Function that outputs decisions the agent makes. In simple terms, it instructs what the agent should do at each state.
    * - Value Function
      - Function that describes how good or bad a state is. It is the total amount of reward an agent is predicted to accumulate over the future, starting from a state.
@@ -52,12 +52,12 @@ Algorithms for the Agent
 
 
 
-Markov Decision Problem
+Markov Decision Process
 ************************
 
-Reinforcement learning helps to solve Markov Decision Problems (MDP).
+Reinforcement learning helps to solve Markov Decision Process (MDP).
 The core problem of MDPs is to find a "policy" for the decision maker: a function π that specifies the action 
-π(s) that the decision maker will choose when in state s. The diagram illustrate the Markov Decision Problem.
+π(s) that the decision maker will choose when in state s. The diagram illustrate the Markov Decision Process.
 
 .. figure:: images/reinforce1.png
     :width: 400px
@@ -69,7 +69,7 @@ The core problem of MDPs is to find a "policy" for the decision maker: a functio
 
 Q-Learning
 -----------
-Q-Learning is an example of model-free reinforcement learning to solve the Markov Decision Problem.
+Q-Learning is an example of model-free reinforcement learning to solve the Markov Decision Process.
 It derives the policy by directly looking at the data instead of developing a model.
 
 
