@@ -16,7 +16,7 @@ Sampling Methods
 
 1) **Membership Query Synthesis**: a synethsized sample is sent to an oracle for labeling.
 
-2) **Stream-Based Selective Sampling**: each sample is considered separately to be labeled or not. There are no assumptions on data distribution, and therefore it is adaptive to change.
+2) **Stream-Based Selective Sampling**: each sample is presented one at a time to a predictive model to be decided whether or not to be labeled or not. There are no assumptions on data distribution, and therefore it is adaptive to change.
 
 3) **Pool-Based Sampling**: This is similar to stream-based, except that it starts a large pool of unlabelled data.
 
@@ -27,9 +27,18 @@ whereas the latter evaluates and ranks the entire collection before selecting th
 Query Strategies
 ----------------
 
-1) **Uncertainiy Sampling**: Learner will choose instances which it is least certain how to label.
+1) **Uncertainiy Sampling**: Learner will choose instances which it is least certain how to label. There are 3 methods in this sampling, i.e.,
+Least Confidence, Margin Sampling, and Entropy Sampling, with the latter being the best among the 3 due to its consideration of utilizing all the possible label probabilities for the selection process.
 
-3) **Query by Committee**: Using an ensemble of models to vote on which candidates to label.
+2) **Query by Committee**: Using an ensemble of models to vote on which candidates to label.
+
+
+Stop Criteria
+--------------
+We can use a performance metric, e.g. accuracy to determine when to stop further querying.
+Ideally it should be when any further labelling and retraining of the model does not improve the performance metric significantly, i.e.,
+the performance has reached plateau. This means that the slope of the graph (y2-y1/x2-x1) per time-step has neared 0.
+
 
 Resources
 ----------
