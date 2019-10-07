@@ -12,7 +12,7 @@ Active Learning prioritizes which data the model is most confused about and requ
 This helps the model learn faster, and lets the experts skip labeling data that wouldn’t be very helpful to the model.
 
 .. figure:: images/active_learning.png
-    :width: 500px
+    :width: 600px
     :align: center
 
     Training samples near the decision boundary allows a more accurate hyperplane being drawn.
@@ -35,7 +35,8 @@ Query Strategies
 ----------------
 
 1. **Uncertainiy Sampling**: Learner will choose instances which it is least certain how to label. There are 3 methods in this sampling, i.e.,
-Least Confidence, Margin Sampling, and Entropy Sampling, with the latter being the best among the 3 due to its consideration of utilizing all the possible label probabilities for the selection process.
+Least Confidence, Margin Sampling, and Entropy Sampling, 
+with the latter being the best among the 3 due to its consideration of utilizing all the possible label probabilities for the selection process.
 
 2. **Query by Committee**: Using an ensemble of models to vote on which candidates to label.
 
