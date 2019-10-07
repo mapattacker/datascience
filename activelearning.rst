@@ -12,7 +12,7 @@ Active Learning prioritizes which data the model is most confused about and requ
 This helps the model learn faster, and lets the experts skip labeling data that wouldn’t be very helpful to the model.
 
 .. figure:: images/active_learning.png
-    :width: 600px
+    :width: 800px
     :align: center
 
     Training samples near the decision boundary allows a more accurate hyperplane being drawn.
