@@ -34,3 +34,4 @@ Query Strategies
 Resources
 ----------
  * Active Learning Literature Survey. http://burrsettles.com/pub/settles.activelearning.pdf
+ * Class Imbalance & Active Learning. https://pdfs.semanticscholar.org/7437/aae9bf347ab4ba4057f28df5f2eaf64d8fdc.pdf
