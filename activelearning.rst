@@ -11,6 +11,13 @@ It does this by prioritizing the labeling work for the experts (oracles).
 Active Learning prioritizes which data the model is most confused about and requests labels for just those.
 This helps the model learn faster, and lets the experts skip labeling data that wouldn’t be very helpful to the model.
 
+.. figure:: images/active_learning.png
+    :width: 500px
+    :align: center
+
+    Training samples near the decision boundary allows a more accurate hyperplane being drawn.
+
+
 Sampling Methods
 -----------------
 
@@ -38,6 +45,8 @@ Stop Criteria
 We can use a performance metric, e.g. accuracy to determine when to stop further querying.
 Ideally it should be when any further labelling and retraining of the model does not improve the performance metric significantly, i.e.,
 the performance has reached plateau. This means that the slope of the graph (y2-y1/x2-x1) per time-step has neared 0.
+
+Of course, plateauing is determined on a good query strategy together with an appropriate model.
 
 
 Resources
