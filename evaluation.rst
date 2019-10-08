@@ -648,7 +648,7 @@ Using other scoring metrics
 
 Auto-Tuning
 *****************************
-Bayesian Tuning and Bandits (BTB) is a package used for auto-tuning ML models hyperparameters.
+**Bayesian Tuning and Bandits (BTB)** is a package used for auto-tuning ML models hyperparameters.
 It uses Gaussian Process to do this, though there is an option for Uniform. 
 It was born from a Master thesis by Laura Gustafson in 2018.
 
@@ -710,3 +710,20 @@ https://github.com/HDI-Project/BTB
 
     # best accuracy: 0.7987421383647799
     # best parameters: {'n_estimators': 1939, 'max_depth': 18}
+
+**Auto-Sklearn** is another auto-ml package that automatically selects both the model and its hyperparameters.
+
+https://automl.github.io/auto-sklearn/master/
+
+.. code:: python
+    import autosklearn.classification
+    import sklearn.model_selection
+    import sklearn.datasets
+    import sklearn.metrics
+    X, y = sklearn.datasets.load_digits(return_X_y=True)
+    X_train, X_test, y_train, y_test = \
+            sklearn.model_selection.train_test_split(X, y, random_state=1)
+    automl = autosklearn.classification.AutoSklearnClassifier()
+    automl.fit(X_train, y_train)
+    y_hat = automl.predict(X_test)
+    print("Accuracy score", sklearn.metrics.accuracy_score(y_test, y_hat))
