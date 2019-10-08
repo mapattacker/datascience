@@ -34,9 +34,7 @@ whereas the latter evaluates and ranks the entire collection before selecting th
 Query Strategies
 ----------------
 
-1. **Uncertainiy Sampling**: Learner will choose instances which it is least certain how to label. There are 3 methods in this sampling, i.e.,
-Least Confidence, Margin Sampling, and Entropy Sampling, 
-with the latter being the best among the 3 due to its consideration of utilizing all the possible label probabilities for the selection process.
+1. **Uncertainiy Sampling**: Learner will choose instances which it is least certain how to label. There are 3 methods in this sampling, i.e., Least Confidence, Margin Sampling, and Entropy Sampling, with the latter being the best among the 3 due to its consideration of utilizing all the possible label probabilities for the selection process.
 
 2. **Query by Committee**: Using an ensemble of models to vote on which candidates to label.
 
