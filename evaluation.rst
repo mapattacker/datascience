@@ -656,7 +656,7 @@ https://github.com/HDI-Project/BTB
 
 .. code:: python
 
-    from btb.tuning import GP, Uniform
+    from btb.tuning import GP
     from btb import HyperParameter, ParamTypes
 
     # remember to change INT to FLOAT where necessary
@@ -721,7 +721,7 @@ https://automl.github.io/auto-sklearn/master/
     import sklearn.model_selection
     import sklearn.datasets
     import sklearn.metrics
-    
+
     X, y = sklearn.datasets.load_digits(return_X_y=True)
     X_train, X_test, y_train, y_test = \
             sklearn.model_selection.train_test_split(X, y, random_state=1)
