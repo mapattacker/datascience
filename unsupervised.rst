@@ -553,7 +553,7 @@ We can input the `covariance_type` argument such that it can choose between `dia
   from Python Data Science Handbook by Jake VanderPlas
 
 
-`BIC` or `AIC` are used to determine the optimal number of clusters, the former usually recommends a simpler model. 
+`BIC` or `AIC` are used to determine the optimal number of clusters using the elbow diagram, the former usually recommends a simpler model. 
 Note that number of clusters or components measures how well GMM works as a density estimator, not as a clustering algorithm.
 
 .. code:: python
@@ -614,7 +614,7 @@ Methods of linking clusters together.
     University of Michigan: Coursera Data Science in Python
 
 
-`AgglomerativeClustering` method in sklearn allows clustering to be choosen by the no. clusters or distance threshold.
+``AgglomerativeClustering`` method in sklearn allows clustering to be choosen by the no. clusters or distance threshold.
         
 .. code:: python  
   
@@ -651,7 +651,7 @@ More: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-den
 
 
 .. figure:: images/aggocluster3.png
-    :width: 350px
+    :width: 400px
     :align: center
 
 In essence, we can also use the 3-step method above to compute agglomerative clustering.
@@ -708,7 +708,6 @@ Then we select the distance threshold to cut the dendrogram to obtain the select
 The output is the cluster labelled for each row of data. As expected from the dendrogram, a cut at
 2000 gives us 5 clusters.
 
-Evaluating the best number of clusters can be done through the elbow plot & BIC.
 
 
 DBSCAN
