@@ -638,7 +638,7 @@ We have to recompute the clustering using the ward function.
    
    Z = ward(X)
    plt.figure(figsize=(10,5))
-   dendrogram(ward(X))
+   dendrogram(Z)
    plt.show()
 
 
