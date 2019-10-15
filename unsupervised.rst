@@ -650,7 +650,7 @@ We have to recompute the clustering using the ward function.
 More: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/
 
 
-.. figure:: images/aggocluster3.PNG
+.. figure:: images/aggocluster3.png
     :width: 600px
     :align: center
 
