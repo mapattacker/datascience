@@ -618,14 +618,14 @@ Methods of linking clusters together.
         
 .. code:: python  
   
-  from sklearn.datasets import make_blobs
-  from sklearn.cluster import AgglomerativeClustering
+    from sklearn.datasets import make_blobs
+    from sklearn.cluster import AgglomerativeClustering
 
-  X, y = make_blobs(random_state = 10)
+    X, y = make_blobs(random_state = 10)
 
-  # n_clusters must be None if distance_threshold is not None
-  cls = AgglomerativeClustering(n_clusters = 3, affinity=’euclidean’, linkage=’ward’, distance_threshold=None)
-  cls_assignment = cls.fit_predict(X)
+    # n_clusters must be None if distance_threshold is not None
+    cls = AgglomerativeClustering(n_clusters = 3, affinity=’euclidean’, linkage=’ward’, distance_threshold=None)
+    cls_assignment = cls.fit_predict(X)
 
 
 One of the benfits of this clustering is that a hierarchy can be built via a dendrogram.
