@@ -592,10 +592,12 @@ Note that number of clusters or components measures how well GMM works as a dens
   from Python Data Science Handbook by Jake VanderPlas
 
 
-Agglomerative Clustering
-************************
+Hierarchical Agglomerative Clustering
+*************************************
 
-Agglomerative Clustering is a method of clustering technique used to build clusters from bottom up.
+Agglomerative Clustering is a method of clustering technique used to build clusters from bottom up. 
+Divisive Clustering is the opposite method of building clusters from top down, which is not available in sklearn.
+
 
 .. figure:: images/aggocluster.png
     :width: 600px
@@ -610,48 +612,31 @@ Methods of linking clusters together.
     :align: center
     
     University of Michigan: Coursera Data Science in Python
-        
+
+
+`AgglomerativeClustering` method in sklearn allows clustering to be choosen by the no. clusters or distance threshold.
         
 .. code:: python  
   
   from sklearn.datasets import make_blobs
   from sklearn.cluster import AgglomerativeClustering
-  from adspy_shared_utilities import plot_labelled_scatter
 
   X, y = make_blobs(random_state = 10)
 
-  cls = AgglomerativeClustering(n_clusters = 3)
+  # n_clusters must be None if distance_threshold is not None
+  cls = AgglomerativeClustering(n_clusters = 3, affinity=’euclidean’, linkage=’ward’, distance_threshold=None)
   cls_assignment = cls.fit_predict(X)
 
-  plot_labelled_scatter(X, cls_assignment, 
-          ['Cluster 1', 'Cluster 2', 'Cluster 3'])
-          
-.. figure:: images/aggocluster3.png
-    :width: 600px
-    :align: center
 
-One of the benfits of this clustering is that a hierarchy can be built.
+One of the benfits of this clustering is that a hierarchy can be built via a dendrogram.
+We have to recompute the clustering using the ward function.
 
 .. code:: python
-
-  X, y = make_blobs(random_state = 10, n_samples = 10)
-  plot_labelled_scatter(X, y, 
-          ['Cluster 1', 'Cluster 2', 'Cluster 3'])
-  print(X)
-
-  [[  5.69192445  -9.47641249]
-   [  1.70789903   6.00435173]
-   [  0.23621041  -3.11909976]
-   [  2.90159483   5.42121526]
-   [  5.85943906  -8.38192364]
-   [  6.04774884 -10.30504657]
-   [ -2.00758803  -7.24743939]
-   [  1.45467725  -6.58387198]
-   [  1.53636249   5.11121453]
-   [  5.4307043   -9.75956122]]
-   
+ 
    # BUILD DENDROGRAM
    from scipy.cluster.hierarchy import ward, dendrogram
+   
+   Z = ward(X)
    plt.figure(figsize=(10,5))
    dendrogram(ward(X))
    plt.show()
@@ -660,18 +645,43 @@ One of the benfits of this clustering is that a hierarchy can be built.
 .. figure:: images/aggocluster4.png
     :width: 600px
     :align: center
-        
-More in this link: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/
+
+
+More: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/
+
+
+.. figure:: images/aggocluster3.png
+    :width: 600px
+    :align: center
+
+In essence, we can also use the 3-step method above to compute agglomerative clustering.
+
+.. code:: python
+
+    from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+
+    # 1. clustering
+    Z = linkage(X, method='ward', metric='euclidean')
+    
+    # 2. draw dendrogram
+    dendrogram(Z)
+    plt.show()
+
+    # 3. flatten cluster
+    distance_threshold = 10
+    y = fcluster(Z, distance_threshold, criterion='distance')
+
+
 
 sklearn agglomerative clustering is very slow, and an alternative ``fastcluster`` library
 performs much faster as it is a C++ library with a python interface.
 
+More: https://pypi.org/project/fastcluster/
+
 .. code:: python
 
   import fastcluster
-  from scipy.cluster.hierarchy import fcluster
   from scipy.cluster.hierarchy import dendrogram, ward
-  from scipy.spatial.distance import pdist
 
   Z = fastcluster.linkage_vector(df, method='ward', metric='euclidean')
 
@@ -697,6 +707,8 @@ The output is the cluster labelled for each row of data. As expected from the de
 2000 gives us 5 clusters.
 
 .. code:: python
+
+  from scipy.cluster.hierarchy import fcluster
 
   distance_threshold = 2000
   clusters = fcluster(Z, distance_threshold, criterion='distance')

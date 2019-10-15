@@ -50,6 +50,7 @@ Of course, plateauing is determined on a good query strategy together with an ap
 
 Resources
 ----------
- * Active Learning Literature Survey. http://burrsettles.com/pub/settles.activelearning.pdf
- * Class Imbalance & Active Learning. https://pdfs.semanticscholar.org/7437/aae9bf347ab4ba4057f28df5f2eaf64d8fdc.pdf
+ * Active Learning Literature Survey: http://burrsettles.com/pub/settles.activelearning.pdf
+ * Uncertainiy Sampling: https://towardsdatascience.com/uncertainty-sampling-cheatsheet-ec57bc067c0b
+ * Class Imbalance & Active Learning: https://pdfs.semanticscholar.org/7437/aae9bf347ab4ba4057f28df5f2eaf64d8fdc.pdf
  * Clustering: https://medium.com/towards-artificial-intelligence/how-to-use-active-learning-to-iteratively-improve-your-machine-learning-models-1c6164bdab99
