@@ -592,10 +592,10 @@ Note that number of clusters or components measures how well GMM works as a dens
   from Python Data Science Handbook by Jake VanderPlas
 
 
-Hierarchical Agglomerative Clustering
+Agglomerative Clustering
 *************************************
 
-Agglomerative Clustering is a method of clustering technique used to build clusters from bottom up. 
+Agglomerative Clustering is a type of hierarchical clustering technique used to build clusters from bottom up. 
 Divisive Clustering is the opposite method of building clusters from top down, which is not available in sklearn.
 
 
