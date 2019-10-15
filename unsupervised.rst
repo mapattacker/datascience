@@ -651,7 +651,7 @@ More: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-den
 
 
 .. figure:: images/aggocluster3.png
-    :width: 400px
+    :width: 350px
     :align: center
 
 In essence, we can also use the 3-step method above to compute agglomerative clustering.
@@ -681,8 +681,7 @@ More: https://pypi.org/project/fastcluster/
 .. code:: python
 
   import fastcluster
-  from scipy.cluster.hierarchy import dendrogram
-  from scipy.cluster.hierarchy import fcluster
+  from scipy.cluster.hierarchy import dendrogram, fcluster
 
   # 1. clustering
   Z = fastcluster.linkage_vector(df, method='ward', metric='euclidean')
