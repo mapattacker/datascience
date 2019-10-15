@@ -651,7 +651,7 @@ More: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-den
 
 
 .. figure:: images/aggocluster3.png
-    :width: 600px
+    :width: 400px
     :align: center
 
 In essence, we can also use the 3-step method above to compute agglomerative clustering.
