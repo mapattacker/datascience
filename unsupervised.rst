@@ -684,7 +684,7 @@ More: https://pypi.org/project/fastcluster/
   from scipy.cluster.hierarchy import dendrogram, fcluster
 
   # 1. clustering
-  Z = fastcluster.linkage_vector(df, method='ward', metric='euclidean')
+  Z = fastcluster.linkage_vector(X, method='ward', metric='euclidean')
   Z_df = pd.DataFrame(data=Z, columns=['clusterOne','clusterTwo','distance','newClusterSize'])
 
   # 2. draw dendrogram
