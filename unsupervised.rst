@@ -650,7 +650,7 @@ We have to recompute the clustering using the ward function.
 More: https://joernhees.de/blog/2015/08/26/scipy-hierarchical-clustering-and-dendrogram-tutorial/
 
 
-.. figure:: images/aggocluster3.png
+.. figure:: images/aggocluster3.PNG
     :width: 600px
     :align: center
 
@@ -681,18 +681,21 @@ More: https://pypi.org/project/fastcluster/
 .. code:: python
 
   import fastcluster
-  from scipy.cluster.hierarchy import dendrogram, ward
+  from scipy.cluster.hierarchy import dendrogram
+  from scipy.cluster.hierarchy import fcluster
 
+  # 1. clustering
   Z = fastcluster.linkage_vector(df, method='ward', metric='euclidean')
-
-  # get dendrogram details into dataframe
   Z_df = pd.DataFrame(data=Z, columns=['clusterOne','clusterTwo','distance','newClusterSize'])
 
-
-  # plot dendrogram
+  # 2. draw dendrogram
   plt.figure(figsize=(10, 5))
-  dendrogram(ward(X))
+  dendrogram(Z)
   plt.show();
+
+  # 3. flatten cluster
+  distance_threshold = 2000
+  clusters = fcluster(Z, distance_threshold, criterion='distance')
   
 .. figure:: images/aggocluster5.PNG
   :width: 400px
@@ -705,17 +708,6 @@ More: https://pypi.org/project/fastcluster/
 Then we select the distance threshold to cut the dendrogram to obtain the selected clustering level.
 The output is the cluster labelled for each row of data. As expected from the dendrogram, a cut at
 2000 gives us 5 clusters.
-
-.. code:: python
-
-  from scipy.cluster.hierarchy import fcluster
-
-  distance_threshold = 2000
-  clusters = fcluster(Z, distance_threshold, criterion='distance')
-  chosen_clusters = pd.DataFrame(data=clusters, columns=['cluster'])
-
-  chosen_clusters['cluster'].unique()
-  # array([4, 5, 2, 3, 1], dtype=int64)
 
 Evaluating the best number of clusters can be done through the elbow plot & BIC.
 
