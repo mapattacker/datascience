@@ -33,7 +33,10 @@ which is more efficient on objects that carry large numpy arrays internally
 as is often the case for fitted scikit-learn estimators, 
 but can only pickle to the disk and not to a string:
 
+.. code:: python
+
     import joblib
+
     joblib.dump(clf, 'model.joblib')
     joblib.load('model.joblib')
 
@@ -129,3 +132,5 @@ However, it can be further enhanced using jupyter extensions.
 ``pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install``
 
 Two of my favourite extensions are *Table of Contents* and *ExecuteTime*.
+
+More: https://towardsdatascience.com/jupyter-notebook-extensions-517fa69d2231
