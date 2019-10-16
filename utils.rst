@@ -31,7 +31,9 @@ From sklearn's documentation, it is said that in the specific case of scikit-lea
 it may be better to use joblib’s replacement of pickle (dump & load), 
 which is more efficient on objects that carry large numpy arrays internally 
 as is often the case for fitted scikit-learn estimators, 
-but can only pickle to the disk and not to a string:
+but can only pickle to the disk and not to a string.
+
+More: https://scikit-learn.org/stable/modules/model_persistence.html
 
 .. code:: python
 
