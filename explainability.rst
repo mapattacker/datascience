@@ -13,28 +13,35 @@ Decision trees and other tree ensemble models, by default, allow us to obtain th
     import pandas as pd
     from sklearn.ensemble import RandomForestClassifier
 
+    rf = RandomForestClassifier()
+    model = rf.fit(X_train, y_train)
+
+
     import matplotlib.pyplot as plt
     %config InlineBackend.figure_format = 'retina'
     %matplotlib inline
 
-    rf = RandomForestClassifier()
-    model = rf.fit(X_train, y_train)
+    def feature_impt(model, figsize=(10,2)):
+        '''
+        desc: plot feature importance barchart for tree models
+        args: model=tree model
+              figsize=chart dimensions
+        return: dataframe of feature name & their importance
+        '''
+        # sort feature importance in df
+        f_impt= pd.DataFrame(model.feature_importances_, index=train_process.columns[:-1])
+        f_impt = f_impt.sort_values(by=0,ascending=False)
+        f_impt.columns = ['feature importance']
 
-    # evaluation metrics
-    y_predict = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_predict)
-    f1 = mean(f1_score(y_test, y_predict, average=None))
+        # plot bar chart
+        plt.figure(figsize=figsize)
+        plt.bar(f_impt.index,f_impt['feature importance'])
+        plt.xticks(rotation='vertical')
+        plt.title('Feature Importance');
+        
+        return f_impt
 
-    # sort feature importance in df
-    f_impt= pd.DataFrame(model.feature_importances_, index=dataframe.columns[:-1])
-    f_impt = f_impt.sort_values(by=0,ascending=False)
-    f_impt.columns = ['feature importance']
-
-    # plot bar chart
-    plt.figure(figsize=(18,2))
-    plt.bar(f_impt.index,f_impt['feature importance'])
-    plt.xticks(rotation='vertical')
-    plt.title(fault)
+    f_impt = feature_impt(model)
 
 
 .. figure:: images/feature_importance.PNG

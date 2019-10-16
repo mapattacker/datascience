@@ -29,6 +29,7 @@ A lot of the content are compiled from various resources, so please cite them ap
    reinforcement
    evaluation
    explainability
+   utils
    docker
    ethics
    resources

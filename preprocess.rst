@@ -31,6 +31,7 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.interpo
 
   import pandas as pd
 
+  # limit: Maximum number of consecutive NaNs to fill. Must be greater than 0.
   df['colname'].interpolate(method='linear', limit=2)
 
 
