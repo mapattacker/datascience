@@ -714,6 +714,7 @@ https://github.com/HDI-Project/BTB
 For regression models, we have to make some slight modifications, 
 since the optimization of hyperparameters is tuned towards a higher evaluation score.
 
+.. code:: python
 
     from btb.tuning import GP
     from btb import HyperParameter, ParamTypes
