@@ -959,3 +959,27 @@ Output: Identical = 0, Difference > 0
 Stan Salvador & Philip ChanFast. DTW: Toward Accurate Dynamic Time Warping in Linear Time and Space. Florida Institude of Technology. https://cs.fit.edu/~pkc/papers/tdm04.pdf
 
 
+Symbolic Aggregate approXimation
+---------------------------------
+
+
+.. figure:: images/sax1.png
+  :width: 300px
+  :align: center
+
+.. figure:: images/sax2.png
+  :width: 300px
+  :align: center
+
+.. figure:: images/sax3.png
+  :width: 300px
+  :align: center
+
+.. figure:: images/sax4.png
+  :width: 300px
+  :align: center
+
+
+ * https://github.com/seninp/saxpy
+ * https://jmotif.github.io/sax-vsm_site/morea/algorithm/SAX.html
+ * https://medium.com/@peijin/using-sax-paa-to-understand-the-s-p500s-yearly-patterns-337750622e49

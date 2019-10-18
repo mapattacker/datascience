@@ -251,7 +251,7 @@ Key parameters include ``n_estimators``, ``max_features``, ``max_depth``, ``n_jo
 
   #### CREATE MODEL ####
   # use 100 decision trees
-  clf = RandomForestClassifier(n_estimators=100)
+  clf = RandomForestClassifier(n_estimators=100, n_jobs=4, verbose=3)
 
 
 

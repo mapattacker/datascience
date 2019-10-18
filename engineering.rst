@@ -17,6 +17,21 @@ Manual
 Decomposition
 **************
 
+Datetime Breakdown
+^^^^^^^^^^^^^^^^^^^
+Very often, various dates and times of the day have strong interactions with your predictors.
+Here's a script to pull those values out.
+
+.. code:: python
+
+    def extract_time(df):
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
+        df['hour'] = df['timestamp'].dt.hour
+        df['mth'] = df['timestamp'].dt.month
+        df['day'] = df['timestamp'].dt.day
+        df['dayofweek'] = df['timestamp'].dt.dayofweek
+        return df
+
 Time-Series
 ^^^^^^^^^^^^^^
 Decomposing a time-series into trend (long-term), seaonality (short-term), residuals (noise).

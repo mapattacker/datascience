@@ -711,6 +711,57 @@ https://github.com/HDI-Project/BTB
     # best accuracy: 0.7987421383647799
     # best parameters: {'n_estimators': 1939, 'max_depth': 18}
 
+For regression models, we have to make some slight modifications, 
+since the optimization of hyperparameters is tuned towards a higher evaluation score.
+
+
+    from btb.tuning import GP
+    from btb import HyperParameter, ParamTypes
+    from sklearn.metrics import mean_squared_error
+
+    def auto_tuning(tunables, epoch, X_train, X_test, y_train, y_test, verbose=0):
+        """Auto-tuner using BTB library"""
+        tuner = GP(tunables)
+        parameters = tuner.propose()
+
+        score_list = []
+        param_list = []
+
+        for i in range(epoch):
+            # ** unpacks dict in a argument
+            model = RandomForestRegressor(**parameters, n_jobs=10, verbose=3)
+            model.fit(X_train, y_train)
+            y_predict = model.predict(X_test)
+            score = np.sqrt(mean_squared_error(y_test, y_predict))
+
+            # store scores & parameters
+            score_list.append(score)
+            param_list.append(parameters)
+
+            if verbose==0:
+                pass
+            elif verbose==1:
+                print('epoch: {}, rmse: {}'.format(i+1,score))
+            elif verbose==2:
+                print('epoch: {}, rmse: {}, param: {}'.format(i+1,score,parameters))
+
+            # BTB tunes parameters based the logic on higher score = good
+            # but RMSE is lower the better, hence need to inverse this value by a large number
+            score = 100000000-score
+            
+            # get new parameters
+            tuner.add(parameters, score)
+            parameters = tuner.propose()
+
+        best_s = tuner._best_score
+        best_score_index = score_list.index(best_s)
+        best_param = param_list[best_score_index]
+        print('\nbest rmse: {}'.format(best_s))
+        print('best parameters: {}'.format(best_param))
+        return best_param
+
+
+
 **Auto-Sklearn** is another auto-ml package that automatically selects both the model and its hyperparameters.
 
 https://automl.github.io/auto-sklearn/master/

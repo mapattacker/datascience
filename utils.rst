@@ -133,6 +133,9 @@ Jupyter Notebook is the go-to IDE for data science.
 However, it can be further enhanced using jupyter extensions.
 ``pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install``
 
-Two of my favourite extensions are *Table of Contents* and *ExecuteTime*.
+Some of my favourite extensions are:
+ * Table of Contents*: Sidebar showing TOC based on 
+ * *ExecuteTime*: Time to execute script for each cell
+ * *Variable Inspector*: Overview of all variables saved in memory. Allow deletion of variables to save memory.
 
 More: https://towardsdatascience.com/jupyter-notebook-extensions-517fa69d2231
