@@ -32,6 +32,13 @@ Here's a script to pull those values out.
         df['dayofweek'] = df['timestamp'].dt.dayofweek
         return df
 
+To get holidays, use the package ``holidays``
+
+.. code:: python
+
+    import holidays
+    train['holiday'] = train['timestamp'].apply(lambda x: 0 if holidays.US().get(x) is None else 1)
+
 Time-Series
 ^^^^^^^^^^^^^^
 Decomposing a time-series into trend (long-term), seaonality (short-term), residuals (noise).
