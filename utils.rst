@@ -154,7 +154,7 @@ a column into partitions than spin off a few processes to run a specific functio
         pool.join()
         return data
 
-    df['col'] = parallelize(df['col'], work);
+    df['col'] = parallelize(df['col'], func);
 
 
 Jupyter Extension
