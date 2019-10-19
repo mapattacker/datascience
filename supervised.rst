@@ -463,7 +463,9 @@ CatBoost
 ************
 Category Boosting has high performance compared to other popular models,
 and does not require conversion of categorical values into numbers.
-It is also, like LightGBM, faster than XGBoost.
+It is said to be even faster than LighGBM.
+
+More: https://catboost.ai
 
 .. python::
 

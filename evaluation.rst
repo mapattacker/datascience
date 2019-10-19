@@ -486,6 +486,16 @@ This means the RMSE should be more useful when large errors are particularly und
     # Train MAE 8.067078668023848
     # Train MAE 24.541799999999995
 
+**RMSLE** Root Mean Square Log Error is a very popular evaluation metric in data science competition now.
+It helps to reduce the effects of outliers compared to RMSE.
+
+More: https://medium.com/analytics-vidhya/root-mean-square-log-error-rmse-vs-rmlse-935c6cc1802a
+
+.. code:: python
+
+    def rmsle(y, y0):
+        assert len(y) == len(y0)
+        return np.sqrt(np.mean(np.power(np.log1p(y)-np.log1p(y0), 2)))
 
 K-fold Cross-Validation
 ------------------------

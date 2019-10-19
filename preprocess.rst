@@ -3,11 +3,46 @@ Feature Preprocessing
 
 Numeric
 --------
-Feature Proprocessing
-************************
 
 **Missing Values**
 ^^^^^^^^^^^^^^^^^^^
+
+Machine learning models cannot accept null/NaN values. 
+We will need to either remove them or fill them with a logical value.
+To investigate how many nulls in each column:
+
+.. code:: python
+
+  def null_analysis(df):
+    '''
+    desc: get nulls for each column in counts & percentages
+    arg: dataframe
+    return: dataframe
+    '''
+    null_cnt = df.isnull().sum() # calculate null counts
+    null_cnt = null_cnt[null_cnt!=0] # remove non-null cols
+    null_percent = null_cnt / len(df) * 100 # calculate null percentages
+    null_table = pd.concat([pd.DataFrame(null_cnt), pd.DataFrame(null_percent)], axis=1)
+    null_table.columns = ['counts', 'percentage']
+    return null_table
+
+  def null_threshold(df, threshold=25):
+    '''
+    desc: delete columns based on a null percentage threshold
+    arg: df=dataframe; threshold=percentage of nulls in column
+    return: dataframe
+    '''
+    null_table = null_analysis(df)
+    null_table = null_table[null_table['percentage']>=25]
+    df.drop(null_table.index, axis=1, inplace = True)
+    return df
+  
+
+  # visualise null table
+  import plotly_express as px
+  null_table = null_analysis(weather_train)
+  px.bar(null_table.reset_index(), x='index', y='percentage', text='counts', height=500)
+
 
 We can change missing values for the entire dataframe into their individual column means or medians.
 
@@ -36,46 +71,11 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.interpo
 
 
 
-**Scaling**
-^^^^^^^^^^^^
-
-Many ML algorithms require normalization or scaling. See more in here_.
-
-.. _here: http://python-data-science.readthedocs.io/en/latest/normalisation.html#
-
 **Outliers**
 ^^^^^^^^^^^^
 
 Especially sensitive in linear models. They can be (1) removed manually by
 defining the lower and upper bound limit, or (2) grouping the features into ranks.
-
-**Transformation**
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-This helps in non-tree based and especially neural networks. 
-Helps to drive big values close to features' average value.
-
-Using Log Transform ``np.log(1+x)``. Or Raising to the power of one ``np.sqrt(x+2/3)``
-
-Another important moment which holds true for all preprocessings is that sometimes, 
-it is beneficial to train a model on concatenated data frames produced by different preprocessings, or to mix models training differently-preprocessed data. 
-Again, linear models, KNN, and neural networks can benefit hugely from this. 
-
-
-Feature Generation
-************************
-Sometimes, we can engineer these new features using *prior knowledge and logic*, 
-or *using Exploratory Data Analysis*.
-
-Examples include:
-  * multiplication, divisions, addition, and feature interactions
-  * feature extraction
-  
-.. figure:: images/preprocess1.png
-    :width: 400px
-    :align: center
-
-    Coursera: How to Win a Data Science Competition
 
 
 Categorical & Ordinal
@@ -144,9 +144,6 @@ Each category is one binary field of 1 & 0. Not good if too many categories in a
 
     Coursera: How to Win a Data Science Competition
     
-
-Datetime
----------
 
 
 Coordinates
