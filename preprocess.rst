@@ -89,9 +89,8 @@ Especially sensitive in linear models. They can be (1) removed manually by
 defining the lower and upper bound limit, or (2) grouping the features into ranks.
 
 
-Categorical & Ordinal
------------------------
-Ordinal features are categorical but ranked in a meaningful way.
+Encoding
+------------
 
 Tree-Based Models
 ******************

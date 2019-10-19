@@ -126,6 +126,37 @@ Below is a function created by arjanso in Kaggle that can be plug and play.
         return df, NAlist
 
 
+Parallel Pandas
+----------------
+
+Pandas is fast but that is dependent on the dataset too. 
+We can use multiprocessing to make processing in pandas multitudes faster by splitting
+a column into partitions than spin off a few processes to run a specific function.
+
+.. code:: python
+
+    # from http://blog.adeel.io/2016/11/06/parallelize-pandas-map-or-apply/
+
+    import numpy as np
+    from multiprocessing import cpu_count, Pool
+    
+    def func(x):
+        return x * 10
+
+    cores = cpu_count() #Number of CPU cores on your system
+    partitions = cores #Define as many partitions as you want
+    
+    def parallelize(df, func):
+        data_split = np.array_split(data, partitions)
+        pool = Pool(cores)
+        data = pd.concat(pool.map(func, data_split))
+        pool.close()
+        pool.join()
+        return data
+
+    df['col'] = parallelize(df['col'], work);
+
+
 Jupyter Extension
 ------------------
 
