@@ -130,25 +130,26 @@ Parallel Pandas
 ----------------
 
 Pandas is fast but that is dependent on the dataset too. 
-We can use multiprocessing to make processing in pandas multitudes faster by splitting
-a column into partitions than spin off a few processes to run a specific function.
+We can use multiprocessing to make processing in pandas multitudes faster by 
+ * splitting a column into partitions 
+ * spin off processes to run a specific function in parallel
+ * union the partitions together back into a Pandas dataframe
 
 .. code:: python
 
     # from http://blog.adeel.io/2016/11/06/parallelize-pandas-map-or-apply/
 
     import numpy as np
-    from multiprocessing import cpu_count, Pool
+    import multiprocessing as mp
     
     def func(x):
         return x * 10
 
-    cores = cpu_count() #Number of CPU cores on your system
-    partitions = cores #Define as many partitions as you want
+    cores = mp.cpu_count() #Number of CPU cores on your system
     
-    def parallelize(df, func):
-        data_split = np.array_split(data, partitions)
-        pool = Pool(cores)
+    def pandas_parallel(df, func, cores):
+        data_split = np.array_split(df, cores)
+        pool = mp.Pool(cores)
         data = pd.concat(pool.map(func, data_split))
         pool.close()
         pool.join()
