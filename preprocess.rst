@@ -1,10 +1,9 @@
 Feature Preprocessing
 ==========================
 
-Numeric
---------
+
 Missing Values
-___________________
+---------------
 
 Machine learning models cannot accept null/NaN values. 
 We will need to either remove them or fill them with a logical value.
@@ -82,8 +81,8 @@ https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.interpo
 
 
 
-**Outliers**
-^^^^^^^^^^^^
+Outliers
+---------
 
 Especially sensitive in linear models. They can be (1) removed manually by
 defining the lower and upper bound limit, or (2) grouping the features into ranks.
