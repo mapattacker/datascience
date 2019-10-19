@@ -25,18 +25,6 @@ To investigate how many nulls in each column:
     null_table.columns = ['counts', 'percentage']
     return null_table
 
-  def null_threshold(df, threshold=25):
-    '''
-    desc: delete columns based on a null percentage threshold
-    arg: df=dataframe; threshold=percentage of nulls in column
-    return: dataframe
-    '''
-    null_table = null_analysis(df)
-    null_table = null_table[null_table['percentage']>=25]
-    df.drop(null_table.index, axis=1, inplace = True)
-    return df
-  
-
   # visualise null table
   import plotly_express as px
   null_table = null_analysis(weather_train)
@@ -49,6 +37,22 @@ To investigate how many nulls in each column:
 .. figure:: images/null2.png
     :width: 600px
     :align: center
+
+It makes no sense to fill in the null values if there are too many of them.
+We can set a threshold to delete the entire column if there are too many nulls.
+
+.. code:: python
+
+  def null_threshold(df, threshold=25):
+    '''
+    desc: delete columns based on a null percentage threshold
+    arg: df=dataframe; threshold=percentage of nulls in column
+    return: dataframe
+    '''
+    null_table = null_analysis(df)
+    null_table = null_table[null_table['percentage']>=25]
+    df.drop(null_table.index, axis=1, inplace = True)
+    return df
 
 
 We can change missing values for the entire dataframe into their individual column means or medians.
