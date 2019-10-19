@@ -43,6 +43,14 @@ To investigate how many nulls in each column:
   null_table = null_analysis(weather_train)
   px.bar(null_table.reset_index(), x='index', y='percentage', text='counts', height=500)
 
+.. figure:: images/null1.png
+    :width: 200px
+    :align: center
+
+.. figure:: images/null2.png
+    :width: 400px
+    :align: center
+
 
 We can change missing values for the entire dataframe into their individual column means or medians.
 
