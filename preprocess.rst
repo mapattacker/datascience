@@ -3,9 +3,8 @@ Feature Preprocessing
 
 Numeric
 --------
-
-**Missing Values**
-^^^^^^^^^^^^^^^^^^^
+Missing Values
+___________________
 
 Machine learning models cannot accept null/NaN values. 
 We will need to either remove them or fill them with a logical value.
@@ -44,11 +43,11 @@ To investigate how many nulls in each column:
   px.bar(null_table.reset_index(), x='index', y='percentage', text='counts', height=500)
 
 .. figure:: images/null1.png
-    :width: 200px
+    :width: 400px
     :align: center
 
 .. figure:: images/null2.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 
