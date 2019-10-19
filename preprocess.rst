@@ -43,7 +43,7 @@ To investigate how many nulls in each column:
   px.bar(null_table.reset_index(), x='index', y='percentage', text='counts', height=500)
 
 .. figure:: images/null1.png
-    :width: 400px
+    :width: 250px
     :align: center
 
 .. figure:: images/null2.png
