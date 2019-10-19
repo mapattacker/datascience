@@ -22,6 +22,7 @@ To investigate how many nulls in each column:
     null_percent = null_cnt / len(df) * 100 # calculate null percentages
     null_table = pd.concat([pd.DataFrame(null_cnt), pd.DataFrame(null_percent)], axis=1)
     null_table.columns = ['counts', 'percentage']
+    null_table.sort_values('counts', ascending=False, inplace=True)
     return null_table
 
   # visualise null table
