@@ -824,3 +824,14 @@ https://automl.github.io/auto-sklearn/master/
 
     y_pred = automl.predict(X_test)
     print("Accuracy score", sklearn.metrics.accuracy_score(y_test, y_pred))
+
+
+**Auto Keras** uses neural network for training. Similar to Google’s AutoML approach.
+
+.. code:: python
+
+    import autokeras as ak
+
+    clf = ak.ImageClassifier()
+    clf.fit(x_train, y_train)
+    results = clf.predict(x_test)
