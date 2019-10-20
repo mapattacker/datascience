@@ -538,17 +538,24 @@ we can use ``KFold`` to obtain the train & test indexes for each fold iteration.
 .. code:: python
 
     from sklearn.model_selection import KFold
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.metrics import f1_score
 
-    kf = KFold(n_splits=4)
-    score_total = []
-    for train_index, test_index in kf.split(X):
-        X_train, y_train = train[train_index][X_features], train[train_index][y_feature]
-        X_test, y_test = test[test_index][X_features], test[test_index][y_feature]
-        model.fit(X_train, y_train)
-        y_predict = model.predict()
-        score = rmsle(y_test, y_predict)
-        score_total.append(score)
-    score = np.mean(score_total)
+    def kfold_custom(fold=4, X, y, model, eval_metric):
+        kf = KFold(n_splits=4)
+        score_total = []
+        for train_index, test_index in kf.split(X):
+            X_train, y_train = train[train_index][X_features], train[train_index][y_feature]
+            X_test, y_test = test[test_index][X_features], test[test_index][y_feature]
+            model.fit(X_train, y_train)
+            y_predict = model.predict()
+            score = eval_metric(y_test, y_predict)
+            score_total.append(score)
+        score = np.mean(score_total)
+        return score
+
+    model = RandomForestClassifier()
+    kfold_custom(X, y, model, f1score)
 
 
 There are many other variants of cross validations as shown below.
