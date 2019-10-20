@@ -421,9 +421,9 @@ https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgb
   print("Accuracy: %.2f%%" % (accuracy * 100.0))
  
 
-Light Gradient Boosting
+LightGBM
 *************************
-LightGBM is a lightweight version of gradient boosting developed by Microsoft. 
+LightGBM (Light Gradient Boosting) is a lightweight version of gradient boosting developed by Microsoft. 
 It has similar performance to XGBoost but can run much faster than it.
 
 https://lightgbm.readthedocs.io/en/latest/index.html
