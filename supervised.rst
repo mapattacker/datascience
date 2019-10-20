@@ -505,8 +505,10 @@ More:
   model.get_feature_importance(prettified=True)
 
 
-We can also use k-fold cross validation for better scoring evaluation. One of the folds 
-will be used as a validation set.
+We can also use k-fold cross validation for better scoring evaluation.
+There is no need to specify ``CatBoostRegressor`` or ``CatBoostClassifier``,
+just input the correct ``eval_metric``.
+One of the folds will be used as a validation set.
 
 More: https://catboost.ai/docs/concepts/python-reference_cv.html
 
