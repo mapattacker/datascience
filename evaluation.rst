@@ -516,28 +516,21 @@ More here_.
 
     k-fold cross validation, with 5-folds
 
+``cross_val_score`` is a compact function to obtain the all scoring values using kfold in one line.
+
 .. code:: python
 
-  from sklearn.model_selection import cross_val_score
-  from sklearn.tree import DecisionTreeClassifier
-  from sklearn.ensemble import RandomForestClassifier
-  from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.model_selection import cross_val_score
+    from sklearn.ensemble import RandomForestClassifier
 
-  models = [('Decision Tree\t',DecisionTreeClassifier()),\
-            ('Random Forest\t', RandomForestClassifier()), \
-            ('KNN\t\t', KNeighborsClassifier())]
+    X = df[df.columns[1:-1]]
+    y = df['Cover_Type']
 
-  X = df[df.columns[1:-1]]
-  y = df['Cover_Type']
+    # using 5-fold cross validation mean scores
+    model = RandomForestClassifier()
+    cv_scores = cross_val_score(model, X, y, scoring='accuracy', cv=5, n_jobs=-1)
+    print(np.mean(cv_scores))
 
-  # using 5-fold cross validation mean scores
-  for clf in models:
-      cv_scores = cross_val_score(clf[1], X, y, scoring='accuracy', cv=5, n_jobs=-1)
-      print(clf[0], np.mean(cv_scores))
-
-  # Decision Tree	 0.707473544974
-  # Random Forest	 0.753571428571
-  # KNN		         0.691005291005
 
 
 For greater control and more manual coding, 
