@@ -668,13 +668,32 @@ More: https://github.com/fmfn/BayesianOptimization
 
 from bayes_opt import BayesianOptimization
 
-    # 1) Black box model function
-    def black_box_function():
+    # 1) Black box model function with output as evaluation metric
+
+    def cat_hyp(depth, learning_rate, bagging_temperature):
+        params = {"iterations": 100,
+                  "eval_metric": "RMSE",
+                  "verbose": False}
+        
+        # params to search optimal
+        params["depth"] = int(round(depth))
+        params["learning_rate"] = learning_rate
+        params["bagging_temperature"] = bagging_temperature
+
+        cat_feat = [] # Categorical features list
+        cv_dataset = cgb.Pool(data=X, label=y, cat_features=cat_feat)
+
+        # CV scores
+        scores = catboost.cv(cv_dataset, params, fold_count=3)
+
+        # negative as using RMSE, and optimizer tune to highest score 
+        return -np.max(scores['test-RMSE-mean'])
         
 
     # 2) Bounded region of parameter space
-    pbounds = {'x': (2, 4), 
-               'y': (-3, 3)}
+    pbounds = {'depth': (2, 10),
+               'bagging_temperature': (3,10),
+               'learning_rate': (0.05,0.9)}
 
     # 3) Define optimizer function
     optimizer = BayesianOptimization(f=black_box_function,
@@ -687,7 +706,7 @@ from bayes_opt import BayesianOptimization
     optimizer.maximize(init_points=2, n_iter=3)
 
     # 5) Get best parameters
-    best_param = optimizer.max
+    best_param = optimizer.max['params']
 
 
 **Bayesian Tuning and Bandits (BTB)** is a package used for auto-tuning ML models hyperparameters.
