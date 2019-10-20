@@ -532,8 +532,7 @@ More here_.
     print(np.mean(cv_scores))
 
 
-
-For greater control and more manual coding, 
+For greater control, like to define our own evaluation metrics etc., 
 we can use ``KFold`` to obtain the train & test indexes for each fold iteration.
 
 .. code:: python
