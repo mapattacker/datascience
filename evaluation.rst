@@ -527,12 +527,12 @@ More here_.
             ('Random Forest\t', RandomForestClassifier()), \
             ('KNN\t\t', KNeighborsClassifier())]
 
-  predictor = df[df.columns[1:-1]]
-  target = df['Cover_Type']
+  X = df[df.columns[1:-1]]
+  y = df['Cover_Type']
 
   # using 5-fold cross validation mean scores
   for clf in models:
-      cv_scores = cross_val_score(clf[1], predictor, target, cv=5)
+      cv_scores = cross_val_score(clf[1], X, y, scoring='accuracy', cv=5, n_jobs=-1)
       print(clf[0], np.mean(cv_scores))
 
   # Decision Tree	 0.707473544974
@@ -540,15 +540,23 @@ More here_.
   # KNN		         0.691005291005
 
 
+For greater control and more manual coding, 
+we can use ``KFold`` to obtain the train & test indexes for each fold iteration.
 
 .. code:: python
 
-    from sklearn.model_selection import StratifiedKFold
+    from sklearn.model_selection import KFold
 
-    skf = StratifiedKFold(n_splits=2)
-    skf.get_n_splits(X, y)
-
-    for i in skf:
+    kf = KFold(n_splits=4)
+    score_total = []
+    for train_index, test_index in kf.split(X):
+        X_train, y_train = train[train_index][X_features], train[train_index][y_feature]
+        X_test, y_test = test[test_index][X_features], test[test_index][y_feature]
+        model.fit(X_train, y_train)
+        y_predict = model.predict()
+        score = rmsle(y_test, y_predict)
+        score_total.append(score)
+    score = np.mean(score_total)
 
 
 There are many other variants of cross validations as shown below.
@@ -738,7 +746,9 @@ Here's another example using Random Forest
 
 **Bayesian Tuning and Bandits (BTB)** is a package used for auto-tuning ML models hyperparameters.
 It similarly uses Gaussian Process to do this, though there is an option for Uniform. 
-It was born from a Master thesis by Laura Gustafson in 2018.
+It was born from a Master thesis by Laura Gustafson in 2018. 
+Because it is lower level than the above package, it has better flexibility, 
+e.g., defining a k-fold cross-validation.
 
 https://github.com/HDI-Project/BTB
 
