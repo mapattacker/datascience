@@ -666,19 +666,17 @@ More: https://github.com/fmfn/BayesianOptimization
 
 .. code:: python
 
-from bayes_opt import BayesianOptimization
+    from bayes_opt import BayesianOptimization
 
     # 1) Black box model function with output as evaluation metric
 
     def cat_hyp(depth, learning_rate, bagging_temperature):
         params = {"iterations": 100,
                   "eval_metric": "RMSE",
-                  "verbose": False}
-        
-        # params to search optimal
-        params["depth"] = int(round(depth))
-        params["learning_rate"] = learning_rate
-        params["bagging_temperature"] = bagging_temperature
+                  "verbose": False,
+                  "depth": int(round(depth)),
+                  "learning_rate": learning_rate,
+                  "bagging_temperature": bagging_temperature}
 
         cat_feat = [] # Categorical features list
         cv_dataset = cgb.Pool(data=X, label=y, cat_features=cat_feat)
@@ -707,6 +705,35 @@ from bayes_opt import BayesianOptimization
 
     # 5) Get best parameters
     best_param = optimizer.max['params']
+
+Here's another example using Random Forest
+
+    from bayes_opt import BayesianOptimization
+    from sklearn.ensemble import RandomForestRegressor
+
+    def rmsle(y, y0):
+        assert len(y) == len(y0)
+        return np.sqrt(np.mean(np.power(np.log1p(y)-np.log1p(y0), 2)))
+
+    def black_box(n_estimators, max_depth):
+        params = {"n_jobs": 5,
+                  "n_estimators": int(round(n_estimators)),
+                  "max_depth": max_depth}
+        
+        model = RandomForestRegressor(**params)
+        model.fit(X_train, y_train)
+        y_predict = model.predict(X_test)
+        score = rmsle(y_test, y_predict)
+
+        return -score
+
+    # Search space
+    pbounds = {'n_estimators': (1, 5),
+               'max_depth': (10,50)}
+
+    optimizer = BayesianOptimization(black_box, pbounds, random_state=2100)
+    optimizer.maximize(init_points=10, n_iter=5)
+
 
 
 **Bayesian Tuning and Bandits (BTB)** is a package used for auto-tuning ML models hyperparameters.
@@ -808,8 +835,8 @@ since the optimization of hyperparameters is tuned towards a higher evaluation s
                 print('epoch: {}, rmse: {}, param: {}'.format(i+1,score,parameters))
 
             # BTB tunes parameters based the logic on higher score = good
-            # but RMSE is lower the better, hence need to inverse this value by a large number
-            score = 100000000-score
+            # but RMSE is lower the better, hence need to change scores to negative to inverse it
+            score = -score
             
             # get new parameters
             tuner.add(parameters, score)
