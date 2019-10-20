@@ -709,6 +709,8 @@ More: https://github.com/fmfn/BayesianOptimization
 
 Here's another example using Random Forest
 
+.. code:: python
+
     from bayes_opt import BayesianOptimization
     from sklearn.ensemble import RandomForestRegressor
 
