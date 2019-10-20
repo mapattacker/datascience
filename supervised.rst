@@ -526,7 +526,9 @@ More: https://catboost.ai/docs/concepts/python-reference_cv.html
   scores = catboost.cv(cv_dataset, params, fold_count=5)
   scores
   
-
+.. figure:: images/catboost1.png
+   :width: 400px
+   :align: center
 
 Naive Bayes
 ************
