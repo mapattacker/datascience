@@ -658,8 +658,40 @@ Using other scoring metrics
 
 Auto-Tuning
 *****************************
+
+**Bayesian Optimization** as the name implies uses Bayesian optimization with Gaussian processes
+for autotuning. It is one of the most popular package now for auto-tuning. ``pip install bayesian-optimization``
+
+More: https://github.com/fmfn/BayesianOptimization
+
+.. code:: python
+
+from bayes_opt import BayesianOptimization
+
+    # 1) Black box model function
+    def black_box_function():
+        
+
+    # 2) Bounded region of parameter space
+    pbounds = {'x': (2, 4), 
+               'y': (-3, 3)}
+
+    # 3) Define optimizer function
+    optimizer = BayesianOptimization(f=black_box_function,
+                                     pbounds=pbounds,
+                                     random_state=1)
+
+    # 4) Start optimizing
+        # init_points: no. steps of random exploration. Helps to diversify random space
+        # n_iter: no. steps for bayesian optimization. Helps to exploit learnt parameters
+    optimizer.maximize(init_points=2, n_iter=3)
+
+    # 5) Get best parameters
+    best_param = optimizer.max
+
+
 **Bayesian Tuning and Bandits (BTB)** is a package used for auto-tuning ML models hyperparameters.
-It uses Gaussian Process to do this, though there is an option for Uniform. 
+It similarly uses Gaussian Process to do this, though there is an option for Uniform. 
 It was born from a Master thesis by Laura Gustafson in 2018.
 
 https://github.com/HDI-Project/BTB

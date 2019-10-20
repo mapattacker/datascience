@@ -135,6 +135,9 @@ We can use multiprocessing to make processing in pandas multitudes faster by
  * spin off processes to run a specific function in parallel
  * union the partitions together back into a Pandas dataframe
 
+Note that this only works for huge datasets, as it also takes time to spin off processes,
+and union back partitions together.
+
 .. code:: python
 
     # from http://blog.adeel.io/2016/11/06/parallelize-pandas-map-or-apply/
@@ -147,7 +150,7 @@ We can use multiprocessing to make processing in pandas multitudes faster by
 
     cores = mp.cpu_count() #Number of CPU cores on your system
     
-    def pandas_parallel(df, func, cores):
+    def parallel_pandas(df, func, cores):
         data_split = np.array_split(df, cores)
         pool = mp.Pool(cores)
         data = pd.concat(pool.map(func, data_split))
@@ -155,7 +158,7 @@ We can use multiprocessing to make processing in pandas multitudes faster by
         pool.join()
         return data
 
-    df['col'] = parallelize(df['col'], func);
+    df['col'] = parallel_pandas(df['col'], func);
 
 
 Jupyter Extension

@@ -463,13 +463,66 @@ CatBoost
 ************
 Category Boosting has high performance compared to other popular models,
 and does not require conversion of categorical values into numbers.
-It is said to be even faster than LighGBM.
+It is said to be even faster than LighGBM, and allows model to be ran using GPU.
+For easy use, run in Colab & switch runtime to GPU.
 
-More: https://catboost.ai
+More: 
+ * https://catboost.ai
+ * https://github.com/catboost/tutorials/blob/master/classification/classification_tutorial.ipynb
 
-.. python::
+.. code:: python
 
-  from CatBoost import CatBoostClassifier()
+  from catboost import CatBoostRegressor
+
+  # Split dataset into 
+  train_pool = Pool(train_X, train_y, 
+                    cat_features=['col1','col2'])
+  test_pool = Pool(test_X, test_y,
+                   cat_features=['col1','col2']) 
+
+  # Set Model Parameters
+  model = catboost.CatBoostRegressor(iterations=1000,
+                                     learning_rate=0.1,
+                                     loss_function='RMSE',
+                                     early_stopping_rounds=5)
+
+  # Model Fitting
+  # verbose, gives output every n iteration
+  model.fit(X_train, y_train,
+            cat_features=cat_features,
+            eval_set=(X_test, y_test),
+            verbose=5,
+            task_type='GPU')
+
+  # Get Parameters
+  model.get_all_params
+
+  # Prediction, & Prediction Probabilities
+  predict = model.predict(data=X_test)
+  predict_prob = model.predict_proba(data=X_test)
+
+  # Evaluation
+  model.get_feature_importance(prettified=True)
+
+
+We can also use k-fold cross validation for better scoring evaluation. One of the folds 
+will be used as a validation set.
+
+.. code:: python
+
+  params = {"iterations": 100,
+            "learning_rate": 0.05,
+            "eval_metric": "RMSE",
+            "verbose": False} # Default Parameters
+
+  cat_feat = [] # Categorical features list
+  cv_dataset = cgb.Pool(data=X, label=y, cat_features=cat_feat)
+
+  # CV scores
+  scores = catboost.cv(cv_dataset, params, fold_count=5)
+  scores
+  
+
 
 Naive Bayes
 ************
