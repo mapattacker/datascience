@@ -508,6 +508,8 @@ More:
 We can also use k-fold cross validation for better scoring evaluation. One of the folds 
 will be used as a validation set.
 
+More: https://catboost.ai/docs/concepts/python-reference_cv.html
+
 .. code:: python
 
   params = {"iterations": 100,
