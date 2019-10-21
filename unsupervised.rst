@@ -919,10 +919,6 @@ While powerful, its use of correlation can be detrimantal when there is multicol
         return distanceMD
 
 
-Jaccard’s Distance
-*********************
-
-
 Dynamic Time Warping
 ***********************
 
@@ -960,26 +956,40 @@ Stan Salvador & Philip ChanFast. DTW: Toward Accurate Dynamic Time Warping in Li
 
 
 Symbolic Aggregate approXimation
----------------------------------
-
+**********************************
+SAX compares the similarity of two time-series patterns by slicing them into horizontal & vertical regions,
+and comparing between each of them. This can be easily explained by 4 charts provided by
+https://jmotif.github.io/sax-vsm_site/morea/algorithm/SAX.html.
 
 .. figure:: images/sax1.png
   :width: 400px
   :align: center
 
+Both signals are overlayed.
+
 .. figure:: images/sax2.png
   :width: 400px
   :align: center
+
+Then normalised.
 
 .. figure:: images/sax3.png
   :width: 400px
   :align: center
 
+The chart is then sliced by various timeframes, Piecewise Aggregate Approximation,
+and each slice is compared between the two signals independently.
+
 .. figure:: images/sax4.png
   :width: 400px
   :align: center
 
+Each signal value, i.e., y-axis is then sliced into regions, and assigned an alphabet.
+If the PAA fall in a region, we assume they are the same, i.e., distance = 0. 
+Else, a distance value is assigned. The total distance is then computed to derice a distance metric.
+
+
+
 
  * https://github.com/seninp/saxpy
- * https://jmotif.github.io/sax-vsm_site/morea/algorithm/SAX.html
  * https://medium.com/@peijin/using-sax-paa-to-understand-the-s-p500s-yearly-patterns-337750622e49
