@@ -961,6 +961,9 @@ SAX compares the similarity of two time-series patterns by slicing them into hor
 and comparing between each of them. This can be easily explained by 4 charts provided by
 https://jmotif.github.io/sax-vsm_site/morea/algorithm/SAX.html.
 
+There are obvious benefits using such an algorithm, for one, it will be very fast as pattern matching is
+aggregated. However, the biggest downside is that both time-series signals have to be of same time-length.
+
 .. figure:: images/sax1.png
   :width: 400px
   :align: center
@@ -985,7 +988,11 @@ and each slice is compared between the two signals independently.
   :align: center
 
 Each signal value, i.e., y-axis is then sliced horizontally into regions, and assigned an alphabet.
-If the PAA fall in a region, we assume they are the same, i.e., distance = 0. 
+
+Lastly, we use a distance scoring metric, through a fixed lookup table to easily calculate the total 
+scores between each pair of PAA.
+
+E.g., if the PAA fall in a region or its immediate adjacent one, we assume they are the same, i.e., distance = 0. 
 Else, a distance value is assigned. The total distance is then computed to derice a distance metric.
 
 For this instance:
@@ -993,7 +1000,61 @@ For this instance:
  * SAX transform of ts2 into string through 9-points PAA: “abbccddba”
  * SAX distance: 0 + 0 + 0.67 + 0 + 0 + 0 + 0.67 + 0 + 0 = 1.34
 
+This is the code from the package saxpy. Unfortunately, it does not have the option of 
+calculating of the sax distance.
 
+.. code:: python
 
+  import numpy as np
+  from saxpy.znorm import znorm
+  from saxpy.paa import paa
+  from saxpy.sax import ts_to_string
+  from saxpy.alphabet import cuts_for_asize
+
+  def sax_gen(signal, paa_segments=3, alphabet_size=3):
+    sig_znorm = znorm(signal)
+    sig_paa = paa(sig_znorm, paa_segments)
+    sax = ts_to_string(signal, cuts_for_asize(alphabet_size))
+    return sax
+
+  sig1a = sax_gen(sig1)
+  sig2a = sax_gen(sig2)
+
+Another more mature package is tslearn. It enables the calculation of sax distance, 
+but the sax alphabets are set as integers instead.
+
+.. code:: python
+
+  from tslearn.piecewise import SymbolicAggregateApproximation
+  from tslearn.preprocessing import TimeSeriesScalerMeanVariance
+
+  # z-transformation
+  scaler = TimeSeriesScalerMeanVariance()
+  sig1_n = np.ndarray.flatten(scaler.transform(sig1))
+  sig2_n = np.ndarray.flatten(scaler.transform(sig2))
+
+  # PAA & SAX transformation
+  sax = SymbolicAggregateApproximation(n_segments=4, alphabet_size_avg=4)
+  sax_data = sax.fit_transform([sig1_n,sig2_n])
+
+  # distance measure
+  distance = sax.distance_sax(sax_data[0],sax_data[1])
+
+  print(sax_data)
+  print(distance)
+
+  # [[[0]
+  #   [3]
+  #   [3]
+  #   [1]]
+
+  #  [[0]
+  #   [1]
+  #   [2]
+  #   [3]]]
+
+  # 1.8471662549420924
+
+ * The paper: https://cs.gmu.edu/~jessica/SAX_DAMI_preprint.pdf
  * https://github.com/seninp/saxpy
  * https://medium.com/@peijin/using-sax-paa-to-understand-the-s-p500s-yearly-patterns-337750622e49
