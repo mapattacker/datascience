@@ -984,10 +984,14 @@ and each slice is compared between the two signals independently.
   :width: 400px
   :align: center
 
-Each signal value, i.e., y-axis is then sliced into regions, and assigned an alphabet.
+Each signal value, i.e., y-axis is then sliced horizontally into regions, and assigned an alphabet.
 If the PAA fall in a region, we assume they are the same, i.e., distance = 0. 
 Else, a distance value is assigned. The total distance is then computed to derice a distance metric.
 
+For this instance:
+ * SAX transform of ts1 into string through 9-points PAA: “abddccbaa”
+ * SAX transform of ts2 into string through 9-points PAA: “abbccddba”
+ * SAX distance: 0 + 0 + 0.67 + 0 + 0 + 0 + 0.67 + 0 + 0 = 1.34
 
 
 
