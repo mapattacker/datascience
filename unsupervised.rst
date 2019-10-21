@@ -964,19 +964,19 @@ Symbolic Aggregate approXimation
 
 
 .. figure:: images/sax1.png
-  :width: 300px
+  :width: 400px
   :align: center
 
 .. figure:: images/sax2.png
-  :width: 300px
+  :width: 400px
   :align: center
 
 .. figure:: images/sax3.png
-  :width: 300px
+  :width: 400px
   :align: center
 
 .. figure:: images/sax4.png
-  :width: 300px
+  :width: 400px
   :align: center
 
 

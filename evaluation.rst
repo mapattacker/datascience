@@ -742,6 +742,8 @@ Here's another example using Random Forest
 
     optimizer = BayesianOptimization(black_box, pbounds, random_state=2100)
     optimizer.maximize(init_points=10, n_iter=5)
+    best_param = optimizer.max['params']
+
 
 
 
@@ -819,7 +821,7 @@ since the optimization of hyperparameters is tuned towards a higher evaluation s
     from btb import HyperParameter, ParamTypes
     from sklearn.metrics import mean_squared_error
 
-    def auto_tuning(tunables, epoch, X_train, X_test, y_train, y_test, verbose=0):
+    def auto_tuning(tunables, epoch, X_train, X_test, y_train, y_test, verbose=1):
         """Auto-tuner using BTB library"""
         tuner = GP(tunables)
         parameters = tuner.propose()
@@ -828,7 +830,6 @@ since the optimization of hyperparameters is tuned towards a higher evaluation s
         param_list = []
 
         for i in range(epoch):
-            # ** unpacks dict in a argument
             model = RandomForestRegressor(**parameters, n_jobs=10, verbose=3)
             model.fit(X_train, y_train)
             y_predict = model.predict(X_test)
@@ -841,8 +842,6 @@ since the optimization of hyperparameters is tuned towards a higher evaluation s
             if verbose==0:
                 pass
             elif verbose==1:
-                print('epoch: {}, rmse: {}'.format(i+1,score))
-            elif verbose==2:
                 print('epoch: {}, rmse: {}, param: {}'.format(i+1,score,parameters))
 
             # BTB tunes parameters based the logic on higher score = good
