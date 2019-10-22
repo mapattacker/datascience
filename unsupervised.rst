@@ -957,7 +957,7 @@ Stan Salvador & Philip ChanFast. DTW: Toward Accurate Dynamic Time Warping in Li
 
 Symbolic Aggregate approXimation
 **********************************
-SAX compares the similarity of two time-series patterns by slicing them into horizontal & vertical regions,
+SAX, developed in 2007, compares the similarity of two time-series patterns by slicing them into horizontal & vertical regions,
 and comparing between each of them. This can be easily explained by 4 charts provided by
 https://jmotif.github.io/sax-vsm_site/morea/algorithm/SAX.html.
 
@@ -1014,7 +1014,7 @@ calculating of the sax distance.
   def sax_gen(signal, paa_segments=3, alphabet_size=3):
     sig_znorm = znorm(signal)
     sig_paa = paa(sig_znorm, paa_segments)
-    sax = ts_to_string(signal, cuts_for_asize(alphabet_size))
+    sax = ts_to_string(sig_paa, cuts_for_asize(alphabet_size))
     return sax
 
   sig1a = sax_gen(sig1)
@@ -1058,3 +1058,8 @@ but the sax alphabets are set as integers instead.
  * The paper: https://cs.gmu.edu/~jessica/SAX_DAMI_preprint.pdf
  * https://github.com/seninp/saxpy
  * https://medium.com/@peijin/using-sax-paa-to-understand-the-s-p500s-yearly-patterns-337750622e49
+
+
+Matrix Profile TS
+--------------------
+https://github.com/target/matrixprofile-ts
