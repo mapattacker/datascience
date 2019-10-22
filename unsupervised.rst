@@ -1028,20 +1028,21 @@ but the sax alphabets are set as integers instead.
   from tslearn.piecewise import SymbolicAggregateApproximation
   from tslearn.preprocessing import TimeSeriesScalerMeanVariance
 
-  # z-transformation
-  scaler = TimeSeriesScalerMeanVariance()
-  sig1_n = np.ndarray.flatten(scaler.transform(sig1))
-  sig2_n = np.ndarray.flatten(scaler.transform(sig2))
+  def tslearn_sax(sig1, sig2, n_segments, alphabet_size):
 
-  # PAA & SAX transformation
-  sax = SymbolicAggregateApproximation(n_segments=4, alphabet_size_avg=4)
-  sax_data = sax.fit_transform([sig1_n,sig2_n])
+    # z-transformation
+    scaler = TimeSeriesScalerMeanVariance()
+    sig1_n = np.ndarray.flatten(scaler.transform(sig1))
+    sig2_n = np.ndarray.flatten(scaler.transform(sig2))
 
-  # distance measure
-  distance = sax.distance_sax(sax_data[0],sax_data[1])
+    # PAA & SAX transformation
+    sax = SymbolicAggregateApproximation(n_segments=n_segments, alphabet_size_avg=alphabet_size)
+    sax_data = sax.fit_transform([sig1_n,sig2_n])
 
-  print(sax_data)
-  print(distance)
+    # distance measure
+    distance = sax.distance_sax(sax_data[0],sax_data[1])
+    
+    return distance
 
   # [[[0]
   #   [3]
