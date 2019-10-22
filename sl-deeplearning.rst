@@ -634,7 +634,7 @@ This can be processed using keras's ``TimeseriesGenerator``.
 
     ### UNIVARIATE ---------------------
     time_steps = 6
-    sampling_rate = 1
+    stride = 1
     num_sample = 4
 
     X = [1,2,3,4,5,6,7,8,9,10]
@@ -642,7 +642,7 @@ This can be processed using keras's ``TimeseriesGenerator``.
 
     data = TimeseriesGenerator(X, y,
                                length=time_steps, 
-                               sampling_rate=sampling_rate,
+                               stride=stride,
                                batch_size=num_sample)
     data[0]
 

@@ -1011,14 +1011,14 @@ calculating of the sax distance.
   from saxpy.sax import ts_to_string
   from saxpy.alphabet import cuts_for_asize
 
-  def sax_gen(signal, paa_segments=3, alphabet_size=3):
+  def saxpy_sax(signal, paa_segments=3, alphabet_size=3):
     sig_znorm = znorm(signal)
     sig_paa = paa(sig_znorm, paa_segments)
     sax = ts_to_string(sig_paa, cuts_for_asize(alphabet_size))
     return sax
 
-  sig1a = sax_gen(sig1)
-  sig2a = sax_gen(sig2)
+  sig1a = saxpy_sax(sig1)
+  sig2a = saxpy_sax(sig2)
 
 Another more mature package is tslearn. It enables the calculation of sax distance, 
 but the sax alphabets are set as integers instead.
@@ -1041,8 +1041,8 @@ but the sax alphabets are set as integers instead.
 
     # distance measure
     distance = sax.distance_sax(sax_data[0],sax_data[1])
-    
-    return distance
+
+    return sax_data, distance
 
   # [[[0]
   #   [3]
@@ -1057,8 +1057,6 @@ but the sax alphabets are set as integers instead.
   # 1.8471662549420924
 
  * The paper: https://cs.gmu.edu/~jessica/SAX_DAMI_preprint.pdf
- * https://github.com/seninp/saxpy
- * https://medium.com/@peijin/using-sax-paa-to-understand-the-s-p500s-yearly-patterns-337750622e49
 
 
 Matrix Profile TS
