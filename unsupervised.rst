@@ -1060,5 +1060,5 @@ but the sax alphabets are set as integers instead.
 
 
 Matrix Profile TS
---------------------
+*******************
 https://github.com/target/matrixprofile-ts

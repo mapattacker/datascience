@@ -31,6 +31,7 @@ The main difference between stream-based and pool-based active learning is that 
 through the data sequentially and makes query decisions individually, 
 whereas the latter evaluates and ranks the entire collection before selecting the best query.
 
+
 Query Strategies
 ----------------
 
@@ -47,6 +48,7 @@ the performance has reached plateau. This means that the slope of the graph (y2-
 
 Of course, plateauing is determined on a good query strategy together with an appropriate model.
 
+https://modal-python.readthedocs.io/en/latest/index.html
 
 Resources
 ----------
