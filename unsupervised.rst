@@ -1026,16 +1026,10 @@ but the sax alphabets are set as integers instead.
 .. code:: python
 
   from tslearn.piecewise import SymbolicAggregateApproximation
-  from tslearn.preprocessing import TimeSeriesScalerMeanVariance
 
   def tslearn_sax(sig1, sig2, n_segments, alphabet_size):
 
-    # z-transformation
-    scaler = TimeSeriesScalerMeanVariance()
-    sig1_n = np.ndarray.flatten(scaler.transform(sig1))
-    sig2_n = np.ndarray.flatten(scaler.transform(sig2))
-
-    # PAA & SAX transformation
+    # Z-transform, PAA & SAX transformation
     sax = SymbolicAggregateApproximation(n_segments=n_segments, alphabet_size_avg=alphabet_size)
     sax_data = sax.fit_transform([sig1_n,sig2_n])
 

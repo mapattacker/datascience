@@ -660,12 +660,12 @@ This can be processed using keras's ``TimeseriesGenerator``.
     y = df['label'].values
 
     time_steps = 6
-    sampling_rate = 1
+    stride = 1
     num_sample = 4
 
     data = TimeseriesGenerator(X, y,
                                length=time_steps, 
-                               sampling_rate=sampling_rate,
+                               stride=stride,
                                batch_size=num_sample)
 
     X = data[0][0]
