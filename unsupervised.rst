@@ -638,7 +638,7 @@ We have to recompute the clustering using the ward function.
    
    Z = ward(X)
    plt.figure(figsize=(10,5));
-   dendrogram(Z, leaf_rotation=90, leaf_font_size=8))
+   dendrogram(Z, orientation='left', leaf_font_size=8))
    plt.show()
 
 
@@ -665,7 +665,7 @@ In essence, we can also use the 3-step method above to compute agglomerative clu
     
     # 2. draw dendrogram
     plt.figure(figsize=(10,5));
-    dendrogram(Z, leaf_rotation=90, leaf_font_size=8)
+    dendrogram(Z, orientation='left', leaf_font_size=8)
     plt.show()
 
     # 3. flatten cluster
@@ -690,7 +690,7 @@ More: https://pypi.org/project/fastcluster/
 
   # 2. draw dendrogram
   plt.figure(figsize=(10, 5))
-  dendrogram(Z, leaf_rotation=90, leaf_font_size=8)
+  dendrogram(Z, orientation='left', leaf_font_size=8)
   plt.show();
 
   # 3. flatten cluster
