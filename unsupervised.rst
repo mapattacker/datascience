@@ -637,8 +637,8 @@ We have to recompute the clustering using the ward function.
    from scipy.cluster.hierarchy import ward, dendrogram
    
    Z = ward(X)
-   plt.figure(figsize=(10,5))
-   dendrogram(Z)
+   plt.figure(figsize=(10,5));
+   dendrogram(Z, leaf_rotation=90, leaf_font_size=8))
    plt.show()
 
 
@@ -664,7 +664,8 @@ In essence, we can also use the 3-step method above to compute agglomerative clu
     Z = linkage(X, method='ward', metric='euclidean')
     
     # 2. draw dendrogram
-    dendrogram(Z)
+    plt.figure(figsize=(10,5));
+    dendrogram(Z, leaf_rotation=90, leaf_font_size=8)
     plt.show()
 
     # 3. flatten cluster
@@ -689,7 +690,7 @@ More: https://pypi.org/project/fastcluster/
 
   # 2. draw dendrogram
   plt.figure(figsize=(10, 5))
-  dendrogram(Z)
+  dendrogram(Z, leaf_rotation=90, leaf_font_size=8)
   plt.show();
 
   # 3. flatten cluster
@@ -951,6 +952,9 @@ Output: Identical = 0, Difference > 0
     print(distance)
 
     # 2.8284271247461903
+
+https://dtaidistance.readthedocs.io/en/latest/index.html is a dedicated package that gives more options to the traditional DTW,
+especially the visualisation aspects.
 
 Stan Salvador & Philip ChanFast. DTW: Toward Accurate Dynamic Time Warping in Linear Time and Space. Florida Institude of Technology. https://cs.fit.edu/~pkc/papers/tdm04.pdf
 
