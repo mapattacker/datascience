@@ -520,8 +520,10 @@ Each feature will have a defined centre for each cluster.
 If we have labels or y, and want to determine which y belongs to which cluster for an evaluation score,
 we can use a groupby to find the most number of labels that fall in a cluster and manually label them as such.
 
-df = concat.groupby(['label','cluster'])['cluster'].count()
-df
+.. code:: python
+
+  df = concat.groupby(['label','cluster'])['cluster'].count()
+  
 
 Gaussian Mixture Model
 ************************
@@ -709,7 +711,8 @@ Then we select the distance threshold to cut the dendrogram to obtain the select
 The output is the cluster labelled for each row of data. As expected from the dendrogram, a cut at
 2000 gives us 5 clusters.
 
-
+This link gives an excellent tutorial on prettifying the dendrogram.
+http://datanongrata.com/2019/04/27/67/
 
 DBSCAN
 *******
