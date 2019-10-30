@@ -523,7 +523,25 @@ we can use a groupby to find the most number of labels that fall in a cluster an
 .. code:: python
 
   df = concat.groupby(['label','cluster'])['cluster'].count()
-  
+
+If we want to know what is the distance of each datapoint's assign cluster distance to their centroid, we can do a ``fit_transform``
+to get all distance from all cluster centroids and process from there.
+
+.. code:: python
+
+  from sklearn.cluster import KMeans
+
+  kmeans = KMeans(n_clusters=n_clusters, random_state=0)
+
+  # get distance from each centroid for each datapoint
+  dist_each_centroid = kmeans.fit_transform(df)
+  # get all assigned centroids
+  y = kmeans.labels_
+  # get distance of assigned centroid
+  dist = [distance[label] for label, distance in zip(y, dist_each_centroid)]
+  # concat label & distance together
+  label_dist = pd.DataFrame(zip(y,dist), columns=['label','distance'])
+
 
 Gaussian Mixture Model
 ************************
