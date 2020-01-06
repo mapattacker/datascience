@@ -19,7 +19,7 @@ to isolate every project within an enclosed virtual environment. Anaconda provid
   # deactivate environment
   conda deactivate
   # delete environment
-  conda remove -n yourenvname -all
+  conda env remove -n yourenvname -all
 
   # see all environments
   conda info -e
