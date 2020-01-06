@@ -22,7 +22,7 @@ to isolate every project within an enclosed virtual environment. Anaconda provid
   conda env remove -n yourenvname -all
 
   # see all environments
-  conda info -e
+  conda env list
 
 An asterisk (*) will be placed at the current active environment.
 
@@ -31,6 +31,23 @@ An asterisk (*) will be placed at the current active environment.
     :align: center
 
     Current active environment
+
+Alternatively, we can create an environment file and execute using `conda env create -f environment.yml`.
+This will create an environment with the name and packages specified within the folder. 
+Channels specify where the packages are installed from.
+
+.. code:: Python
+
+  name: chillerdoc
+  channels:
+    - conda-forge
+    - defaults
+  dependencies:
+    - python=3.7
+    - bokeh=0.9.2
+    - numpy=1.9.*
+    - pip:
+      - baytune==0.3.1
 
 
 Modeling
