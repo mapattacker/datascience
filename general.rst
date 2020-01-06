@@ -32,13 +32,14 @@ An asterisk (*) will be placed at the current active environment.
 
     Current active environment
 
-Alternatively, we can create an environment file and execute using `conda env create -f environment.yml`.
+
+Alternatively, we can create a fixed environment file and execute using `conda env create -f environment.yml`.
 This will create an environment with the name and packages specified within the folder. 
 Channels specify where the packages are installed from.
 
 .. code:: Python
 
-  name: chillerdoc
+  name: environment_name
   channels:
     - conda-forge
     - defaults
