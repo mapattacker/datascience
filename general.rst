@@ -23,6 +23,8 @@ to isolate every project within an enclosed virtual environment. Anaconda provid
 
   # see all environments
   conda env list
+  # or 
+  conda env list
 
 An asterisk (*) will be placed at the current active environment.
 
