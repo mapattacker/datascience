@@ -94,7 +94,7 @@ Below is a simple method to detect & remove outliers that is defined by being ou
 
   def boxplot_outlier_removal(df, exclude=['']):
       '''
-      remove outliers detected by boxplot (+/- IQR*1.5)
+      remove outliers detected by boxplot (Q1/Q3 -/+ IQR*1.5)
       
       Parameters
       ----------
