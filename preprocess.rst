@@ -88,7 +88,7 @@ Outliers
 Especially sensitive in linear models. They can be (1) removed manually by
 defining the lower and upper bound limit, or (2) grouping the features into ranks.
 
-Below is a method to remove outliers that is defined by being outside a boxplot's whiskers.
+Below is a simple method to detect & remove outliers that is defined by being outside a boxplot's whiskers.
 
 .. code:: python
 
