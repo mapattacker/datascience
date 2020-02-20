@@ -112,12 +112,12 @@ Below is a method to remove outliers that is defined by being outside a boxplot'
       
       # iterate each column
       for col in df.columns[:-1]:
-          if col in exclude:
+          if col not in exclude:
               # get Q1, Q3 & Interquantile Range
               Q1 = df[col].quantile(0.25)
               Q3 = df[col].quantile(0.75)
               IQR = Q3 - Q1
-              # get outliers
+              # define outliers and remove them
               filter_ = (df[col] > Q1 - 1.5 * IQR) & (df[col] < Q3 + 1.5 *IQR)
               df = df[filter_]
       
