@@ -88,6 +88,43 @@ Outliers
 Especially sensitive in linear models. They can be (1) removed manually by
 defining the lower and upper bound limit, or (2) grouping the features into ranks.
 
+Below is a method to remove outliers that is defined by being outside a boxplot's whiskers.
+
+.. code:: python
+
+  def boxplot_outlier_removal(df, exclude=''):
+      '''
+      remove outliers detected by boxplot (+/- IQR*1.5)
+      
+      Parameters
+      ----------
+      df : dataframe
+          dataset to remove outliers from
+      exclude : list of str
+          column names to exclude from outlier removal
+          
+      Returns
+      -------
+      df : dataframe
+          dataset with outliers removed
+      '''
+      before = len(df)
+      
+      # iterate each column
+      for col in df.columns[:-1]:
+          if col in exclude:
+              # get Q1, Q3 & Interquantile Range
+              Q1 = df[col].quantile(0.25)
+              Q3 = df[col].quantile(0.75)
+              IQR = Q3 - Q1
+              # get outliers
+              filter_ = (df[col] > Q1 - 1.5 * IQR) & (df[col] < Q3 + 1.5 *IQR)
+              df = df[filter_]
+      
+      after = len(df)
+      print(before-after, 'outliers removed')
+      return df
+
 
 Encoding
 ------------
