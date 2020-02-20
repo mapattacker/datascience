@@ -92,7 +92,7 @@ Below is a method to remove outliers that is defined by being outside a boxplot'
 
 .. code:: python
 
-  def boxplot_outlier_removal(df, exclude=''):
+  def boxplot_outlier_removal(df, exclude=['']):
       '''
       remove outliers detected by boxplot (+/- IQR*1.5)
       
