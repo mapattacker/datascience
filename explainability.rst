@@ -21,15 +21,16 @@ Decision trees and other tree ensemble models, by default, allow us to obtain th
     %config InlineBackend.figure_format = 'retina'
     %matplotlib inline
 
-    def feature_impt(model, figsize=(10,2)):
+    def feature_impt(model, columns, figsize=(10,2)):
         '''
         desc: plot feature importance barchart for tree models
         args: model=tree model
+              columns=list of column names
               figsize=chart dimensions
-        return: dataframe of feature name & their importance
+        returns: dataframe of feature name & their importance
         '''
         # sort feature importance in df
-        f_impt= pd.DataFrame(model.feature_importances_, index=train_process.columns[:-1])
+        f_impt= pd.DataFrame(model.feature_importances_, index=columns)
         f_impt = f_impt.sort_values(by=0,ascending=False)
         f_impt.columns = ['feature importance']
 
