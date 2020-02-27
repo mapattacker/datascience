@@ -99,7 +99,7 @@ To view each dataset's description, use ``print boston['DESCR']``.
 Vega-Datasets
 -------------
 
-Not in-built but can be install via ``pip install vega_datasets``. 
+Not in-built but can be install via ``pip install vega_datasets``. More at https://github.com/jakevdp/vega_datasets.
 
 .. code:: python
 
