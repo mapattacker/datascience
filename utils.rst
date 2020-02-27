@@ -169,7 +169,7 @@ However, it can be further enhanced using jupyter extensions.
 ``pip install jupyter_contrib_nbextensions && jupyter contrib nbextension install``
 
 Some of my favourite extensions are:
- * Table of Contents*: Sidebar showing TOC based on 
+ * *Table of Contents*: Sidebar showing TOC based on 
  * *ExecuteTime*: Time to execute script for each cell
  * *Variable Inspector*: Overview of all variables saved in memory. Allow deletion of variables to save memory.
 
