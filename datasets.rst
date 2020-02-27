@@ -7,6 +7,8 @@ There are in-built datasets provided in both statsmodels and sklearn packages.
 In statsmodels, many R datasets can be obtained from the function ``sm.datasets.get_rdataset()``. 
 To view each dataset's description, use ``print(duncan_prestige.__doc__)``.
 
+https://www.statsmodels.org/devel/datasets/index.html
+
 .. code:: python
 
   import statsmodels.api as sm

@@ -1076,8 +1076,3 @@ but the sax alphabets are set as integers instead.
   # 1.8471662549420924
 
 The paper: https://cs.gmu.edu/~jessica/SAX_DAMI_preprint.pdf
-
-
-Matrix Profile TS
-*******************
-https://github.com/target/matrixprofile-ts
