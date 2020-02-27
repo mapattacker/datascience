@@ -9,6 +9,11 @@ Feature Importance
 Decision trees and other tree ensemble models, by default, allow us to obtain the importance of features.
 These are known as impurity-based feature importances.
 
+While powerful, we need to understand its limitations, as described by sklearn.
+ * they are biased towards high cardinality (numerical) features
+ * they are computed on training set statistics and therefore do not reflect the ability of feature to be useful to make predictions that generalize to the test set (when the model has enough capacity).
+
+
 .. code:: python
 
     import pandas as pd
@@ -50,31 +55,14 @@ These are known as impurity-based feature importances.
     :scale: 80 %
     :align: center
 
-Sklearn describes some limitations of using this.
- * are biased towards high cardinality (numerical) features
- * are computed on training set statistics and therefore do not reflect the ability of feature to be useful to make predictions that generalize to the test set (when the model has enough capacity).
-
-An alternative, is to use permutation importance.
 
 
 Permutation Importance
 -----------------------
 
-Feature importance is a useful metric to **find the strength of each feature that contribute to a model**. 
-However it has limitations as described earlier.
-
-.. code:: python
-
-    from sklearn.inspection import permutation_importance
-
-    result = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=42, n_jobs=2)
-    sorted_idx = result.importances_mean.argsort()
-
-
-This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
-called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
-
-.. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
+To overcome the limitations of feature importance, a variant known as permutation importance is available.
+It also has the benefits of being about to use for any model. 
+This Kaggle_ article provides a good clear explanation
 
 How it works is the shuffling of individual features and see how it affects model accuarcy.
 If a feature is important, the model accuarcy will be reduced more. 
@@ -86,6 +74,19 @@ If not important, the accuarcy should be affected a lot less.
     
     From Kaggle
 
+.. _Kaggle: https://www.kaggle.com/dansbecker/permutation-importance
+
+
+.. code:: python
+
+    from sklearn.inspection import permutation_importance
+
+    result = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=42, n_jobs=2)
+    sorted_idx = result.importances_mean.argsort()
+
+
+A third party also provides the same API ``pip install eli5``.
+
 
 .. code:: python
     
@@ -94,6 +95,7 @@ If not important, the accuarcy should be affected a lot less.
 
     perm = PermutationImportance(my_model, random_state=1).fit(test_X, test_y)
     eli5.show_weights(perm, feature_names = test_X.columns.tolist())
+
 
 The output is as below. +/- refers to the randomness that shuffling resulted in.
 The higher the weight, the more important the feature is. 
