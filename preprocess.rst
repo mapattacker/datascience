@@ -38,6 +38,9 @@ To investigate how many nulls in each column:
     :width: 600px
     :align: center
 
+Threshold
+*********
+
 It makes no sense to fill in the null values if there are too many of them.
 We can set a threshold to delete the entire column if there are too many nulls.
 
@@ -55,6 +58,9 @@ We can set a threshold to delete the entire column if there are too many nulls.
     return df
 
 
+Impute
+******
+
 We can change missing values for the entire dataframe into their individual column means or medians.
 
 .. code:: python
@@ -68,6 +74,8 @@ We can change missing values for the entire dataframe into their individual colu
   # output is in numpy, so convert to df
   df2 = pd.DataFrame(imp_mean.transform(df),columns=df.columns)
 
+Interpolation
+*************
 
 We can also use interpolation via pandas default function to fill in the missing values.
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.interpolate.html
