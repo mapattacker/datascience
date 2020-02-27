@@ -7,6 +7,7 @@ While sklearn's supervised models are black boxes, we can derive certain plots a
 Feature Importance
 -------------------
 Decision trees and other tree ensemble models, by default, allow us to obtain the importance of features.
+These are known as impurity-based feature importances.
 
 .. code:: python
 
@@ -48,13 +49,28 @@ Decision trees and other tree ensemble models, by default, allow us to obtain th
 .. figure:: images/feature_importance.PNG
     :scale: 80 %
     :align: center
-    
+
+Sklearn describes some limitations of using this.
+ * are biased towards high cardinality (numerical) features
+ * are computed on training set statistics and therefore do not reflect the ability of feature to be useful to make predictions that generalize to the test set (when the model has enough capacity).
+
+An alternative, is to use permutation importance.
+
 
 Permutation Importance
 -----------------------
 
-Feature importance is a useful metric to **find the strength of each feature that contribute to a model**.
-However, this is only available by default in sklean tree models. 
+Feature importance is a useful metric to **find the strength of each feature that contribute to a model**. 
+However it has limitations as described earlier.
+
+.. code:: python
+
+    from sklearn.inspection import permutation_importance
+
+    result = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=42, n_jobs=2)
+    sorted_idx = result.importances_mean.argsort()
+
+
 This Kaggle_ article provides a good clear explanation of an alternative feature importance, 
 called permutation importance, which can be used for any model. This is a third party library that needs to be installed via ``pip install eli5``.
 
