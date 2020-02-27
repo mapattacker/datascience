@@ -2,7 +2,8 @@ In-Built Datasets
 =================
 There are in-built datasets provided in both statsmodels and sklearn packages.
 
-**Statsmodels**
+Statsmodels
+-----------
 
 In statsmodels, many R datasets can be obtained from the function ``sm.datasets.get_rdataset()``. 
 To view each dataset's description, use ``print(duncan_prestige.__doc__)``.
@@ -25,7 +26,8 @@ https://www.statsmodels.org/devel/datasets/index.html
   chemist     prof      64         86        90
 
 |
-**Sklearn**
+Sklearn
+-------
 
 There are five common toy datasets here. For others, view http://scikit-learn.org/stable/datasets/index.html. 
 To view each dataset's description, use ``print boston['DESCR']``.
@@ -94,5 +96,38 @@ To view each dataset's description, use ``print boston['DESCR']``.
 
    
    
+Vega-Datasets
+-------------
 
-  
+Not in-built but can be install via ``pip install vega_datasets``. 
+
+.. code:: python
+
+  from vega_datasets import data
+  df = data.iris()
+  df.head()
+
+    petalLength  petalWidth  sepalLength  sepalWidth species
+  0          1.4         0.2          5.1         3.5  setosa
+  1          1.4         0.2          4.9         3.0  setosa
+  2          1.3         0.2          4.7         3.2  setosa
+  3          1.5         0.2          4.6         3.1  setosa
+  4          1.4         0.2          5.0         3.6  setosa 
+
+To list all datasets, use ``list_datasets()``
+
+.. code:: python
+
+  >>> data.list_datasets()
+  ['7zip', 'airports', 'anscombe', 'barley', 'birdstrikes', 'budget', \
+   'budgets', 'burtin', 'cars', 'climate', 'co2-concentration', 'countries', \
+   'crimea', 'disasters', 'driving', 'earthquakes', 'ffox', 'flare', \
+   'flare-dependencies', 'flights-10k', 'flights-200k', 'flights-20k', \
+   'flights-2k', 'flights-3m', 'flights-5k', 'flights-airport', 'gapminder', \
+   'gapminder-health-income', 'gimp', 'github', 'graticule', 'income', 'iris', \
+   'jobs', 'londonBoroughs', 'londonCentroids', 'londonTubeLines', 'lookup_groups', \
+   'lookup_people', 'miserables', 'monarchs', 'movies', 'normal-2d', 'obesity', \
+   'points', 'population', 'population_engineers_hurricanes', 'seattle-temps', \
+   'seattle-weather', 'sf-temps', 'sp500', 'stocks', 'udistrict', 'unemployment', \
+   'unemployment-across-industries', 'us-10m', 'us-employment', 'us-state-capitals', \
+   'weather', 'weball26', 'wheat', 'world-110m', 'zipcodes']
