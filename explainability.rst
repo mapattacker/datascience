@@ -83,6 +83,10 @@ If not important, the accuarcy should be affected a lot less.
 
     result = permutation_importance(rf, X_test, y_test, n_repeats=10, random_state=42, n_jobs=2)
     sorted_idx = result.importances_mean.argsort()
+    
+    plt.figure(figsize=(12,10))
+    plt.boxplot(result.importances[sorted_idx].T,
+                vert=False, labels=X.columns[sorted_idx]);
 
 
 A third party also provides the same API ``pip install eli5``.
