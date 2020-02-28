@@ -347,6 +347,24 @@ Clustering
 ----------
 Find groups in data & assign every point in the dataset to one of the groups.
 
+The below set of codes allows assignment of each cluster to their
+original cluster attributes, or further comparison of the accuracy of prediction.
+
+.. code:: python
+
+  # concat actual & predicted clusters together
+  cluster = pd.DataFrame(kmeans.labels_, columns=['cluster'])
+  df = pd.concat([y,cluster], axis=1)
+
+  # view absolute numbers
+  res = df.groupby('severity')['cluster'].value_counts()
+  print(res)
+
+  # view percentages
+  res2 = df.groupby('severity')['cluster'].value_counts(normalize=True)*100
+  print(res2)
+
+
 K-Means
 **************************
 Need to specify K number of clusters. It is also important to scale the features before applying K-means,
