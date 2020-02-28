@@ -359,8 +359,9 @@ So typically, the k-means algorithm is run in scikit-learn with ten different ra
 and the solution occurring the most number of times is chosen. 
 
 **Downsides**
- * Very sensitive to outliers. Have to remove before running the model
+ * Very sensitive to outliers. They have to be removed before running the model
  * Might need to reduce dimensions if very high no. of features or the distance separation might not be obvious
+ * Two variants, K-medians & K-Medoids are less sensitive to outliers (see https://github.com/annoviko/pyclustering)
 
 .. figure:: images/kmeans4.png
     :width: 600px
