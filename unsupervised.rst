@@ -85,6 +85,34 @@ To see how much variance is preserved for each dataset.
    # [0.9246348, 0.05238923] 1st component explained variance of 92%, 2nd explained 5%
    # 0.986 total variance explained from 2 components is 97%
 
+Alteratively, we can write a function to determine how much components we should reduce it by.
+
+.. code:: python
+
+  def pca_explained(X, threshold):
+      '''
+      prints optimal principal components based on threshold of PCA's explained variance
+      
+      Parameters
+      ----------
+      X : dataframe or array
+          of features
+      threshold : float < 1
+          percentage of explained variance as cut off point
+      '''
+      
+      # find total no. of features
+      features = X.shape[1]
+      # iterate till total no. of features, 
+      # and find total explained variance for each principal component
+      for i in range(2, features):
+          pca = PCA(n_components = i).fit(X)
+          sum_ = pca.explained_variance_ratio_
+          percent = sum(sum_)
+          print('{} components at {}% explained variance'.format(i, percent))
+          if percent > threshold:
+              break
+
 Plotting the PCA-transformed version of the breast cancer dataset. 
 We can see that malignant and benign cells cluster between two groups and can apply a linear classifier
 to this two dimensional representation of the dataset.
