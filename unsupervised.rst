@@ -109,8 +109,8 @@ Alteratively, we can write a function to determine how much components we should
           pca = PCA(n_components = i).fit(X)
           sum_ = pca.explained_variance_ratio_
           # add all components explained variances
-          percent = sum(sum_)*100
-          print('{} components at {:.2f}% explained variance'.format(i, percent))
+          percent = sum(sum_)
+          print('{} components at {:.2f}% explained variance'.format(i, percent*100))
           if percent > threshold:
               break
 
