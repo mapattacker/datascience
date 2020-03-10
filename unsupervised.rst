@@ -114,6 +114,11 @@ Alteratively, we can write a function to determine how much components we should
           if percent > threshold:
               break
 
+  pca_explained(X, 0.85)
+  # 2 components at 61.64% explained variance
+  # 3 components at 77.41% explained variance
+  # 4 components at 86.63% explained variance
+
 Plotting the PCA-transformed version of the breast cancer dataset. 
 We can see that malignant and benign cells cluster between two groups and can apply a linear classifier
 to this two dimensional representation of the dataset.
@@ -378,19 +383,21 @@ Find groups in data & assign every point in the dataset to one of the groups.
 
 The below set of codes allows assignment of each cluster to their
 original cluster attributes, or further comparison of the accuracy of prediction.
+The more a cluster is assigned to a verified label, the higher chance it is that label.
 
 .. code:: python
 
   # concat actual & predicted clusters together
+  y = pd.DataFrame(y.values, columns=['actual'])
   cluster = pd.DataFrame(kmeans.labels_, columns=['cluster'])
   df = pd.concat([y,cluster], axis=1)
 
   # view absolute numbers
-  res = df.groupby('severity')['cluster'].value_counts()
+  res = df.groupby('actual')['cluster'].value_counts()
   print(res)
 
   # view percentages
-  res2 = df.groupby('severity')['cluster'].value_counts(normalize=True)*100
+  res2 = df.groupby('actual')['cluster'].value_counts(normalize=True)*100
   print(res2)
 
 

@@ -19,13 +19,14 @@ Saving dataframes.
     df.to_pickle('df.pkl')
     df = pd.read_pickle('df.pkl')
 
-Saving models or scalers. More: https://scikit-learn.org/stable/modules/model_persistence.html
+Saving and opening models or scalers. More: https://scikit-learn.org/stable/modules/model_persistence.html
 
 .. code:: python
 
     import pickle
-
     pickle.dump(model, open('model_rf.pkl', 'wb'))
+    pickle.load(open('model_rf.pkl', 'rb'))
+
 
 From sklearn's documentation, it is said that in the specific case of scikit-learn, 
 it may be better to use joblib’s replacement of pickle (dump & load), 
