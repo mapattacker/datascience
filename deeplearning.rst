@@ -690,7 +690,7 @@ More from https://medium.com/datadriveninvestor/keras-imagedatagenerator-methods
 Transfer Learning
 ******************
 For CNN, because of the huge research done, and the complexity in architecture, 
-we can use existing ones. The latest one is EfficientNet by Google which can
+we can use existing ones. The latest one is **EfficientNet** by Google which can
 achieve higher accuracy with fewer parameters. 
 
 For transfer learning for image recognition, the defacto is imagenet, 
