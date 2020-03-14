@@ -598,7 +598,125 @@ Keras Model
 Image Augmentation
 *******************
 
+It is hard to obtain photogenic samples of every aspect. Image augmentation enables the auto-generation
+of new samples from existing ones through random adjustment from rotation, shifts, zoom, brightness etc.
 
+
+.. code:: python
+
+    from keras_preprocessing.image import ImageDataGenerator
+
+    train_aug = ImageDataGenerator(rotation_range=360, # Degree range for random rotations
+                                    width_shift_range=0.2, # Range for random horizontal shifts
+                                    height_shift_range=0.2, # Range for random vertical shifts
+                                    zoom_range=0.2, # Range for random zoom
+                                    horizontal_flip=True, # Randomly flip inputs horizontally
+                                    vertical_flip=True, # Randomly flip inputs vertically
+                                    brightness_range=[0.5, 1.5]) 
+
+    # we should not augment validation and testing samples
+    val_aug = ImageDataGenerator()
+    test_aug = ImageDataGenerator()
+
+
+
+After setting the augmentation settings, we will need to decide how to "flow" the data, original samples
+into the model. In this function, we can also resize the images automatically if necessary.
+Finally to fit the model, we use the ``model.fit_generator`` function so that for every epoch,
+the full original samples will be augmented randomly. They will not be stored in memory for obvious reasons.
+
+Essentially, there are 3 ways to do this.
+First, we can flow the images from memory ``flow``, which means we have to load the data in memory first.
+
+.. code:: python
+
+    batch_size = 32
+    img_size = 100
+
+    train_flow = train_aug.flow(X_train, Y_train, 
+                                target_size=(img_size,img_size),
+                                batch_size=batch_size)
+
+    val_flow = val_aug.flow(X_val, Y_val, 
+                            target_size=(img_size,img_size),
+                            batch_size=batch_size)
+
+    model.fit_generator(train_flow,
+                        steps_per_epoch=32,
+                        epochs=15,
+                        verbose=1,
+                        validation_data=val_flow,
+                        use_multiprocessing=True,
+                        workers=2)
+
+
+
+Second, we can flow the images from a directory ``flow_from_dataframe``, 
+where all classes of images are in that single directory. 
+This requires a dataframe which indicates which image correspond to which class.
+
+.. code:: python
+
+    dir = r'/kaggle/input/plant-pathology-2020-fgvc7/images'
+    train_generator = train_aug.flow_from_dataframe(train_df,
+                                                    directory=dir,
+                                                    x_col='image_id',
+                                                    y_col=['healthy','multiple_diseases','rust','scab'],
+                                                    class_mode='raw',
+                                                    shuffle=False,
+                                                    subset='training',
+                                                    batch_size=batch_size)
+
+
+Third, we can flow the images from a main directory ``flow_from_directory``, 
+where all each class of images are in individual subdirectories.
+
+.. code:: python
+
+    # to include all subdirectories' images, no need specific classes
+    train_flow = train_aug.flow_from_directory(directory=dir,
+                                                class_mode='categorical',
+                                                target_size=(img_size,img_size),
+                                                batch_size=32)
+
+    # to include specific subdirectories' images, put list of subdirectory names under classes
+    train_flow = train_aug.flow_from_directory(directory=dir,
+                                                classes=['subdir1', 'subdir2', 'subdir3'],
+                                                class_mode='categorical',
+                                                target_size=(img_size,img_size),
+                                                batch_size=32)
+
+
+
+
+Transfer Learning
+******************
+For CNN, because of the huge research done, and the complexity in architecture, 
+we can use existing ones. The latest one is EfficientNet by Google which can
+achieve higher accuracy with fewer parameters. 
+
+For transfer learning for image recognition, the defacto is imagenet, 
+whereby we can specify it under the weights argument.
+
+.. code:: python
+
+    import efficientnet.tfkeras as efn
+
+    def model(input_shape, classes):
+        '''
+        transfer learning from imagenet's weights, using Google's efficientnet7 architecture
+        top layer (include_top) is removed as the number of classes is changed
+        '''
+        base = efn.EfficientNetB7(input_shape=input_shape, weights='imagenet', include_top=False)
+
+        model = Sequential()
+        model.add(base)
+        model.add(GlobalAveragePooling2D())
+        model.add(Dense(classes, activation='softmax'))
+        model.compile(loss='categorical_crossentropy',
+                    optimizer='adam',
+                    metrics=['accuracy'])
+        return model
 
 
 RNN
