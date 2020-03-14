@@ -15,7 +15,7 @@ A lot of the content are compiled from various resources, so please cite them ap
    :numbered:
 
    general
-   datasets
+   learning
    exploratory
    preprocess
    normalisation
@@ -24,7 +24,7 @@ A lot of the content are compiled from various resources, so please cite them ap
    dataleakage
    supervised
    unsupervised
-   sl-deeplearning
+   deeplearning
    reinforcement
    evaluation
    explainability
