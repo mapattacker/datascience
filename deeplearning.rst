@@ -658,11 +658,12 @@ This requires a dataframe which indicates which image correspond to which class.
 .. code:: python
 
     dir = r'/kaggle/input/plant-pathology-2020-fgvc7/images'
-    train_generator = train_aug.flow_from_dataframe(train_df,
-                                                    directory=dir,
-                                                    x_col='image_id',
-                                                    y_col=['healthy','multiple_diseases','rust','scab'],
-                                                    batch_size=batch_size)
+    train_flow = train_aug.flow_from_dataframe(train_df,
+                                                directory=dir,
+                                                x_col='image_name',
+                                                y_col=['class1','class2','class3','class4'],
+                                                class_mode='categorical'
+                                                batch_size=batch_size)
 
 
 Third, we can flow the images from a main directory ``flow_from_directory``, 
@@ -684,7 +685,7 @@ where all each class of images are in individual subdirectories.
                                                 batch_size=32)
 
 
-
+More from https://medium.com/datadriveninvestor/keras-imagedatagenerator-methods-an-easy-guide-550ecd3c0a92.
 
 Transfer Learning
 ******************
