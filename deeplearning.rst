@@ -587,28 +587,6 @@ Keras Model
                         verbose=1,
                         validation_data=(test_images, test_labels))
 
-    # Train on 60000 samples, validate on 10000 samples
-    # Epoch 1/10
-    #  - 1026s - loss: 0.1926 - acc: 0.9418 - val_loss: 0.0499 - val_acc: 0.9834
-    # Epoch 2/10
-    #  - 995s - loss: 0.0817 - acc: 0.9759 - val_loss: 0.0397 - val_acc: 0.9874
-    # Epoch 3/10
-    #  - 996s - loss: 0.0633 - acc: 0.9811 - val_loss: 0.0339 - val_acc: 0.9895
-    # Epoch 4/10
-    #  - 991s - loss: 0.0518 - acc: 0.9836 - val_loss: 0.0302 - val_acc: 0.9909
-    # Epoch 5/10
-    #  - 996s - loss: 0.0442 - acc: 0.9861 - val_loss: 0.0322 - val_acc: 0.9905
-    # Epoch 6/10
-    #  - 994s - loss: 0.0395 - acc: 0.9878 - val_loss: 0.0303 - val_acc: 0.9898
-    # Epoch 7/10
-    #  - 1001s - loss: 0.0329 - acc: 0.9890 - val_loss: 0.0328 - val_acc: 0.9907
-    # Epoch 8/10
-    #  - 993s - loss: 0.0298 - acc: 0.9907 - val_loss: 0.0336 - val_acc: 0.9916
-    # Epoch 9/10
-    #  - 998s - loss: 0.0296 - acc: 0.9911 - val_loss: 0.0281 - val_acc: 0.9915
-    # Epoch 10/10
-    #  - 996s - loss: 0.0252 - acc: 0.9917 - val_loss: 0.0340 - val_acc: 0.9918
-
     score = model.evaluate(test_images, test_labels, verbose=0)
     print('Test loss:', score[0])
     print('Test accuracy:', score[1])
@@ -619,6 +597,7 @@ Keras Model
 
 Image Augmentation
 *******************
+
 
 
 

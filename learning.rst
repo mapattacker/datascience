@@ -163,13 +163,13 @@ Online Notebook
 Kaggle's notebook has a dedicated GPU and decent RAM for deep-learning neural networks.
 
 For installation of new packages, check "internet" under "Settings" in the right panel first,
-then in the notebook cell, `!pip install package`.
+then in the notebook cell, ``!pip install package``.
 
 To read dataset, you can see the file path at the right panel for "Data".
-It goes something like '/kaggle/input/competition_folder_name'.
+It goes something like ``/kaggle/input/competition_folder_name``.
 
 To download/export the prediction for submission, we can save the prediction like
-`df_submission.to_csv(r'/kaggle/working/submisson.csv', index=False)`.
+``df_submission.to_csv(r'/kaggle/working/submisson.csv', index=False)``.
 
 To do a direct submission, we can commit the notebook, with the output saving directly as 
-`submission.csv`, e.g., `df_submission.to_csv(r'submisson.csv', index=False)`.
+``submission.csv``, e.g., ``df_submission.to_csv(r'submisson.csv', index=False)``.
