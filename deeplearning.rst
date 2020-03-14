@@ -662,9 +662,6 @@ This requires a dataframe which indicates which image correspond to which class.
                                                     directory=dir,
                                                     x_col='image_id',
                                                     y_col=['healthy','multiple_diseases','rust','scab'],
-                                                    class_mode='raw',
-                                                    shuffle=False,
-                                                    subset='training',
                                                     batch_size=batch_size)
 
 
@@ -713,9 +710,21 @@ whereby we can specify it under the weights argument.
         model.add(base)
         model.add(GlobalAveragePooling2D())
         model.add(Dense(classes, activation='softmax'))
-        model.compile(loss='categorical_crossentropy',
-                    optimizer='adam',
-                    metrics=['accuracy'])
+        model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+        return model
+
+
+    # alternatively...
+    def model(input_shape, classes):
+        model = efn.EfficientNetB3(input_shape=input_shape, weights='imagenet', include_top=False)
+        x = model.output
+        x = Flatten()(x)
+        x = Dropout(0.5)(x)
+
+        output_layer = Dense(classes, activation='softmax')(x)
+        model = Model(inputs=model.input, outputs=output_layer)    
+
+        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
         return model
 
 
