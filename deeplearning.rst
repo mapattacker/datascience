@@ -600,6 +600,7 @@ Image Augmentation
 
 It is hard to obtain photogenic samples of every aspect. Image augmentation enables the auto-generation
 of new samples from existing ones through random adjustment from rotation, shifts, zoom, brightness etc.
+The below samples pertains to increasing samples when all samples in classes are balanced.
 
 
 .. code:: python
@@ -623,7 +624,8 @@ of new samples from existing ones through random adjustment from rotation, shift
 After setting the augmentation settings, we will need to decide how to "flow" the data, original samples
 into the model. In this function, we can also resize the images automatically if necessary.
 Finally to fit the model, we use the ``model.fit_generator`` function so that for every epoch,
-the full original samples will be augmented randomly. They will not be stored in memory for obvious reasons.
+the full original samples will be augmented randomly on the fly. 
+They will not be stored in memory for obvious reasons.
 
 Essentially, there are 3 ways to do this.
 First, we can flow the images from memory ``flow``, which means we have to load the data in memory first.
@@ -686,6 +688,53 @@ where all each class of images are in individual subdirectories.
 
 
 More from https://medium.com/datadriveninvestor/keras-imagedatagenerator-methods-an-easy-guide-550ecd3c0a92.
+
+
+Imbalance Data
+**************
+
+We can also use Kera's ``ImageDataGenerator`` to generate new augmented images when there is class
+imbalance. Imbalanced data can caused the model to predict the class with highest samples.
+
+
+.. code:: python
+
+    from keras.preprocessing.image import ImageDataGenerator
+    from keras.preprocessing.image import load_img
+    from keras.preprocessing.image import img_to_array
+
+
+    img = r'/Users/Desktop/post/IMG_20200308_092140.jpg'
+
+
+    # load the input image, convert it to a NumPy array, and then
+    # reshape it to have an extra dimension
+    image = load_img(img)
+    image = img_to_array(image)
+    image = np.expand_dims(image, axis=0)
+
+    # augmentation settings
+    aug = ImageDataGenerator(rotation_range=15,
+                                width_shift_range=0.1,
+                                height_shift_range=0.1,
+                                shear_range=0.01,
+                                zoom_range=[0.9, 1.25],
+                                horizontal_flip=True,
+                                vertical_flip=False,
+                                fill_mode='reflect',
+                                data_format='channels_last',
+                                brightness_range=[0.5, 1.5])
+
+    # define input & output
+    imageGen = aug.flow(image, batch_size=1, save_to_dir=r'/Users/Desktop/post/',
+                        save_prefix="image", save_format="jpg")
+
+    # define number of new augmented samples
+    for count, i in enumerate(imageGen):
+        store.append(i)
+        if count == 5: 
+            break
+
 
 Transfer Learning
 ******************
