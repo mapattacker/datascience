@@ -5,7 +5,7 @@ Containers allow a developer to package up an application with all of the parts 
 and ship it all out as one package. They allow a modular construction of an application, or microservice in short.
 Docker is a popular tool designed to make it easier to create, deploy, and run applications by using containers.
 
-Preprocessing scripts and models can be created as a docker **image** snapshot, and launched as a **container** in production.
+Preprocessing scripts and models can be created as a docker **image** snapshot, and launched as one or multiple **containers** in production.
 For models that require to be consistently updated, we need to use volume mapping such that it is not removed when the container stops
 running.
 
@@ -81,7 +81,7 @@ Then specify in docker run the variable for user input.
 
 Build the Image
 *******************
-``docker build -t image-name .`` --(-t = tag the image as) build and name image, "." as current directory to look for Dockerfile
+``docker build -t imageName:tagName .`` --(-t = tag the image as) build and name image, "." as current directory to look for Dockerfile
 
 Push to Dockerhub
 ********************
@@ -256,7 +256,7 @@ Commands
 +------------------------------+----------------------------------------------------------------------------+
 | ``docker rmi image_name``    | (rmi = remove image) from docker. must remove container b4 removing image. |
 +------------------------------+----------------------------------------------------------------------------+
-| ``docker -f rmi image_name`` | (-f = force) force remove image even if container is running               |
+| ``docker rmi -f image_name`` | (-f = force) force remove image even if container is running               |
 +------------------------------+----------------------------------------------------------------------------+
 
 **Execute Commands for Containers**
