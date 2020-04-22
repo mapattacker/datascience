@@ -42,26 +42,19 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
 
 .. code::
 
-    # Use an official Python runtime as a parent image
-    FROM python:2.7-slim
-
-    # Set the working directory inside image to /app
-    WORKDIR /app
-
-    # Copy the current directory contents into the image at /app
+    # download base image
+    FROM continuumio/anaconda3
+    # copy local files to docker image
     COPY . /app
+    # terminal will start from this default directory
+    WORKDIR /app/liftscanner/src
+    # install libraries from 
+    RUN pip install -r ../requirements.txt
+    # expose this port to outside docker for specific application
+    EXPOSE 5555
+    # run the following command when docker is run
+    CMD python server.py
 
-    # Install any needed packages specified in requirements.txt
-    RUN pip install --trusted-host pypi.python.org -r requirements.txt
-
-    # Make port 80 available to the world outside this container
-    EXPOSE 80
-
-    # Define environment variable
-    ENV NAME World
-
-    # Run app.py when the container launches
-    CMD ["python", "app.py"]
 
 Environment Variable
 *********************
@@ -235,6 +228,19 @@ Commands
 +-------------------+----------------------------------------------------------------------+
 | ``docker ps -a``  | (-a = all) show status of all images including those that had exited |
 +-------------------+----------------------------------------------------------------------+
+
+**Remove Intermediate Images**
+
++------------------------+----------------------------------------------------------------------------------------+
+| ``docker image prune`` | delete intermediate images tagged as <none> after recreating images from some changes  |
++------------------------+----------------------------------------------------------------------------------------+
+
+
+**View Docker Image Directories**
++-----------------------------------+----------------------------------------------------------------------+
+| ``docker run -it image_name sh``  | explore directories in a specific image. "exit" to get out of sh     |
++-----------------------------------+----------------------------------------------------------------------+
+
 
 **Start/Stop Containers**
 
