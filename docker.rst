@@ -2,13 +2,16 @@ Docker
 =================
 
 Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, 
-and ship it all out as one package. They allow a modular construction of an application, or microservice in short.
+and ship it all out as one package. They allow a modular construction of an application, or microservice in short;
+and being OS agnostic.
 Docker is a popular tool designed to make it easier to create, deploy, and run applications by using containers.
 
 Preprocessing scripts and models can be created as a docker **image** snapshot, and launched as one or multiple **containers** in production.
 For models that require to be consistently updated, we need to use volume mapping such that it is not removed when the container stops
 running.
 
+A connection to read features and output prediction needs to be done. This can be done via a REST API using Flask
+web server, or through a messenger application like RabbitMQ or Kafka.
 
 Creating Images
 --------------------
