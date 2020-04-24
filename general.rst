@@ -10,8 +10,10 @@ to isolate every project within an enclosed virtual environment. Anaconda provid
 
 .. code:: Python
 
-  # create environment
-  conda create -n yourenvname
+  # create environment, specify python base or it will copy all existing packages
+  conda create -n yourenvname anaconda
+  conda create -n yourenvname python=3.7
+  conda create -n yourenvname anaconda python=3.7
   # activate environment
   source activate yourenvname
   # install package
