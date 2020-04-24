@@ -14,19 +14,22 @@ to isolate every project within an enclosed virtual environment. Anaconda provid
   conda create -n yourenvname anaconda
   conda create -n yourenvname python=3.7
   conda create -n yourenvname anaconda python=3.7
+  
   # activate environment
   source activate yourenvname
+  
   # install package
   conda install -n yourenvname [package]
+  
   # deactivate environment
   conda deactivate
+  
   # delete environment
   conda env remove -n yourenvname -all
 
   # see all environments
   conda env list
-  # or 
-  conda env list
+  
 
 An asterisk (*) will be placed at the current active environment.
 
