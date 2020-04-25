@@ -60,9 +60,6 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
     # expose this port to outside docker for specific application
     EXPOSE 5555
 
-    # env variable
-    ENV NAME webcam_ip
-
     # run the following command when docker is run
     CMD python server.py
 
