@@ -47,14 +47,22 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
 
     # download base image
     FROM continuumio/anaconda3
+
     # copy local files to docker image
     COPY . /app
+
     # terminal will start from this default directory
     WORKDIR /app/liftscanner/src
+
     # install libraries from 
     RUN pip install -r ../requirements.txt
+
     # expose this port to outside docker for specific application
     EXPOSE 5555
+
+    # env variable
+    ENV NAME webcam_ip
+
     # run the following command when docker is run
     CMD python server.py
 
@@ -67,13 +75,14 @@ To pass environment variables from ``docker run`` to the python code, we can use
 .. code:: python
 
     import os
-    color = os.environ.get('APP_COLOR')
+    color = os.environ.get('webcam_ip')
 
-Then specify in docker run the variable for user input.
+Then specify in docker run the variable for user input, followed by the image name
 
 .. code:: bash
 
-    docker run -e APP_COLOR=green image_name
+    docker run -e webcam_ip=192.168.133.1 image_name
+
 
 Build the Image
 *******************
