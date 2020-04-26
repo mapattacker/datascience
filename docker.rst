@@ -72,7 +72,7 @@ To pass environment variables from ``docker run`` to the python code, we can use
 .. code:: python
 
     import os
-    color = os.environ.get('webcam_ip')
+    ip_address = os.environ.get('webcam_ip')
 
 Then specify in docker run the variable for user input, followed by the image name
 
