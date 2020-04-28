@@ -101,6 +101,9 @@ Then specify in ``docker run`` the variable for user input, followed by the imag
     # in Dockerfile
     ENTRYPOINT [ "python", "-u", "main.py" ]
 
+    # in bash
+    docker run image_name 192.168.133.1
+
 
 
 Build the Image
