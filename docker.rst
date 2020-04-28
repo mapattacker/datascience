@@ -91,11 +91,14 @@ Then specify in ``docker run`` the variable for user input, followed by the imag
 **2) Using ``ENTRYPOINT`` in Dockerfile**
 
 .. code:: python
-
+    
+    # in python script
+    import sys
     webcam_ip = str(sys.argv[1])
 
 .. code:: bash
 
+    # in Dockerfile
     ENTRYPOINT [ "python", "-u", "main.py" ]
 
 
