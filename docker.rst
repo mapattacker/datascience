@@ -80,6 +80,7 @@ To pass environment variables from ``docker run`` to the python code, we can use
 Then specify in ``docker run`` the variable for user input, followed by the image name
 
 .. code:: bash
+
     # in Dockerfile
     CMD python -u main.py
 
