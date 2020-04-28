@@ -70,7 +70,7 @@ Environment Variable
 
 To pass environment variables from ``docker run`` to the python code, we can use two methods.
 
-**1) Using ``os.environ.get`` in python script**
+**1) Using os.environ.get in python script**
 
 .. code:: python
 
@@ -88,7 +88,7 @@ Then specify in ``docker run`` the variable for user input, followed by the imag
     docker run -e webcam_ip=192.168.133.1 image_name
 
 
-**2) Using ``ENTRYPOINT`` in Dockerfile**
+**2) Using ENTRYPOINT in Dockerfile**
 
 .. code:: python
     
