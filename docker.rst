@@ -61,29 +61,51 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
     EXPOSE 5555
 
     # run the following command when docker is run
-    CMD python server.py
+    # -u so prints in code appear in cmd
+    CMD python -u server.py
 
 
 Environment Variable
 *********************
 
-To pass environment variables from ``docker run`` to the python code, we can use ``os.environ.get``.
+To pass environment variables from ``docker run`` to the python code, we can use two methods.
+
+**1) Using ``os.environ.get`` in python script**
 
 .. code:: python
 
     import os
     ip_address = os.environ.get('webcam_ip')
 
-Then specify in docker run the variable for user input, followed by the image name
+Then specify in ``docker run`` the variable for user input, followed by the image name
+
+.. code:: bash
+    # in Dockerfile
+    CMD python -u main.py
+
+    # in bash
+    docker run -e webcam_ip=192.168.133.1 image_name
+
+
+**2) Using ``ENTRYPOINT`` in Dockerfile**
+
+.. code:: python
+
+    webcam_ip = str(sys.argv[1])
 
 .. code:: bash
 
-    docker run -e webcam_ip=192.168.133.1 image_name
+    ENTRYPOINT [ "python", "-u", "main.py" ]
+
 
 
 Build the Image
 *******************
-``docker build -t imageName:tagName .`` --(-t = tag the image as) build and name image, "." as current directory to look for Dockerfile
+``docker build -t imageName .`` --(-t = tag the image as) build and name image, "." as current directory to look for Dockerfile
+
+Note that everytime you rebuild an image with the same name, the previous image will have their image name & tag
+displayed as `<None>`.
+
 
 Push to Dockerhub
 ********************

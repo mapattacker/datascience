@@ -35,11 +35,11 @@ Confusion Matrix
     https://www.youtube.com/watch?v=21Igj5Pr6u4
 
 
-**Recall|Sensitivity**: (True Positive / True Positive + False Negative) High recall means to get all 
+**Recall|Sensitivity**: (True Positive / [True Positive + False Negative]) High recall means to get all 
 positives (i.e., True Positive + False Negative) despite having some false positives.
 Search & extraction in legal cases, Tumour detection. Often need humans to filter false positives.
 
-**Precision**: (True Positive / True Positive + False Positive) High precision means it is important 
+**Precision**: (True Positive / [True Positive + False Positive]) High precision means it is important 
 to filter off the any false positives.
 Search query suggestion, Document classification, customer-facing tasks. 
 
