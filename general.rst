@@ -7,6 +7,8 @@ Every project has a different set of requirements and different set of python pa
 The versions of each package can differ or break with each python or dependent packages update, so it is important 
 to isolate every project within an enclosed virtual environment. Anaconda provides a straight forward way to manage this.
 
+Creating the Virtual Env
+*************************
 
 .. code:: Python
 
@@ -39,6 +41,8 @@ An asterisk (*) will be placed at the current active environment.
 
     Current active environment
 
+Using YMAL
+***********
 
 Alternatively, we can create a fixed environment file and execute using ``conda env create -f environment.yml``.
 This will create an environment with the name and packages specified within the folder. 
@@ -56,6 +60,26 @@ Channels specify where the packages are installed from.
     - numpy=1.9.*
     - pip:
       - baytune==0.3.1
+
+
+Requirements.txt
+*****************
+
+If there is no ymal file specifying the packages to install, it is good practise to alternatively
+create a requirements.txt using the package `pipreqs`.
+
+Below is how the contents in a requirements.txt file looks like.
+After creating the file, and activating the VM, install the packages at one go using
+`pip install -r requirements.txt`
+
+.. code:: Python
+
+  pika==1.1.0
+  scipy==1.4.1
+  # package from github, not present in pip
+  git+https://github.com/cftang0827/pedestrian_detection_ssdlite
+  scikit_image==0.16.2
+  numpy==1.18.1
 
 
 Modeling
