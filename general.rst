@@ -27,7 +27,8 @@ Creating the Virtual Env
   conda deactivate
   
   # delete environment
-  conda env remove -n yourenvname
+  # -a = all, remove all packages in the environment
+  conda env remove -n yourenvname -a
 
   # see all environments
   conda env list
