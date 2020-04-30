@@ -70,13 +70,13 @@ Requirements.txt
 *****************
 
 If there is no ymal file specifying the packages to install, it is good practise to alternatively
-create a requirements.txt using the package `pip install pipreqs`. 
+create a requirements.txt using the package ``pip install pipreqs``. 
 We can then create the txt in cmd using `pipreqs -f directory_path`, where -f overwrites any existing 
 requirements.txt file.
 
 Below is how the contents in a requirements.txt file looks like.
 After creating the file, and activating the VM, install the packages at one go using
-`pip install -r requirements.txt`
+``pip install -r requirements.txt``.
 
 .. code:: Python
 
