@@ -131,6 +131,8 @@ Docker Compose
 In a production environment, a docker compose file can be used to run all separate docker containers (which interact with each other) 
 together. It consists of all necessary configurations that a ``docker run`` command provides in a yaml file.
 
+So, instead of entering multiple ``docker run imageX``, we can just run one docker compose file to start all images.
+
 .. figure:: images/docker_compose1.png
     :width: 650px
     :align: center
@@ -140,9 +142,10 @@ together. It consists of all necessary configurations that a ``docker run`` comm
 Below is an example using wordpress blog, where both the wordpress and mysql database are needed to get it working.
 
 .. code:: python
-    # ":" represents dictionary
-    # "-" represents list
-    # note that spaces matter in a yaml file
+
+    # in ymal file, ":" represents dictionary
+                    # "-" represents list
+                    # note that spaces matter
     version: '3'
     services:
     mysql:
