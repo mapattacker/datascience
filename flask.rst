@@ -74,7 +74,6 @@ define a route. Within the render_template, we pass in the variable.
 
 .. code:: html 
 
-    <!-- in html -->
     <div class="row">
         <img class="img-thumbnail" src={{img_show}} alt="">
     </div>
