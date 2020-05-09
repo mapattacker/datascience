@@ -34,7 +34,7 @@ Folder Structure
 
 There are some default directory structure to adhere to. 
 The first is that HTML files are placed under /templates, 
-second is for css or other static files like images, will be placed under /static
+second is for Javascript, CSS or other static files like images, will be placed under /static
 
 .. code:: bash
 
@@ -44,3 +44,40 @@ second is for css or other static files like images, will be placed under /stati
     │       └── image.png
     └── templates
         └── index.html
+
+
+Manipulating HTML
+-----------------
+
+There are various ways to pass variables into or manipulate html using flask.
+
+Passing Variables
+******************
+
+We can use the double curly brackets ``{{ variable_name }}`` in html, and within flask
+define a route. Within the render_template, we pass in the variable.
+
+.. code:: html 
+
+    <div class="row">
+        <img class="img-thumbnail" src={{img_show}} alt="">
+    </div>
+
+
+.. code:: python
+
+    @app.route('/upload', methods=["POST"])
+    def upload_file():
+        img_path = 'static/img'
+        img_name = 'img_{}.png'
+        img = os.path.join(img_path, img_name)
+        file = request.files['image_upload']
+        file.save(img)
+
+        return render_template('index.html', img_show=img)
+
+
+Resources
+---------
+
+ * https://www.tutorialspoint.com/flask/index.htm
