@@ -5,6 +5,7 @@ Containers allow a developer to package up an application with all of the parts 
 and ship it all out as one package. They allow a modular construction of an application, or microservice in short;
 and being OS agnostic.
 Docker is a popular tool designed to make it easier to create, deploy, and run applications by using containers.
+The image is developed using Linux.
 
 Preprocessing scripts and models can be created as a docker **image** snapshot, and launched as one or multiple **containers** in production.
 For models that require to be consistently updated, we need to use volume mapping such that it is not removed when the container stops
