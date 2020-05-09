@@ -1,4 +1,4 @@
-FLASK
+Flask
 ======
 
 Flask is a micro web framework written in Python. 
@@ -30,11 +30,11 @@ There are some default directory structure to adhere to.
 The first is that HTML files are placed under /templates, 
 second is for css or other static files like images, will be placed under /static
 
-```
-├── app.py
-├── static
-│   └── img
-│       └── image.png
-└── templates
-    └── index.html
-```
+.. code:: bash
+
+    ├── app.py
+    ├── static
+    │   └── img
+    │       └── image.png
+    └── templates
+        └── index.html
