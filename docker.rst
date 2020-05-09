@@ -128,10 +128,11 @@ Note that Dockerhub can only allow a single image to be made private for the fre
 Docker Compose
 ----------------
 
-In a production environment, a docker compose file can be used to run all separate docker containers (which interact with each other) 
+In a production environment, a docker compose file can be used to run all separate docker containers 
 together. It consists of all necessary configurations that a ``docker run`` command provides in a yaml file.
 
 So, instead of entering multiple ``docker run imageX``, we can just run one docker compose file to start all images.
+We also input all the commands like ports, volumes, depends_on
 
 .. figure:: images/docker_compose1.png
     :width: 650px
@@ -141,25 +142,33 @@ So, instead of entering multiple ``docker run imageX``, we can just run one dock
 
 Below is an example using wordpress blog, where both the wordpress and mysql database are needed to get it working.
 
+Run ``docker-compose up`` command to launch. 
+If there are some images not built yet, we can add another specification in the docker compose file 
+e.g., ``build: /directory_name``. 
+
 .. code:: python
 
-    # in ymal file, ":" represents dictionary
-                    # "-" represents list
-                    # note that spaces matter
-    version: '3'
+    # in ymal file, 
+        ":" represents dictionary
+        # "-" represents list
+        $ the 2nd level definition, e.g. "web:" is just a name, can give it anything
+        # note that spaces matter
+    # must specify version
+
+    version: 3
     services:
-    mysql:
-        image: "mysql"
-        environment:
-            - MYSQL_ROOT_PASSWORD=password 
-        volumes:
-            - "/data/mysql:/var/lib/mysql"
-    web:
-        image: "wordpress"
-        ports:
-            - "8080:80"
-        environment:
-            - WORDPRESS_DB_PASSWORD=password
+        mysql:
+            image: "mysql"
+            environment:
+                - MYSQL_ROOT_PASSWORD=password 
+            volumes:
+                - "/data/mysql:/var/lib/mysql"
+        web:
+            image: "wordpress"
+            ports:
+                - "8080:80"
+            environment:
+                - WORDPRESS_DB_PASSWORD=password
 
 
 Docker Swarm
@@ -312,3 +321,9 @@ Commands
 +--------------------------------------+------------------------------------+
 | ``docker exec container_nm COMMAND`` | execute a command within container |
 +--------------------------------------+------------------------------------+
+
+
+Tips
+*****
+
+https://pythonspeed.com/articles/multi-stage-docker-python/

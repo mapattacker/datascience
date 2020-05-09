@@ -497,7 +497,6 @@ architecture includes **LeNet-5** (handwriting recognition), **AlexNet** (deeper
 
 .. _article1: https://medium.com/@RaghavPrabhu/cnn-architectures-lenet-alexnet-vgg-googlenet-and-resnet-7c81c017b848
 
-
 Keras Model
 ***************
 
@@ -509,24 +508,10 @@ Keras Model
     from tensorflow.keras.layers import Dense, Dropout, Conv2D, MaxPooling2D, Flatten
     from tensorflow.keras.optimizers import RMSprop
 
-    (X_train, y_train), (X_test, y_test) = mnist.load_data()
-
-
-    # need to reshape image dataset
-    total_rows_train = X_train.shape[0]
-    total_rows_test = X_test.shape[0]
-    sample_rows = X_train.shape[1]
-    sample_columns = X_train.shape[2]
-    num_channels = 1
-
-    # i.e. X_train = X_train.reshape(60000,28,28,1), where 1 means images are grayscale
-    X_train = X_train.reshape(total_rows_train,sample_rows,sample_columns,num_channels)
-    X_test = X_test.reshape(total_rows_test,sample_rows,sample_columns,num_channels)
-
-
     model = Sequential()
-    model.add(Conv2D(32, kernel_size=(3, 3), activation='relu',
-                     input_shape=(sample_rows, sample_columns, num_channels)))
+    model.add(Conv2D(32, kernel_size=(3, 3),
+                    activation='relu',
+                    input_shape=input_shape))
 
     # 64 3x3 kernels
     model.add(Conv2D(64, (3, 3), activation='relu'))
@@ -542,7 +527,6 @@ Keras Model
     model.add(Dropout(0.5))
     # Final categorization from 0-9 with softmax
     model.add(Dense(10, activation='softmax'))
-
 
     model.summary()
 
@@ -570,7 +554,7 @@ Keras Model
     # Non-trainable params: 0
     # _________________________________________________________________
 
-    model.compile(loss='sparse_categorical_crossentropy',
+    model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
 
