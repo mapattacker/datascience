@@ -57,10 +57,9 @@ Passing Variables
 We can use the double curly brackets ``{{ variable_name }}`` in html, and within flask
 define a route. Within the render_template, we pass in the variable.
 
-
+*In Python*
 .. code:: python
 
-    # in python
     @app.route('/upload', methods=["POST"])
     def upload_file():
         img_path = 'static/img'
@@ -72,6 +71,7 @@ define a route. Within the render_template, we pass in the variable.
         return render_template('index.html', img_show=img)
 
 
+*In HTML*
 .. code:: html 
 
     <div class="row">
@@ -85,6 +85,7 @@ If Conditions, Loops, etc.
 We can implement python code in the html using the syntax, i.e., ``{% if something %}``.
 However, note that we need to close it with the same synatx also, i.e. ``{% endif %}``.
 
+*In Python*
 .. code:: python
 
     # in python
@@ -98,10 +99,9 @@ However, note that we need to close it with the same synatx also, i.e. ``{% endi
 
         return render_template('index.html', img_show=img)
 
-
+*In HTML*
 .. code:: html 
 
-    <!-- in html -->
     {% if img_show %}
     <div class="row">
         <img class="img-thumbnail" src={{img_show}} alt="">
