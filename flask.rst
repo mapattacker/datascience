@@ -58,6 +58,7 @@ We can use the double curly brackets ``{{ variable_name }}`` in html, and within
 define a route. Within the render_template, we pass in the variable.
 
 *In Python*
+
 .. code:: python
 
     @app.route('/upload', methods=["POST"])
@@ -72,6 +73,7 @@ define a route. Within the render_template, we pass in the variable.
 
 
 *In HTML*
+
 .. code:: html 
 
     <div class="row">
@@ -86,6 +88,7 @@ We can implement python code in the html using the syntax, i.e., ``{% if somethi
 However, note that we need to close it with the same synatx also, i.e. ``{% endif %}``.
 
 *In Python*
+
 .. code:: python
 
     # in python
@@ -100,6 +103,7 @@ However, note that we need to close it with the same synatx also, i.e. ``{% endi
         return render_template('index.html', img_show=img)
 
 *In HTML*
+
 .. code:: html 
 
     {% if img_show %}
