@@ -88,7 +88,7 @@ Flask by default comes with a configuration dictionary which can be called as be
 
 We can add new key-values or change values as any dictionary in python.
 
-..code:: python
+.. code:: Python
 
     # add a directory for image upload
     app.config['UPLOAD_IMG_FOLDER'] = 'static/img'
@@ -172,6 +172,8 @@ Requests
 --------
 
 There are a number of HTTP request methods. Below are the two commonly used ones.
+
+
 
 +-----------+------------------------------------------------------------------------------------+
 | ``GET``   | Sends data in unencrypted form to the server. E.g.  the ? values in URL            |
