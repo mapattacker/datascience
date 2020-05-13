@@ -66,6 +66,7 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
     CMD python -u server.py
 
 
+
 Environment Variable
 *********************
 
@@ -104,6 +105,23 @@ Then specify in ``docker run`` the variable for user input, followed by the imag
 
     # in bash
     docker run image_name 192.168.133.1
+
+
+
+Ignore file
+***********
+You do not want to compile any files that is not required in the images to keep the size at a minimium.
+A file, ``.dockerignore`` similar in function and syntax to ``.gitignore`` can be used. 
+It should be placed at the root, together with the Dockerfile.
+Below are some standard files/folders to ignore.
+
+.. code:: git
+
+    # macos
+    **/.DS_Store
+    # python cache
+    **/__pycache__
+    .git
 
 
 

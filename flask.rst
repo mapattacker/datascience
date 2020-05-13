@@ -39,11 +39,24 @@ second is for Javascript, CSS or other static files like images, will be placed 
 .. code:: bash
 
     ├── app.py
+    ├── config.py
+    │   utils.py
     ├── static
-    │   └── img
-    │       └── image.png
+    │   ├── css
+    │   │   ├── bootstrap.css
+    │   │   ├── ....
+    │   ├── img
+    │   │   └── img_1589185531.png
+    │   └── js
+    │       ├── bootstrap.bundle.js
+    │       ├── ....
     └── templates
-        └── index.html
+        └── index.html
+
+
+
+
+
 
 
 App Configs
@@ -201,6 +214,8 @@ Below shows up to upload a file, e.g., an image to a directory in the server.
     </div>
 
 
+*In Python*
+
 .. code:: python
 
     import os
@@ -224,6 +239,24 @@ Below shows up to upload a file, e.g., an image to a directory in the server.
         return render_template('index.html')
         
 
+Docker
+------
+
+If the flask app is to be packaged in Docker, we need to set the IP to localhost, and 
+expose the port during docker run.
+
+.. code:: python
+
+    if __name__ == "__main.py__":
+        app.run(debug=True, host='0.0.0.0')
+
+
+.. code:: bash
+
+    docker run -p 5000:5000 imageName
+
+If we run ``docker ps``, under PORTS, we should be able to see 
+that the Docker host IP 0.0.0.0 and port 5000, is accessible to the container at port 5000.
 
 
 Resources
