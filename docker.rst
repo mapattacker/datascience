@@ -115,7 +115,7 @@ A file, ``.dockerignore`` similar in function and syntax to ``.gitignore`` can b
 It should be placed at the root, together with the Dockerfile.
 Below are some standard files/folders to ignore.
 
-.. code:: git
+.. code::
 
     # macos
     **/.DS_Store
