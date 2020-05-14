@@ -249,6 +249,7 @@ i.e., DEBUG and INFO will not be logged.
 .. code:: python
 
     import logging
+
     logging.basicConfig(level=logging.INFO, \
                         filename='../logfile.log', \
                         format='%(asctime)s :: %(levelname)s :: %(message)s')
@@ -268,15 +269,17 @@ Note that the latter argument must be at least 1.
     import logging
     from logging.handlers import RotatingFileHandler
 
+
     log_formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
     logFile = '../logfile.log'
-    my_handler = RotatingFileHandler(logFile, mode='a', maxBytes=10000, \
+
+    handler = RotatingFileHandler(logFile, mode='a', maxBytes=10000, \
                                     backupCount=1, encoding=None, delay=0)
-    my_handler.setFormatter(log_formatter)
-    my_handler.setLevel(logging.WARNING)
+    handler.setFormatter(log_formatter)
+    handler.setLevel(logging.WARNING)
     logger = logging.getLogger('root')
     logger.setLevel(logging.INFO)
-    logger.addHandler(my_handler)
+    logger.addHandler(handler)
 
 
 
@@ -304,3 +307,5 @@ Resources
 ---------
 
  * https://www.tutorialspoint.com/flask/index.htm
+ * https://www.machinelearningplus.com/python/python-logging-guide/
+ * https://tutorialedge.net/python/python-logging-best-practices/
