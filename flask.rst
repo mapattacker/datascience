@@ -239,6 +239,47 @@ Below shows up to upload a file, e.g., an image to a directory in the server.
         return render_template('index.html')
         
 
+Logging
+-------
+We can use the in-built Python logging package for storing logs.
+Note that there are 5 levels of logging, DEBUG, INFO, WARNING, ERROR and CRITICAL.
+If initial configuration is set at a high level, e.g., WARNING, lower levels of logs,
+i.e., DEBUG and INFO will not be logged.
+
+.. code:: python
+
+    import logging
+    logging.basicConfig(level=logging.INFO, \
+                        filename='../logfile.log', \
+                        format='%(asctime)s :: %(levelname)s :: %(message)s')
+
+
+    # some script
+    logger.warning('This took x sec for model to complete')
+
+
+We can use the function ``RotatingFileHandler`` to limit 
+the file size ``maxBytes`` and number of log files ``backupCount`` to store.
+Note that the latter argument must be at least 1.
+
+
+.. code:: python
+
+    import logging
+    from logging.handlers import RotatingFileHandler
+
+    log_formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
+    logFile = '../logfile.log'
+    my_handler = RotatingFileHandler(logFile, mode='a', maxBytes=10000, \
+                                    backupCount=1, encoding=None, delay=0)
+    my_handler.setFormatter(log_formatter)
+    my_handler.setLevel(logging.WARNING)
+    logger = logging.getLogger('root')
+    logger.setLevel(logging.INFO)
+    logger.addHandler(my_handler)
+
+
+
 Docker
 ------
 
