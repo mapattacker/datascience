@@ -38,6 +38,8 @@ create an image. It consists of instructions & arguments.
 
 The commands run sequentially when building the image, also known as a layered architecture. 
 Each layer is cached, such that when any layer fails and is fixed, rebuilding it will start from the last built layer.
+This is why as you see below, we install the python packages first before copying the local files.
+If any of the local files are changed, there is no need to rebuild the python packages again.
 
 
  * ``FROM`` tells Docker which image you base your image on (eg, Python 3 or continuumio/miniconda3).
@@ -49,14 +51,15 @@ Each layer is cached, such that when any layer fails and is fixed, rebuilding it
     # download base image
     FROM continuumio/anaconda3
 
-    # copy local files to docker image
+    # copy and install libraries
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
+
+    # copy all local files to docker image
     COPY . /app
 
     # terminal will start from this default directory
     WORKDIR /app/liftscanner/src
-
-    # install libraries from 
-    RUN pip install -r ../requirements.txt
 
     # expose this port to outside docker for specific application
     EXPOSE 5555
@@ -337,10 +340,11 @@ Commands
 
 **Execute Commands for Containers**
 
-+--------------------------------------+------------------------------------+
-| ``docker exec container_nm COMMAND`` | execute a command within container |
-+--------------------------------------+------------------------------------+
-
++------------------------------------------------+------------------------------------+
+| ``docker exec container_nm COMMAND``           | execute a command within container |
++------------------------------------------------+------------------------------------+
+| ``docker exec -it <container name> /bin/bash`` | go into container's bash           |
++------------------------------------------------+------------------------------------+
 
 Tips
 *****

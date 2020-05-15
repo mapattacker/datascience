@@ -187,7 +187,6 @@ Requests
 There are a number of HTTP request methods. Below are the two commonly used ones.
 
 
-
 +-----------+------------------------------------------------------------------------------------+
 | ``GET``   | Sends data in unencrypted form to the server. E.g.  the ? values in URL            |
 +-------------------+----------------------------------------------------------------------------+
@@ -195,6 +194,26 @@ There are a number of HTTP request methods. Below are the two commonly used ones
 +-----------+------------------------------------------------------------------------------------+
 
 
+
+Postman
+*******
+
+Postman is a free software that makes it easy to test your APIs.
+
+
+
+
+Python
+******
+
+
+.. code:: html
+
+    import requests
+
+    res = requests.post('http://localhost:5000/api', json={'key':'value'})
+    if res.ok:
+        print ('ok')
 
 File Upload
 -----------
@@ -246,6 +265,8 @@ Note that there are 5 levels of logging, DEBUG, INFO, WARNING, ERROR and CRITICA
 If initial configuration is set at a high level, e.g., WARNING, lower levels of logs,
 i.e., DEBUG and INFO will not be logged.
 
+Below is a basic logger.
+
 .. code:: python
 
     import logging
@@ -276,8 +297,10 @@ Note that the latter argument must be at least 1.
     handler = RotatingFileHandler(logFile, mode='a', maxBytes=10000, \
                                     backupCount=1, encoding=None, delay=0)
     handler.setFormatter(log_formatter)
-    handler.setLevel(logging.WARNING)
-    logger = logging.getLogger('root')
+    # note that if no name is specific in argument, it will assume "root"
+    # and all logs from default flask output will be recorded
+    # if give another name, default output will not be recorded
+    logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     logger.addHandler(handler)
 
@@ -309,3 +332,4 @@ Resources
  * https://www.tutorialspoint.com/flask/index.htm
  * https://www.machinelearningplus.com/python/python-logging-guide/
  * https://tutorialedge.net/python/python-logging-best-practices/
+ * http://blog.luisrei.com/articles/flaskrest.html
