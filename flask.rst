@@ -199,7 +199,14 @@ Postman
 *******
 
 Postman is a free software that makes it easy to test your APIs.
+After launching the flask application, 
+we can send a JSON request by specifying the method (POST),
+and see the JSON response at the bottom panel.
 
+
+.. figure:: images/flask-postman.png
+    :width: 400px
+    :align: center
 
 
 

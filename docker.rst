@@ -340,11 +340,15 @@ Commands
 
 **Execute Commands for Containers**
 
-+------------------------------------------------+------------------------------------+
-| ``docker exec container_nm COMMAND``           | execute a command within container |
-+------------------------------------------------+------------------------------------+
-| ``docker exec -it <container name> /bin/bash`` | go into container's bash           |
-+------------------------------------------------+------------------------------------+
++---------------------------------------------------+------------------------------------+
+| ``docker exec container_nm/id COMMAND``           | execute a command within container |
++---------------------------------------------------+------------------------------------+
+| ``docker exec -it <container name/id> /bin/bash`` | go into container's bash           |
++---------------------------------------------------+------------------------------------+
+
+Inside the docker container, if there is a need to view any files, we have to install an editor first
+``apt-get update`` > ``apt-get install nano``. To exit the container ``exit``.
+
 
 Tips
 *****
