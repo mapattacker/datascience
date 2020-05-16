@@ -205,7 +205,7 @@ and see the JSON response at the bottom panel.
 
 
 .. figure:: images/flask-postman.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 
@@ -213,16 +213,16 @@ and see the JSON response at the bottom panel.
 Python
 ******
 
-We can also send a request using the Python "requests" package. The downside is that 
-we can't get a response.
+Similarly, we can also send a request using the Python "requests" package.
 
 .. code:: html
 
     import requests
 
+    # send request
     res = requests.post('http://localhost:5000/api', json={'key':'value'})
-    if res.ok:
-        print ('ok')
+    # receieve response
+    print(res.content)
 
 
 File Upload
