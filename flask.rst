@@ -34,13 +34,13 @@ Folder Structure
 
 There are some default directory structure to adhere to. 
 The first is that HTML files are placed under /templates, 
-second is for Javascript, CSS or other static files like images, will be placed under /static
+second is for Javascript, CSS or other static files like images, models or logs will be placed under /static
 
 .. code:: bash
 
     ├── app.py
     ├── config.py
-    │   utils.py
+    ├── utils.py
     ├── static
     │   ├── css
     │   │   ├── bootstrap.css
@@ -205,7 +205,7 @@ and see the JSON response at the bottom panel.
 
 
 .. figure:: images/flask-postman.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 
