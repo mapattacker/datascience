@@ -181,7 +181,7 @@ However, note that we need to close it with the same synatx also, i.e. ``{% endi
     {% endif %}
 
 
-Requests
+Testing
 --------
 
 There are a number of HTTP request methods. Below are the two commonly used ones.
