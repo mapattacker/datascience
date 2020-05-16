@@ -309,8 +309,8 @@ Note that the latter argument must be at least 1.
     handler.setFormatter(log_formatter)
     # note that if no name is specific in argument, it will assume "root"
     # and all logs from default flask output will be recorded
-    # if give another name, default output will not be recorded
-    logger = logging.getLogger()
+    # if another name given, default output will not be recorded, no matter the level set
+    logger = logging.getLogger('new')
     logger.setLevel(logging.INFO)
     logger.addHandler(handler)
 
