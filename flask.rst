@@ -317,7 +317,6 @@ Note that the latter argument must be at least 1.
     logger.addHandler(handler)
 
 
-
 Docker
 ------
 
@@ -336,6 +335,43 @@ expose the port during docker run.
 
 If we run ``docker ps``, under PORTS, we should be able to see 
 that the Docker host IP 0.0.0.0 and port 5000, is accessible to the container at port 5000.
+
+
+Accessing Environment Variables
+--------------------------------
+
+We can and should set environment variables; i.e., variables stored in the OS,
+especially for passwords and keys, rather than in python scripts. This helps with 
+version control as you don't want to upload them to the github, though now it prevents keys from uploading.
+Presently I guess, it still prevents the need to copy/paste the keys into the script everytime you launch the app.
+
+To do this, in Mac/Linux, we can store the env variable in a .bash_profile.
+
+.. code:: bash
+
+    # open/create bash_profile
+    nano ~/.bash_profile
+    # add new environment variable
+    export SECRET_KEY="key"
+    # restart bash_profile
+    source .bash_profile
+
+
+In the flask script, we can then obtain the variable by using the os package.
+
+.. code:: python
+
+    import os
+
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+
+
+For flask apps in docker containers, we can add an -e to include the environment variable into the
+container.
+
+.. code:: bash
+
+    sudo docker run -e SECRET_KEY=$SECRET_KEY -p 5000:5000 comply
 
 
 OpenAPI

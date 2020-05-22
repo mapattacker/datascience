@@ -70,7 +70,7 @@ If any of the local files are changed, there is no need to rebuild the python pa
 
 
 
-Environment Variable
+Input Variables
 *********************
 
 To pass environment variables from ``docker run`` to the python code, we can use two methods.
