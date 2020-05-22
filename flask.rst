@@ -354,7 +354,11 @@ To do this, in Mac/Linux, we can store the env variable in a .bash_profile.
     # add new environment variable
     export SECRET_KEY="key"
     # restart bash_profile
-    source .bash_profile
+    source ~/.bash_profile
+
+
+    # we can test by printing it in the console
+    echo $SECRET_KEY
 
 
 In the flask script, we can then obtain the variable by using the os package.
@@ -362,7 +366,6 @@ In the flask script, we can then obtain the variable by using the os package.
 .. code:: python
 
     import os
-
     SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
