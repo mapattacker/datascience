@@ -47,9 +47,11 @@ second is for Javascript, CSS or other static files like images, models or logs 
     │   │   ├── ....
     │   ├── img
     │   │   └── img_1589185531.png
-    │   └── js
-    │       ├── bootstrap.bundle.js
-    │       ├── ....
+    │   ├── js
+    │   │   ├── bootstrap.bundle.js
+    │   │   ├── ....
+    │   └── logs
+    │       └── logfiles.log
     └── templates
         └── index.html
 
@@ -334,6 +336,16 @@ expose the port during docker run.
 
 If we run ``docker ps``, under PORTS, we should be able to see 
 that the Docker host IP 0.0.0.0 and port 5000, is accessible to the container at port 5000.
+
+
+OpenAPI
+---------
+
+OpenAPI specification is a description format for documenting Rest APIs.
+Swagger is an open-source set of tools to build this OpenAPI standard.
+There are a number of python packages that integrate both flask & swagger together. 
+
+ * https://github.com/flasgger/flasgger
 
 
 Resources
