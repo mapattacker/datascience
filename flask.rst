@@ -343,7 +343,7 @@ Accessing Environment Variables
 We can and should set environment variables; i.e., variables stored in the OS,
 especially for passwords and keys, rather than in python scripts. This helps with 
 version control as you don't want to upload them to the github, though now it prevents keys from uploading.
-Presently I guess, it still prevents the need to copy/paste the keys into the script everytime you launch the app.
+Presently I guess, it still reduces the need to copy/paste the keys into the script everytime you launch the app.
 
 To do this, in Mac/Linux, we can store the env variable in a .bash_profile.
 
