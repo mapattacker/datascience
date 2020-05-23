@@ -12,6 +12,8 @@ GPU
 ******
 
 Tensorflow is able to run faster and more effeciently using Nivida's GPU ``pip install tensorflow-gpu``.
+CUDA as well cudnn are also required. It is best to run your models in Ubuntu as the compliation of
+some pretrained models are easier.
 
 Preprocessing
 ******************

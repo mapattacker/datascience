@@ -271,6 +271,9 @@ Commands
 +------------------------------------------------------------------+--------------------------------------------------------------------------+
 | ``docker run -v /local/storage/folder:/image/data/folder mysql`` | (-v = volume mapping) all data will be destroyed if container is stopped |
 +------------------------------------------------------------------+--------------------------------------------------------------------------+
+| ``docker run -p 5000:5000 --restart always comply``              | to auto restart container if it crashes                                  |
++------------------------------------------------------------------+--------------------------------------------------------------------------+
+
 
 .. figure:: images/docker_cmd.PNG
     :width: 700px
@@ -301,12 +304,13 @@ Commands
 | ``docker ps -a``  | (-a = all) show status of all images including those that had exited |
 +-------------------+----------------------------------------------------------------------+
 
-**Remove Intermediate Images**
+**Remove Intermediate Images/Containers**
 
-+------------------------+----------------------------------------------------------------------------------------+
-| ``docker image prune`` | delete intermediate images tagged as <none> after recreating images from some changes  |
-+------------------------+----------------------------------------------------------------------------------------+
-
++----------------------------+----------------------------------------------------------------------------------------+
+| ``docker image prune``     | delete intermediate images tagged as <none> after recreating images from some changes  |
++----------------------------+----------------------------------------------------------------------------------------+
+| ``docker container prune`` | delete stopped containers                                                              |
++----------------------------+----------------------------------------------------------------------------------------+
 
 **View Docker Image Directories**
 
