@@ -82,10 +82,16 @@ After creating the file, and activating the VM, install the packages at one go u
 
   pika==1.1.0
   scipy==1.4.1
-  # package from github, not present in pip
-  git+https://github.com/cftang0827/pedestrian_detection_ssdlite
   scikit_image==0.16.2
   numpy==1.18.1
+  # package from github, not present in pip
+  git+https://github.com/cftang0827/pedestrian_detection_ssdlite
+  # wheel file stored in a website
+  --find-links https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/index.html
+  detectron2
+  --find-links https://download.pytorch.org/whl/torch_stable.html
+  torch==1.5.0+cu101
+  torchvision==0.6.0+cu101
 
 
 Modeling

@@ -273,7 +273,8 @@ Commands
 +------------------------------------------------------------------+--------------------------------------------------------------------------+
 | ``docker run -p 5000:5000 --restart always comply``              | to auto restart container if it crashes                                  |
 +------------------------------------------------------------------+--------------------------------------------------------------------------+
-
+| ``docker run --name containerName imageName``                    | give a name to the container                                             |
++------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 .. figure:: images/docker_cmd.PNG
     :width: 700px
@@ -347,7 +348,7 @@ Commands
 +---------------------------------------------------+------------------------------------+
 | ``docker exec container_nm/id COMMAND``           | execute a command within container |
 +---------------------------------------------------+------------------------------------+
-| ``docker exec -it <container name/id> /bin/bash`` | go into container's bash           |
+| ``docker exec -it <container name/id> bash``      | go into container's bash           |
 +---------------------------------------------------+------------------------------------+
 
 Inside the docker container, if there is a need to view any files, we have to install an editor first

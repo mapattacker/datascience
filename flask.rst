@@ -111,10 +111,10 @@ We can add new key-values or change values as any dictionary in python.
 
 However, for a large project,
 if there are multiple environments, each with different set of config values, 
-we can create a configuration file. Refer to the link below for more. 
+we can create a configuration file. Refer to the links below for more. 
 
-https://pythonise.com/series/learning-flask/flask-configuration-files
-
+ * https://pythonise.com/series/learning-flask/flask-configuration-files
+ * https://flask.palletsprojects.com/en/0.12.x/config/#configuring-from-files
 
 
 Manipulating HTML
@@ -268,7 +268,11 @@ Below shows up to upload a file, e.g., an image to a directory in the server.
         file.save(img)
 
         return render_template('index.html')
-        
+
+To upload multiple files, end the html form tag with "multiple", 
+``<form action="/upload" method="post" enctype="multipart/form-data" multiple>``        
+
+
 
 Logging
 -------
@@ -337,7 +341,7 @@ If we run ``docker ps``, under PORTS, we should be able to see
 that the Docker host IP 0.0.0.0 and port 5000, is accessible to the container at port 5000.
 
 
-Environment Variables
+Storing Keys
 ----------------------
 
 We can and should set environment variables; i.e., variables stored in the OS,
@@ -362,6 +366,16 @@ To do this, in Mac/Linux, we can store the environment variable in a ``.bash_pro
     echo $SECRET_KEY
 
 
+We can also add this to the ``.bashrc`` file so that the variable will not be lost each time
+you launch/restart the bash terminal.
+
+.. code:: bash
+
+    if [ -f ~/.bash_profile ]; then
+        . ~/.bash_profile
+    fi
+
+
 In the flask script, we can then obtain the variable by using the os package.
 
 .. code:: python
@@ -376,6 +390,59 @@ container.
 .. code:: bash
 
     sudo docker run -e SECRET_KEY=$SECRET_KEY -p 5000:5000 comply
+
+
+Changing Environment
+--------------------
+
+Sometimes certain configurations differ between the local development and 
+server production environments. We can set a condition like the below.
+
+Note by default flask environment is set to production
+
+.. code:: python
+
+    if os.environ['FLASK_ENV'] == 'production':
+        UPLOAD_URL = 'url/in/production/server'
+    elif os.environ['FLASK_ENV'] == 'development'
+        UPLOAD_URL = '/upload'
+
+
+We can then set the flask environment in docker as the below.
+Or if we are not using docker, we can ``export FLASK_ENV=development; python app.py``.
+
+
+.. code:: 
+
+    # when testing in production environment, comment out below
+    CMD export FLASK_ENV=development
+
+    ENTRYPOINT [ "python", "-u", "app.py" ]
+
+
+A more proper way to handle environments is mentioned in flask's documentation below.
+
+ * https://flask.palletsprojects.com/en/0.12.x/config/#configuring-from-files
+
+
+Scaling Flask
+-----------------
+
+Flask as a server is meant for development, as it tries to remind you everytime you launch it.
+One reason is because it is not built to handle multiple requests, which almost always occur in real-life.
+
+The way to patch this deficiency is to first, set up a WSGI (web server gateway interface),
+and then a web server. The former is a connector to interface the python flask app to 
+an established web server, which is built to handle concurrency and queues.
+
+For WSGI, there are a number of different ones, including gunicorn, mod_wsgi, uWSGI, CherryPy, Bjoern.
+
+For web servers, the two major ones are Apache and Nginx.
+
+ * https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+ * https://medium.com/ww-tech-blog/well-do-it-live-updating-machine-learning-models-on-flask-uwsgi-with-no-downtime-9de8b5ffdff8
+ * https://www.appdynamics.com/blog/engineering/a-performance-analysis-of-python-wsgi-servers-part-2/
+ * https://www.fullstackpython.com/wsgi-servers.html
 
 
 OpenAPI
