@@ -437,7 +437,70 @@ an established web server, which is built to handle concurrency and queues.
 
 For WSGI, there are a number of different ones, including gunicorn, mod_wsgi, uWSGI, CherryPy, Bjoern.
 
-For web servers, the two major ones are Apache and Nginx.
+The example below shows how to configure for a WSGI file. 
+we give the example name of ``flask.wsgi``.
+
+.. code:: python
+
+    #! /usr/bin/python
+    import sys
+    import os
+
+    sys.path.insert(0, "/var/www/app")
+    sys.path.insert(0,'/usr/local/lib/python3.6/site-packages')
+    sys.path.insert(0, "/usr/local/bin/")
+
+    os.environ['PYTHONPATH'] = '/usr/local/bin/python3.6'
+
+    from app import app as application
+
+
+For web servers, the two popular ones are Apache and Nginx.
+The example below shows how to set up for Apache.
+
+.. code:: 
+
+    FROM python:3.6
+    EXPOSE 5000
+
+    # install apache & apache3-dev which contains mod_wsgi
+    # remove existing lists not required
+    RUN apt-get update && apt-get install -y apache2 \
+            apache2-dev \   
+            nano \
+        && apt-get clean \
+        && apt-get autoremove \
+        && rm -rf /var/lib/apt/lists/*
+
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
+
+    # need to reside in /var/www folder
+    COPY ./app /var/www/app
+    COPY ./flask.wsgi /var/www/app
+    WORKDIR /var/www/app
+
+    # enable full read/write/delete in static folder if files are to have full access
+    RUN chmod 777 -R /var/www/app
+
+    # from installed mod_wsgi package, also install mod_wsgi at apache end
+    RUN /usr/local/bin/mod_wsgi-express install-module
+
+    # setup wsgi server in the folder "/etc/mod_wsgi-express" to use wsgi file
+    # change user and group from root user to a specific user
+    # server-root, logs and other application level stuff will be stored in the directory, 
+    # else will be stored in a temporary folder "/tmp/mod_wsgi-localhost:xxxx:x"
+    RUN mod_wsgi-express setup-server flask.wsgi \
+        --port=5000 \
+        --user www-data \
+        --group www-data \
+        --server-root=/etc/mod_wsgi-express
+        --threads=1 \
+        --processes=1
+
+    # start apache server
+    CMD /etc/mod_wsgi-express/apachectl start -D FOREGROUND
+
 
  * https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
  * https://medium.com/ww-tech-blog/well-do-it-live-updating-machine-learning-models-on-flask-uwsgi-with-no-downtime-9de8b5ffdff8
