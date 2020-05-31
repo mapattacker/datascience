@@ -436,9 +436,8 @@ and then a web server. The former is a connector to interface the python flask a
 an established web server, which is built to handle concurrency and queues.
 
 For WSGI, there are a number of different ones, including gunicorn, mod_wsgi, uWSGI, CherryPy, Bjoern.
-
 The example below shows how to configure for a WSGI file. 
-we give the example name of ``flask.wsgi``.
+we give the example name of ``flask.wsgi``. The flask app must also be renamed as application.
 
 .. code:: python
 
@@ -481,13 +480,13 @@ The example below shows how to set up for Apache.
     WORKDIR /var/www/app
 
     # enable full read/write/delete in static folder if files are to have full access
-    RUN chmod 777 -R /var/www/app
+    RUN chmod 777 -R /var/www/app/static
 
     # from installed mod_wsgi package, also install mod_wsgi at apache end
     RUN /usr/local/bin/mod_wsgi-express install-module
 
     # setup wsgi server in the folder "/etc/mod_wsgi-express" to use wsgi file
-    # change user and group from root user to a specific user
+    # change user and group from root user to a specific user, and define other configs
     # server-root, logs and other application level stuff will be stored in the directory, 
     # else will be stored in a temporary folder "/tmp/mod_wsgi-localhost:xxxx:x"
     RUN mod_wsgi-express setup-server flask.wsgi \
