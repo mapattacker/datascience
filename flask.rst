@@ -345,9 +345,9 @@ Storing Keys
 ----------------------
 
 We can and should set environment variables; i.e., variables stored in the OS,
-especially for passwords and keys, rather than in python scripts. This helps with 
-version control as you don't want to upload them to the github, or other version control platforms.
-Presently I guess, it still reduces the need to copy/paste the keys into the script everytime you launch the app.
+especially for passwords and keys, rather than in python scripts. This is because
+you don't want to upload them to the github, or other version control platforms.
+Hence, it reduces the need to copy/paste the keys into the script everytime you launch the app.
 
 To do this, in Mac/Linux, we can store the environment variable in a ``.bash_profile``.
 
@@ -414,8 +414,9 @@ Or if we are not using docker, we can ``export FLASK_ENV=development; python app
 
 .. code:: 
 
-    # when testing in production environment, comment out below
-    CMD export FLASK_ENV=development
+    # when testing in production environment, comment out development
+    ENV FLASK_ENV=development
+    # ENV FLASK_ENV=production
 
     ENTRYPOINT [ "python", "-u", "app.py" ]
 
@@ -455,7 +456,9 @@ we give the example name of ``flask.wsgi``. The flask app must also be renamed a
 
 
 For web servers, the two popular ones are Apache and Nginx.
-The example below shows how to set up for Apache.
+The example below shows how to set up for Apache, as well as configuring WSGI in 
+the Dockerfile. Note that all configurations of WSGI is actually set in
+Apache's httpd.conf file.
 
 .. code:: 
 
@@ -501,10 +504,9 @@ The example below shows how to set up for Apache.
     CMD /etc/mod_wsgi-express/apachectl start -D FOREGROUND
 
 
- * https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
- * https://medium.com/ww-tech-blog/well-do-it-live-updating-machine-learning-models-on-flask-uwsgi-with-no-downtime-9de8b5ffdff8
- * https://www.appdynamics.com/blog/engineering/a-performance-analysis-of-python-wsgi-servers-part-2/
- * https://www.fullstackpython.com/wsgi-servers.html
+
+* https://www.appdynamics.com/blog/engineering/a-performance-analysis-of-python-wsgi-servers-part-2/
+* https://www.fullstackpython.com/wsgi-servers.html
 
 
 OpenAPI
