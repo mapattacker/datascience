@@ -153,19 +153,11 @@ Docker Compose
 In a production environment, a docker compose file can be used to run all separate docker containers 
 together. It consists of all necessary configurations that a ``docker run`` command provides in a yaml file.
 
+So, instead of entering multiple ``docker run image``, we can just run one ``docker-compose.yml`` file to start all images.
+We also input all the commands like ports, volumes, depends_on, etc.
+
 For Linux, we will need to first install docker compose. https://docs.docker.com/compose/install/. 
 For Mac, it is already preinstalled with docker.
-
-So, instead of entering multiple ``docker run image``, we can just run one ``docker-compose.yml`` file to start all images.
-We also input all the commands like ports, volumes, depends_on
-
-.. figure:: images/docker_compose1.png
-    :width: 650px
-    :align: center
-
-    from Udemy's Docker for the Absolute Beginner - Hands On
-
-Below is an example using wordpress blog, where both the wordpress and mysql database are needed to get it working.
 
 Run ``docker-compose up`` command to launch, or ``docker-compose up -d`` in detached mode.
 If there are some images not built yet, we can add another specification in the docker compose file 
@@ -196,7 +188,7 @@ Below are some useful commands for docker-compose
 +-------------------------------------------+---------------------------------------------------------------------+
 | ``docker-compose up -d``                  |    launch in detached mode                                          |
 +-------------------------------------------+---------------------------------------------------------------------+
-| ``docker-compose -p PROJECT_NAME up -d `` |    specify project name instead of taking the directory name        |
+| ``docker-compose -p PROJECT_NAME up -d``  |    specify project name instead of taking the directory name        |
 +-------------------------------------------+---------------------------------------------------------------------+
 
 
