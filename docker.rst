@@ -153,7 +153,10 @@ Docker Compose
 In a production environment, a docker compose file can be used to run all separate docker containers 
 together. It consists of all necessary configurations that a ``docker run`` command provides in a yaml file.
 
-So, instead of entering multiple ``docker run imageX``, we can just run one docker compose file to start all images.
+For Linux, we will need to first install docker compose. https://docs.docker.com/compose/install/. 
+For Mac, it is already preinstalled with docker.
+
+So, instead of entering multiple ``docker run image``, we can just run one ``docker-compose.yml`` file to start all images.
 We also input all the commands like ports, volumes, depends_on
 
 .. figure:: images/docker_compose1.png
@@ -164,33 +167,38 @@ We also input all the commands like ports, volumes, depends_on
 
 Below is an example using wordpress blog, where both the wordpress and mysql database are needed to get it working.
 
-Run ``docker-compose up`` command to launch. 
+Run ``docker-compose up`` command to launch, or ``docker-compose up -d`` in detached mode.
 If there are some images not built yet, we can add another specification in the docker compose file 
 e.g., ``build: /directory_name``. 
 
-.. code:: python
+.. code:: yml
 
-    # in ymal file, 
-        ":" represents dictionary
-        # "-" represents list
-        $ the 2nd level definition, e.g. "web:" is just a name, can give it anything
-        # note that spaces matter
-    # must specify version
-
-    version: 3
+    version: '3'
     services:
-        mysql:
-            image: "mysql"
-            environment:
-                - MYSQL_ROOT_PASSWORD=password 
-            volumes:
-                - "/data/mysql:/var/lib/mysql"
-        web:
-            image: "wordpress"
+        facedetection:
+            build: ./face
+            container_name: facedetection
             ports:
-                - "8080:80"
-            environment:
-                - WORDPRESS_DB_PASSWORD=password
+                - 5001:5000
+            restart: always
+        calibration:
+            build: ./calibration
+            container_name: calibration
+            ports:
+                - 5001:5000
+            restart: always
+
+
+Below are some useful commands for docker-compose
+
++-------------------------------------------+---------------------------------------------------------------------+
+| ``docker-compose up``                     |    most basic command                                               |
++-------------------------------------------+---------------------------------------------------------------------+
+| ``docker-compose up -d``                  |    launch in detached mode                                          |
++-------------------------------------------+---------------------------------------------------------------------+
+| ``docker-compose -p PROJECT_NAME up -d `` |    specify project name instead of taking the directory name        |
++-------------------------------------------+---------------------------------------------------------------------+
+
 
 
 Docker Swarm
