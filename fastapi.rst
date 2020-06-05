@@ -78,6 +78,7 @@ We can define in pydantic as below, using multiple basemodels for each level in 
         x: float
         y: float
         width: float
+        height: float
         score: float
 
     class lvl2_item(BaseModel):

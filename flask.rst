@@ -4,7 +4,8 @@ Flask
 Flask is a micro web framework written in Python. 
 It is easy and fast to implement with the knowledge of basic web development and REST APIs.
 How is it relevant to model building? Sometimes, it might be necessary to 
-run models in the cloud, and 
+run models in the a server or cloud, and the only way is to wrap the model in a web application.
+Flask is the most popular library for such a task.
 
 
 Basics
