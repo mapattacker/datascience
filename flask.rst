@@ -410,14 +410,14 @@ but instead create a new one.
 
 
 We can then set the flask environment in docker as the below.
-Or if we are not using docker, we can ``export FLASK_ENV=development; python app.py``.
+Or if we are not using docker, we can ``export ENV=development; python app.py``.
 
 
 .. code:: 
 
     # when testing in production environment, comment out development
-    ENV FLASK_ENV=development
-    # ENV FLASK_ENV=production
+    ENV ENV=development
+    # ENV ENV=production
 
     ENTRYPOINT [ "python", "-u", "app.py" ]
 
