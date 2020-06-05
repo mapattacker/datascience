@@ -2,7 +2,7 @@ FastAPI
 =======
 
 FastAPI is one of the next generation python web framework that uses 
-ASGI (asynchronous server gateway interface) instead of the old WSGI.
+ASGI (asynchronous server gateway interface) instead of the traditional WSGI.
 It also includes a number of useful functions to make API creations easier.
 
 
@@ -25,14 +25,14 @@ to start the application.
     app = FastAPI()
 
     if __name__ == "__main__":
-        uvicorn.run(app, host='0.0.0.0', port=5000)
+        uvicorn.run('app:app', host='0.0.0.0', port=5000)
 
 
 If we run from the terminal, with the app residing in example.py.
 
 .. code:: bash
 
-    uvicorn example:app
+    uvicorn example:app --host='0.0.0.0' --port=5000
 
 
 Request-Response Schema
