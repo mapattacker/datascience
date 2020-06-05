@@ -398,13 +398,14 @@ Changing Environment
 Sometimes certain configurations differ between the local development and 
 server production environments. We can set a condition like the below.
 
-Note by default flask environment is set to production
+We try not to interfer with the FLASK_ENV variable which by default uses production,
+but instead create a new one.
 
 .. code:: python
 
-    if os.environ['FLASK_ENV'] == 'production':
+    if os.environ['ENV'] == 'production':
         UPLOAD_URL = 'url/in/production/server'
-    elif os.environ['FLASK_ENV'] == 'development'
+    elif os.environ['ENV'] == 'development'
         UPLOAD_URL = '/upload'
 
 
@@ -517,6 +518,16 @@ Swagger is an open-source set of tools to build this OpenAPI standard.
 There are a number of python packages that integrate both flask & swagger together. 
 
  * https://github.com/flasgger/flasgger
+
+
+Successors to Flask
+--------------------
+
+Flask is an old but well supported framework. However, asynchronous frameworks and the 
+successor to WSGI, ASGI (A=asynchronous) resulted in numerous alternatives, like FastAPI, 
+Quart and Vibora have sprung out.
+
+ * https://geekflare.com/python-asynchronous-web-frameworks/
 
 
 Resources
