@@ -507,7 +507,6 @@ Apache's httpd.conf file.
 
 
 * https://www.appdynamics.com/blog/engineering/a-performance-analysis-of-python-wsgi-servers-part-2/
-* https://www.fullstackpython.com/wsgi-servers.html
 
 
 OpenAPI
@@ -525,15 +524,6 @@ Successors to Flask
 
 Flask is an old but well supported framework. However, asynchronous frameworks and the 
 successor to WSGI, ASGI (A=asynchronous) resulted in numerous alternatives, like FastAPI, 
-Quart and Vibora have sprung out.
+Quart and Vibora.
 
  * https://geekflare.com/python-asynchronous-web-frameworks/
-
-
-Resources
----------
-
- * https://www.tutorialspoint.com/flask/index.htm
- * https://www.machinelearningplus.com/python/python-logging-guide/
- * https://tutorialedge.net/python/python-logging-best-practices/
- * http://blog.luisrei.com/articles/flaskrest.html
