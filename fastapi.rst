@@ -6,6 +6,35 @@ ASGI (asynchronous server gateway interface) instead of the old WSGI.
 It also includes a number of useful functions to make API creations easier.
 
 
+Uvicorn
+-------
+
+FastAPI uses Uvicorn as its ASGI. We can configure its settings as
+described here https://www.uvicorn.org/settings/. But basically we specify it in 
+the fastapi python app script, or at the terminal when we launch uvicorn.
+
+For the former, with the below specification, we can just execute ``python app.py``
+to start the application.
+
+
+.. code:: python
+
+    from fastapi import FastAPI
+    import uvicorn
+
+    app = FastAPI()
+
+    if __name__ == "__main__":
+        uvicorn.run(app, host='0.0.0.0', port=5000)
+
+
+If we run from the terminal, with the app residing in example.py.
+
+.. code:: bash
+
+    uvicorn example:app
+
+
 Request-Response Schema
 -------------------------
 
@@ -64,7 +93,7 @@ We can define in pydantic as below, using multiple basemodels for each level in 
     RESPONSE_SCHEMA = response_item
 
 
-We do the same for the request schema and place them in the post definition.
+We do the same for the request schema and place them in the routing function.
 
 .. code:: python
 
