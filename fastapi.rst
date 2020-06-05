@@ -6,14 +6,14 @@ ASGI (asynchronous server gateway interface) instead of the old WSGI.
 It also includes a number of useful functions to make API creations easier.
 
 
-Request & Response Schema
+Request-Response Schema
 -------------------------
 
-FastAPI uses pydantic to define the schema of the request & response APIs.
+FastAPI uses the ``pydantic`` library to define the schema of the request & response APIs.
 This allows the auto generation in the OpenAPI documentations, and for the 
 former, for validating the schema when a request is received.
 
-For example given the json:
+For example, given the json:
 
 .. code:: json
 
@@ -41,7 +41,7 @@ For example given the json:
         }
     }
 
-We can define in pydantic as below, using multiple basemodels for each level.
+We can define in pydantic as below, using multiple basemodels for each level in the JSON.
 
 .. code:: python
 
