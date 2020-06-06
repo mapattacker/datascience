@@ -270,8 +270,11 @@ Below shows up to upload a file, e.g., an image to a directory in the server.
 
         return render_template('index.html')
 
-To upload multiple files, end the html form tag with "multiple", 
-``<form action="/upload" method="post" enctype="multipart/form-data" multiple>``        
+To upload multiple files, end the html form tag with "multiple".
+
+.. code:: html 
+
+    <form action="/upload" method="post" enctype="multipart/form-data" multiple>      
 
 
 
