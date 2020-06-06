@@ -71,12 +71,17 @@ For example, given the json:
     }
 
 We can define in pydantic as below, using multiple basemodels for each level in the JSON.
+ * If there are no values input like ``y: float``, it will listed as a required field
+ * If we add a value like ``y: float = 0.8369``, it will be an optional field, with the value also listed as a default and example value
+ * If we add a value like ``x: float = Field(..., example=0.82379)``, it will be a required field, and also listed as an example value
+
+More attributes can be added in ``Field``, that will be populated in OpenAPI docs.
 
 .. code:: python
 
     class lvl3_list(BaseModel):
-        x: float
-        y: float
+        x: float = Field(..., example=0.82379, description="X-coordinates"))
+        y: float = 0.8369
         width: float
         height: float
         score: float
@@ -147,8 +152,27 @@ OpenAPI
 OpenAPI documentations of Swagger UI or Redoc are automatically generated.
 You can access it at the endpoints of ``/docs`` and ``/redoc``.
 
+First, the title, description and versions can be specified from the initialisation of fastapi.
+
 .. code:: python
 
     app = FastAPI(title="Human Detection API",
                     description="Submit Image to Return Detected Humans in Bounding Boxes",
                     version="1.0.0")
+
+
+The request-response schema and examples will be added after its inclusion
+in a post/get request routing function. With the schemas defined using pydantic.
+
+.. code:: python
+
+    @app.post('/api', response_model= RESPONSE_SCHEMA)
+    def human_detection(request: REQUEST_SCHEMA):
+        do something
+        return another_thing
+
+
+Asynchronous
+------------
+
+ * https://medium.com/@esfoobar/python-asyncio-for-beginners-c181ab226598
