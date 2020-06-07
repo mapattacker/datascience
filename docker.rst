@@ -163,7 +163,7 @@ Run ``docker-compose up`` command to launch, or ``docker-compose up -d`` in deta
 If there are some images not built yet, we can add another specification in the docker compose file 
 e.g., ``build: /directory_name``. 
 
-.. code:: ymal
+.. code::
 
     version: '3'
     services:
