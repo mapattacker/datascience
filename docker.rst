@@ -49,7 +49,7 @@ If any of the local files are changed, there is no need to rebuild the python pa
 .. code::
 
     # download base image
-    FROM continuumio/anaconda3
+    FROM python:3.6
 
     # copy and install libraries
     COPY requirements.txt .
@@ -61,12 +61,9 @@ If any of the local files are changed, there is no need to rebuild the python pa
     # terminal will start from this default directory
     WORKDIR /app/liftscanner/src
 
-    # expose this port to outside docker for specific application
-    EXPOSE 5555
-
     # run the following command when docker is run
-    # -u so prints in code appear in cmd
-    CMD python -u server.py
+    # -u so prints in code appear in bash
+    ENTRYPOINT [ "python", "-u", "app.py" ]
 
 
 
@@ -358,8 +355,3 @@ Commands
 Inside the docker container, if there is a need to view any files, we have to install an editor first
 ``apt-get update`` > ``apt-get install nano``. To exit the container ``exit``.
 
-
-Tips
-*****
-
-https://pythonspeed.com/articles/multi-stage-docker-python/
