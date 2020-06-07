@@ -431,6 +431,42 @@ A more proper way to handle environments is mentioned in flask's documentation b
  * https://flask.palletsprojects.com/en/0.12.x/config/#configuring-from-files
 
 
+Parallel Processing
+--------------------
+
+We can use multi-processing or multi-threading to run parallel processing.
+Note that we should not end with ``thread.join()`` or ``p.join()`` or the app will hang.
+
+.. code:: python
+
+    from threading import Thread
+
+    def prediction(json_input):
+        # prediction
+        pred_json = predict_single(save_img_path, 
+                                    json_input, 
+                                    display=False, ensemble=False,
+                                    save_dir=os.path.join(ABS_PATH, LOCAL_RESULT_FOLDER))
+
+        # upload prediction to dynamo db
+        table.update_item(
+            Key={'id': unique_id},
+            UpdateExpression='SET #attr = :val1',
+            ExpressionAttributeNames={'#attr': 'violations'},
+            ExpressionAttributeValues={':val1': json_output}
+        )
+        print('image processing done' + ' for ' + image_name)
+
+    # post request
+    @app.route('/api', methods=["POST"])
+    def process_img():
+        json_input = request.json
+        
+        # run prediction as a separate thread
+        thread = Thread(target=prediction, kwargs={'json_input': request.args.get('value', json_input)})
+        thread.start()
+        return "OK"
+
 Scaling Flask
 -----------------
 
