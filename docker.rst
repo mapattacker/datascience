@@ -53,6 +53,9 @@ If any of the local files are changed, there is no need to rebuild the python pa
 
     # copy and install libraries
     COPY requirements.txt .
+    # sometimes certain dependency libraries need to be preinstalled 
+    # before it can be run in requirements.txt
+    RUN pip install Cython==0.29.17 numpy==1.18.1
     RUN pip install -r requirements.txt
 
     # copy all local files to docker image
