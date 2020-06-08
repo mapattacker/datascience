@@ -358,3 +358,51 @@ Commands
 Inside the docker container, if there is a need to view any files, we have to install an editor first
 ``apt-get update`` > ``apt-get install nano``. To exit the container ``exit``.
 
+
+Small Efficient Images
+----------------------
+
+Docker images can ridiculously large if you do not manage it properly. 
+Luckily, there are various easy ways to go about this.
+
+**1. Build a Proper Requirements.txt** 
+
+Using pipreqs library, it will scan through your scripts and generate a clean requirements.txt,
+without any dependent or redundant libraries. Some manual intervention is needed if, the library
+is not installed from pip, but from external links, or the library does not auto install dependencies.
+
+**2. Use Alpine Python**
+
+The base python image, example, ``RUN python:3.7`` is a whooping ~900Mb.
+Using the Alphine Linux version ``Run python:3.7-alpine``, only takes up about 100Mb.
+
+**3. Install Libraries First**
+
+A logical sequential way of writing a Dockerfile is to copy all files,
+and then install the libraries.
+
+.. code:: 
+
+    FROM python:3.7-alpine
+    COPY . /app
+    WORKDIR /app
+    RUN pip install -r requirements.txt
+    CMD ["gunicorn", "-w 4", "main:app"]
+
+However, a more efficient way is to utilise layer caching, i.e., 
+installing libraries from requirements.txt before copying the files over.
+This is because we will more then likely change our codes more frequently than
+update our libraries. Given that installation of libraries takes much longer too,
+putting the installation first allows the next update of files to skip this step.
+
+.. code:: 
+
+    FROM python:3.7-alpine
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
+    COPY . /app
+    WORKDIR /app
+    CMD ["gunicorn", "-w 4", "main:app"]
+
+
+ * https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3
