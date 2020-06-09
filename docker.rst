@@ -362,12 +362,12 @@ Inside the docker container, if there is a need to view any files, we have to in
 Small Efficient Images
 ----------------------
 
-Docker images can ridiculously large if you do not manage it properly. 
+Docker images can get ridiculously large if you do not manage it properly. 
 Luckily, there are various easy ways to go about this.
 
 **1. Build a Proper Requirements.txt** 
 
-Using pipreqs library, it will scan through your scripts and generate a clean requirements.txt,
+Using the ``pipreqs`` library, it will scan through your scripts and generate a clean requirements.txt,
 without any dependent or redundant libraries. Some manual intervention is needed if, the library
 is not installed from pip, but from external links, or the library does not auto install dependencies.
 
