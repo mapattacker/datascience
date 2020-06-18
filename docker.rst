@@ -210,6 +210,7 @@ This is similar to Apache Spark whereby there is a Cluster Manager (Swarm Manage
 
 Use the command ``docker stack deploy -c docker_compose.yml`` to launch the swarm.
 
+
 Networking
 -------------
 
@@ -225,7 +226,34 @@ However, to access these networks from the outside world, we need to
 
     from Udemy's Docker for the Absolute Beginner - Hands On
 
-If we want to separate the internal bridge networks, we can create our own internal bridge networks.
+There will come an instance when we need to communicate between containers. There are three ways to go about it.
+
+First, we can use the docker container IP address. However this is not ideal as the IP can change.
+To obtain the IP, use docker inspect, and use the IP. 
+
+.. code:: bash
+
+    docker inspect container_name
+
+Second, we can use a legacy way by linking containers to each other.
+
+.. code:: bash
+
+    docker run -d --name=container_a image_a
+    docker run -d --link container_a --name=container_b image_b
+
+
+The recommended way is to create a network and specify the container to run within that network.
+Note that the name of the container is also the hostname, while the port is the internal port,
+not what is 
+
+.. code:: bash
+    
+    docker network create new_network
+    docker run -d --network new_network --name=container_a image_a
+    docker run -d --network new_network --name=container_b image_b
+
+
 
 Commands
 ----------
@@ -295,6 +323,19 @@ Commands
 |                                      | on docker host                                                           |
 +--------------------------------------+--------------------------------------------------------------------------+
 
+Also, we can use ``docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a`` to list all container ports
+
+**Networks**
++----------------------------------------+----------------------------------------------------------------------+
+| ``docker network ls``                  | list all networks                                                    |
++----------------------------------------+----------------------------------------------------------------------+
+| ``docker network inspect networkname`` | display info about this network                                      |
++----------------------------------------+----------------------------------------------------------------------+
+| ``docker network create networkname``  | create new network                                                   |
++----------------------------------------+----------------------------------------------------------------------+
+| ``docker network rm networkname``      | delete network                                                       |
++----------------------------------------+----------------------------------------------------------------------+
+
 **See Images & Containers in Docker**
 
 +------------------------------+----------------------------------------------------------------------+
@@ -307,7 +348,7 @@ Commands
 | ``docker ps -a --no-trunc``  | show all text with no truncations                                    |
 +------------------------------+----------------------------------------------------------------------+
 
-**Remove Intermediate Images/Containers**
+**Remove Intermediate/Stopped Images/Containers**
 
 +----------------------------+----------------------------------------------------------------------------------------+
 | ``docker image prune``     | delete intermediate images tagged as <none> after recreating images from some changes  |
@@ -367,7 +408,7 @@ Luckily, there are various easy ways to go about this.
 
 **1. Build a Proper Requirements.txt** 
 
-Using the ``pipreqs`` library, it will scan through your scripts and generate a clean requirements.txt,
+Using the g``pipreqs`` library, it will scan through your scripts and generate a clean requirements.txt,
 without any dependent or redundant libraries. Some manual intervention is needed if, the library
 is not installed from pip, but from external links, or the library does not auto install dependencies.
 
@@ -375,6 +416,7 @@ is not installed from pip, but from external links, or the library does not auto
 
 The base python image, example, ``RUN python:3.7`` is a whooping ~900Mb.
 Using the Alphine Linux version ``Run python:3.7-alpine``, only takes up about 100Mb.
+However, some libraries might face errors during installation for this light-weight version.
 
 **3. Install Libraries First**
 
