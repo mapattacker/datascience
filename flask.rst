@@ -559,6 +559,17 @@ There are a number of python packages that integrate both flask & swagger togeth
  * https://github.com/flasgger/flasgger
 
 
+Rate Limiting
+-------------
+
+Also known as throttling, it is necessary to control the number of requests each IP address 
+can access at a given time. This can be set using a library called Flask-Limiter
+``pip install Flask-Limiter``.
+
+More settings from this article
+https://medium.com/analytics-vidhya/how-to-rate-limit-routes-in-flask-61c6c791961b
+
+
 Successors to Flask
 --------------------
 
