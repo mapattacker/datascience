@@ -228,6 +228,26 @@ Similarly, we can also send a request using the Python "requests" package.
     print(res.content)
 
 
+CURL
+*****
+
+We can use curl (Client URL) through the terminal as an easy access to test our API too.
+Here's a simple test to see the API works, without sending the data.
+
+.. code:: bash
+
+    curl --request POST localhost:5000/api
+
+Here's one complete request with data
+
+.. code:: bash
+
+    curl --header "Content-Type: application/json" \
+        --request POST \
+        --data '{"username":"xyz","password":"xyz"}' \
+        http://localhost:5000/api
+
+
 File Upload
 -----------
 
