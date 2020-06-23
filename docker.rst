@@ -338,15 +338,17 @@ Also, we can use ``docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.P
 
 **See Images & Containers in Docker**
 
-+------------------------------+----------------------------------------------------------------------+
-| ``docker images``            | see all installed docker images                                      |
-+------------------------------+----------------------------------------------------------------------+
-| ``docker ps``                | (ps = process status) show status of images which are running        |
-+------------------------------+----------------------------------------------------------------------+
-| ``docker ps -a``             | (-a = all) show status of all images including those that had exited |
-+------------------------------+----------------------------------------------------------------------+
-| ``docker ps -a --no-trunc``  | show all text with no truncations                                    |
-+------------------------------+----------------------------------------------------------------------+
++--------------------------------------+----------------------------------------------------------------------+
+| ``docker images``                    | see all installed docker images                                      |
++--------------------------------------+----------------------------------------------------------------------+
+| ``docker ps``                        | (ps = process status) show status of images which are running        |
++--------------------------------------+----------------------------------------------------------------------+
+| ``docker ps -a``                     | (-a = all) show status of all images including those that had exited |
++--------------------------------------+----------------------------------------------------------------------+
+| ``docker ps -a --no-trunc``          | show all text with no truncations                                    |
++--------------------------------------+----------------------------------------------------------------------+
+| ``docker ps --format '{{.Names}}'``  | display only container names                                         |
++--------------------------------------+----------------------------------------------------------------------+
 
 **Remove Intermediate/Stopped Images/Containers**
 
@@ -398,6 +400,15 @@ Also, we can use ``docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.P
 
 Inside the docker container, if there is a need to view any files, we have to install an editor first
 ``apt-get update`` > ``apt-get install nano``. To exit the container ``exit``.
+
+
+**Console Log**
+
++-----------------------------------+--------------------------------------------------------+
+| ``docker logs -f container_name`` | prints out console log of a container in detached mode |
++-----------------------------------+--------------------------------------------------------+
+
+
 
 
 Small Efficient Images
