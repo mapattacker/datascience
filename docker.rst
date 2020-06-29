@@ -404,11 +404,14 @@ Inside the docker container, if there is a need to view any files, we have to in
 
 **Console Log**
 
-+-----------------------------------+--------------------------------------------------------+
-| ``docker logs -f container_name`` | prints out console log of a container in detached mode |
-+-----------------------------------+--------------------------------------------------------+
+Any console prints will be added to the docker log, 
+and it will grow without a limit, unless you assigned one to it
 
-
++----------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ``docker logs -f container_name``                                                            | prints out console log of a container in detached mode |
++----------------------------------------------------------------------------------------------+--------------------------------------------------------+
+| ``docker run -d --log-opt max-size=5m --log-opt max-file=10 --name containername imagename`` | limit log file size to 5Mb and 10 log files            |
++----------------------------------------------------------------------------------------------+--------------------------------------------------------+
 
 
 Small Efficient Images

@@ -112,7 +112,7 @@ We do the same for the request schema and place them in the routing function.
     import numpy as np
 
     @app.post('/api', response_model= RESPONSE_SCHEMA)
-    def human_detection(request: REQUEST_SCHEMA):
+    async def human_detection(request: REQUEST_SCHEMA):
 
         JScontent = json.loads(request.json())
         encodedImage = JScontent['requests'][0]['image']['content']

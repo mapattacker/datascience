@@ -247,6 +247,23 @@ Here's one complete request with data
         --data '{"username":"xyz","password":"xyz"}' \
         http://localhost:5000/api
 
+To run multiple requests in parallel for stress testing
+
+.. code:: bash
+
+    curl --header "Content-Type: application/json" \
+        --request POST \
+        --data '{"username":"xyz","password":"xyz"}' \
+        http://localhost:5000/api &
+    curl --header "Content-Type: application/json" \
+        --request POST \
+        --data '{"username":"xyz","password":"xyz"}' \
+        http://localhost:5000/api &
+    curl --header "Content-Type: application/json" \
+        --request POST \
+        --data '{"username":"xyz","password":"xyz"}' \
+        http://localhost:5000/api &
+    wait
 
 File Upload
 -----------
@@ -564,6 +581,32 @@ Apache's httpd.conf file.
     # start apache server
     CMD /etc/mod_wsgi-express/apachectl start -D FOREGROUND
 
+
+Gunicorn is another popular, and extremely easy to use WSGI. 
+We can just install as ``pip install gunicorn``.
+and start it with the simple command.
+
+.. code::
+
+    # gunicorn -w 2 pythonScriptName:flaskAppName
+    # it uses port 8000 by default, but we can change it
+    gunicorn --bind 0.0.0.0:5000 -w 2 app:app
+
+
+``
+sudo apt-get install nginx
+# ubuntu firewall
+sudo ufw status
+sudo ufw enable
+sudo ufw nginx http
+sudo ufw status
+sudo ufw allow ssh
+
+systemctl status nginx
+systemctl start nginx
+systemctl stop nginx
+systemctl restart nginx
+``
 
 
 * https://www.appdynamics.com/blog/engineering/a-performance-analysis-of-python-wsgi-servers-part-2/
