@@ -35,6 +35,13 @@ If we run from the terminal, with the app residing in example.py.
     uvicorn example:app --host='0.0.0.0' --port=5000
 
 
+The documentation recommends that we use gunicorn which have richer features
+to better control over the workers processes.
+
+.. code:: bash
+
+    gunicorn app:app --bind 0.0.0.0:5000 -w 1 --log-level debug -k uvicorn.workers.UvicornWorker
+
 Request-Response Schema
 -------------------------
 

@@ -326,6 +326,7 @@ Commands
 Also, we can use ``docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a`` to list all container ports
 
 **Networks**
+
 +----------------------------------------+----------------------------------------------------------------------+
 | ``docker network ls``                  | list all networks                                                    |
 +----------------------------------------+----------------------------------------------------------------------+
