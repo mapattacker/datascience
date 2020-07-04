@@ -414,6 +414,16 @@ and it will grow without a limit, unless you assigned one to it
 | ``docker run -d --log-opt max-size=5m --log-opt max-file=10 --name containername imagename`` | limit log file size to 5Mb and 10 log files            |
 +----------------------------------------------------------------------------------------------+--------------------------------------------------------+
 
+**Statistics**
+
+Sometimes we need to check the CPU or RAM for leakage or utilisation rates.
+
++---------------------------------------------+---------------------------------------------------------------------------------------------------------------+
+| ``docker stats``                            | check memory, CPU utilisations for all containers. Add container name to be specific                          |
++---------------------------------------------+---------------------------------------------------------------------------------------------------------------+
+| ``docker -p 5000:5000 --memory 1000M``      | assign a limit of 1GB to RAM. It will force the container to release the memory without causing memory error  |
++---------------------------------------------+---------------------------------------------------------------------------------------------------------------+
+
 
 Small Efficient Images
 ----------------------
