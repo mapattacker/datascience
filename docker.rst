@@ -254,6 +254,9 @@ not what is
     docker run -d --network new_network --name=container_b image_b
 
 
+If we need to connect from a docker container to some application running outside in localhost, we
+cant use the usual ``http://localhost``. Instead, we need to call using ``http://host.docker.internal``.
+
 
 Commands
 ----------
@@ -406,7 +409,8 @@ Inside the docker container, if there is a need to view any files, we have to in
 **Console Log**
 
 Any console prints will be added to the docker log, 
-and it will grow without a limit, unless you assigned one to it
+and it will grow without a limit, unless you assigned one to it.
+The logs are stored in ``/var/lib/docker/containers/[container-id]/[container-id]-json. log.``
 
 +----------------------------------------------------------------------------------------------+--------------------------------------------------------+
 | ``docker logs -f container_name``                                                            | prints out console log of a container in detached mode |
@@ -418,11 +422,11 @@ and it will grow without a limit, unless you assigned one to it
 
 Sometimes we need to check the CPU or RAM for leakage or utilisation rates.
 
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| ``docker stats``                            | check memory, CPU utilisations for all containers. Add container name to be specific                          |
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------+
-| ``docker -p 5000:5000 --memory 1000M``      | assign a limit of 1GB to RAM. It will force the container to release the memory without causing memory error  |
-+---------------------------------------------+---------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
+| ``docker stats``                                         | check memory, CPU utilisations for all containers. Add container name to be specific                          |
++----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
+| ``docker -p 5000:5000 --memory 1000M --cpus="2.0"``      | assign a limit of 1GB to RAM. It will force the container to release the memory without causing memory error  |
++----------------------------------------------------------+---------------------------------------------------------------------------------------------------------------+
 
 
 Small Efficient Images
@@ -433,15 +437,18 @@ Luckily, there are various easy ways to go about this.
 
 **1. Build a Proper Requirements.txt** 
 
-Using the g``pipreqs`` library, it will scan through your scripts and generate a clean requirements.txt,
+Using the ``pipreqs`` library, it will scan through your scripts and generate a clean requirements.txt,
 without any dependent or redundant libraries. Some manual intervention is needed if, the library
 is not installed from pip, but from external links, or the library does not auto install dependencies.
 
-**2. Use Alpine Python**
+**2. Use Alpine or Slim Python**
 
 The base python image, example, ``RUN python:3.7`` is a whooping ~900Mb.
-Using the Alphine Linux version ``Run python:3.7-alpine``, only takes up about 100Mb.
+Using the Alpine Linux version ``Run python:3.7-alpine``, only takes up about 100Mb.
 However, some libraries might face errors during installation for this light-weight version.
+
+Alternatively, using the Slim version  ``RUN python:3.7-slim`` takes about 500Mb,
+which is a middle ground between alpine and the base version.
 
 **3. Install Libraries First**
 
@@ -471,5 +478,35 @@ putting the installation first allows the next update of files to skip this step
     WORKDIR /app
     CMD ["gunicorn", "-w 4", "main:app"]
 
+**4. Multi-Stage Builds**
+
+Lastly, we can also use what we called multi-stage builds. 
+During the pip installation, cache of libraries are stored elsewhere and the resulting library
+is bigger then what it should have been.
+
+What we can do is to copy the dependencies after building it, and paste it into a new base 
+python platform.
+
+
+.. code::
+
+    FROM python:3.7-slim as base
+
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
+
+
+    FROM python:3.7-slim
+
+    RUN apt-get update && apt-get -y install libgtk2.0-dev
+    COPY --from=base /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
+
+    COPY . .
+    WORKDIR /app
+
+
+    ENTRYPOINT [ "python", "-u", "app.py" ]
+
 
  * https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3
+ * https://www.docker.com/blog/containerized-python-development-part-1/
