@@ -153,6 +153,15 @@ define a route. Within the render_template, we pass in the variable.
     </div>
 
 
+*In JavaScript*
+
+.. code:: javascript
+
+    <script>
+        image_path = "{{ img_show }}";
+    </script>
+
+
 If Conditions, Loops, etc.
 ***************************
 

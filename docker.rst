@@ -191,7 +191,7 @@ Below are some useful commands for docker-compose
 | ``docker-compose -p PROJECT_NAME up -d``  |    specify project name instead of taking the directory name        |
 +-------------------------------------------+---------------------------------------------------------------------+
 
-
+* https://www.docker.com/blog/containerized-python-development-part-2/
 
 Docker Swarm
 --------------
@@ -510,3 +510,4 @@ python platform.
 
  * https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3
  * https://www.docker.com/blog/containerized-python-development-part-1/
+ * https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d
