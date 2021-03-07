@@ -9,19 +9,19 @@
       
       
       
-      <link rel="shortcut icon" href="/assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
-        <title>Data Science in Python</title>
+        <title>Class Imbalance - Data Science in Python</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.6910b76c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.196e0c26.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
           
           
@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#class-imbalance" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -69,7 +74,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="/." title="Data Science in Python" class="md-header-nav__button md-logo" aria-label="Data Science in Python">
+    <a href=".." title="Data Science in Python" class="md-header-nav__button md-logo" aria-label="Data Science in Python">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -86,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              
+              Class Imbalance
             
           </span>
         </div>
@@ -156,7 +161,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Data Science in Python" class="md-nav__button md-logo" aria-label="Data Science in Python">
+    <a href=".." title="Data Science in Python" class="md-nav__button md-logo" aria-label="Data Science in Python">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -186,7 +191,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/." class="md-nav__link">
+    <a href=".." class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -218,7 +223,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/imbalance.md" class="md-nav__link">
+    <a href="../imbalance.md" class="md-nav__link">
       Class Imbalance
     </a>
   </li>
@@ -236,12 +241,98 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#over-sampling" class="md-nav__link">
+    Over-Sampling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#under-sampling" class="md-nav__link">
+    Under-Sampling
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/data-classimbalance.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="class-imbalance">Class Imbalance</h1>
+<p>In domains like predictive maintenance, machine failures are usually rare occurrences in the lifetime of the assets compared to normal operation. 
+This causes an imbalance in the label distribution which usually causes poor performance as algorithms tend to 
+classify majority class examples better at the expense of minority class examples as the total misclassification error 
+is much improved when majority class is labeled correctly. Techniques are available to correct for this.</p>
+<p>The imbalance-learn package provides an excellent range of algorithms for adjusting for imbalanced data.
+Install with <code>pip install -U imbalanced-learn</code> or <code>conda install -c conda-forge imbalanced-learn</code>.</p>
+<p>An important thing to note is that <strong>resampling must be done AFTER the train-test split</strong>, so as to prevent data leakage.</p>
+<h2 id="over-sampling">Over-Sampling</h2>
+<p><strong>SMOTE</strong> (synthetic minority over-sampling technique) is a common and popular up-sampling technique.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
 
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">()</span>
+<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p><strong>ADASYN</strong> is one of the more advanced over sampling algorithms.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">ADASYN</span>
+
+<span class="n">ada</span> <span class="o">=</span> <span class="n">ADASYN</span><span class="p">()</span>
+<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ada</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h2 id="under-sampling">Under-Sampling</h2>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+
+<span class="n">rus</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">()</span>
+<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">rus</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h1 id="cost-sensitive-classification">Cost-Sensitive Classification</h1>
+<p>One can also make the classifier aware of the imbalanced data by incorporating the weights of the classes into a cost function. 
+Intuitively, we want to give higher weight to minority class and lower weight to majority class.</p>
+<p>http://albahnsen.github.io/CostSensitiveClassification/index.html</p>
+                
+              
               
                 
 
@@ -271,15 +362,15 @@
       
     </div>
     
-      <script src="/assets/javascripts/vendor.fd16492e.min.js"></script>
-      <script src="/assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: "/",
+          base: "..",
           features: [],
           search: Object.assign({
-            worker: "/assets/javascripts/worker/search.4ac00218.min.js"
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
