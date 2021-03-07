@@ -495,6 +495,8 @@ The standard score of a sample x is calculated as <strong>z = (x - u) / s</stron
 <p>Works similarly to standard scaler except that it uses median and quartiles, instead of mean and variance. Good as it ignores data points that are outliers.</p>
 <h3 id="normalizer">Normalizer</h3>
 <p>Scales each data point such that the feature vector has a Euclidean length of 1. Often used when the direction of the data matters, not the length of the feature vector.</p>
+<hr>
+
 <h2 id="pipeline">Pipeline</h2>
 <p>Scaling have a chance of leaking the part of the test data in train-test split into the training data. This is especially inevitable when using cross-validation.</p>
 <p>We can scale the train and test datasets separately to avoid this.However, a more convenient way is to use the pipeline function in sklearn, which wraps the scaler and classifier together, and scale them separately during cross validation.</p>
@@ -515,6 +517,8 @@ The standard score of a sample x is calculated as <strong>z = (x - u) / s</stron
 <span class="c1"># 0.95104895104895104</span>
 </code></pre></div>
 
+
+<hr>
 
 <h2 id="persistance">Persistance</h2>
 <p>To save the fitted scaler to normalize new datasets, we can save it using pickle or joblib for reusing in the future.</p>
