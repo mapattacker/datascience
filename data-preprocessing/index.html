@@ -14,7 +14,7 @@
     
     
       
-        <title>Class Imbalance - Data Science in Python</title>
+        <title>Feature Preprocessing - Data Science in Python</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#class-imbalance" class="md-skip">
+        <a href="#feature-preprocessing" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Class Imbalance
+              Feature Preprocessing
             
           </span>
         </div>
@@ -247,11 +247,76 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../data-preprocessing/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Feature Preprocessing
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Feature Preprocessing
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#missing-values" class="md-nav__link">
+    Missing Values
+  </a>
+  
+    <nav class="md-nav" aria-label="Missing Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#threshold" class="md-nav__link">
+    Threshold
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#impute" class="md-nav__link">
+    Impute
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation" class="md-nav__link">
+    Interpolation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -271,63 +336,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Class Imbalance
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../data-classimbalance/" class="md-nav__link">
       Class Imbalance
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#over-sampling" class="md-nav__link">
-    Over-Sampling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#under-sampling" class="md-nav__link">
-    Under-Sampling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-sensitive-classification" class="md-nav__link">
-    Cost-Sensitive Classification
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -360,23 +373,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#over-sampling" class="md-nav__link">
-    Over-Sampling
+  <a href="#missing-values" class="md-nav__link">
+    Missing Values
+  </a>
+  
+    <nav class="md-nav" aria-label="Missing Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#threshold" class="md-nav__link">
+    Threshold
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#under-sampling" class="md-nav__link">
-    Under-Sampling
+        
+          <li class="md-nav__item">
+  <a href="#impute" class="md-nav__link">
+    Impute
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-sensitive-classification" class="md-nav__link">
-    Cost-Sensitive Classification
+        
+          <li class="md-nav__item">
+  <a href="#interpolation" class="md-nav__link">
+    Interpolation
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -392,54 +418,80 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/data-classimbalance.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/data-preprocessing.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="class-imbalance">Class Imbalance</h1>
-<p>In domains like predictive maintenance, machine failures are usually rare occurrences in the lifetime of the assets compared to normal operation. 
-This causes an imbalance in the label distribution which usually causes poor performance as algorithms tend to 
-classify majority class examples better at the expense of minority class examples as the total misclassification error 
-is much improved when majority class is labeled correctly. Techniques are available to correct for this.</p>
-<p>The imbalance-learn package provides an excellent range of algorithms for adjusting for imbalanced data.
-Install with <code>pip install -U imbalanced-learn</code> or <code>conda install -c conda-forge imbalanced-learn</code>.</p>
-<p>An important thing to note is that <strong>resampling must be done AFTER the train-test split</strong>, so as to prevent data leakage.</p>
-<h2 id="over-sampling">Over-Sampling</h2>
-<p><strong>SMOTE</strong> (synthetic minority over-sampling technique) is a common and popular up-sampling technique.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+                <h1 id="feature-preprocessing">Feature Preprocessing</h1>
+<h2 id="missing-values">Missing Values</h2>
+<p>Machine learning models cannot accept null/NaN values. We will need to either remove them or fill them with a logical value. To investigate how many nulls in each column.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">null_analysis</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">  desc: get nulls for each column in counts &amp; percentages</span>
+<span class="sd">  arg: dataframe</span>
+<span class="sd">  return: dataframe</span>
+<span class="sd">  &#39;&#39;&#39;</span>
+  <span class="n">null_cnt</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1"># calculate null counts</span>
+  <span class="n">null_cnt</span> <span class="o">=</span> <span class="n">null_cnt</span><span class="p">[</span><span class="n">null_cnt</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># remove non-null cols</span>
+  <span class="n">null_percent</span> <span class="o">=</span> <span class="n">null_cnt</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="c1"># calculate null percentages</span>
+  <span class="n">null_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">null_cnt</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">null_percent</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">null_table</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="s1">&#39;percentage&#39;</span><span class="p">]</span>
+  <span class="n">null_table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">null_table</span>
 
-<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">()</span>
-<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+<span class="c1"># visualise null table</span>
+<span class="kn">import</span> <span class="nn">plotly_express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="n">null_table</span> <span class="o">=</span> <span class="n">null_analysis</span><span class="p">(</span><span class="n">weather_train</span><span class="p">)</span>
+<span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">null_table</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;percentage&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </code></pre></div>
 
 
-<p><strong>ADASYN</strong> is one of the more advanced over sampling algorithms.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">ADASYN</span>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/null1.png?raw=true" style="width:80%" />
+</figure>
 
-<span class="n">ada</span> <span class="o">=</span> <span class="n">ADASYN</span><span class="p">()</span>
-<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ada</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/null2.png?raw=true" style="width:80%" />
+</figure>
+
+<h3 id="threshold">Threshold</h3>
+<p>It makes no sense to fill in the null values if there are too many of them.
+We can set a threshold to delete the entire column if there are too many nulls.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">null_threshold</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    desc: delete columns based on a null percentage threshold</span>
+<span class="sd">    arg: df=dataframe; threshold=percentage of nulls in column</span>
+<span class="sd">    return: dataframe</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">null_table</span> <span class="o">=</span> <span class="n">null_analysis</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">null_table</span> <span class="o">=</span> <span class="n">null_table</span><span class="p">[</span><span class="n">null_table</span><span class="p">[</span><span class="s1">&#39;percentage&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">25</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">null_table</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
 </code></pre></div>
 
 
-<h2 id="under-sampling">Under-Sampling</h2>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
+<h3 id="impute">Impute</h3>
+<p>We can change missing values for the entire dataframe into their individual column means or medians.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
 
-<span class="n">rus</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">()</span>
-<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">rus</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+<span class="n">imp_mean</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">imp_mean</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># output is in numpy, so convert to df</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">imp_mean</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </code></pre></div>
 
 
-<h2 id="cost-sensitive-classification">Cost-Sensitive Classification</h2>
-<p>One can also make the classifier aware of the imbalanced data by incorporating the weights of the classes into a cost function. 
-Intuitively, we want to give higher weight to minority class and lower weight to majority class.</p>
-<p>http://albahnsen.github.io/CostSensitiveClassification/index.html</p>
+<h3 id="interpolation">Interpolation</h3>
+<p>We can also use <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.interpolate.html">interpolation</a> via pandas default function to fill in the missing values.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># limit: Maximum number of consecutive NaNs to fill. </span>
+<span class="c1"># Must be greater than 0.</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;colname&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
                 
               
               
@@ -458,7 +510,7 @@ Intuitively, we want to give higher weight to minority class and lower weight to
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../data-scaling/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../data-exploration/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -467,11 +519,25 @@ Intuitively, we want to give higher weight to minority class and lower weight to
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Feature Scaling
+                Data Exploration
               </div>
             </div>
           </a>
         
+        
+          <a href="../data-scaling/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Feature Scaling
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>
