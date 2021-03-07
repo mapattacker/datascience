@@ -1,0 +1,563 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>Datasets - Data Science in Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#datasets" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Data Science in Python" class="md-header-nav__button md-logo" aria-label="Data Science in Python">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Data Science in Python
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Datasets
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/mapattacker/datascience/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mapattacker/datascience
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Data Science in Python" class="md-nav__button md-logo" aria-label="Data Science in Python">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Data Science in Python
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/mapattacker/datascience/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mapattacker/datascience
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Datasets
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Datasets
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statsmodels" class="md-nav__link">
+    Statsmodels
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      Data Preparation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Data Preparation" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Data Preparation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../data-classimbalance/" class="md-nav__link">
+      Class Imbalance
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#statsmodels" class="md-nav__link">
+    Statsmodels
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/datasets.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="datasets">Datasets</h1>
+<p>There are in-built datasets provided in both statsmodels and sklearn packages.</p>
+<h2 id="statsmodels">Statsmodels</h2>
+<p>In <a href="https://www.statsmodels.org/devel/datasets/index.html">statsmodels</a>, many R datasets can be obtained from the function <code>sm.datasets.get_rdataset()</code>. To view each dataset's description, <code>print(duncan_prestige.__doc__)</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="n">prestige</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_rdataset</span><span class="p">(</span><span class="s2">&quot;Duncan&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
+
+<span class="nb">print</span> <span class="n">prestige</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="c1"># type  income  education  prestige</span>
+<span class="c1"># accountant  prof      62         86        82</span>
+<span class="c1"># pilot       prof      72         76        83</span>
+<span class="c1"># architect   prof      75         92        90</span>
+<span class="c1"># author      prof      55         90        76</span>
+<span class="c1"># chemist     prof      64         86        90</span>
+</code></pre></div>
+
+
+<p>|</p>
+<h1 id="sklearn">Sklearn</h1>
+<p>There are five common toy datasets here. For others, <a href="http://scikit-learn.org/stable/datasets/index.html">see</a>. To view each dataset's description, use <code>print boston['DESCR']</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Noun</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>load_boston</code></td>
+<td>Load and return the boston house-prices dataset (regression)</td>
+</tr>
+<tr>
+<td><code>load_iris</code></td>
+<td>Load and return the iris dataset (classification)</td>
+</tr>
+<tr>
+<td><code>load_diabetes</code></td>
+<td>Load and return the diabetes dataset</td>
+</tr>
+<tr>
+<td><code>load_digits</code></td>
+<td>Load and return the digits dataset (classification)</td>
+</tr>
+<tr>
+<td><code>load_linnerud</code></td>
+<td>Load and return the linnerud dataset (multivariate regression)</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="c1"># Load iris into a dataframe and set the field names</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)</span>
+<span class="c1"># 0                5.1               3.5                1.4               0.2</span>
+<span class="c1"># 1                4.9               3.0                1.4               0.2</span>
+<span class="c1"># 2                4.7               3.2                1.3               0.2</span>
+<span class="c1"># 3                4.6               3.1                1.5               0.2</span>
+<span class="c1"># 4                5.0               3.6                1.4               0.2</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="c1"># [&#39;setosa&#39; &#39;versicolor&#39; &#39;virginica&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="c1"># [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span>
+<span class="c1"># 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span>
+<span class="c1"># 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2</span>
+<span class="c1"># 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</span>
+<span class="c1"># 2 2]</span>
+
+
+
+<span class="c1"># Change target to target_names &amp; merge with main dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="o">.</span><span class="n">from_codes</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">sepal</span> <span class="n">length</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>  <span class="n">sepal</span> <span class="n">width</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>  <span class="n">petal</span> <span class="n">length</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>  <span class="n">petal</span> <span class="n">width</span> <span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+<span class="mi">0</span>                <span class="mf">5.1</span>               <span class="mf">3.5</span>                <span class="mf">1.4</span>               <span class="mf">0.2</span>
+<span class="mi">1</span>                <span class="mf">4.9</span>               <span class="mf">3.0</span>                <span class="mf">1.4</span>               <span class="mf">0.2</span>
+<span class="mi">2</span>                <span class="mf">4.7</span>               <span class="mf">3.2</span>                <span class="mf">1.3</span>               <span class="mf">0.2</span>
+<span class="mi">3</span>                <span class="mf">4.6</span>               <span class="mf">3.1</span>                <span class="mf">1.5</span>               <span class="mf">0.2</span>
+<span class="mi">4</span>                <span class="mf">5.0</span>               <span class="mf">3.6</span>                <span class="mf">1.4</span>               <span class="mf">0.2</span>
+<span class="mi">0</span>    <span class="n">setosa</span>
+<span class="mi">1</span>    <span class="n">setosa</span>
+<span class="mi">2</span>    <span class="n">setosa</span>
+<span class="mi">3</span>    <span class="n">setosa</span>
+<span class="mi">4</span>    <span class="n">setosa</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">species</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">category</span>
+<span class="n">Categories</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span> <span class="p">[</span><span class="n">setosa</span><span class="p">,</span> <span class="n">versicolor</span><span class="p">,</span> <span class="n">virginica</span><span class="p">]</span>
+</code></pre></div>
+
+
+<h2 id="vega-datasets">Vega-Datasets</h2>
+<p><a href="https://github.com/jakevdp/vega_datasets">vega_datasets</a> have to be installed via <code>pip install vega_datasets</code>. </p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">vega_datasets</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iris</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">petalLength</span>  <span class="n">petalWidth</span>  <span class="n">sepalLength</span>  <span class="n">sepalWidth</span> <span class="n">species</span>
+<span class="mi">0</span>          <span class="mf">1.4</span>         <span class="mf">0.2</span>          <span class="mf">5.1</span>         <span class="mf">3.5</span>  <span class="n">setosa</span>
+<span class="mi">1</span>          <span class="mf">1.4</span>         <span class="mf">0.2</span>          <span class="mf">4.9</span>         <span class="mf">3.0</span>  <span class="n">setosa</span>
+<span class="mi">2</span>          <span class="mf">1.3</span>         <span class="mf">0.2</span>          <span class="mf">4.7</span>         <span class="mf">3.2</span>  <span class="n">setosa</span>
+<span class="mi">3</span>          <span class="mf">1.5</span>         <span class="mf">0.2</span>          <span class="mf">4.6</span>         <span class="mf">3.1</span>  <span class="n">setosa</span>
+<span class="mi">4</span>          <span class="mf">1.4</span>         <span class="mf">0.2</span>          <span class="mf">5.0</span>         <span class="mf">3.6</span>  <span class="n">setosa</span> 
+</code></pre></div>
+
+
+<p>To list all datasets, use <code>list_datasets()</code></p>
+<div class="codehilite"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">list_datasets</span><span class="p">()</span>
+
+<span class="p">[</span><span class="s1">&#39;7zip&#39;</span><span class="p">,</span> <span class="s1">&#39;airports&#39;</span><span class="p">,</span> <span class="s1">&#39;anscombe&#39;</span><span class="p">,</span> <span class="s1">&#39;barley&#39;</span><span class="p">,</span> <span class="s1">&#39;birdstrikes&#39;</span><span class="p">,</span> <span class="s1">&#39;budget&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;budgets&#39;</span><span class="p">,</span> <span class="s1">&#39;burtin&#39;</span><span class="p">,</span> <span class="s1">&#39;cars&#39;</span><span class="p">,</span> <span class="s1">&#39;climate&#39;</span><span class="p">,</span> <span class="s1">&#39;co2-concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;countries&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;crimea&#39;</span><span class="p">,</span> <span class="s1">&#39;disasters&#39;</span><span class="p">,</span> <span class="s1">&#39;driving&#39;</span><span class="p">,</span> <span class="s1">&#39;earthquakes&#39;</span><span class="p">,</span> <span class="s1">&#39;ffox&#39;</span><span class="p">,</span> <span class="s1">&#39;flare&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;flare-dependencies&#39;</span><span class="p">,</span> <span class="s1">&#39;flights-10k&#39;</span><span class="p">,</span> <span class="s1">&#39;flights-200k&#39;</span><span class="p">,</span> <span class="s1">&#39;flights-20k&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;flights-2k&#39;</span><span class="p">,</span> <span class="s1">&#39;flights-3m&#39;</span><span class="p">,</span> <span class="s1">&#39;flights-5k&#39;</span><span class="p">,</span> <span class="s1">&#39;flights-airport&#39;</span><span class="p">,</span> <span class="s1">&#39;gapminder&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;gapminder-health-income&#39;</span><span class="p">,</span> <span class="s1">&#39;gimp&#39;</span><span class="p">,</span> <span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="s1">&#39;graticule&#39;</span><span class="p">,</span> <span class="s1">&#39;income&#39;</span><span class="p">,</span> <span class="s1">&#39;iris&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;jobs&#39;</span><span class="p">,</span> <span class="s1">&#39;londonBoroughs&#39;</span><span class="p">,</span> <span class="s1">&#39;londonCentroids&#39;</span><span class="p">,</span> <span class="s1">&#39;londonTubeLines&#39;</span><span class="p">,</span> <span class="s1">&#39;lookup_groups&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;lookup_people&#39;</span><span class="p">,</span> <span class="s1">&#39;miserables&#39;</span><span class="p">,</span> <span class="s1">&#39;monarchs&#39;</span><span class="p">,</span> <span class="s1">&#39;movies&#39;</span><span class="p">,</span> <span class="s1">&#39;normal-2d&#39;</span><span class="p">,</span> <span class="s1">&#39;obesity&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;points&#39;</span><span class="p">,</span> <span class="s1">&#39;population&#39;</span><span class="p">,</span> <span class="s1">&#39;population_engineers_hurricanes&#39;</span><span class="p">,</span> <span class="s1">&#39;seattle-temps&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;seattle-weather&#39;</span><span class="p">,</span> <span class="s1">&#39;sf-temps&#39;</span><span class="p">,</span> <span class="s1">&#39;sp500&#39;</span><span class="p">,</span> <span class="s1">&#39;stocks&#39;</span><span class="p">,</span> <span class="s1">&#39;udistrict&#39;</span><span class="p">,</span> <span class="s1">&#39;unemployment&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;unemployment-across-industries&#39;</span><span class="p">,</span> <span class="s1">&#39;us-10m&#39;</span><span class="p">,</span> <span class="s1">&#39;us-employment&#39;</span><span class="p">,</span> <span class="s1">&#39;us-state-capitals&#39;</span><span class="p">,</span> \
+<span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="s1">&#39;weball26&#39;</span><span class="p">,</span> <span class="s1">&#39;wheat&#39;</span><span class="p">,</span> <span class="s1">&#39;world-110m&#39;</span><span class="p">,</span> <span class="s1">&#39;zipcodes&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+
+<h2 id="kaggle">Kaggle</h2>
+<p>Kaggle is the most recognised online data science competition, with attractive rewards and recognition for being the top competitor. 
+With a point system that encourages sharing, one can learnt from the top practitioners in the world.</p>
+<p><strong>Progession System</strong></p>
+<p>There are 4 types of expertise medals for specific work, 
+namely Competition, Dataset, Notebook, and Discussion medals.
+For expertise, it is possible to obtain bronze, silver and gold medals.</p>
+<p>Performance Tier is an overall recognition for each of the expertise stated above,
+base on the number of medals accumulated. The various rankings are
+Novice, Contributor, Expert, Master, and Grandmaster.</p>
+<p>More at https://www.kaggle.com/progression </p>
+<p><strong>Online Notebook</strong></p>
+<p>Kaggle's notebook has a dedicated GPU and decent RAM for deep-learning neural networks.</p>
+<ul>
+<li>For installation of new packages, check "internet" under "Settings" in the right panel first, then in the notebook cell, <code>!pip install package</code>.</li>
+<li>To read dataset, you can see the file path at the right panel for "Data". It goes something like <code>/kaggle/input/competition_folder_name</code>.</li>
+<li>To download/export the prediction for submission, we can save the prediction like <code>df_submission.to_csv(r'/kaggle/working/submisson.csv', index=False)</code>.</li>
+<li>To do a direct submission, we can commit the notebook, with the output saving directly as <code>submission.csv</code>, e.g., <code>df_submission.to_csv(r'submisson.csv', index=False)</code>.</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../data-classimbalance/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Class Imbalance
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
