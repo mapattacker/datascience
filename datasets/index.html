@@ -259,6 +259,26 @@
     Kaggle
   </a>
   
+    <nav class="md-nav" aria-label="Kaggle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progession-system" class="md-nav__link">
+    Progession System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-notebook" class="md-nav__link">
+    Online Notebook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -354,6 +374,26 @@
     Kaggle
   </a>
   
+    <nav class="md-nav" aria-label="Kaggle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progession-system" class="md-nav__link">
+    Progession System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-notebook" class="md-nav__link">
+    Online Notebook
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -448,8 +488,6 @@
 <span class="c1"># 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</span>
 <span class="c1"># 2 2]</span>
 
-
-
 <span class="c1"># Change target to target_names &amp; merge with main dataframe</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="o">.</span><span class="n">from_codes</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
 <span class="nb">print</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -510,15 +548,25 @@
 <h2 id="kaggle">Kaggle</h2>
 <p>Kaggle is the most recognised online data science competition, with attractive rewards and recognition for being the top competitor. 
 With a point system that encourages sharing, one can learnt from the top practitioners in the world.</p>
-<p><strong>Progession System</strong></p>
-<p>There are 4 types of expertise medals for specific work, 
-namely Competition, Dataset, Notebook, and Discussion medals.
-For expertise, it is possible to obtain bronze, silver and gold medals.</p>
-<p>Performance Tier is an overall recognition for each of the expertise stated above,
-base on the number of medals accumulated. The various rankings are
-Novice, Contributor, Expert, Master, and Grandmaster.</p>
-<p>More at https://www.kaggle.com/progression </p>
-<p><strong>Online Notebook</strong></p>
+<h3 id="progession-system">Progession System</h3>
+<p>The <a href="https://www.kaggle.com/progression">progression system</a> in Kaggle are as follows.</p>
+<p>There are 4 types of expertise medals for specific work, namely: </p>
+<ul>
+<li>Competition</li>
+<li>Dataset</li>
+<li>Notebook</li>
+<li>Discussion</li>
+</ul>
+<p>For each expertise, it is possible to obtain bronze, silver and gold medals.</p>
+<p>Performance Tier is an overall recognition for each of the expertise stated above, base on the number of medals accumulated. The various rankings are:</p>
+<ul>
+<li>Novice</li>
+<li>Contributor</li>
+<li>Expert</li>
+<li>Master</li>
+<li>Grandmaster</li>
+</ul>
+<h3 id="online-notebook">Online Notebook</h3>
 <p>Kaggle's notebook has a dedicated GPU and decent RAM for deep-learning neural networks.</p>
 <ul>
 <li>For installation of new packages, check "internet" under "Settings" in the right panel first, then in the notebook cell, <code>!pip install package</code>.</li>
