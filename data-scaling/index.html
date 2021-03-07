@@ -497,9 +497,7 @@ The standard score of a sample x is calculated as <strong>z = (x - u) / s</stron
 <p>Scales each data point such that the feature vector has a Euclidean length of 1. Often used when the direction of the data matters, not the length of the feature vector.</p>
 <h2 id="pipeline">Pipeline</h2>
 <p>Scaling have a chance of leaking the part of the test data in train-test split into the training data. This is especially inevitable when using cross-validation.</p>
-<p>We can scale the train and test datasets separately to avoid this.
-However, a more convenient way is to use the pipeline function in sklearn, which wraps the scaler and classifier together,
-and scale them separately during cross validation.</p>
+<p>We can scale the train and test datasets separately to avoid this.However, a more convenient way is to use the pipeline function in sklearn, which wraps the scaler and classifier together, and scale them separately during cross validation.</p>
 <p>Any other functions can also be input here, e.g., rolling window feature extraction, which also have the potential to have data leakage.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
