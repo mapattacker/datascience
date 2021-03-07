@@ -313,6 +313,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#outliers" class="md-nav__link">
+    Outliers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encodings" class="md-nav__link">
+    Encodings
+  </a>
+  
+    <nav class="md-nav" aria-label="Encodings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#label-encoding" class="md-nav__link">
+    Label Encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-encoding" class="md-nav__link">
+    Frequency Encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-hot-encoding" class="md-nav__link">
+    One-Hot Encoding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinates" class="md-nav__link">
+    Coordinates
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -406,6 +454,54 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#outliers" class="md-nav__link">
+    Outliers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encodings" class="md-nav__link">
+    Encodings
+  </a>
+  
+    <nav class="md-nav" aria-label="Encodings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#label-encoding" class="md-nav__link">
+    Label Encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frequency-encoding" class="md-nav__link">
+    Frequency Encoding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-hot-encoding" class="md-nav__link">
+    One-Hot Encoding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coordinates" class="md-nav__link">
+    Coordinates
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -448,7 +544,7 @@
 
 
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/null1.png?raw=true" style="width:80%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/null1.png?raw=true" style="width:60%" />
 </figure>
 
 <figure>
@@ -492,6 +588,105 @@ We can set a threshold to delete the entire column if there are too many nulls.<
 <span class="c1"># Must be greater than 0.</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;colname&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
+
+
+<h2 id="outliers">Outliers</h2>
+<p>Especially sensitive in linear models. They can be (1) removed manually by
+defining the lower and upper bound limit, or (2) grouping the features into ranks.</p>
+<p>Below is a simple method to detect &amp; remove outliers that is defined by being outside a boxplot's whiskers.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">boxplot_outlier_removal</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    remove outliers detected by boxplot (Q1/Q3 -/+ IQR*1.5)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : dataframe</span>
+<span class="sd">        dataset to remove outliers from</span>
+<span class="sd">    exclude : list of str</span>
+<span class="sd">        column names to exclude from outlier removal</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    X : dataframe</span>
+<span class="sd">    dataset with outliers removed</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">before</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># iterate each column</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">:</span>
+            <span class="c1"># get Q1, Q3 &amp; Interquantile Range</span>
+            <span class="n">Q1</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+            <span class="n">Q3</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+            <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+            <span class="c1"># define outliers and remove them</span>
+            <span class="n">filter_</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span><span class="n">IQR</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">filter_</span><span class="p">]</span>
+
+    <span class="n">after</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">before</span><span class="o">-</span><span class="n">after</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="n">diff</span><span class="o">/</span><span class="n">before</span><span class="o">*</span><span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> (</span><span class="si">{:.2f}</span><span class="s1">%) outliers removed&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">percent</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">X</span>
+</code></pre></div>
+
+
+<p>There are also unsupervised modelling techniques to find outliers.</p>
+<h2 id="encodings">Encodings</h2>
+<h3 id="label-encoding">Label Encoding</h3>
+<p>This converts a category of a label or feature into integer values. There are two methods to do this, via alphabetical order (<code>sklearn.preprocessing.LabelEncoder</code>), or order of appearance (<code>pd.factorize</code>).</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Col&#39;</span><span class="p">])</span>
+
+<span class="c1"># factorise</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Fact&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">factorize</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Col&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># label encoder</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Lab&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Col&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1">#   Col  Fact  Lab</span>
+<span class="c1"># 0   A     0    0</span>
+<span class="c1"># 1   B     1    1</span>
+<span class="c1"># 2   B     1    1</span>
+<span class="c1"># 3   C     2    2</span>
+</code></pre></div>
+
+
+<h3 id="frequency-encoding">Frequency Encoding</h3>
+<p>This involves the conversion of categories into frequencies.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># size of each category</span>
+<span class="n">encoding</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Embarked&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="c1"># get frequency of each category</span>
+<span class="n">encoding</span> <span class="o">=</span> <span class="n">encoding</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">titanic</span><span class="p">)</span>
+<span class="n">titanic</span><span class="p">[</span><span class="s1">&#39;enc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">Embarked</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="c1"># if categories have same frequency it can be an issue</span>
+<span class="c1"># will need to change it to ranked frequency encoding</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span>
+</code></pre></div>
+
+
+<h3 id="one-hot-encoding">One-Hot Encoding</h3>
+<p>We could use an integer encoding directly, rescaled where needed. This may work for problems where there is a natural ordinal relationship between the categories, and in turn their integer values, such as labels for temperature ‘cold’, warm’, and ‘hot’. </p>
+<p>However, there may be problems when there is no ordinal relationship and allowing the representation to lean on any such relationship might be damaging to learning to solve the problem. An example might be the labels ‘dog’ and ‘cat’.</p>
+<p>This is especially so for non-tree based models.</p>
+<p>Again this can be done two ways. <strong>get_dummies</strong> converts the result into a pandas dataframe, while sklearn's <strong>OneHotEncoder</strong> converts into a numpy array.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="n">onehotencoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">onehotencoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+</code></pre></div>
+
+
+<h2 id="coordinates">Coordinates</h2>
+<p>It is necessary to define a projection for a coordinate reference system if there is a classification in space, e.g. k-means clustering. This basically change the coordinates from a spherical component to a flat surface.</p>
+<p>Also take note of spatial auto-correlation.</p>
                 
               
               
