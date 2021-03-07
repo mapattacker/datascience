@@ -1,0 +1,17 @@
+site_name: Data Science in Python
+theme:
+    name: 'material'
+    palette:
+        primary: 'purple'
+
+nav:
+    - Introduction: index.md
+
+repo_name: mapattacker/datascience
+repo_url: https://github.com/mapattacker/datascience
+
+markdown_extensions:
+    - codehilite
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
