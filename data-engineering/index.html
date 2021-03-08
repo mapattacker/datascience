@@ -203,6 +203,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../process/" class="md-nav__link">
+      ML process
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../datasets/" class="md-nav__link">
       Datasets
     </a>
@@ -230,13 +242,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    <label class="md-nav__link" for="nav-4">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    <label class="md-nav__link" for="nav-5">
       Data Preparation
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Data Preparation" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
+      <label class="md-nav__title" for="nav-5">
         <span class="md-nav__icon md-icon"></span>
         Data Preparation
       </label>
@@ -281,9 +293,85 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Feature Engineering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
     <a href="./" class="md-nav__link md-nav__link--active">
       Feature Engineering
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decomposition" class="md-nav__link">
+    Decomposition
+  </a>
+  
+    <nav class="md-nav" aria-label="Decomposition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datetime-breakdown" class="md-nav__link">
+    Datetime Breakdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-series-decomposition" class="md-nav__link">
+    Time Series Decomposition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-feature-engineering" class="md-nav__link">
+    Automated Feature Engineering
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated Feature Engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#featuretools" class="md-nav__link">
+    FeatureTools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tsfresh" class="md-nav__link">
+    tsfresh
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -321,6 +409,68 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decomposition" class="md-nav__link">
+    Decomposition
+  </a>
+  
+    <nav class="md-nav" aria-label="Decomposition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datetime-breakdown" class="md-nav__link">
+    Datetime Breakdown
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time-series-decomposition" class="md-nav__link">
+    Time Series Decomposition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-feature-engineering" class="md-nav__link">
+    Automated Feature Engineering
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated Feature Engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#featuretools" class="md-nav__link">
+    FeatureTools
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tsfresh" class="md-nav__link">
+    tsfresh
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -366,6 +516,164 @@
 </tr>
 </tbody>
 </table>
+<h2 id="decomposition">Decomposition</h2>
+<h3 id="datetime-breakdown">Datetime Breakdown</h3>
+<p>Very often, various dates and times of the day have strong interactions with your predictors. Here’s a script to pull those values out.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">extract_time</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dayofweek&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofweek</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
+
+
+<p>To get holidays, use the package holidays.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">holidays</span>
+<span class="n">train</span><span class="p">[</span><span class="s1">&#39;holiday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">holidays</span><span class="o">.</span><span class="n">US</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h3 id="time-series-decomposition">Time Series Decomposition</h3>
+<p>This is a popular decomposition method for time-series, whereby it is divided into trend (long-term), seaonality (short-term), residuals (noise). There are two methods to decompose:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Additive</td>
+<td>The component is present and is added to the other components to create the overall forecast value</td>
+</tr>
+<tr>
+<td>Multiplicative</td>
+<td>The component is present and is multiplied by the other components to create the overall forecast value</td>
+</tr>
+</tbody>
+</table>
+<p>Usually, an additive time-series will be used if there are no seasonal variations over time.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">final2</span><span class="p">[</span><span class="s1">&#39;avg_mth_elect&#39;</span><span class="p">],</span> \      
+                                <span class="n">model</span><span class="o">=</span><span class="s1">&#39;multiplicative&#39;</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># set decomposed parts into dataframe</span>
+<span class="n">decomp</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">res</span><span class="o">.</span><span class="n">observed</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">trend</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">seasonal</span><span class="p">,</span> <span class="n">res</span><span class="o">.</span><span class="n">resid</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">decomp</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;avg_mth&#39;</span><span class="p">,</span><span class="s1">&#39;trend&#39;</span><span class="p">,</span><span class="s1">&#39;seasonal&#39;</span><span class="p">,</span><span class="s1">&#39;residual&#39;</span><span class="p">]</span>
+<span class="n">decomp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/ts_decompose1.PNG.png?raw=true" style="width:80%" />
+</figure>
+
+<h2 id="automated-feature-engineering">Automated Feature Engineering</h2>
+<h3 id="featuretools">FeatureTools</h3>
+<p><a href="https://github.com/Featuretools/featuretools">FeatureTools</a> is extremely useful if you have datasets with a base data, with other tables that have relationships to it.</p>
+<p>We first create an EntitySet, which is like a database. Then we create entities, i.e., individual tables with a unique id for each table, and showing their relationships between each other.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">featuretools</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="k">def</span> <span class="nf">make_entityset</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">es</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">EntitySet</span><span class="p">(</span><span class="s1">&#39;Dataset&#39;</span><span class="p">)</span>
+    <span class="n">es</span><span class="o">.</span><span class="n">entity_from_dataframe</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                            <span class="n">entity_id</span><span class="o">=</span><span class="s1">&#39;recordings&#39;</span><span class="p">,</span>
+                            <span class="n">index</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span>
+                            <span class="n">time_index</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+    <span class="n">es</span><span class="o">.</span><span class="n">normalize_entity</span><span class="p">(</span><span class="n">base_entity_id</span><span class="o">=</span><span class="s1">&#39;recordings&#39;</span><span class="p">,</span>
+                        <span class="n">new_entity_id</span><span class="o">=</span><span class="s1">&#39;engines&#39;</span><span class="p">,</span>
+                        <span class="n">index</span><span class="o">=</span><span class="s1">&#39;engine_no&#39;</span><span class="p">)</span>
+
+    <span class="n">es</span><span class="o">.</span><span class="n">normalize_entity</span><span class="p">(</span><span class="n">base_entity_id</span><span class="o">=</span><span class="s1">&#39;recordings&#39;</span><span class="p">,</span>
+                        <span class="n">new_entity_id</span><span class="o">=</span><span class="s1">&#39;cycles&#39;</span><span class="p">,</span>
+                        <span class="n">index</span><span class="o">=</span><span class="s1">&#39;time_in_cycles&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">es</span>
+
+<span class="n">es</span> <span class="o">=</span> <span class="n">make_entityset</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">es</span>
+</code></pre></div>
+
+
+<p>We then use something called Deep Feature Synthesis (dfs) to generate features automatically.</p>
+<p>Primitives are the type of new features to be extracted from the datasets. They can be aggregations (data is combined) or transformation (data is changed via a function) type of extractors. The list can be found via ft.primitives.list_primitives(). External primitives like tsfresh, or custom calculations can also be input into FeatureTools.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">feature_names</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="n">entityset</span><span class="o">=</span><span class="n">es</span><span class="p">,</span>
+                                        <span class="n">target_entity</span> <span class="o">=</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+                                        <span class="n">agg_primitives</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">],</span>
+                                        <span class="n">trans_primitives</span><span class="o">=</span><span class="p">[],</span>
+                                        <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">verbose</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                                        <span class="n">n_jobs</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># see all old &amp; new features created</span>
+<span class="n">feature_matrix</span><span class="o">.</span><span class="n">columns</span>
+</code></pre></div>
+
+
+<p>FeatureTools appears to be a very powerful auto-feature extractor. Some resources to read further are as follows:</p>
+<ul>
+<li><a href="https://brendanhasz.github.io/2018/11/11/featuretools">brendanhasz</a></li>
+<li><a href="https://towardsdatascience.com/automated-feature-engineering-in-python-99baf11cc219">towardsdatascience</a></li>
+<li><a href="https://medium.com/@rrfd/ simple-automatic-feature-engineering-using-featuretools-in-python-for-classification-b1308040e183">medium</a></li>
+</ul>
+<h3 id="tsfresh">tsfresh</h3>
+<p><a href="https://tsfresh.readthedocs.io/en/latest/">tsfresh</a> is a feature extraction package for time-series. It can extract more than 1200 different features, and filter out features that are deemed relevant. In essence, it is a univariate feature extractor.</p>
+<p>To extract all possible features...</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">tsfresh</span> <span class="kn">import</span> <span class="n">extract_features</span>
+
+<span class="k">def</span> <span class="nf">list_union_df</span><span class="p">(</span><span class="n">fault_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert list of faults with a single signal value </span>
+<span class="sd">    into a dataframe with an id for each fault sample</span>
+<span class="sd">    Data transformation prior to feature extraction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># convert nested list into dataframe</span>
+    <span class="n">dflist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># give an id field for each fault sample</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">verified_faults</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="n">dflist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dflist</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">list_union_df</span><span class="p">(</span><span class="n">fault_list</span><span class="p">)</span>
+
+<span class="c1"># tsfresh</span>
+<span class="n">extracted_features</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column_id</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+<span class="c1"># delete columns which only have one value for all rows</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">extracted_features</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">extracted_features</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">extracted_features</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</code></pre></div>
+
+
+<p>To generate only relevant features...</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">tsfresh</span> <span class="kn">import</span> <span class="n">extract_relevant_features</span>
+
+<span class="c1"># y = is the target vector</span>
+    <span class="c1"># length of y = no. of samples in timeseries, not length of the entire timeseries</span>
+<span class="c1"># column_sort = for each sample in timeseries, time_steps column will restart</span>
+<span class="c1"># fdr_level = false discovery rate, is default at 0.05,</span>
+    <span class="c1"># it is the expected percentage of irrelevant features</span>
+    <span class="c1"># tune down to reduce number of created features retained, tune up to increase</span>
+
+<span class="n">features_filtered_direct</span> <span class="o">=</span> <span class="n">extract_relevant_features</span><span class="p">(</span>
+                                    <span class="n">timeseries</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+                                    <span class="n">column_id</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
+                                    <span class="n">column_sort</span><span class="o">=</span><span class="s1">&#39;time_steps&#39;</span><span class="p">,</span>
+                                    <span class="n">fdr_level</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</code></pre></div>
                 
               
               

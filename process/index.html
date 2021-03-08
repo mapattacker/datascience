@@ -14,7 +14,7 @@
     
     
       
-        <title>Class Imbalance - Data Science in Python</title>
+        <title>ML process - Data Science in Python</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#class-imbalance" class="md-skip">
+        <a href="#machine-learning-process" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Class Imbalance
+              ML process
             
           </span>
         </div>
@@ -201,11 +201,20 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../process/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       ML process
     </a>
+    
   </li>
 
     
@@ -237,12 +246,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
     <label class="md-nav__link" for="nav-5">
       Data Preparation
       <span class="md-nav__icon md-icon"></span>
@@ -295,63 +302,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Class Imbalance
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../data-classimbalance/" class="md-nav__link">
       Class Imbalance
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#over-sampling" class="md-nav__link">
-    Over-Sampling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#under-sampling" class="md-nav__link">
-    Under-Sampling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-sensitive-classification" class="md-nav__link">
-    Cost-Sensitive Classification
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -377,35 +332,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#over-sampling" class="md-nav__link">
-    Over-Sampling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#under-sampling" class="md-nav__link">
-    Under-Sampling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cost-sensitive-classification" class="md-nav__link">
-    Cost-Sensitive Classification
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -416,53 +342,12 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/data-classimbalance.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/process.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="class-imbalance">Class Imbalance</h1>
-<p>In domains like predictive maintenance, machine failures are usually rare occurrences in the lifetime of the assets compared to normal operation. 
-This causes an imbalance in the label distribution which usually causes poor performance as algorithms tend to 
-classify majority class examples better at the expense of minority class examples as the total misclassification error 
-is much improved when majority class is labeled correctly. Techniques are available to correct for this.</p>
-<p>The imbalance-learn package (<code>pip install -U imbalanced-learn</code>) provides an excellent range of algorithms for adjusting for imbalanced data.</p>
-<p>An important thing to note is that <strong>resampling must be done AFTER the train-test split</strong>, so as to prevent data leakage.</p>
-<h2 id="over-sampling">Over-Sampling</h2>
-<p><strong>SMOTE</strong> (synthetic minority over-sampling technique) is a common and popular up-sampling technique.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
-
-<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">()</span>
-<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
-</code></pre></div>
-
-
-<p><strong>ADASYN</strong> is one of the more advanced over sampling algorithms.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">ADASYN</span>
-
-<span class="n">ada</span> <span class="o">=</span> <span class="n">ADASYN</span><span class="p">()</span>
-<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">ada</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
-</code></pre></div>
-
-
-<h2 id="under-sampling">Under-Sampling</h2>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">imblearn.under_sampling</span> <span class="kn">import</span> <span class="n">RandomUnderSampler</span>
-
-<span class="n">rus</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">()</span>
-<span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">rus</span><span class="o">.</span><span class="n">fit_sample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
-</code></pre></div>
-
-
-<h2 id="cost-sensitive-classification">Cost-Sensitive Classification</h2>
-<p>One can also make the classifier aware of the imbalanced data by incorporating the weights of the classes into a cost function. 
-Intuitively, we want to give higher weight to minority class and lower weight to majority class.</p>
-<p>http://albahnsen.github.io/CostSensitiveClassification/index.html</p>
+                <h1 id="machine-learning-process">Machine Learning Process</h1>
                 
               
               
@@ -481,7 +366,7 @@ Intuitively, we want to give higher weight to minority class and lower weight to
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../data-engineering/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -490,11 +375,25 @@ Intuitively, we want to give higher weight to minority class and lower weight to
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Feature Engineering
+                Introduction
               </div>
             </div>
           </a>
         
+        
+          <a href="../datasets/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Datasets
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>
