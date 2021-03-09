@@ -366,6 +366,26 @@
     Auto Tuners
   </a>
   
+    <nav class="md-nav" aria-label="Auto Tuners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bayesian-optimization" class="md-nav__link">
+    Bayesian Optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayesian-tuning-and-bandits" class="md-nav__link">
+    Bayesian Tuning and Bandits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -422,6 +442,26 @@
     Auto Tuners
   </a>
   
+    <nav class="md-nav" aria-label="Auto Tuners">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bayesian-optimization" class="md-nav__link">
+    Bayesian Optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bayesian-tuning-and-bandits" class="md-nav__link">
+    Bayesian Tuning and Bandits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -461,6 +501,104 @@
 
 
 <h2 id="auto-tuners">Auto Tuners</h2>
+<p>Grid search or random search, while semi-automated, is still very tedious. The list of values you give for searching might not be out of range or far off from the optimal, hence it might result in several iterations of changing the values to find a good one.</p>
+<p>Bayesian optimization with gaussian processes is a popular technique to overcome this. It involves just defining the start and end value of each hyperparameter, and using bayesian probability, get the best parameters for a model.</p>
+<h3 id="bayesian-optimization">Bayesian Optimization</h3>
+<p>This <a href="https://github.com/fmfn/BayesianOptimization">package</a> is my favourite, due to its high level api and therefore, ease of use. We just need to define two things:</p>
+<ul>
+<li>a dictionary which parameters and a range of values to tune within</li>
+<li>a function with arguments that accepts the parameters, and output with the evaluation scoring. The model fitting and prediction, and scoring will thus reside here.</li>
+</ul>
+<p>Besides its ease of use:</p>
+<ul>
+<li>The api also allows an exploration option <code>n_iter​</code>, which balances the exploitation space defined by the bayesian optimiser.</li>
+<li>It auto generates a table output for each iteration with the scoring and parameter values selected.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">bayes_opt</span> <span class="kn">import</span> <span class="n">BayesianOptimization</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="c1"># Function output with scores</span>
+<span class="k">def</span> <span class="nf">black_box</span><span class="p">(</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">):</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;n_jobs&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+              <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">n_estimators</span><span class="p">)),</span>
+              <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="n">max_depth</span><span class="p">}</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">))</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">score</span>
+
+<span class="c1"># Parameter search space</span>
+<span class="n">pbounds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+           <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">)}</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">BayesianOptimization</span><span class="p">(</span><span class="n">black_box</span><span class="p">,</span> <span class="n">pbounds</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2100</span><span class="p">)</span>
+<span class="n">optimizer</span><span class="o">.</span><span class="n">maximize</span><span class="p">(</span><span class="n">init_points</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">best_param</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">max</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
+</code></pre></div>
+
+
+<p>However, it has a few downsides:</p>
+<ul>
+<li>The most glaring is that it does not allow an option for parameters which should only be in integers (notice that n_estimators above has to be wrapped in an int function, else there will be an error). The best parameter output will still output as a float, and we have to change it back to an integer before retraining our final model.</li>
+<li>The optimiser assumes that the best score is the highest value. However, for regression models, it is usually measured by loss or error metrics, like RMSE; which means the lower value the better. We will need to reverse this manually by changing the score to a negative value (as with above code)</li>
+</ul>
+<h3 id="bayesian-tuning-and-bandits">Bayesian Tuning and Bandits</h3>
+<p><a href="https://github.com/HDI-Project/BTB">Bayesian Tuning and Bandits</a> is a more recent library developed by MIT. Its main advantage to me over the above package is:</p>
+<ul>
+<li>Allows specification for int or float options for parameter values.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">btb.tuning</span> <span class="kn">import</span> <span class="n">GP</span>
+<span class="kn">from</span> <span class="nn">btb</span> <span class="kn">import</span> <span class="n">HyperParameter</span><span class="p">,</span> <span class="n">ParamTypes</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="k">def</span> <span class="nf">auto_tuning</span><span class="p">(</span><span class="n">tunables</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Auto-tuner using BTB library&quot;&quot;&quot;</span>
+    <span class="n">tuner</span> <span class="o">=</span> <span class="n">GP</span><span class="p">(</span><span class="n">tunables</span><span class="p">)</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">propose</span><span class="p">()</span>
+
+    <span class="n">score_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">param_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="o">**</span><span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+        <span class="n">y_predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">))</span>
+
+        <span class="c1"># store scores &amp; parameters</span>
+        <span class="n">score_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+        <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;epoch: </span><span class="si">{}</span><span class="s1">, rmse: </span><span class="si">{}</span><span class="s1">, param: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">score</span><span class="p">,</span><span class="n">parameters</span><span class="p">))</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="o">-</span><span class="n">score</span>
+
+        <span class="c1"># get new parameters</span>
+        <span class="n">tuner</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">propose</span><span class="p">()</span>
+
+    <span class="n">best_s</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">_best_score</span>
+    <span class="n">best_score_index</span> <span class="o">=</span> <span class="n">score_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">best_s</span><span class="p">)</span>
+    <span class="n">best_param</span> <span class="o">=</span> <span class="n">param_list</span><span class="p">[</span><span class="n">best_score_index</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">best rmse: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_s</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;best parameters: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_param</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">best_param</span>
+
+<span class="n">tunables</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">(</span><span class="n">ParamTypes</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">])),(</span><span class="s1">&#39;max_depth&#39;</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">(</span><span class="n">ParamTypes</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">]))]</span>
+<span class="n">best_param</span> <span class="o">=</span> <span class="n">auto_tuning</span><span class="p">(</span><span class="n">tunables</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>The disadvantages are:</p>
+<ul>
+<li>Certain options requires me to code manually, which I thought the authors can easily package them into a function. examples include:<ul>
+<li>Number of iterations; I have to write a for-loop for this</li>
+<li>Printing of results for each iteration</li>
+<li>Obtaining of parameters for the best_scores; I have to store all the scores and parameters in a list and then search back the index to get the best parameters.</li>
+</ul>
+</li>
+</ul>
                 
               
               
