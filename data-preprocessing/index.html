@@ -687,6 +687,8 @@ We can set a threshold to delete the entire column if there are too many nulls.<
 </code></pre></div>
 
 
+<hr>
+
 <h2 id="outliers">Outliers</h2>
 <p>Especially sensitive in linear models. They can be (1) removed manually by
 defining the lower and upper bound limit, or (2) grouping the features into ranks.</p>
@@ -729,6 +731,8 @@ defining the lower and upper bound limit, or (2) grouping the features into rank
 
 
 <p>There are also unsupervised modelling techniques to find outliers.</p>
+<hr>
+
 <h2 id="encodings">Encodings</h2>
 <h3 id="label-encoding">Label Encoding</h3>
 <p>This converts a category of a label or feature into integer values. There are two methods to do this, via alphabetical order (<code>sklearn.preprocessing.LabelEncoder</code>), or order of appearance (<code>pd.factorize</code>).</p>
@@ -780,6 +784,8 @@ defining the lower and upper bound limit, or (2) grouping the features into rank
 <span class="n">X</span> <span class="o">=</span> <span class="n">onehotencoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 </code></pre></div>
 
+
+<hr>
 
 <h2 id="coordinates">Coordinates</h2>
 <p>It is necessary to define a projection for a coordinate reference system if there is a classification in space, e.g. k-means clustering. This basically change the coordinates from a spherical component to a flat surface.</p>
