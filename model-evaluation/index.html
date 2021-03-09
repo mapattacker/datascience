@@ -364,22 +364,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#precision-recall-curve" class="md-nav__link">
     Precision-Recall Curve
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#roc-curve" class="md-nav__link">
     ROC Curve
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -454,22 +454,22 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#precision-recall-curve" class="md-nav__link">
     Precision-Recall Curve
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#roc-curve" class="md-nav__link">
     ROC Curve
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -584,7 +584,7 @@
   <img src="https://github.com/mapattacker/datascience/blob/master/images/classi_report.PNG?raw=true" style="width:80%" />
 </figure>
 
-<h2 id="precision-recall-curve">Precision-Recall Curve</h2>
+<h3 id="precision-recall-curve">Precision-Recall Curve</h3>
 <p>From <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html">sklearn</a>, the precision-recall curve shows the tradeoff between precision and recall for different threshold. </p>
 <p>A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
@@ -603,7 +603,7 @@
   <figcaption>sklearn documentation</figcaption>
 </figure>
 
-<h2 id="roc-curve">ROC Curve</h2>
+<h3 id="roc-curve">ROC Curve</h3>
 <p>The receiver operating characteristic (ROC) curve evaluates the performance of a classifier by plotting the True Positive Rate vs the False Positive Rate. The metric, area under curve (AUC) is used. The higher the AUC, the better the model is.</p>
 <p>The term came about in WWII where this metrics is used to determined a receiver operator’s ability to distinguish false positive and true postive correctly in the radar signals.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_roc_curve</span>
