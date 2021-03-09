@@ -9,19 +9,19 @@
       
       
       
-      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
     
     
       
-        <title>Data Science in Python</title>
+        <title>Cross Validation - Data Science in Python</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.6910b76c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6910b76c.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.196e0c26.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
         
           
           
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#k-fold-cross-validation" class="md-skip">
           Skip to content
         </a>
       
@@ -74,7 +74,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="." title="Data Science in Python" class="md-header-nav__button md-logo" aria-label="Data Science in Python">
+    <a href=".." title="Data Science in Python" class="md-header-nav__button md-logo" aria-label="Data Science in Python">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -91,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Introduction
+              Cross Validation
             
           </span>
         </div>
@@ -161,7 +161,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Data Science in Python" class="md-nav__button md-logo" aria-label="Data Science in Python">
+    <a href=".." title="Data Science in Python" class="md-nav__button md-logo" aria-label="Data Science in Python">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -189,20 +189,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="." class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
       Introduction
     </a>
-    
   </li>
 
     
@@ -212,7 +203,7 @@
 
 
   <li class="md-nav__item">
-    <a href="process/" class="md-nav__link">
+    <a href="../process/" class="md-nav__link">
       ML Process
     </a>
   </li>
@@ -224,7 +215,7 @@
 
 
   <li class="md-nav__item">
-    <a href="datasets/" class="md-nav__link">
+    <a href="../datasets/" class="md-nav__link">
       Datasets
     </a>
   </li>
@@ -236,7 +227,7 @@
 
 
   <li class="md-nav__item">
-    <a href="data-exploration/" class="md-nav__link">
+    <a href="../data-exploration/" class="md-nav__link">
       Data Exploration
     </a>
   </li>
@@ -268,7 +259,7 @@
 
 
   <li class="md-nav__item">
-    <a href="data-preprocessing/" class="md-nav__link">
+    <a href="../data-preprocessing/" class="md-nav__link">
       Feature Preprocessing
     </a>
   </li>
@@ -280,7 +271,7 @@
 
 
   <li class="md-nav__item">
-    <a href="data-scaling/" class="md-nav__link">
+    <a href="../data-scaling/" class="md-nav__link">
       Feature Scaling
     </a>
   </li>
@@ -292,7 +283,7 @@
 
 
   <li class="md-nav__item">
-    <a href="data-engineering/" class="md-nav__link">
+    <a href="../data-engineering/" class="md-nav__link">
       Feature Engineering
     </a>
   </li>
@@ -304,7 +295,7 @@
 
 
   <li class="md-nav__item">
-    <a href="data-classimbalance/" class="md-nav__link">
+    <a href="../data-classimbalance/" class="md-nav__link">
       Class Imbalance
     </a>
   </li>
@@ -319,10 +310,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     <label class="md-nav__link" for="nav-6">
       Model Selection & Evaluation
       <span class="md-nav__icon md-icon"></span>
@@ -339,11 +332,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="model-crossvalidation/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Cross Validation
     </a>
+    
   </li>
 
         
@@ -353,7 +355,7 @@
 
 
   <li class="md-nav__item">
-    <a href="model-tuning/" class="md-nav__link">
+    <a href="../model-tuning/" class="md-nav__link">
       Model Tuning
     </a>
   </li>
@@ -365,7 +367,7 @@
 
 
   <li class="md-nav__item">
-    <a href="model-evaluation/" class="md-nav__link">
+    <a href="../model-evaluation/" class="md-nav__link">
       Model Evaluation
     </a>
   </li>
@@ -377,7 +379,7 @@
 
 
   <li class="md-nav__item">
-    <a href="model-explainability/" class="md-nav__link">
+    <a href="../model-explainability/" class="md-nav__link">
       Model Explainability
     </a>
   </li>
@@ -415,19 +417,60 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/model-crossvalidation.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="introduction">Introduction</h1>
-<p>This documentation summarises various machine learning techniques in Python. While they cover the entire process of machine learning, only classical models are introduced. Neural networks &amp; other important concepts like model deployment are not covered here. </p>
-<p>I have two accompanying websites to fill in those gaps:</p>
-<ul>
-<li><a href="https://mapattacker.github.io/ai-scientist/">Neural Networks</a> (WIP)</li>
-<li><a href="https://mapattacker.github.io/ai-engineer/">AI Engineering</a></li>
-</ul>
-<p>A lot of the content are compiled from various resources, so please cite them appropriately if you are using.</p>
+                <h1 id="k-fold-cross-validation">K-fold Cross-Validation</h1>
+<p>Traditional train-test split (or 1 fold split) runs the risk that the split might unwittingly be bias towards certain features or labels.</p>
+<p>By iterating the training into k-times, with each iteration using a different training &amp; validation split, we can avoid such biasness, though it is k-times computationally expensive.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/kfold.png?raw=true" style="width:80%" />
+</figure>
+
+<p><strong>cross_val_score</strong> is a compact function to obtain the all scoring values using kfold in one line.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cover_Type&#39;</span><span class="p">]</span>
+
+<span class="c1"># using 5-fold cross validation mean scores</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
+                <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">))</span>
+</code></pre></div>
+
+
+<p>For greater control, like to define our own evaluation metrics etc., we can use <strong>KFold</strong> to obtain the train &amp; test indexes for each fold iteration. Sklearn's grid/random searches also allow cross validation together with model tuning.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
+
+<span class="k">def</span> <span class="nf">kfold_custom</span><span class="p">(</span><span class="n">fold</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">eval_metric</span><span class="p">):</span>
+    <span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">score_total</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">train_index</span><span class="p">][</span><span class="n">X_features</span><span class="p">],</span> <span class="n">train</span><span class="p">[</span><span class="n">train_index</span><span class="p">][</span><span class="n">y_feature</span><span class="p">]</span>
+        <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="n">test_index</span><span class="p">][</span><span class="n">X_features</span><span class="p">],</span> <span class="n">test</span><span class="p">[</span><span class="n">test_index</span><span class="p">][</span><span class="n">y_feature</span><span class="p">]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+        <span class="n">y_predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">eval_metric</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">)</span>
+        <span class="n">score_total</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">score_total</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">kfold_custom</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">f1score</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>There are many other variants of cross validations available in sklearn, as shown below.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/kfold2.png?raw=true" style="width:80%" />
+</figure>
                 
               
               
@@ -446,14 +489,28 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
+          <a href="../data-classimbalance/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Class Imbalance
+              </div>
+            </div>
+          </a>
         
-          <a href="process/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+        
+          <a href="../model-tuning/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                ML Process
+                Model Tuning
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
@@ -480,15 +537,15 @@
       
     </div>
     
-      <script src="assets/javascripts/vendor.fd16492e.min.js"></script>
-      <script src="assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      <script src="../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
-          base: ".",
+          base: "..",
           features: [],
           search: Object.assign({
-            worker: "assets/javascripts/worker/search.4ac00218.min.js"
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
