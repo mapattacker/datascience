@@ -370,6 +370,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#precision-recall-curve" class="md-nav__link">
+    Precision-Recall Curve
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roc-curve" class="md-nav__link">
+    ROC Curve
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#regression" class="md-nav__link">
     Regression
   </a>
@@ -446,6 +460,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#precision-recall-curve" class="md-nav__link">
+    Precision-Recall Curve
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roc-curve" class="md-nav__link">
+    ROC Curve
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#regression" class="md-nav__link">
     Regression
   </a>
@@ -470,6 +498,7 @@
                 
                 
                 <h1 id="model-evaluation">Model Evaluation</h1>
+<p>A large portion of model evaluation is derived from sklearn. Do check out their <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">documentation</a> for their latest APIs.</p>
 <h2 id="classification">Classification</h2>
 <p>The various commonly used evaluation metrics for classification problems are as listed.</p>
 <table>
@@ -529,7 +558,7 @@
 
 
 <h3 id="confusion-matrix">Confusion Matrix</h3>
-<p>The confusion matrix is the most important visualization to plot for a classification evaluation. It shows the absolute breakdown of each prediction to see if they are in the correct class; and usually in a heatmap for better clarity.</p>
+<p>The confusion matrix is the most important visualization to plot for a classification evaluation. It shows the absolute breakdown of each prediction to see if they are in the correct class; and is usually in a heatmap for better clarity.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
 
@@ -553,6 +582,40 @@
 
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/classi_report.PNG?raw=true" style="width:80%" />
+</figure>
+
+<h2 id="precision-recall-curve">Precision-Recall Curve</h2>
+<p>From <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html">sklearn</a>, the precision-recall curve shows the tradeoff between precision and recall for different threshold. </p>
+<p>A high area under the curve represents both high recall and high precision, where high precision relates to a low false positive rate, and high recall relates to a low false negative rate.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_precision_recall_curve</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">average_precision</span> <span class="o">=</span> <span class="n">average_precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">plot_precision_recall_curve</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">ax_</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2-class Precision-Recall curve: &#39;</span>
+                   <span class="s1">&#39;AP=</span><span class="si">{0:0.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">average_precision</span><span class="p">))</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/precision_recall_curve.png?raw=true" />
+  <figcaption>sklearn documentation</figcaption>
+</figure>
+
+<h2 id="roc-curve">ROC Curve</h2>
+<p>The receiver operating characteristic (ROC) curve evaluates the performance of a classifier by plotting the True Positive Rate vs the False Positive Rate. The metric, area under curve (AUC) is used. The higher the AUC, the better the model is.</p>
+<p>The term came about in WWII where this metrics is used to determined a receiver operator’s ability to distinguish false positive and true postive correctly in the radar signals.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_roc_curve</span>
+
+<span class="n">svc_disp</span> <span class="o">=</span> <span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">svc</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/roc_curve.png?raw=true" />
+  <figcaption>sklearn documentation</figcaption>
 </figure>
 
 <hr>
