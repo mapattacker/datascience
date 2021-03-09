@@ -424,7 +424,7 @@
                 
                 <h1 id="k-fold-cross-validation">K-fold Cross-Validation</h1>
 <p>Traditional train-test split (or 1 fold split) runs the risk that the split might unwittingly be bias towards certain features or labels.</p>
-<p>By iterating the training into k-times, with each iteration using a different training &amp; validation split, we can avoid such biasness, though it is k-times computationally expensive.</p>
+<p>By iterating the model training into k-times, with each iteration using a different training &amp; validation split, we can avoid such biasness, though it is k-times computationally expensive.</p>
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/kfold.png?raw=true" style="width:60%" />
 </figure>
@@ -444,7 +444,7 @@
 </code></pre></div>
 
 
-<p>For greater control, like to define our own evaluation metrics etc., we can use <strong>KFold</strong> to obtain the train &amp; test indexes for each fold iteration. Sklearn's grid/random searches also allow cross validation together with model tuning.</p>
+<p>For greater control, like to define our own evaluation metrics etc., we can use <strong>KFold</strong> to obtain the train &amp; test indexes for each fold iteration. Sklearn's <a href="https://mapattacker.github.io/datascience/model-tuning/#grid-search">grid/random searches</a> also allow cross validation together with model tuning.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">f1_score</span>
@@ -471,7 +471,7 @@
 
 <p>There are many other variants of cross validations available in sklearn, as shown below.</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/kfold2.PNG?raw=true" style="width:80%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/kfold2.PNG?raw=true" style="width:100%" />
 </figure>
                 
               
