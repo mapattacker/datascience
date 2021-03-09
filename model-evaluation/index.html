@@ -347,6 +347,26 @@
     Classification
   </a>
   
+    <nav class="md-nav" aria-label="Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confusion-matrix" class="md-nav__link">
+    Confusion Matrix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classification-report" class="md-nav__link">
+    Classification Report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -403,6 +423,26 @@
     Classification
   </a>
   
+    <nav class="md-nav" aria-label="Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confusion-matrix" class="md-nav__link">
+    Confusion Matrix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classification-report" class="md-nav__link">
+    Classification Report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -445,8 +485,8 @@
 <tr>
 <td>Accuracy</td>
 <td>TP + TN / (TP + TN + FP + FN)</td>
-<td>High precision means it is important to filter off the any false positives.</td>
-<td>We never use accuracy on its on</td>
+<td>Get % TP &amp; TN</td>
+<td>We never use accuracy on its own</td>
 </tr>
 <tr>
 <td>Precision</td>
@@ -468,7 +508,8 @@
 </tr>
 </tbody>
 </table>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> 
+                             <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mean</span>
 
 
@@ -477,13 +518,44 @@
 <span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)</span>
 <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)</span>
 
+
 <span class="c1"># for multiclass classification</span>
 <span class="c1"># we need to compute their mean</span>
+
 <span class="n">precision</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
 <span class="n">recall</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
 <span class="n">f1</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
 </code></pre></div>
 
+
+<h3 id="confusion-matrix">Confusion Matrix</h3>
+<p>The confusion matrix is the most important visualization to plot for a classification evaluation. It shows the absolute breakdown of each prediction to see if they are in the correct class; and usually in a heatmap for better clarity.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
+
+<span class="n">confusion</span> <span class="o">=</span> <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;logs/confusion_metrics.png&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/confusion_metrics.png?raw=true" style="width:80%" />
+</figure>
+
+<h3 id="classification-report">Classification Report</h3>
+<p>We can use the classification report to show details of precision, recall &amp; f1-scores for each class.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="n">cls_report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cls_report</span><span class="p">)</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/classi_report.PNG?raw=true" style="width:80%" />
+</figure>
+
+<hr>
 
 <h2 id="regression">Regression</h2>
 <p>For regression problems, the response is always a continuous value, so it requires a different set of evaluation metrics. This <a href="https://www.dataquest.io/blog/understanding-regression-error-metrics/">website</a> gives an excellent description on all the variants of errors metrics, which are briefly summarised below.</p>
