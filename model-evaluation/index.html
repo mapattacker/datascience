@@ -431,6 +431,60 @@
                 
                 <h1 id="model-evaluation">Model Evaluation</h1>
 <h2 id="classification">Classification</h2>
+<p>The various commonly used evaluation metrics for classification problems are as listed.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Formula</th>
+<th>Desc</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accuracy</td>
+<td>TP + TN / (TP + TN + FP + FN)</td>
+<td>High precision means it is important to filter off the any false positives.</td>
+<td>We never use accuracy on its on</td>
+</tr>
+<tr>
+<td>Precision</td>
+<td>TP / (TP + FP)</td>
+<td>High precision means it is important to filter off the any false positives.</td>
+<td>Spam removal</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>TP / (TP + FN)</td>
+<td>High recall means to get all positives (TP + FN) despite having some false positives.</td>
+<td>Tumour detection</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>2*((Precision * Recall) / (Precision + Recall))</td>
+<td>Harmonic mean of precision &amp; recall</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">mean</span>
+
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)</span>
+
+<span class="c1"># for multiclass classification</span>
+<span class="c1"># we need to compute their mean</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+
+
 <h2 id="regression">Regression</h2>
 <p>For regression problems, the response is always a continuous value, so it requires a different set of evaluation metrics. This <a href="https://www.dataquest.io/blog/understanding-regression-error-metrics/">website</a> gives an excellent description on all the variants of errors metrics, which are briefly summarised below.</p>
 <table>
