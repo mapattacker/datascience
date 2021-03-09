@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#model-tuning" class="md-skip">
+        <a href="#model-split-tuning" class="md-skip">
           Skip to content
         </a>
       
@@ -310,6 +310,28 @@
       
       
 
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    <label class="md-nav__link" for="nav-6">
+      Model Selection & Evaluation
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Model Selection & Evaluation" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Model Selection & Evaluation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
 
   <li class="md-nav__item">
     <a href="../model-evaluation/" class="md-nav__link">
@@ -317,10 +339,10 @@
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
   
 
@@ -394,16 +416,21 @@
     
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="../model-explainability/" class="md-nav__link">
       Model Explainability
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -481,7 +508,7 @@
                   </a>
                 
                 
-                <h1 id="model-tuning">Model Tuning</h1>
+                <h1 id="model-split-tuning">Model Split &amp; Tuning</h1>
 <p>Each model usually have 1 or more hyperparameters to adjust. A change in the hyperparameters during training will often result in a change in model performance. </p>
 <p>Therefore we need to "tune" the models by finding the best values of hyperparameters that would derive an overall best model performance.</p>
 <h2 id="grid-search">Grid Search</h2>
@@ -499,6 +526,8 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
 </code></pre></div>
 
+
+<hr>
 
 <h2 id="auto-tuners">Auto Tuners</h2>
 <p>Grid search or random search, while semi-automated, is still very tedious. The list of values you give for searching might not be out of range or far off from the optimal, hence it might result in several iterations of changing the values to find a good one.</p>
