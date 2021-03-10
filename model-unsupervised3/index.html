@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#one-class-classification" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -407,10 +412,48 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        One-Class
+        <span class="md-nav__icon md-icon"></span>
+      </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
       One-Class
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#one-class-svm" class="md-nav__link">
+    One Class SVM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isolation-forest" class="md-nav__link">
+    Isolation Forest
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -536,6 +579,43 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#one-class-svm" class="md-nav__link">
+    One Class SVM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isolation-forest" class="md-nav__link">
+    Isolation Forest
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -546,9 +626,62 @@
                   </a>
                 
                 
-                  <h1>One-Class</h1>
-                
-                
+                <h1 id="one-class-classification">One-Class Classification</h1>
+<p>These requires the training of a normal state(s), allows outliers to be detected when they lie outside trained state. A common use for this is to detect anomalies.</p>
+<h2 id="one-class-svm">One Class SVM</h2>
+<p>One-class SVM is an unsupervised algorithm that learns a decision function for outlier detection: classifying new data as similar or different to the training set.</p>
+<p>Besides the kernel, two other parameters are impt: </p>
+<ul>
+<li><code>nu</code>: proportion of outliers you expect to observe</li>
+<li><code>gamma</code>: determines the smoothing of the contour lines.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">OneClassSVM</span>
+
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">train_normal</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">train_outliers</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">outlier_prop</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_outliers</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_normal</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">OneClassSVM</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="n">outlier_prop</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.000001</span><span class="p">)</span>
+<span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_normal</span><span class="p">[[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span><span class="s1">&#39;col2&#39;</span><span class="p">,</span><span class="s1">&#39;col3&#39;</span><span class="p">]])</span>
+</code></pre></div>
+
+
+<h2 id="isolation-forest">Isolation Forest</h2>
+<p>One efficient way of performing outlier detection in high-dimensional datasets is to use random forests. Isolation Forest ‘isolates’ observations by randomly selecting a feature and then randomly selecting a split value between the maximum and minimum values of the selected feature.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">IsolationForest</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">IsolationForest</span><span class="p">(</span><span class="n">behaviour</span><span class="o">=</span><span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                    <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># -1 are outliers</span>
+<span class="n">y_pred_test</span>
+<span class="c1"># array([ 1,  1,  1,  1,  1,  1,  1,  1,  1, -1,  1,  1,  1,  1,  1,  1])</span>
+
+<span class="c1"># calculate the no. of anomalies</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">save</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="c1"># -1    23330</span>
+<span class="c1"># 1      687</span>
+<span class="c1"># Name: 0, dtype: int64</span>
+</code></pre></div>
+
+
+<p>We can also get the average anomaly scores. The lower the value, the more abnormal they are. Negative scores represent outliers, positive scores represent inliers.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.08450298</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>
+      <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.14279962</span><span class="p">,</span>
+      <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05483886</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.10086102</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>
+      <span class="mf">0.14528263</span><span class="p">])</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/isolation_forest.png?raw=true" style="width:100%" />
+  <figcaption>From sklearn</figcaption>
+</figure>
                 
               
               
