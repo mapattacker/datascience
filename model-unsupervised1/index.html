@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#transformations" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -383,10 +388,82 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Transformation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
       Transformation
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-density-estimation" class="md-nav__link">
+    Kernel Density Estimation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensionality-reduction" class="md-nav__link">
+    Dimensionality Reduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimensionality Reduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pca" class="md-nav__link">
+    PCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mds" class="md-nav__link">
+    MDS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t-sne" class="md-nav__link">
+    t-SNE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lda" class="md-nav__link">
+    LDA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -536,6 +613,77 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-density-estimation" class="md-nav__link">
+    Kernel Density Estimation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dimensionality-reduction" class="md-nav__link">
+    Dimensionality Reduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Dimensionality Reduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pca" class="md-nav__link">
+    PCA
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mds" class="md-nav__link">
+    MDS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#t-sne" class="md-nav__link">
+    t-SNE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lda" class="md-nav__link">
+    LDA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -546,9 +694,110 @@
                   </a>
                 
                 
-                  <h1>Transformation</h1>
-                
-                
+                <h1 id="transformations">Transformations</h1>
+<p>Processes that extract or compute information.</p>
+<h2 id="kernel-density-estimation">Kernel Density Estimation</h2>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/kerneldensity.png?raw=true" style="width:80%" />
+  <figcaption>University of Michigan: Coursera Data Science in Python</figcaption>
+</figure>
+
+<h2 id="dimensionality-reduction">Dimensionality Reduction</h2>
+<p>A very common problem in machine learning is the presence of numerous features. This lead to a problem called the <strong>Curse of Dimensionality</strong>.</p>
+<p>The curse of dimentionality makes it difficult to visualise the datasets with many dimensions. It also results in data sparsity, where information important for training a model is spread among many features. </p>
+<p>This is where dimension reduction helps by reduction the number of features while retaining much of the information.</p>
+<h3 id="pca">PCA</h3>
+<p>PCA summarises multiple fields of data into principal components, usually just 2 so that it is easier to visualise in a 2-dimensional plot. The 1st component will show the most variance of the entire dataset in the hyperplane, while the 2nd shows the 2nd shows the most variance at a right angle to the 1st. </p>
+<p>Because of the strong variance between data points, patterns tend to be teased out from a high dimension to even when there’s just two dimensions. These 2 components can serve as new features for a supervised analysis.</p>
+<p>In short, PCA finds the best possible characteristics, that summarises the classes of a feature. Two excellent sites elaborate more: setosa, quora. The most challenging part of PCA is interpreting the components.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/pca3.png?raw=true" style="width:80%" />
+  <figcaption></figcaption>
+</figure>
+
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">pca_explained</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    prints optimal principal components based on threshold of PCA&#39;s explained variance</span>
+
+<span class="sd">    Args</span>
+<span class="sd">    ----</span>
+<span class="sd">    X: (df, array) of features</span>
+<span class="sd">    threshold: (float) % of explained variance as cut off point</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">sum_</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+        <span class="n">percent</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sum_</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> components at </span><span class="si">{:.2f}% e</span><span class="s1">xplained variance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">percent</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">percent</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+            <span class="k">break</span>
+
+<span class="n">pca_explained</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span>
+<span class="c1"># 2 components at 61.64% explained variance</span>
+<span class="c1"># 3 components at 77.41% explained variance</span>
+<span class="c1"># 4 components at 86.63% explained variance</span>
+</code></pre></div>
+
+
+<h3 id="mds">MDS</h3>
+<p>Multi-Dimensional Scaling (MDS) is a type of manifold learning algorithm that to visualize a high dimensional dataset and project it onto a lower dimensional space - in most cases, a two-dimensional page. PCA is weak in this aspect.</p>
+<p><a href="https://scikit-learn.org/stable/modules/manifold.htm">sklearn</a> gives a good overview of various manifold techniques.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">adspy_shared_utilities</span> <span class="kn">import</span> <span class="n">plot_labelled_scatter</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">MDS</span>
+
+<span class="c1"># each feature should be centered (zero mean) and with unit variance</span>
+<span class="n">X_fruits_normalized</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_fruits</span><span class="p">)</span>
+
+<span class="n">mds</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">X_fruits_mds</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h3 id="t-sne">t-SNE</h3>
+<p>t-Distributed Stochastic Neighbor Embedding (t-SNE) is a powerful manifold learning algorithm for visualizing clusters. It finds a two-dimensional representation of your data, such that the distances between points in the 2D scatterplot match as closely as possible the distances between the same points in the original high dimensional dataset. </p>
+<p>In particular, t-SNE gives much more weight to preserving information about distances between points that are neighbors.</p>
+<p><a href="https://distill.pub/2016/misread-tsne/">More</a> behind this algorithm.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
+
+<span class="n">plot_labelled_scatter</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">,</span> <span class="n">y_fruits</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;mandarin&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;lemon&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;First t-SNE feature&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Second t-SNE feature&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fruits dataset t-SNE&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+
+<h3 id="lda">LDA</h3>
+<p>Latent Dirichlet Allocation is another dimension reduction method, but unlike PCA, it is a supervised method. </p>
+<p>It attempts to find a feature subspace or decision boundary that maximizes class separability. It then projects the data points to new dimensions in a way that the clusters are as separate from each other as possible and the individual elements within a cluster are as close to the centroid of the cluster as possible.</p>
+<p>More from <a href="https://sebastianraschka.com/Articles/2014_python_lda.html">sebastianraschka.com</a> and <a href="https://stackabuse.com/implementing-lda-in-python-with-scikit-learn/">stackabuse.com</a>.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/;da.PNG?raw=true" style="width:80%" />
+  <figcaption>From sebastianraschka.com</figcaption>
+</figure>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">LatentDirichletAllocation</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_multilabel_classification</span>
+
+<span class="c1"># This produces a feature matrix of token counts, </span>
+<span class="c1"># similar to what CountVectorizer would produce on text.</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">make_multilabel_classification</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_lda</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># check the explained variance</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">percent</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">percent</span><span class="p">))</span>
+</code></pre></div>
                 
               
               
