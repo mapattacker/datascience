@@ -698,7 +698,7 @@
 <p>Multiplying by the inverse covariance (correlation) matrix essentially means dividing the input with the matrix. This is so that if features in your dataset are strongly correlated, the covariance will be high. Dividing by a large covariance will effectively reduce the distance.</p>
 <p>While powerful, its use of correlation can be detrimantal when there is multicollinearity (strong correlations among features).</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/distance2.png?raw=true" style="width:80%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/distance2.png?raw=true" style="width:100%" />
   <figcaption></figcaption>
 </figure>
 
@@ -803,7 +803,8 @@
 <span class="k">def</span> <span class="nf">tslearn_sax</span><span class="p">(</span><span class="n">sig1</span><span class="p">,</span> <span class="n">sig2</span><span class="p">,</span> <span class="n">n_segments</span><span class="p">,</span> <span class="n">alphabet_size</span><span class="p">):</span>
 
   <span class="c1"># Z-transform, PAA &amp; SAX transformation</span>
-  <span class="n">sax</span> <span class="o">=</span> <span class="n">SymbolicAggregateApproximation</span><span class="p">(</span><span class="n">n_segments</span><span class="o">=</span><span class="n">n_segments</span><span class="p">,</span> <span class="n">alphabet_size_avg</span><span class="o">=</span><span class="n">alphabet_size</span><span class="p">)</span>
+  <span class="n">sax</span> <span class="o">=</span> <span class="n">SymbolicAggregateApproximation</span><span class="p">(</span><span class="n">n_segments</span><span class="o">=</span><span class="n">n_segments</span><span class="p">,</span>
+                                       <span class="n">alphabet_size_avg</span><span class="o">=</span><span class="n">alphabet_size</span><span class="p">)</span>
   <span class="n">sax_data</span> <span class="o">=</span> <span class="n">sax</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">sig1_n</span><span class="p">,</span><span class="n">sig2_n</span><span class="p">])</span>
 
   <span class="c1"># distance measure</span>
