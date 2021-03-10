@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#distance-metrics" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -419,10 +424,62 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Distance
+        <span class="md-nav__icon md-icon"></span>
+      </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
       Distance
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#euclidean-cosine" class="md-nav__link">
+    Euclidean &amp; Cosine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mahalanobis-distance" class="md-nav__link">
+    Mahalanobis Distance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-time-warping" class="md-nav__link">
+    Dynamic Time Warping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolic-aggregate-approximation" class="md-nav__link">
+    Symbolic Aggregate approXimation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -536,6 +593,57 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#euclidean-cosine" class="md-nav__link">
+    Euclidean &amp; Cosine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mahalanobis-distance" class="md-nav__link">
+    Mahalanobis Distance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-time-warping" class="md-nav__link">
+    Dynamic Time Warping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolic-aggregate-approximation" class="md-nav__link">
+    Symbolic Aggregate approXimation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -546,9 +654,175 @@
                   </a>
                 
                 
-                  <h1>Distance</h1>
-                
-                
+                <h1 id="distance-metrics">Distance Metrics</h1>
+<h2 id="euclidean-cosine">Euclidean &amp; Cosine</h2>
+<p><strong>Euclidean distance</strong> is the straight line distance between points, while cosine distance is the <strong>Cosine Similarity</strong> of the angle between these two points.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/distance1.png?raw=true" style="width:80%" />
+  <figcaption></figcaption>
+</figure>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">euclidean</span><span class="p">,</span> <span class="n">cosine</span>
+
+<span class="n">euclidean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="c1"># 1</span>
+<span class="n">cosine</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="c1"># 0.010050506338833642</span>
+</code></pre></div>
+
+
+<h2 id="mahalanobis-distance">Mahalanobis Distance</h2>
+<p>Mahalonobis distance is the distance between a point and a distribution, not between two distinct points. Therefore, it is effectively a multivariate equivalent of the Euclidean distance. More <a href="https://www.machinelearningplus.com/statistics/mahalanobis-distance/">here</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>vector of the observation (row in a dataset)</td>
+</tr>
+<tr>
+<td>m</td>
+<td>vector of mean values of independent variables (mean of each column)</td>
+</tr>
+<tr>
+<td>C^(-1)</td>
+<td>inverse covariance matrix of independent variables</td>
+</tr>
+</tbody>
+</table>
+<p>Multiplying by the inverse covariance (correlation) matrix essentially means dividing the input with the matrix. This is so that if features in your dataset are strongly correlated, the covariance will be high. Dividing by a large covariance will effectively reduce the distance.</p>
+<p>While powerful, its use of correlation can be detrimantal when there is multicollinearity (strong correlations among features).</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/distance2.png?raw=true" style="width:80%" />
+  <figcaption></figcaption>
+</figure>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">mahalanobis</span>
+
+<span class="k">def</span> <span class="nf">mahalanobisD</span><span class="p">(</span><span class="n">normal_df</span><span class="p">,</span> <span class="n">y_df</span><span class="p">):</span>
+    <span class="c1"># calculate inverse covariance from normal state</span>
+    <span class="n">x_cov</span> <span class="o">=</span> <span class="n">normal_df</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+    <span class="n">inv_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">x_cov</span><span class="p">)</span>
+
+    <span class="c1"># get mean of normal state df</span>
+    <span class="n">x_mean</span> <span class="o">=</span> <span class="n">normal_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="c1"># calculate mahalanobis distance from each row of y_df</span>
+    <span class="n">distanceMD</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_df</span><span class="p">)):</span>
+        <span class="n">MD</span> <span class="o">=</span> <span class="n">mahalanobis</span><span class="p">(</span><span class="n">x_mean</span><span class="p">,</span> <span class="n">y_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">inv_cov</span><span class="p">)</span>
+        <span class="n">distanceMD</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MD</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">distanceMD</span>
+</code></pre></div>
+
+
+<h2 id="dynamic-time-warping">Dynamic Time Warping</h2>
+<p>If two time series are identical, but one is shifted slightly along the time axis, then Euclidean distance may consider them to be very different from each other. <strong>DTW</strong> was introduced to overcome this limitation and give intuitive distance measurements between time series by ignoring both global and local shifts in the time dimension.</p>
+<p>DTW is a technique that finds the optimal alignment between two time series, if one time series may be “warped” non-linearly by stretching or shrinking it along its time axis. </p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/Euclidean_vs_DTW.jpg?raw=true" style="width:60%" />
+  <figcaption></figcaption>
+</figure>
+
+<p>Dynamic time warping is often used in speech recognition to determine if two waveforms represent the same spoken phrase. In a speech waveform, the duration of each spoken sound and the interval between sounds are permitted to vary, but the overall speech waveforms must be similar.</p>
+<p>There is a faster implementation of DTW called <a href="https://github.com/slaypni/fastdtw">Fast DTW</a>.</p>
+<p>The result is DTW is such that if two time-series are identical, the DTW distance is 0, else any difference will be more than 0.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">euclidean</span>
+<span class="kn">from</span> <span class="nn">fastdtw</span> <span class="kn">import</span> <span class="n">fastdtw</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">distance</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">fastdtw</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="n">euclidean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+
+<span class="c1"># 2.8284271247461903</span>
+</code></pre></div>
+
+
+<h2 id="symbolic-aggregate-approximation">Symbolic Aggregate approXimation</h2>
+<p>SAX, developed in 2007, compares the similarity of two time-series patterns by slicing them into horizontal &amp; vertical regions, and comparing between each of them. This can be easily explained by <a href="https://jmotif.github.io/sax-vsm_site/morea/algorithm/SAX.html">4 charts</a> shown below.</p>
+<p>There are obvious benefits using such an algorithm, for one, it will be very fast as pattern matching is aggregated. However, the biggest downside is that both time-series signals have to be of same time-length.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/sax1.png?raw=true" style="width:100%" />
+  <figcaption>Both signals are overlayed</figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/sax2.png?raw=true" style="width:100%" />
+  <figcaption>Then normalised.</figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/sax3.png?raw=true" style="width:100%" />
+  <figcaption>The chart is then sliced by various timeframes, Piecewise Aggregate Approximation, and each slice is compared between the two signals independently.</figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/sax4.png?raw=true" style="width:100%" />
+  <figcaption>Each signal value, i.e., y-axis is then sliced horizontally into regions, and assigned an alphabet.</figcaption>
+</figure>
+
+<p>Lastly, we use a distance scoring metric, through a fixed lookup table to easily calculate the total scores between each pair of PAA.</p>
+<p>E.g., if the PAA fall in a region or its immediate adjacent one, we assume they are the same, i.e., distance = 0. Else, a distance value is assigned. The total distance is then computed to derice a distance metric.</p>
+<p>For this instance:</p>
+<ul>
+<li>SAX transform of ts1 into string through 9-points PAA: “abddccbaa”</li>
+<li>SAX transform of ts2 into string through 9-points PAA: “abbccddba”</li>
+<li>SAX distance: 0 + 0 + 0.67 + 0 + 0 + 0 + 0.67 + 0 + 0 = 1.34</li>
+</ul>
+<p>This is the code from the package saxpy. Unfortunately, it does not have the option of calculating of the sax distance.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">saxpy.znorm</span> <span class="kn">import</span> <span class="n">znorm</span>
+<span class="kn">from</span> <span class="nn">saxpy.paa</span> <span class="kn">import</span> <span class="n">paa</span>
+<span class="kn">from</span> <span class="nn">saxpy.sax</span> <span class="kn">import</span> <span class="n">ts_to_string</span>
+<span class="kn">from</span> <span class="nn">saxpy.alphabet</span> <span class="kn">import</span> <span class="n">cuts_for_asize</span>
+
+<span class="k">def</span> <span class="nf">saxpy_sax</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">paa_segments</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alphabet_size</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+  <span class="n">sig_znorm</span> <span class="o">=</span> <span class="n">znorm</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+  <span class="n">sig_paa</span> <span class="o">=</span> <span class="n">paa</span><span class="p">(</span><span class="n">sig_znorm</span><span class="p">,</span> <span class="n">paa_segments</span><span class="p">)</span>
+  <span class="n">sax</span> <span class="o">=</span> <span class="n">ts_to_string</span><span class="p">(</span><span class="n">sig_paa</span><span class="p">,</span> <span class="n">cuts_for_asize</span><span class="p">(</span><span class="n">alphabet_size</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">sax</span>
+
+<span class="n">sig1a</span> <span class="o">=</span> <span class="n">saxpy_sax</span><span class="p">(</span><span class="n">sig1</span><span class="p">)</span>
+<span class="n">sig2a</span> <span class="o">=</span> <span class="n">saxpy_sax</span><span class="p">(</span><span class="n">sig2</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Another more mature package is tslearn. It enables the calculation of sax distance, but the sax alphabets are set as integers instead.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">tslearn.piecewise</span> <span class="kn">import</span> <span class="n">SymbolicAggregateApproximation</span>
+
+<span class="k">def</span> <span class="nf">tslearn_sax</span><span class="p">(</span><span class="n">sig1</span><span class="p">,</span> <span class="n">sig2</span><span class="p">,</span> <span class="n">n_segments</span><span class="p">,</span> <span class="n">alphabet_size</span><span class="p">):</span>
+
+  <span class="c1"># Z-transform, PAA &amp; SAX transformation</span>
+  <span class="n">sax</span> <span class="o">=</span> <span class="n">SymbolicAggregateApproximation</span><span class="p">(</span><span class="n">n_segments</span><span class="o">=</span><span class="n">n_segments</span><span class="p">,</span> <span class="n">alphabet_size_avg</span><span class="o">=</span><span class="n">alphabet_size</span><span class="p">)</span>
+  <span class="n">sax_data</span> <span class="o">=</span> <span class="n">sax</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="n">sig1_n</span><span class="p">,</span><span class="n">sig2_n</span><span class="p">])</span>
+
+  <span class="c1"># distance measure</span>
+  <span class="n">distance</span> <span class="o">=</span> <span class="n">sax</span><span class="o">.</span><span class="n">distance_sax</span><span class="p">(</span><span class="n">sax_data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sax_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+  <span class="k">return</span> <span class="n">sax_data</span><span class="p">,</span> <span class="n">distance</span>
+
+<span class="c1"># [[[0]</span>
+<span class="c1">#   [3]</span>
+<span class="c1">#   [3]</span>
+<span class="c1">#   [1]]</span>
+
+<span class="c1">#  [[0]</span>
+<span class="c1">#   [1]</span>
+<span class="c1">#   [2]</span>
+<span class="c1">#   [3]]]</span>
+
+<span class="c1"># 1.8471662549420924</span>
+</code></pre></div>
                 
               
               
