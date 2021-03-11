@@ -403,9 +403,59 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Clustering
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
     <a href="./" class="md-nav__link md-nav__link--active">
       Clustering
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#k-means" class="md-nav__link">
+    K-Means
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaussian-mixture-model" class="md-nav__link">
+    Gaussian Mixture Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agglommerative-clustering" class="md-nav__link">
+    Agglommerative Clustering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbscan" class="md-nav__link">
+    DBScan
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -553,6 +603,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#k-means" class="md-nav__link">
+    K-Means
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gaussian-mixture-model" class="md-nav__link">
+    Gaussian Mixture Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agglommerative-clustering" class="md-nav__link">
+    Agglommerative Clustering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dbscan" class="md-nav__link">
+    DBScan
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -583,6 +669,145 @@
 <span class="c1"># view percentages</span>
 <span class="n">res2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;actual&#39;</span><span class="p">)[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h2 id="k-means">K-Means</h2>
+<ol>
+<li>Specify number of clusters (3)</li>
+<li>3 random data points are randomly selected as cluster centers</li>
+<li>Each data point is assigned to the cluster center it is cloest to</li>
+<li>Cluster centers are updated to the mean of the assigned points</li>
+<li>Steps 3-4 are repeated, till cluster centers remain unchanged</li>
+</ol>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/kmeans4.png?raw=true" style="width:90%" />
+  <figcaption>Introduction to Machine Learning with Python (book)</figcaption>
+</figure>
+
+<p>It is important to scale the features before applying K-means, unless the fields are not meant to be scaled, like distances. Categorical data is not appropriate as clustering calculated using euclidean distance (means). For long distances over an lat/long coordinates, they need to be projected to a flat surface.</p>
+<p>One aspect of k means is that different random starting points for the cluster centers often result in very different clustering solutions. So typically, the k-means algorithm is run in scikit-learn with ten different random initializations and the solution occurring the most number of times is chosen.</p>
+<p><strong>Limitations</strong></p>
+<ul>
+<li>Very sensitive to outliers. They have to be removed before fitting the model</li>
+<li>For simple globular shapes, not irregular complex clusters</li>
+<li>Might need to reduce dimensions if very high no. of features or the distance separation might not be obvious</li>
+</ul>
+<p>Two variants, <a href="https://github.com/annoviko/pyclustering">K-medians &amp; K-Medoids</a> are less sensitive to outliers and work with categorical features.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>To determine the best K, we will usually plot an elbow chart. Looking at the significant bend in the chart shows that the average distance value might be leveling off such that adding more clusters doesn't decrease the average distance as much. We will thus choose that K value.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">meandist</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">clusters</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+    <span class="c1"># prepare the model</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="c1"># fit the model</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
+    <span class="c1"># test the model</span>
+    <span class="n">clusassign</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_feature</span><span class="p">)</span>
+    <span class="c1"># gives average distance values for each cluster solution</span>
+        <span class="c1"># cdist calculates distance of each two points from centriod</span>
+        <span class="c1"># get the min distance (where point is placed in clsuter)</span>
+        <span class="c1"># get average distance by summing &amp; dividing by total number of samples</span>
+    <span class="n">meandist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">cdist</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> 
+                        <span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+                    <span class="o">/</span> <span class="n">train_feature</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clusters</span><span class="p">,</span> <span class="n">meandist</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of clusters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average distance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Selecting k with the Elbow Method&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/elbowchart.png?raw=true" style="width:90%" />
+  <figcaption></figcaption>
+</figure>
+
+<p>There is also the <a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html">silhouette chart</a> used to determine the number of k.</p>
+<p>Sometimes we need to find the cluster centres so that we can get an absolute distance measure of centroids to new data. Each feature will have a defined centre for each cluster.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">centres</span><span class="w"></span>
+<span class="n">centroids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">cluster_centers_</span><span class="w"></span>
+<span class="err">#</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">row</span><span class="p">,</span><span class="w"> </span><span class="n">define</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">centre</span><span class="w"></span>
+<span class="n">centroid_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">centroids[i</span><span class="o">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">labels_</span><span class="err">]</span><span class="w"></span>
+</code></pre></div>
+
+
+<h2 id="gaussian-mixture-model">Gaussian Mixture Model</h2>
+<p>GMM is, in essence a density estimation model but can function like clustering. It has a probabilistic model under the hood so it returns a matrix of probabilities belonging to each cluster for each data point. More from <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html">here</a>.</p>
+<p>We can input the covariance_type argument such that it can choose between diag (the default, ellipse constrained to the axes), spherical (like k-means), or full (ellipse without a specific orientation).</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+
+<span class="c1"># gmm accepts input as array, so have to convert dataframe to numpy</span>
+<span class="n">input_gmm</span> <span class="o">=</span> <span class="n">normal</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">gmm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">input_gmm</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/gmm1.PNG?raw=true" style="width:90%" />
+  <figcaption>Python Data Science Handbook by Jake VanderPlas</figcaption>
+</figure>
+
+<p>BIC or AIC are used to determine the optimal number of clusters using the elbow diagram, the former usually recommends a simpler model. Note that number of clusters or components measures how well GMM works as a density estimator, not as a clustering algorithm.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
+
+<span class="n">input_gmm</span> <span class="o">=</span> <span class="n">normal</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">bic_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aic_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ranges</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ranges</span><span class="p">:</span>
+    <span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">input_gmm</span><span class="p">)</span>
+    <span class="c1"># BIC</span>
+    <span class="n">bic</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">bic</span><span class="p">(</span><span class="n">input_gmm</span><span class="p">)</span>
+    <span class="n">bic_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bic</span><span class="p">)</span>
+    <span class="c1"># AIC</span>
+    <span class="n">aic</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">aic</span><span class="p">(</span><span class="n">input_gmm</span><span class="p">)</span>
+    <span class="n">aic_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aic</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">bic_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;BIC&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">aic_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AIC&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/gmm2.PNG?raw=true" style="width:90%" />
+  <figcaption>Python Data Science Handbook by Jake VanderPlas</figcaption>
+</figure>
+
+<h2 id="agglommerative-clustering">Agglommerative Clustering</h2>
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+
+<h2 id="dbscan">DBScan</h2>
+<div class="codehilite"><pre><span></span><code>
 </code></pre></div>
                 
               
