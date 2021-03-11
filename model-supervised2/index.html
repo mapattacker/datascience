@@ -60,6 +60,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#regression" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -346,10 +351,41 @@
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Regression
+        <span class="md-nav__icon md-icon"></span>
+      </label>
     
     <a href="./" class="md-nav__link md-nav__link--active">
       Regression
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tree-regressors" class="md-nav__link">
+    Tree Regressors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -536,6 +572,36 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tree-regressors" class="md-nav__link">
+    Tree Regressors
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -546,9 +612,34 @@
                   </a>
                 
                 
-                  <h1>Regression</h1>
-                
-                
+                <h1 id="regression">Regression</h1>
+<p>Regularization is an important concepts for some of the regressors. It prevents overfitting by restricting the model, thus lowering its complexity. It is regulated by the hyperparameter <em>alpha</em>, where a high alpha means more regularization and a simpler model.</p>
+<table>
+<thead>
+<tr>
+<th>Regularization</th>
+<th>Model</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>LASSO</td>
+<td>reduces sum of the absolute values of coefficients. change unimportant featuress' regression coefficients into 0</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Ridge</td>
+<td>reduces the sum of squares</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tree-regressors">Tree Regressors</h2>
+<p>For each of the tree classifiers, there exists a regressor.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+</code></pre></div>
                 
               
               
