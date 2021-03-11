@@ -673,18 +673,6 @@
 
 
 <h2 id="k-means">K-Means</h2>
-<ol>
-<li>Specify number of clusters (3)</li>
-<li>3 random data points are randomly selected as cluster centers</li>
-<li>Each data point is assigned to the cluster center it is cloest to</li>
-<li>Cluster centers are updated to the mean of the assigned points</li>
-<li>Steps 3-4 are repeated, till cluster centers remain unchanged</li>
-</ol>
-<figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/kmeans4.png?raw=true" style="width:90%" />
-  <figcaption>Introduction to Machine Learning with Python (book)</figcaption>
-</figure>
-
 <table>
 <thead>
 <tr>
@@ -699,6 +687,18 @@
 </tr>
 </tbody>
 </table>
+<ol>
+<li>Specify number of clusters (3)</li>
+<li>3 random data points are randomly selected as cluster centers</li>
+<li>Each data point is assigned to the cluster center it is cloest to</li>
+<li>Cluster centers are updated to the mean of the assigned points</li>
+<li>Steps 3-4 are repeated, till cluster centers remain unchanged</li>
+</ol>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/kmeans4.png?raw=true" style="width:90%" />
+  <figcaption>Introduction to Machine Learning with Python (book)</figcaption>
+</figure>
+
 <p>It is important to scale the features before applying K-means, unless the fields are not meant to be scaled, like distances. Categorical data is not appropriate as clustering calculated using euclidean distance (means). For long distances over an lat/long coordinates, they need to be projected to a flat surface.</p>
 <p>One aspect of k means is that different random starting points for the cluster centers often result in very different clustering solutions. So typically, the k-means algorithm is run in scikit-learn with ten different random initializations and the solution occurring the most number of times is chosen.</p>
 <p><strong>Limitations</strong></p>
@@ -718,6 +718,7 @@
 
 
 <p>To determine the best K, we will usually plot an elbow chart. Looking at the significant bend in the chart shows that the average distance value might be leveling off such that adding more clusters doesn't decrease the average distance as much. We will thus choose that K value.</p>
+<p>There is also the <a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html">silhouette chart</a> used to determine the number of k.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -754,7 +755,6 @@
   <figcaption></figcaption>
 </figure>
 
-<p>There is also the <a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html">silhouette chart</a> used to determine the number of k.</p>
 <p>Sometimes we need to find the cluster centres so that we can get an absolute distance measure of centroids to new data. Each feature will have a defined centre for each cluster.</p>
 <div class="codehilite"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">centres</span><span class="w"></span>
 <span class="n">centroids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">cluster_centers_</span><span class="w"></span>
@@ -833,8 +833,70 @@
 </figure>
 
 <h2 id="agglommerative-clustering">Agglommerative Clustering</h2>
-<p>Agglomerative Clustering is a type of hierarchical clustering technique used to build clusters from bottom up. Divisive Clustering is the opposite method of building clusters from top down, which is not available in sklearn.</p>
-<div class="codehilite"><pre><span></span><code>
+<p>Agglomerative Clustering is a type of hierarchical clustering technique used to build clusters from bottom up. Divisive Clustering is the opposite method of building clusters from top down, which is not available in sklearn. </p>
+<p>The most useful part of such a clustering is the ability to draw a dendrogram to view the breakdown of clusters with a increasing distance.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/aggocluster.png?raw=true" style="width:90%" />
+  <figcaption>Python Data Science Handbook by Jake VanderPlas</figcaption>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>Key Hyperparameter</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>affinity</td>
+<td>methods of linking clusters (ward, average, complete)</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/aggocluster2.png?raw=true" style="width:90%" />
+  <figcaption>University of Michigan: Coursera Data Science in Python</figcaption>
+</figure>
+
+<p>In essence, we can also use the 3-step method above to compute agglomerative clustering. First we calculate the </p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/aggocluster3.png?raw=true" style="width:80%" />
+  <figcaption>Python Data Science Handbook by Jake VanderPlas</figcaption>
+</figure>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">linkage</span><span class="p">,</span> <span class="n">dendrogram</span><span class="p">,</span> <span class="n">fcluster</span>
+
+<span class="c1"># 1. clustering</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">linkage</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. draw dendrogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">leaf_font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 3. flatten cluster</span>
+<span class="n">distance_threshold</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">fcluster</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>sklearn's agglomerative cluster is said to be very slow. An alternative, <a href="https://pypi.org/project/fastcluster/">fastcluster</a> is faster as it is a C++ library with python interface.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">fastcluster</span>
+<span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">dendrogram</span><span class="p">,</span> <span class="n">fcluster</span>
+
+<span class="c1"># 1. clustering</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">fastcluster</span><span class="o">.</span><span class="n">linkage_vector</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="n">Z_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;clusterOne&#39;</span><span class="p">,</span><span class="s1">&#39;clusterTwo&#39;</span><span class="p">,</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;newClusterSize&#39;</span><span class="p">])</span>
+
+<span class="c1"># 2. draw dendrogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">leaf_font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+
+<span class="c1"># 3. flatten cluster</span>
+<span class="n">distance_threshold</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">fcluster</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 
