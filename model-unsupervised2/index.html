@@ -672,6 +672,8 @@
 </code></pre></div>
 
 
+<hr>
+
 <h2 id="k-means">K-Means</h2>
 <table>
 <thead>
@@ -763,6 +765,29 @@
 </code></pre></div>
 
 
+<p>If we have labels or y, and want to determine which y belongs to which cluster for an evaluation score, we can use a groupby to find the most number of labels that fall in a cluster and manually label them as such.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">concat</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="s1">&#39;cluster&#39;</span><span class="p">])[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>If we want to know what is the distance of each datapoint’s assign cluster distance to their centroid, we can do a fit_transform to get all distance from all cluster centroids and process from there.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># get distance from each centroid for each datapoint</span>
+<span class="n">dist_each_centroid</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># get all assigned centroids</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">labels_</span>
+<span class="c1"># get distance of assigned centroid</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">distance</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">distance</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dist_each_centroid</span><span class="p">)]</span>
+<span class="c1"># concat label &amp; distance together</span>
+<span class="n">label_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">dist</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="s1">&#39;distance&#39;</span><span class="p">])</span>
+</code></pre></div>
+
+
+<hr>
+
 <h2 id="gaussian-mixture-model">Gaussian Mixture Model</h2>
 <p>GMM is, in essence a density estimation model but can function like clustering. It has a probabilistic model under the hood so it returns a matrix of probabilities belonging to each cluster for each data point. More from <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html">here</a>.</p>
 <table>
@@ -832,6 +857,8 @@
   <figcaption>Python Data Science Handbook by Jake VanderPlas</figcaption>
 </figure>
 
+<hr>
+
 <h2 id="agglommerative-clustering">Agglommerative Clustering</h2>
 <p>Agglomerative Clustering is a type of hierarchical clustering technique used to build clusters from bottom up. Divisive Clustering is the opposite method of building clusters from top down, which is not available in sklearn. </p>
 <p>The most useful part of such a clustering is the ability to draw a dendrogram to view the breakdown of clusters with a increasing distance.</p>
@@ -887,7 +914,8 @@
 
 <span class="c1"># 1. clustering</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">fastcluster</span><span class="o">.</span><span class="n">linkage_vector</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
-<span class="n">Z_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;clusterOne&#39;</span><span class="p">,</span><span class="s1">&#39;clusterTwo&#39;</span><span class="p">,</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;newClusterSize&#39;</span><span class="p">])</span>
+<span class="n">Z_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;clusterOne&#39;</span><span class="p">,</span><span class="s1">&#39;clusterTwo&#39;</span><span class="p">,</span>
+                                     <span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;newClusterSize&#39;</span><span class="p">])</span>
 
 <span class="c1"># 2. draw dendrogram</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -906,11 +934,13 @@
 </figure>
 
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/aggocluster6.PNG?raw=true" style="width:90%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/aggocluster6.PNG?raw=true" style="width:80%" />
   <figcaption>full dendrogram</figcaption>
 </figure>
 
 <p><a href="http://datanongrata.com/2019/04/27/67/">datanongrata</a> provides an excellent tutorial on how to prettify a dendrogram.</p>
+<hr>
+
 <h2 id="dbscan">DBScan</h2>
 <p>Density-Based Spatial Clustering of Applications with Noise (DBSCAN). </p>
 <table>
