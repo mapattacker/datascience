@@ -736,7 +736,7 @@
 
 
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/elbowchart.png?raw=true" style="width:90%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/elbowchart.png?raw=true" style="width:60%" />
   <figcaption></figcaption>
 </figure>
 
@@ -802,12 +802,38 @@
 </figure>
 
 <h2 id="agglommerative-clustering">Agglommerative Clustering</h2>
+<p>Agglomerative Clustering is a type of hierarchical clustering technique used to build clusters from bottom up. Divisive Clustering is the opposite method of building clusters from top down, which is not available in sklearn.</p>
 <div class="codehilite"><pre><span></span><code>
 </code></pre></div>
 
 
 <h2 id="dbscan">DBScan</h2>
-<div class="codehilite"><pre><span></span><code>
+<ol>
+<li>Pick an arbitrary point to start</li>
+<li>Find all points with distance eps or less from that point</li>
+<li>If points are more than min_samples within distance of esp, point is 4.labelled as a core sample, and assigned a new cluster label</li>
+<li>Then all neighbours within eps of the point are visited</li>
+<li>If they are core samples their neighbours are visited in turn and so on</li>
+<li>The cluster thus grows till there are no more core samples within distance eps of the cluster</li>
+<li>Then, another point that has not been visited is picked, and step 1-6 is repeated</li>
+<li>3 kinds of points are generated in the end, core points, boundary points, and noise</li>
+<li>Boundary points are core clusters but not within distance of esp</li>
+</ol>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/dbscan1.png?raw=true" style="width:90%" />
+  <figcaption>Introduction to Machine Learning with Python (Book)</figcaption>
+</figure>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">DBSCAN</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">dbscan</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">min_samples</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="bp">cls</span> <span class="o">=</span> <span class="n">dbscan</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+<span class="c1"># [1 0  1  0  2  0  0  0  2  2 -1  1  2  0  0 -1  0  0  1 -1]</span>
+<span class="c1"># -1 indicates noise or outliers</span>
 </code></pre></div>
                 
               
