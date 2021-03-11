@@ -685,6 +685,20 @@
   <figcaption>Introduction to Machine Learning with Python (book)</figcaption>
 </figure>
 
+<table>
+<thead>
+<tr>
+<th>Key Hyperparameter</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n_clusters (k)</td>
+<td>no. of clusters</td>
+</tr>
+</tbody>
+</table>
 <p>It is important to scale the features before applying K-means, unless the fields are not meant to be scaled, like distances. Categorical data is not appropriate as clustering calculated using euclidean distance (means). For long distances over an lat/long coordinates, they need to be projected to a flat surface.</p>
 <p>One aspect of k means is that different random starting points for the cluster centers often result in very different clustering solutions. So typically, the k-means algorithm is run in scikit-learn with ten different random initializations and the solution occurring the most number of times is chosen.</p>
 <p><strong>Limitations</strong></p>
@@ -751,7 +765,24 @@
 
 <h2 id="gaussian-mixture-model">Gaussian Mixture Model</h2>
 <p>GMM is, in essence a density estimation model but can function like clustering. It has a probabilistic model under the hood so it returns a matrix of probabilities belonging to each cluster for each data point. More from <a href="https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html">here</a>.</p>
-<p>We can input the covariance_type argument such that it can choose between diag (the default, ellipse constrained to the axes), spherical (like k-means), or full (ellipse without a specific orientation).</p>
+<table>
+<thead>
+<tr>
+<th>Key Hyperparameters</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n_components</td>
+<td>no. of clusters</td>
+</tr>
+<tr>
+<td>covariance_type</td>
+<td>diag (default, ellipse constrained to the axes), spherical (like k-means), or full (ellipse without a specific orientation)</td>
+</tr>
+</tbody>
+</table>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
 
 <span class="c1"># gmm accepts input as array, so have to convert dataframe to numpy</span>
@@ -812,7 +843,7 @@
 <table>
 <thead>
 <tr>
-<th>Key Hyperparameter</th>
+<th>Key Hyperparameters</th>
 <th>Desc</th>
 </tr>
 </thead>
