@@ -1019,6 +1019,7 @@
 <h3 id="random-forest">Random Forest</h3>
 <p>An ensemble of decision trees. Used to be one of the most popular tree classifiers. But now generally superceded by other variants like XGBoost, LightGBM etc.</p>
 <p>Each decision tree is random, introduced through <strong>bootstrap</strong> (aka, bagging), i.e. sample of size N is created by just repeatedly picking one of the N dataset rows at random with replacement, as well as <strong>random feature splits</strong>, i.e., when picking the best split for a node, instead of finding the best split across all possible features (decision tree), a random subset of features is chosen and the best split is found within that smaller subset of features</p>
+<p>As a result of this randomness, the model is very generalized.</p>
 <table>
 <thead>
 <tr>

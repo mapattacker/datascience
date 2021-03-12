@@ -950,7 +950,55 @@
   <figcaption>full dendrogram</figcaption>
 </figure>
 
-<p><a href="http://datanongrata.com/2019/04/27/67/">datanongrata</a> provides an excellent tutorial on how to prettify a dendrogram.</p>
+<p>The dendrogram can be further enhanced by</p>
+<ul>
+<li>adding title and axis labels</li>
+<li>adding grids</li>
+<li>trimming the bottom branches based on max. no. of clusters to display
+labelling each cluster split distance</li>
+<li>a horizontal line to investigate where would be an appropriate cutoff point</li>
+</ul>
+<p>The labels in brackets is the number of datapoints that are clustered under each branch.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">linkage</span><span class="p">,</span> <span class="n">dendrogram</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Agglomerative Clustering Dendrogram&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Clusters&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Distance&#39;</span><span class="p">)</span>
+
+<span class="c1"># cluster</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">linkage</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+
+<span class="c1"># plot dendrogram</span>
+<span class="n">ddata</span> <span class="o">=</span> <span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+                    <span class="n">truncate_mode</span><span class="o">=</span><span class="s1">&#39;lastp&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                    <span class="n">labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">get_leaves</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">show_leaf_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">show_contracted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># plot cluster points &amp; distance labels</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ddata</span><span class="p">[</span><span class="s1">&#39;icoord&#39;</span><span class="p">],</span> <span class="n">ddata</span><span class="p">[</span><span class="s1">&#39;dcoord&#39;</span><span class="p">],</span> <span class="n">ddata</span><span class="p">[</span><span class="s1">&#39;color_list&#39;</span><span class="p">]):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">markeredgewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">),</span>
+                    <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span>
+                    <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># plot distance</span>
+<span class="n">line</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/agglom2.png?raw=true" style="width:80%" />
+  <figcaption>prettified dendrogram</figcaption>
+</figure>
+
 <hr>
 
 <h2 id="dbscan">DBScan</h2>
@@ -965,7 +1013,7 @@
 <tbody>
 <tr>
 <td>eps</td>
-<td>max distance btw 2 samples to be considered a cluster</td>
+<td>epsilon. max distance btw 2 samples to be considered a cluster</td>
 </tr>
 <tr>
 <td>min_samples</td>
