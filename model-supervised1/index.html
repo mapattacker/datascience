@@ -416,6 +416,33 @@
     Tree Ensembles
   </a>
   
+    <nav class="md-nav" aria-label="Tree Ensembles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#random-forest" class="md-nav__link">
+    Random Forest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voting" class="md-nav__link">
+    Voting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stacking" class="md-nav__link">
+    Stacking
+  </a>
+  
 </li>
       
     </ul>
@@ -675,6 +702,33 @@
     Tree Ensembles
   </a>
   
+    <nav class="md-nav" aria-label="Tree Ensembles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#random-forest" class="md-nav__link">
+    Random Forest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voting" class="md-nav__link">
+    Voting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stacking" class="md-nav__link">
+    Stacking
+  </a>
+  
 </li>
       
     </ul>
@@ -785,7 +839,7 @@
 </tr>
 <tr>
 <td>gamma</td>
-<td>adjust kernel width. Influence of a single training example reaches. Low gamma=far reach, high values=limited reach.</td>
+<td>from v0.22, gamma is auto or scaled, rather than a float</td>
 </tr>
 </tbody>
 </table>
@@ -793,6 +847,22 @@
   <img src="https://github.com/mapattacker/datascience/blob/master/images/svm_parameters.PNG?raw=true" style="width:100%" />
   <figcaption></figcaption>
 </figure>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>If we require linear SVM, we should use <code>LinearSVC</code> with its flexibility of regularization and loss functions, together with faster compute time for large datasets.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;squared_hinge&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+
 
 <hr>
 
@@ -817,9 +887,17 @@
 </tbody>
 </table>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/logisticR.png?raw=true" style="width:100%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/logisticR.png?raw=true" style="width:80%" />
   <figcaption></figcaption>
 </figure>
+
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div>
+
 
 <hr>
 
@@ -896,6 +974,82 @@
 <hr>
 
 <h2 id="tree-ensembles">Tree Ensembles</h2>
+<h3 id="random-forest">Random Forest</h3>
+<p>An ensemble of decision trees. Used to be one of the most popular tree classifiers. But now generally superceded by other variants like XGBoost, LightGBM etc.</p>
+<p>Each decision tree is random, introduced through <strong>bootstrap</strong> (aka, bagging), i.e. sample of size N is created by just repeatedly picking one of the N dataset rows at random with replacement, as well as <strong>random feature splits</strong>, i.e., when picking the best split for a node, instead of finding the best split across all possible features (decision tree), a random subset of features is chosen and the best split is found within that smaller subset of features</p>
+<table>
+<thead>
+<tr>
+<th>Key hyperparameter(s)</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n_estimators</td>
+<td>no. decision trees</td>
+</tr>
+<tr>
+<td>max_features</td>
+<td>max random features to split a leaf node</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span>
+
+<span class="n">train_feature</span><span class="p">,</span> <span class="n">test_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">,</span> <span class="n">test_target</span> <span class="o">=</span> \
+<span class="n">train_test_split</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_feature</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="mf">0.823529411765</span>
+
+<span class="c1"># feature importance</span>
+<span class="n">f_impt</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">f_impt</span> <span class="o">=</span> <span class="n">f_impt</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">f_impt</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;feature importance&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f_impt</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>To see how many decision trees are minimally required make the accuracy plateau.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">trees</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">accuracy</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trees</span><span class="p">)):</span>
+  <span class="n">clf</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">model</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_feature</span><span class="p">,</span> <span class="n">train_target</span><span class="p">)</span>
+  <span class="n">predictions</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_feature</span><span class="p">)</span>
+  <span class="n">accuracy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_target</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trees</span><span class="p">,</span><span class="n">accuracy</span><span class="p">)</span>
+</code></pre></div>
+
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/randomforest.png?raw=true" style="width:90%" />
+  <figcaption>Accuracy over no. trees trained with</figcaption>
+</figure>
+
+<h2 id="voting">Voting</h2>
+<p>The idea behind the <a href="https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier">VotingClassifier</a> is to combine conceptually different machine learning classifiers and use a majority vote (hard vote) or the average predicted probabilities (soft vote) to predict the class labels. Such a classifier can be useful for a set of equally well performing model in order to balance out their individual weaknesses.</p>
+<h2 id="stacking">Stacking</h2>
+<p><a href="https://scikit-learn.org/stable/modules/ensemble.html#stacked-generalization">Stacked generalization</a> is a method for combining estimators to reduce their biases. More precisely, the predictions of each individual estimator are stacked together and used as input to a final estimator to compute the prediction. This final estimator is trained through cross-validation.</p>
+<p>The fundamental difference between voting and stacking is how the final aggregation is done. In voting, user-specified weights are used to combine the classifiers whereas stacking performs this aggregation by using a blender/meta classifier.</p>
                 
               
               
