@@ -958,7 +958,6 @@
 labelling each cluster split distance</li>
 <li>a horizontal line to investigate where would be an appropriate cutoff point</li>
 </ul>
-<p>The labels in brackets is the number of datapoints that are clustered under each branch.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">linkage</span><span class="p">,</span> <span class="n">dendrogram</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-whitegrid&#39;</span><span class="p">)</span>
@@ -994,8 +993,9 @@ labelling each cluster split distance</li>
 </code></pre></div>
 
 
+<p>The labels in brackets is the number of datapoints that are clustered under each branch.</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/agglom2.png?raw=true" style="width:80%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/agglom2.png?raw=true" style="width:70%" />
   <figcaption>prettified dendrogram</figcaption>
 </figure>
 
