@@ -254,6 +254,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#data-splits" class="md-nav__link">
+    Data Splits
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -633,6 +640,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#data-splits" class="md-nav__link">
+    Data Splits
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -686,6 +700,31 @@
 </tr>
 </tbody>
 </table>
+<h2 id="data-splits">Data Splits</h2>
+<p>Both the <strong>train &amp; validation datasets</strong> are used for model training and evaluation. However, as we adjust the model hyperparameters to get the best evaluation metrics for both train &amp; val sets, we can be overfitting to just these two data splits.</p>
+<p>To overcome this problem, it is usual to have another split for a <strong>test set</strong>, with is also known as the unseen dataset, as the model trained have not seen it before. This will further confirm that your model is well generalized.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># split into train+val &amp; test sets</span>
+<span class="n">X_trainval</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_trainval</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> \
+    <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># split train+val set into train and val set</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_valid</span> <span class="o">=</span> \
+    <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_trainval</span><span class="p">,</span> <span class="n">y_trainval</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>A more advanced form of data split is k-fold cross validation, which is further elaborated <a href="https://mapattacker.github.io/datascience/model-crossvalidation/">later</a>. We can see the entire process diagrammatically as shown below. </p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/grid_search_cross_validation.png?raw=true" style="width:70%" />
+  <figcaption>Introduction to Machine Learning with Python (book)</figcaption>
+</figure>
+
+<p>A good workflow of the machine learning process with the inclusive of data splits is shown below.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/grid_search_workflow.png?raw=true" style="width:70%" />
+  <figcaption>from sklearn</figcaption>
+</figure>
                 
               
               
