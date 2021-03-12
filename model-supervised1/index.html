@@ -718,12 +718,13 @@
 <hr>
 
 <h2 id="naive-bayes">Naive Bayes</h2>
+<p><a href="https://scikit-learn.org/stable/modules/naive_bayes.html">Naive Bayes</a> is a probabilistic model using the Bayes' theorem. Features are assumed to be independent of each other in a given class (hence naive). This makes the math very easy. E.g., words that are unrelated multiply together to form the final probability.</p>
 <hr>
 
 <h2 id="support-vector-machines">Support Vector Machines</h2>
 <p><a href="https://scikit-learn.org/stable/modules/svm.html">Support Vector Machines</a> (SVM) involves locating the support vectors of two boundaries to find a maximum tolerance hyperplane.</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/svm.png?raw=true" style="width:90%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/svm.png?raw=true" style="width:70%" />
   <figcaption>University of Michigan: Coursera Data Science in Python</figcaption>
 </figure>
 
@@ -737,7 +738,7 @@
 <tbody>
 <tr>
 <td>C</td>
-<td>regularisation</td>
+<td>lower C more L2 regularization</td>
 </tr>
 <tr>
 <td>kernel</td>
@@ -750,7 +751,7 @@
 </tbody>
 </table>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/svm_parameters.PNG?raw=true" style="width:90%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/svm_parameters.PNG?raw=true" style="width:100%" />
   <figcaption></figcaption>
 </figure>
 
@@ -767,8 +768,12 @@
 </thead>
 <tbody>
 <tr>
+<td>penalty</td>
+<td>l1/l2/elasticnet</td>
+</tr>
+<tr>
 <td>C</td>
-<td>L2 regularisation</td>
+<td>lower C more regularization</td>
 </tr>
 </tbody>
 </table>
