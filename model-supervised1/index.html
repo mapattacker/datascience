@@ -426,6 +426,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#xgboost" class="md-nav__link">
+    XGBoost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightgbm" class="md-nav__link">
+    LightGBM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catboost" class="md-nav__link">
+    CatBoost
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -708,6 +729,27 @@
           <li class="md-nav__item">
   <a href="#random-forest" class="md-nav__link">
     Random Forest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xgboost" class="md-nav__link">
+    XGBoost
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightgbm" class="md-nav__link">
+    LightGBM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catboost" class="md-nav__link">
+    CatBoost
   </a>
   
 </li>
@@ -1045,6 +1087,59 @@
   <figcaption>Accuracy over no. trees trained with</figcaption>
 </figure>
 
+<h3 id="xgboost">XGBoost</h3>
+<p>XGBoost or eXtreme Gradient Boosting, is a form of gradient boosted decision trees is that designed to be highly efficient, flexible and portable.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">y_pred</span><span class="p">]</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">))</span>
+</code></pre></div>
+
+
+<h3 id="lightgbm">LightGBM</h3>
+<p>LightGBM (Light Gradient Boosting) is a lightweight version of gradient boosting developed by Microsoft. It has similar performance to XGBoost but touted to run much faster than it.</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">lightgbm</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Create the LightGBM data containers</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">lightgbm</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">lightgbm</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;application&#39;</span><span class="p">:</span> <span class="s1">&#39;binary&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;objective&#39;</span><span class="p">:</span> <span class="s1">&#39;binary&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="s1">&#39;auc&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;is_unbalance&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;boosting&#39;</span><span class="p">:</span> <span class="s1">&#39;gbdt&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;num_leaves&#39;</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span>
+  <span class="s1">&#39;feature_fraction&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+  <span class="s1">&#39;bagging_fraction&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+  <span class="s1">&#39;bagging_freq&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+  <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">lightgbm</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span>
+                      <span class="n">train_data</span><span class="p">,</span>
+                      <span class="n">valid_sets</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span>
+                      <span class="n">num_boost_round</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                      <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h3 id="catboost">CatBoost</h3>
+<p><a href="https://catboost.ai">Category Boosting</a> has high performances compared to other popular models, and does not require conversion of categorical values into numbers. It is said to be even faster than LighGBM, and allows model to be ran using GPU. </p>
 <h2 id="voting">Voting</h2>
 <p>The idea behind the <a href="https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier">VotingClassifier</a> is to combine conceptually different machine learning classifiers and use a majority vote (hard vote) or the average predicted probabilities (soft vote) to predict the class labels. Such a classifier can be useful for a set of equally well performing model in order to balance out their individual weaknesses.</p>
 <h2 id="stacking">Stacking</h2>
