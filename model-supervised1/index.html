@@ -699,8 +699,8 @@
 <h2 id="knn">KNN</h2>
 <p><a href="https://scikit-learn.org/stable/modules/neighbors.html#classification">K-Nearest Neighbours</a> is computed from a simple majority vote of the nearest neighbors of each point: a query point is assigned the data class which has the most representatives within the nearest neighbors of the point.</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/knn.gif?raw=true" style="width:90%" />
-  <figcaption></figcaption>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/knn.gif?raw=true" style="width:100%" />
+  <figcaption>A majority vote of k (www.mathworks.com)</figcaption>
 </figure>
 
 <table>
@@ -738,6 +738,26 @@
 
 <h2 id="naive-bayes">Naive Bayes</h2>
 <p><a href="https://scikit-learn.org/stable/modules/naive_bayes.html">Naive Bayes</a> is a probabilistic model using the Bayes' theorem. Features are assumed to be independent of each other in a given class (hence naive). This makes the math very easy. E.g., words that are unrelated multiply together to form the final probability.</p>
+<p>There are 5 variants of Naive Bayes in <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.naive_bayes">sklearn</a>. Bernouli and Multinomial models are commonly used for sparse count data like text classification. The latter normally works better. Gaussian model is used for high-dimensional data.</p>
+<table>
+<thead>
+<tr>
+<th>Hyperparameter(s)</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alpha</td>
+<td>smoothing (generalisation) parameter (default 1.0)</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/naivebayes.png?raw=true" style="width:80%" />
+  <figcaption>University of Michigan: Coursera Data Science in Python</figcaption>
+</figure>
+
 <hr>
 
 <h2 id="support-vector-machines">Support Vector Machines</h2>
@@ -796,6 +816,11 @@
 </tr>
 </tbody>
 </table>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/logisticR.png?raw=true" style="width:100%" />
+  <figcaption></figcaption>
+</figure>
+
 <hr>
 
 <h2 id="decision-tree">Decision Tree</h2>
