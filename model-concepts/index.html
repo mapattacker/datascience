@@ -14,7 +14,7 @@
     
     
       
-        <title>Model Persistence - Data Science in Python</title>
+        <title>Model Concepts - Data Science in Python</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#persistance" class="md-skip">
+        <a href="#model-concepts" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +91,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Model Persistence
+              Model Concepts
             
           </span>
         </div>
@@ -310,11 +310,56 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../model-concepts/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Model Concepts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       Model Concepts
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bias-variance-tradeoff" class="md-nav__link">
+    Bias-Variance Tradeoff
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regularization" class="md-nav__link">
+    Regularization
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -529,56 +574,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Model Persistence
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../persistence/" class="md-nav__link">
       Model Persistence
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pickle" class="md-nav__link">
-    Pickle
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#joblib" class="md-nav__link">
-    Joblib
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -606,15 +606,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pickle" class="md-nav__link">
-    Pickle
+  <a href="#bias-variance-tradeoff" class="md-nav__link">
+    Bias-Variance Tradeoff
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#joblib" class="md-nav__link">
-    Joblib
+  <a href="#regularization" class="md-nav__link">
+    Regularization
   </a>
   
 </li>
@@ -631,37 +631,68 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/persistence.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/model-concepts.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="persistance">Persistance</h1>
-<p>Data, models and scalers are examples of objects that can benefit greatly from storing in their native python format. </p>
-<p>For the former, it allows multiples faster loading compared to other sources since it is saved in a python format. For others, there are no other ways of saving as they are natively python objects. There are two ways of doing this.</p>
-<h2 id="pickle">Pickle</h2>
-<p>We can save data loaded into a dataframe like below.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;df.pkl&#39;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;df.pkl&#39;</span><span class="p">)</span>
-</code></pre></div>
+                <h1 id="model-concepts">Model Concepts</h1>
+<h2 id="bias-variance-tradeoff">Bias-Variance Tradeoff</h2>
+<p>The best predictive algorithm is one that has good Generalization Ability. With that, it will be able to give accurate predictions to new and previously unseen data. With that comes two terms <em>bias</em> &amp; <em>variance</em>.</p>
+<p><strong>High Bias</strong> results from <strong>Underfitting</strong> the model. This usually results from erroneous assumptions, and cause the model to be too general.</p>
+<p><strong>High Variance</strong> results from <strong>Overfitting</strong> the model, and it will predict the training dataset very accurately, but not with unseen new datasets. This is because it will fit even the slightless noise in the dataset.</p>
+<p>The best model with the highest accuarcy is the middle ground between the two.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/bias-variance.png?raw=true" style="width:90%" />
+  <figcaption>from Andrew Ng’s lecture</figcaption>
+</figure>
 
-
-<p>For models or scalars we need to import pickle directly. Note that the extension name can be anything.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">pickle</span>
-
-<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model_rf.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span>
-<span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model_rf.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
-</code></pre></div>
-
-
-<h2 id="joblib">Joblib</h2>
-<p>When using scikit-learn, it may be better to use joblib’s replacement of pickle (dump &amp; load), which is more efficient on objects that carry large numpy arrays internally as is often the case for fitted scikit-learn estimators, but can only pickle to the disk and not to a string. More <a href="https://scikit-learn.org/stable/modules/model_persistence.html">here</a>.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">joblib</span>
-
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="s1">&#39;model.joblib&#39;</span><span class="p">)</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;model.joblib&#39;</span><span class="p">)</span>
-</code></pre></div>
+<h2 id="regularization">Regularization</h2>
+<p>Regularization is an important concepts for some of supervised models. It prevents overfitting by restricting the model, thus lowering its complexity. </p>
+<p>In regression, it is regulated by the hyperparameter <em>alpha</em>, where a high alpha means more regularization and a simpler model.</p>
+<table>
+<thead>
+<tr>
+<th>Regularization</th>
+<th>Model</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>LASSO</td>
+<td>reduces sum of the absolute values of coefficients. change unimportant featuress' regression coefficients into 0</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Ridge</td>
+<td>reduces the sum of squares</td>
+</tr>
+</tbody>
+</table>
+<p>In classification, it is regulated by the hyperparameter <em>C</em>, where a lower C means more regularization and a simpler model.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Regularization</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SVM</td>
+<td>L2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Logistic Regression</td>
+<td>L1/L2/ElasticNet</td>
+<td>Can choose which regularization type</td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -680,7 +711,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../model-explainability/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../data-classimbalance/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -689,11 +720,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Model Explainability
+                Class Imbalance
               </div>
             </div>
           </a>
         
+        
+          <a href="../model-supervised1/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Classification
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>

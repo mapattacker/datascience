@@ -310,18 +310,30 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../model-concepts/" class="md-nav__link">
+      Model Concepts
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
-    <label class="md-nav__link" for="nav-6">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    <label class="md-nav__link" for="nav-7">
       Model Supervised
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Model Supervised" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         <span class="md-nav__icon md-icon"></span>
         Model Supervised
       </label>
@@ -372,6 +384,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#naive-bayes" class="md-nav__link">
+    Naive Bayes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-vector-machines" class="md-nav__link">
+    Support Vector Machines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logistic-regression" class="md-nav__link">
+    Logistic Regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#decision-tree" class="md-nav__link">
     Decision Tree
   </a>
@@ -409,13 +442,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
-    <label class="md-nav__link" for="nav-7">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
+    <label class="md-nav__link" for="nav-8">
       Model Unsupervised
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Model Unsupervised" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-8">
         <span class="md-nav__icon md-icon"></span>
         Model Unsupervised
       </label>
@@ -494,13 +527,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
-    <label class="md-nav__link" for="nav-8">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" >
+    <label class="md-nav__link" for="nav-9">
       Model Selection
       <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="Model Selection" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
+      <label class="md-nav__title" for="nav-9">
         <span class="md-nav__icon md-icon"></span>
         Model Selection
       </label>
@@ -603,6 +636,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#naive-bayes" class="md-nav__link">
+    Naive Bayes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-vector-machines" class="md-nav__link">
+    Support Vector Machines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logistic-regression" class="md-nav__link">
+    Logistic Regression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#decision-tree" class="md-nav__link">
     Decision Tree
   </a>
@@ -660,6 +714,65 @@
 <span class="c1"># 0.53333333333333333</span>
 </code></pre></div>
 
+
+<hr>
+
+<h2 id="naive-bayes">Naive Bayes</h2>
+<hr>
+
+<h2 id="support-vector-machines">Support Vector Machines</h2>
+<p><a href="https://scikit-learn.org/stable/modules/svm.html">Support Vector Machines</a> (SVM) involves locating the support vectors of two boundaries to find a maximum tolerance hyperplane.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/svm.png?raw=true" style="width:90%" />
+  <figcaption>University of Michigan: Coursera Data Science in Python</figcaption>
+</figure>
+
+<table>
+<thead>
+<tr>
+<th>Key hyperparameter(s)</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>regularisation</td>
+</tr>
+<tr>
+<td>kernel</td>
+<td>linear or radial basis function (rbf)</td>
+</tr>
+<tr>
+<td>gamma</td>
+<td>adjust kernel width. Influence of a single training example reaches. Low gamma=far reach, high values=limited reach.</td>
+</tr>
+</tbody>
+</table>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/svm_parameters.PNG?raw=true" style="width:90%" />
+  <figcaption></figcaption>
+</figure>
+
+<hr>
+
+<h2 id="logistic-regression">Logistic Regression</h2>
+<p>While it is a type of regression, it only outputs a binary value hence it is considered a classification model.</p>
+<table>
+<thead>
+<tr>
+<th>Key hyperparameter(s)</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>L2 regularisation</td>
+</tr>
+</tbody>
+</table>
+<hr>
 
 <h2 id="decision-tree">Decision Tree</h2>
 <p>Uses gini index (default) or entropy to split the data at binary level.</p>
@@ -748,7 +861,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../data-classimbalance/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../model-concepts/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -757,7 +870,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Class Imbalance
+                Model Concepts
               </div>
             </div>
           </a>
