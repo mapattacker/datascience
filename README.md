@@ -1,7 +1,8 @@
 ## Machine Learning in Python
 
-Refer to the documentation below for a curated list of statistics and machine learning techniques:
+Refer to the documentation below for a curated list of data science techniques:
 
-http://python-data-science.readthedocs.io
+current link: https://mapattacker.github.io/datascience/
+old defunct site: http://python-data-science.readthedocs.io
 
-Do visit the link for more updates as I populate the documentation over time!
+![](https://github.com/mapattacker/datascience/blob/master/images/intro.png?raw=true)
