@@ -703,6 +703,11 @@
 <h2 id="data-splits">Data Splits</h2>
 <p>Both the <strong>train &amp; validation datasets</strong> are used for model training and evaluation. However, as we adjust the model hyperparameters to get the best evaluation metrics for both train &amp; val sets, we can be overfitting to just these two data splits.</p>
 <p>To overcome this problem, it is usual to have another split for a <strong>test set</strong>, with is also known as the unseen dataset, as the model trained have not seen it before. This will further confirm that your model is well generalized.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/datasplits.png?raw=true" style="width:70%" />
+  <figcaption>Introduction to Machine Learning with Python (book)</figcaption>
+</figure>
+
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="c1"># split into train+val &amp; test sets</span>
