@@ -1116,6 +1116,7 @@
 
 <h3 id="gradient-boosting">Gradient Boosting</h3>
 <p>The general idea of most boosting methods is to train predictors sequentially, each trying to correct its predecessor. Gradient boosting tries to fit the new predictor to the residual errors made by the previous predictor.</p>
+<p>Built in a non-random way, to create a model that makes fewer and fewer mistakes as more trees are added. Once the model is built, making predictions with a gradient boosted tree models is fast and doesn’t use a lot of memory.</p>
 <h4 id="xgboost">XGBoost</h4>
 <p><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a> or eXtreme Gradient Boosting, is a form of gradient boosted decision trees is that designed to be highly efficient, flexible and portable.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
