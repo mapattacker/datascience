@@ -656,7 +656,6 @@
 <span class="n">svm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_normal</span><span class="p">[[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span><span class="s1">&#39;col2&#39;</span><span class="p">,</span><span class="s1">&#39;col3&#39;</span><span class="p">]])</span>
 </code></pre></div>
 
-
 <h2 id="isolation-forest">Isolation Forest</h2>
 <p>One efficient way of performing outlier detection in high-dimensional datasets is to use random forests. Isolation Forest ‘isolates’ observations by randomly selecting a feature and then randomly selecting a split value between the maximum and minimum values of the selected feature.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">IsolationForest</span>
@@ -678,7 +677,6 @@
 <span class="c1"># Name: 0, dtype: int64</span>
 </code></pre></div>
 
-
 <p>We can also get the average anomaly scores. The lower the value, the more abnormal they are. Negative scores represent outliers, positive scores represent inliers.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">array</span><span class="p">([</span> <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.08450298</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>
@@ -686,7 +684,6 @@
       <span class="mf">0.14528263</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05483886</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.10086102</span><span class="p">,</span>  <span class="mf">0.14528263</span><span class="p">,</span>
       <span class="mf">0.14528263</span><span class="p">])</span>
 </code></pre></div>
-
 
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/isolation_forest.png?raw=true" style="width:80%" />

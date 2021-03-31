@@ -681,7 +681,6 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span>
 </code></pre></div>
 
-
 <hr>
 
 <h2 id="k-means">K-Means</h2>
@@ -728,7 +727,6 @@
 <span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>To determine the best K, we will usually plot an elbow chart. Looking at the significant bend in the chart shows that the average distance value might be leveling off such that adding more clusters doesn't decrease the average distance as much. We will thus choose that K value.</p>
 <p>There is also the <a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html">silhouette chart</a> used to determine the number of k.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
@@ -761,7 +759,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Selecting k with the Elbow Method&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/elbowchart.png?raw=true" style="width:60%" />
   <figcaption></figcaption>
@@ -774,11 +771,9 @@
 <span class="n">centroid_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">centroids[i</span><span class="o">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">labels_</span><span class="err">]</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>If we have labels or y, and want to determine which y belongs to which cluster for an evaluation score, we can use a groupby to find the most number of labels that fall in a cluster and manually label them as such.</p>
 <div class="codehilite"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">concat</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="s1">&#39;cluster&#39;</span><span class="p">])[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </code></pre></div>
-
 
 <p>If we want to know what is the distance of each datapoint’s assign cluster distance to their centroid, we can do a fit_transform to get all distance from all cluster centroids and process from there.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
@@ -794,7 +789,6 @@
 <span class="c1"># concat label &amp; distance together</span>
 <span class="n">label_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">dist</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="s1">&#39;distance&#39;</span><span class="p">])</span>
 </code></pre></div>
-
 
 <hr>
 
@@ -828,7 +822,6 @@
 <span class="n">result</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
 </code></pre></div>
 
-
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/gmm1.PNG?raw=true" style="width:90%" />
   <figcaption>Python Data Science Handbook by Jake VanderPlas</figcaption>
@@ -860,7 +853,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">aic_list</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AIC&#39;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
 </code></pre></div>
-
 
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/gmm2.PNG?raw=true" style="width:90%" />
@@ -917,7 +909,6 @@
 <span class="n">y</span> <span class="o">=</span> <span class="n">fcluster</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>sklearn's agglomerative cluster is said to be very slow. An alternative, <a href="https://pypi.org/project/fastcluster/">fastcluster</a> is faster as it is a C++ library with python interface.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">fastcluster</span>
 <span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">dendrogram</span><span class="p">,</span> <span class="n">fcluster</span>
@@ -936,7 +927,6 @@
 <span class="n">distance_threshold</span> <span class="o">=</span> <span class="mi">2000</span>
 <span class="n">clusters</span> <span class="o">=</span> <span class="n">fcluster</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/aggocluster5.PNG?raw=true" style="width:90%" />
@@ -989,7 +979,6 @@ labelling each cluster split distance</li>
 <span class="n">line</span> <span class="o">=</span> <span class="mi">1500</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span>
 </code></pre></div>
-
 
 <p>The labels in brackets is the number of datapoints that are clustered under each branch.</p>
 <figure>

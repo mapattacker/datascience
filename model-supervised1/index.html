@@ -853,7 +853,6 @@
 <span class="c1"># 0.53333333333333333</span>
 </code></pre></div>
 
-
 <hr>
 
 <h2 id="naive-bayes">Naive Bayes</h2>
@@ -922,13 +921,11 @@
 <span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>If we require linear SVM, we should use <code>LinearSVC</code> with its flexibility of regularization and loss functions, together with faster compute time for large datasets.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
 
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;squared_hinge&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 </code></pre></div>
-
 
 <hr>
 
@@ -963,7 +960,6 @@
 <span class="n">acc_train</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">acc_test</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </code></pre></div>
-
 
 <hr>
 
@@ -1016,7 +1012,6 @@
 <span class="c1"># sepal width (cm)      0.000000</span>
 </code></pre></div>
 
-
 <p>Viewing the decision tree requires installing of the two packages conda install graphviz &amp; conda install pydotplus.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.externals.six</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -1030,7 +1025,6 @@
 <span class="n">graph</span> <span class="o">=</span> <span class="n">pydotplus</span><span class="o">.</span><span class="n">graph_from_dot_data</span><span class="p">(</span><span class="n">dot_data</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">create_png</span><span class="p">())</span>
 </code></pre></div>
-
 
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/decisiongraph.png?raw=true" style="width:90%" />
@@ -1087,7 +1081,6 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">f_impt</span><span class="p">)</span>
 </code></pre></div>
 
-
 <p>To see how many decision trees are minimally required make the accuracy plateau.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1105,7 +1098,6 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trees</span><span class="p">,</span><span class="n">accuracy</span><span class="p">)</span>
 </code></pre></div>
-
 
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/randomforest.png?raw=true" style="width:90%" />
@@ -1151,7 +1143,6 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">))</span>
 </code></pre></div>
 
-
 <h4 id="lightgbm">LightGBM</h4>
 <p><a href="https://lightgbm.readthedocs.io/en/latest/">LightGBM</a> (Light Gradient Boosting) is a lightweight version of gradient boosting developed by Microsoft. It has similar performance to XGBoost but touted to run much faster than it.</p>
 <div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">lightgbm</span>
@@ -1183,7 +1174,6 @@
                       <span class="n">num_boost_round</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
                       <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </code></pre></div>
-
 
 <h4 id="catboost">CatBoost</h4>
 <p><a href="https://catboost.ai">Category Boosting</a> has high performances compared to other popular models, and does not require conversion of categorical values into numbers. It is said to be even faster than LighGBM, and allows model to be ran using GPU. </p>
