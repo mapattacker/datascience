@@ -772,12 +772,9 @@
                 <h1 id="association-rule-learning">Association Rule Learning</h1>
 <p>An informal definition of association rule learning is "Customer who bought this will also buy...". This is used for optimization of a combination of things. It is also commonly known as <em>Market Basket Analysis</em>.</p>
 <p>Knowing this association allows one to make recommendations to a customer. Two popular algorithms, Apriori &amp; FPGrowth are available in the library <a href="http://rasbt.github.io/mlxtend/api_subpackages/mlxtend.frequent_patterns/">mlxtend</a>.</p>
-<p>There are several articles in Kaggle that explains this well.</p>
-<ul>
-<li><a href="https://www.kaggle.com/datatheque/association-rules-mining-market-basket-analysis">Association Rules Mining/Market Basket Analysis</a></li>
-</ul>
 <h2 id="apriori">Apriori</h2>
-<p>Apriori association consists of three important parameters, Support, Confidence and Lift. Given the transactional data below:</p>
+<p>Apriori association consists of three important parameters, Support, Confidence and Lift. This kaggle <a href="https://www.kaggle.com/datatheque/association-rules-mining-market-basket-analysis">article</a> explains them perfectly.</p>
+<p>Given the transactional data below:</p>
 <table>
 <thead>
 <tr>
@@ -788,51 +785,82 @@
 <tbody>
 <tr>
 <td>T1</td>
-<td>bread, milk, beer, newspaper</td>
+<td>apple, egg, milk</td>
 </tr>
 <tr>
 <td>T2</td>
-<td>bread, beer, newspaper</td>
+<td>carrot, milk</td>
 </tr>
 <tr>
 <td>T3</td>
-<td>bread, pineapple, newspaper</td>
+<td>apple, egg, carrot</td>
 </tr>
 <tr>
 <td>T4</td>
-<td>banana, pineapple, newspaper</td>
+<td>apple, egg</td>
 </tr>
 <tr>
 <td>T5</td>
-<td>bread, milk, newspaper</td>
+<td>apple, carrot</td>
 </tr>
 </tbody>
 </table>
 <h3 id="support">Support</h3>
-<p>A parameter to measure the popularity of certain item. It is a proportion of transactions in which a specific item appears. Support threshold is a key parameters in product association algos.</p>
-<div class="highlight"><pre><span></span><code>Support(&quot;Bread&quot;) = 4/5 = 80%
+<p>A parameter to measure the popularity of certain item. It is a proportion of transactions in which a specific item appears. Support threshold is a key parameters in product association algos, and ranges from 0 to 1.</p>
+<div class="highlight"><pre><span></span><code>support{apple,egg} = 3/5 or 60%
 </code></pre></div>
 
 <h3 id="confidence">Confidence</h3>
-<p>A parameter to measure how likely item B will be purchased given item A is purchased.</p>
-<div class="highlight"><pre><span></span><code>Confidence(bread → milk) = \
-    Support(bread, milk)/Support(bread) = \
-    25%/80% = 31.25%.
+<p>A parameter to measure how likely item B will be purchased given item A is purchased. This is expressed as <code>confidence{A-&gt;B} = support{A,B}/support{A}</code>, and ranges from 0 to 1.</p>
+<div class="highlight"><pre><span></span><code>confidence{apple-&gt;egg} 
+= support{apple,egg} / support{apple}
+= (3/5) / (4/5)
+= 0.75 or 75%
 </code></pre></div>
 
-<p>However, one of the drawbacks of Confidence is that it misrepresent the importance of an association. </p>
-<div class="highlight"><pre><span></span><code>Confidence (bread → newspaper) = \
-    Support(bread, newspaper)/support(bread) \
-    = 100%
+<p>However, one of the drawbacks of Confidence is that it might misrepresent the importance of an association. </p>
+<div class="highlight"><pre><span></span><code>confidence{egg-&gt;apple} 
+= support{apple,egg} / support{egg}
+= (3/5) / (3/5)
+= 1 or 100%
 </code></pre></div>
 
 <h3 id="lift">Lift</h3>
-<p>A parameter to measure how likely item B will be purchased when item A is purchased, while controlling for how popular item B is.</p>
-<div class="highlight"><pre><span></span><code>Lift(bread → newspaper) = \
-    Support(bread, newspaper)/(Support(bread)*Support(newspaper)) 
-    = 20%
+<p>A parameter to measure how likely item B will be purchased when item A is purchased, while controlling for how popular item B is. This accounts for the popularity of both items rather than just one in confidence calculation. The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (support{A} * support{B})</code>, and it can range from 0 to infinity</p>
+<div class="highlight"><pre><span></span><code>lift{apple,egg} 
+= lift{egg,apple} 
+= support{apple,egg} / (support{apple} * support{egg})
+= (3/5) / (4/5 * 3/5) 
+= 1.25  
 </code></pre></div>
 
+<p>The values of lift can be summarised as follows.</p>
+<table>
+<thead>
+<tr>
+<th>lift</th>
+<th>explanation</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>no relationship between A and B</td>
+<td>A and B occur together only by chance</td>
+</tr>
+<tr>
+<td>&gt;1</td>
+<td>positive relationship between A and B</td>
+<td>A and B occur together more often than random</td>
+</tr>
+<tr>
+<td>&lt;1</td>
+<td>negative relationship between A and B</td>
+<td>A and B occur together less often than random</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">apyori</span> <span class="kn">import</span> <span class="n">apriori</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
