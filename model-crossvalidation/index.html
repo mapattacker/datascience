@@ -663,6 +663,7 @@
                 <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cv_scores</span><span class="p">))</span>
 </code></pre></div>
+
 <p>For greater control, like to define our own evaluation metrics etc., we can use <strong>KFold</strong> to obtain the train &amp; test indexes for each fold iteration. Sklearn's <a href="https://mapattacker.github.io/datascience/model-tuning/#grid-search">grid/random searches</a> also allow cross validation together with model tuning.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -686,6 +687,7 @@
 <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
 <span class="n">kfold_custom</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">f1score</span><span class="p">)</span>
 </code></pre></div>
+
 <p>There are many other variants of cross validations available in sklearn, as shown below.</p>
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/kfold2.PNG?raw=true" style="width:100%" />

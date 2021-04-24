@@ -861,6 +861,7 @@
 <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">null_table</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;percentage&#39;</span><span class="p">,</span> 
         <span class="n">text</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/null1.png?raw=true" style="width:60%" />
 </figure>
@@ -883,6 +884,7 @@ We can set a threshold to delete the entire column if there are too many nulls.<
     <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">null_table</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div>
+
 <h3 id="impute">Impute</h3>
 <p>We can change missing values for the entire dataframe into their individual column means or medians.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -894,6 +896,7 @@ We can set a threshold to delete the entire column if there are too many nulls.<
 <span class="c1"># output is in numpy, so convert to df</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">imp_mean</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </code></pre></div>
+
 <h3 id="interpolation">Interpolation</h3>
 <p>We can also use <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.interpolate.html">interpolation</a> via pandas default function to fill in the missing values.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -902,6 +905,7 @@ We can set a threshold to delete the entire column if there are too many nulls.<
 <span class="c1"># Must be greater than 0.</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;colname&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
+
 <hr>
 
 <h2 id="outliers">Outliers</h2>
@@ -943,6 +947,7 @@ defining the lower and upper bound limit, or (2) grouping the features into rank
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> (</span><span class="si">{:.2f}</span><span class="s1">%) outliers removed&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">percent</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">X</span>
 </code></pre></div>
+
 <p>There are also unsupervised modelling techniques to find outliers.</p>
 <hr>
 
@@ -967,6 +972,7 @@ defining the lower and upper bound limit, or (2) grouping the features into rank
 <span class="c1"># 2   B     1    1</span>
 <span class="c1"># 3   C     2    2</span>
 </code></pre></div>
+
 <h3 id="frequency-encoding">Frequency Encoding</h3>
 <p>This involves the conversion of categories into frequencies.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># size of each category</span>
@@ -979,6 +985,7 @@ defining the lower and upper bound limit, or (2) grouping the features into rank
 <span class="c1"># will need to change it to ranked frequency encoding</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rankdata</span>
 </code></pre></div>
+
 <h3 id="one-hot-encoding">One-Hot Encoding</h3>
 <p>We could use an integer encoding directly, rescaled where needed. This may work for problems where there is a natural ordinal relationship between the categories, and in turn their integer values, such as labels for temperature ‘cold’, warm’, and ‘hot’. </p>
 <p>However, there may be problems when there is no ordinal relationship and allowing the representation to lean on any such relationship might be damaging to learning to solve the problem. An example might be the labels ‘dog’ and ‘cat’.</p>
@@ -992,6 +999,7 @@ defining the lower and upper bound limit, or (2) grouping the features into rank
 <span class="n">onehotencoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">categorical_features</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">onehotencoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
 </code></pre></div>
+
 <hr>
 
 <h2 id="coordinates">Coordinates</h2>

@@ -780,6 +780,7 @@
 <span class="n">Warnings</span><span class="p">:</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Standard</span> <span class="n">Errors</span> <span class="n">assume</span> <span class="n">that</span> <span class="n">the</span> <span class="n">covariance</span> <span class="n">matrix</span> <span class="n">of</span> <span class="n">the</span> <span class="n">errors</span> <span class="ow">is</span> <span class="n">correctly</span> <span class="n">specified</span><span class="o">.</span>
 </code></pre></div>
+
 <p>Or sci-kit learn package.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
 
@@ -794,6 +795,7 @@
 <span class="n">r2_trains</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">r2_tests</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </code></pre></div>
+
 <h2 id="lasso-regression">LASSO Regression</h2>
 <p>LASSO refers to Least Absolute Shrinkage and Selection Operator Regression. When alpha = 0, then it is a normal OLS regression.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -856,6 +858,7 @@
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;test data R-square&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rsquared_test</span><span class="p">)</span>
 </code></pre></div>
+
 <h2 id="ridge-regression">Ridge Regression</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">panda</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -884,6 +887,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of non-zero features: </span><span class="si">{}</span><span class="s1">&#39;</span>
    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">linridge</span><span class="o">.</span><span class="n">coef_</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)))</span>
 </code></pre></div>
+
 <h2 id="elastic-net">Elastic Net</h2>
 <p>Elastic Net combines the penalties of ridge regression and lasso to get the best of both worlds.</p>
 <h2 id="tree-regressors">Tree Regressors</h2>

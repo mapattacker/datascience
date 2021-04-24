@@ -744,6 +744,7 @@
 <span class="n">cosine</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="c1"># 0.010050506338833642</span>
 </code></pre></div>
+
 <h2 id="mahalanobis-distance">Mahalanobis Distance</h2>
 <p>Mahalonobis distance is the distance between a point and a distribution, not between two distinct points. Therefore, it is effectively a multivariate equivalent of the Euclidean distance. More <a href="https://www.machinelearningplus.com/statistics/mahalanobis-distance/">here</a>.</p>
 <table>
@@ -795,6 +796,7 @@
 
     <span class="k">return</span> <span class="n">distanceMD</span>
 </code></pre></div>
+
 <h2 id="dynamic-time-warping">Dynamic Time Warping</h2>
 <p>If two time series are identical, but one is shifted slightly along the time axis, then Euclidean distance may consider them to be very different from each other. <strong>DTW</strong> was introduced to overcome this limitation and give intuitive distance measurements between time series by ignoring both global and local shifts in the time dimension.</p>
 <p>DTW is a technique that finds the optimal alignment between two time series, if one time series may be “warped” non-linearly by stretching or shrinking it along its time axis. </p>
@@ -817,6 +819,7 @@
 
 <span class="c1"># 2.8284271247461903</span>
 </code></pre></div>
+
 <h2 id="symbolic-aggregate-approximation">Symbolic Aggregate approXimation</h2>
 <p>SAX, developed in 2007, compares the similarity of two time-series patterns by slicing them into horizontal &amp; vertical regions, and comparing between each of them. This can be easily explained by <a href="https://jmotif.github.io/sax-vsm_site/morea/algorithm/SAX.html">4 charts</a> shown below.</p>
 <p>There are obvious benefits using such an algorithm, for one, it will be very fast as pattern matching is aggregated. However, the biggest downside is that both time-series signals have to be of same time-length.</p>
@@ -864,6 +867,7 @@
 <span class="n">sig1a</span> <span class="o">=</span> <span class="n">saxpy_sax</span><span class="p">(</span><span class="n">sig1</span><span class="p">)</span>
 <span class="n">sig2a</span> <span class="o">=</span> <span class="n">saxpy_sax</span><span class="p">(</span><span class="n">sig2</span><span class="p">)</span>
 </code></pre></div>
+
 <p>Another more mature package is tslearn. It enables the calculation of sax distance, but the sax alphabets are set as integers instead.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">tslearn.piecewise</span> <span class="kn">import</span> <span class="n">SymbolicAggregateApproximation</span>
 

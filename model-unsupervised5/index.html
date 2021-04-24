@@ -530,6 +530,33 @@
     Apriori
   </a>
   
+    <nav class="md-nav" aria-label="Apriori">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confidence" class="md-nav__link">
+    Confidence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lift" class="md-nav__link">
+    Lift
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -682,6 +709,33 @@
     Apriori
   </a>
   
+    <nav class="md-nav" aria-label="Apriori">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    Support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confidence" class="md-nav__link">
+    Confidence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lift" class="md-nav__link">
+    Lift
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -717,13 +771,66 @@
                 
                 <h1 id="association-rule-learning">Association Rule Learning</h1>
 <p>An informal definition of association rule learning is "Customer who bought this will also buy...". This is used for optimization of a combination of things. It is also commonly known as <em>Market Basket Analysis</em>.</p>
-<p>Knowing this association allows one to make recommendations to a customer.</p>
+<p>Knowing this association allows one to make recommendations to a customer. Two popular algorithms, Apriori &amp; FPGrowth are available in the library <a href="http://rasbt.github.io/mlxtend/api_subpackages/mlxtend.frequent_patterns/">mlxtend</a>.</p>
 <p>There are several articles in Kaggle that explains this well.</p>
 <ul>
 <li><a href="https://www.kaggle.com/datatheque/association-rules-mining-market-basket-analysis">Association Rules Mining/Market Basket Analysis</a></li>
 </ul>
 <h2 id="apriori">Apriori</h2>
-<p>Apriori association consists of three important parameters, Support, Confidence and Lift.</p>
+<p>Apriori association consists of three important parameters, Support, Confidence and Lift. Given the transactional examples below:</p>
+<table>
+<thead>
+<tr>
+<th>Transaction</th>
+<th>Items</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>bread, milk, beer, newspaper</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>bread, beer, newspaper</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>bread, pineapple, newspaper</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>banana, pineapple, newspaper</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>bread, milk, newspaper</td>
+</tr>
+</tbody>
+</table>
+<h3 id="support">Support</h3>
+<p>A parameter to measure the popularity of certain item. It is a proportion of transactions in which a specific item appears. Support threshold is a key parameters in product association algos.</p>
+<div class="highlight"><pre><span></span><code>Support(&quot;Bread&quot;) = 4/5 = 80%
+</code></pre></div>
+
+<h3 id="confidence">Confidence</h3>
+<p>A parameter to measure how likely item B will be purchased given item A is purchased.</p>
+<div class="highlight"><pre><span></span><code>Confidence(bread → milk) = Support(bread, milk)/Support(bread) \
+    = 25%/80% = 31.25%.
+</code></pre></div>
+
+<p>However, one of the drawbacks of Confidence is that it misrepresent the importance of an association. </p>
+<div class="highlight"><pre><span></span><code>Confidence (bread → newspaper) = \
+    Support(bread, newspaper)/support(bread) = 100%
+</code></pre></div>
+
+<h3 id="lift">Lift</h3>
+<p>A parameter to measure how likely item B will be purchased when item A is purchased, while controlling for how popular item B is.</p>
+<div class="highlight"><pre><span></span><code>Lift(bread → newspaper) = \
+    Support(bread, newspaper)/(Support(bread)*Support(newspaper)) 
+    = 20%
+</code></pre></div>
+
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">apyori</span> <span class="kn">import</span> <span class="n">apriori</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -745,10 +852,11 @@
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
+
 <h2 id="eclat">Eclat</h2>
-<p>Eclat is a simplified version of Apriori model, as only Support value is used, which shows how frequent a set of itmes occur. </p>
+<p>Eclat is a simplified version of Apriori model, as only Support value is used, which shows how frequent a set of items occur. </p>
 <h2 id="fp-growth">FP Growth</h2>
-<p>Frequent Pattern (FP) Growth is preferred to Apriori for the reason that Apriori takes more execution time for repeated scanning of the transaction dataset to mine the frequent items. FP-Growth builds a compact-tree structure and uses the tree for frequent itemset mining and generating rules.</p>
+<p>Frequent Pattern (FP) Growth is preferred to Apriori for the reason that Apriori takes more execution time for repeated scanning of the transaction dataset to mine the frequent items. FP-Growth builds a compact-tree structure and uses the tree for frequent itemset mining and generating rules, using a divide and conquer approach.</p>
                 
               
               

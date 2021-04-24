@@ -772,6 +772,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
 </code></pre></div>
+
 <hr>
 
 <h2 id="auto-tuners">Auto Tuners</h2>
@@ -811,6 +812,7 @@
 <span class="n">optimizer</span><span class="o">.</span><span class="n">maximize</span><span class="p">(</span><span class="n">init_points</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">best_param</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">max</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
 </code></pre></div>
+
 <p>However, it has a few downsides:</p>
 <ul>
 <li>The most glaring is that it does not allow an option for parameters which should only be in integers (notice that n_estimators above has to be wrapped in an int function, else there will be an error). The best parameter output will still output as a float, and we have to change it back to an integer before retraining our final model.</li>
@@ -861,6 +863,7 @@
             <span class="p">(</span><span class="s1">&#39;max_depth&#39;</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">(</span><span class="n">ParamTypes</span><span class="o">.</span><span class="n">INT</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">]))]</span>
 <span class="n">best_param</span> <span class="o">=</span> <span class="n">auto_tuning</span><span class="p">(</span><span class="n">tunables</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </code></pre></div>
+
 <p>The disadvantages are:</p>
 <ul>
 <li>Certain options requires me to code manually, which I thought the authors can easily package them into a function. examples include:<ul>

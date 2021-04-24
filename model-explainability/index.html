@@ -764,6 +764,7 @@
 
 <span class="n">f_impt</span> <span class="o">=</span> <span class="n">feature_impt</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/feature_importance.PNG?raw=true" style="width:100%" />
 </figure>
@@ -785,6 +786,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">importances</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
             <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">]);</span>
 </code></pre></div>
+
 <p>Another library also provides the same API.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">eli5</span>
 <span class="kn">from</span> <span class="nn">eli5.sklearn</span> <span class="kn">import</span> <span class="n">PermutationImportance</span>
@@ -792,6 +794,7 @@
 <span class="n">perm</span> <span class="o">=</span> <span class="n">PermutationImportance</span><span class="p">(</span><span class="n">my_model</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">test_X</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)</span>
 <span class="n">eli5</span><span class="o">.</span><span class="n">show_weights</span><span class="p">(</span><span class="n">perm</span><span class="p">,</span> <span class="n">feature_names</span> <span class="o">=</span> <span class="n">test_X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 </code></pre></div>
+
 <p>The output is as below. +/- refers to the randomness that shuffling resulted in. The higher the weight, the more important the feature is. Negative values are possible, but actually refer to 0; though random chance caused the predictions on shuffled data to be more accurate.</p>
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/permutation_impt2.png?raw=true" style="width:60%" />
@@ -801,7 +804,7 @@
 <h2 id="partial-dependence-plots">Partial Dependence Plots</h2>
 <p>While feature importance shows what variables most affect predictions, <a href="https://www.kaggle.com/dansbecker/partial-plots">partial dependence plots</a> show how a feature affects predictions. </p>
 <p>Using the fitted model to predict our outcome, and by repeatedly altering the value of just one variable, we can trace the predicted outcomes in a plot to show its dependence on the variable and when it plateaus.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">pdpbox</span> <span class="kn">import</span> <span class="n">pdp</span><span class="p">,</span> <span class="n">get_dataset</span><span class="p">,</span> <span class="n">info_plots</span>
 
 <span class="c1"># Create the data that we will plot</span>
@@ -815,8 +818,7 @@
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/partial_dependence.PNG?raw=true" style="width:80%" />
   <figcaption>From Kaggle</figcaption>
-</figure>
-
+</figure></p>
 <p>2D Partial Dependence Plots are also useful for interactions between features.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># just need to change pdp_isolate to pdp_interact</span>
 <span class="n">features_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Goal Scored&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance Covered (Kms)&#39;</span><span class="p">]</span>
@@ -828,13 +830,14 @@
                       <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;contour&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/partial_dependence2.PNG?raw=true" style="width:80%" />
   <figcaption>From Kaggle</figcaption>
 </figure>
 
 <h2 id="shap">SHAP</h2>
-<p>SHapley Additive exPlanations (<a href="https://www.kaggle.com/dansbecker/shap-values">SHAP</a>) break down a prediction to show the impact of each feature.</p>
+<p>SHapley Additive exPlanations (<a href="https://www.kaggle.com/dansbecker/shap-values">SHAP</a>) break down a prediction to show the impact of each feature. It uses a game theory approach which is said to trump over other forms of feature importances because of its consistency. Also, it has a wide support for various classification  problems including transformers amd computer vision.</p>
 <table>
 <thead>
 <tr>
@@ -868,6 +871,7 @@
                 <span class="n">shap_values</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
                 <span class="n">data_for_prediction</span><span class="p">)</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/shap.PNG?raw=true" style="width:100%" />
   <figcaption>From Kaggle</figcaption>

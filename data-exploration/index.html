@@ -795,6 +795,7 @@
     <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/distplot.png?raw=true" style="width:90%" />
 </figure>
@@ -818,6 +819,7 @@
 <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Wildnerness&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">cmap</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/countplot.png?raw=true" style="width:80%" />
 </figure>
@@ -827,6 +829,7 @@
 <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Cover_Type&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">wild</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Wilderness&#39;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/countplot2.png?raw=true" style="width:80%" />
 </figure>
@@ -841,6 +844,7 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">sca</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/countplot3.png?raw=true" style="width:80%" />
 </figure>
@@ -853,6 +857,7 @@
                     <span class="s1">&#39;s4&#39;</span><span class="p">:</span> <span class="n">cf30</span><span class="p">[</span><span class="s1">&#39;Pressure&#39;</span><span class="p">],</span><span class="s1">&#39;s5&#39;</span><span class="p">:</span> <span class="n">cf45</span><span class="p">[</span><span class="s1">&#39;Pressure&#39;</span><span class="p">]})</span>
 <span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/box3.PNG?raw=true" style="width:100%" />
   <figcaption>Start screen</figcaption>
@@ -864,6 +869,7 @@
 <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Cover_Type&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Elevation&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">cmap</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">);</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/box1.png?raw=true" style="width:80%" />
 </figure>
@@ -887,6 +893,7 @@
 <span class="c1"># set spacing for every subplot, else x-axis will be covered</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/box2.png?raw=true" style="width:80%" />
 </figure>
@@ -909,6 +916,7 @@
 <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">data</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
 <span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/corr1.png?raw=true" style="width:80%" />
   <figcaption>Using Plotly</figcaption>
@@ -925,6 +933,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
 </code></pre></div>
+
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/corr2.png?raw=true" style="width:80%" />
   <figcaption>Using Seaborn</figcaption>
