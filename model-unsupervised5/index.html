@@ -818,15 +818,18 @@
 = 0.75 or 75%
 </code></pre></div>
 
-<p>However, one of the drawbacks of Confidence is that it might misrepresent the importance of an association. </p>
+<p>However, if we look at the scores in the opposite direction.</p>
 <div class="highlight"><pre><span></span><code>confidence{egg-&gt;apple} 
 = support{apple,egg} / support{egg}
 = (3/5) / (3/5)
 = 1 or 100%
 </code></pre></div>
 
+<p>one of the drawbacks of Confidence is that it might misrepresent the importance of an association.</p>
 <h3 id="lift">Lift</h3>
-<p>A parameter to measure how likely item B will be purchased when item A is purchased, while controlling for how popular item B is. This accounts for the popularity of both items rather than just one in confidence calculation. The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (support{A} * support{B})</code>, and it can range from 0 to infinity</p>
+<p>A parameter to measure how likely item B will be purchased when item A is purchased, while controlling for how popular item B is. This accounts for the popularity of both items rather than just one in confidence calculation. </p>
+<p>Unlike the confidence metric whose value may vary depending on direction (eg: confidence{A-&gt;B} may be different from confidence{B-&gt;A}), lift has no direction. This means that the lift{A,B} is always equal to the lift{B,A}. 
+Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (support{A} * support{B})</code>, and it can range from 0 to infinity</p>
 <div class="highlight"><pre><span></span><code>lift{apple,egg} 
 = lift{egg,apple} 
 = support{apple,egg} / (support{apple} * support{egg})
