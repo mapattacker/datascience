@@ -777,7 +777,7 @@
 <li><a href="https://www.kaggle.com/datatheque/association-rules-mining-market-basket-analysis">Association Rules Mining/Market Basket Analysis</a></li>
 </ul>
 <h2 id="apriori">Apriori</h2>
-<p>Apriori association consists of three important parameters, Support, Confidence and Lift. Given the transactional examples below:</p>
+<p>Apriori association consists of three important parameters, Support, Confidence and Lift. Given the transactional data below:</p>
 <table>
 <thead>
 <tr>
@@ -815,13 +815,15 @@
 
 <h3 id="confidence">Confidence</h3>
 <p>A parameter to measure how likely item B will be purchased given item A is purchased.</p>
-<div class="highlight"><pre><span></span><code>Confidence(bread → milk) = Support(bread, milk)/Support(bread) \
-    = 25%/80% = 31.25%.
+<div class="highlight"><pre><span></span><code>Confidence(bread → milk) = \
+    Support(bread, milk)/Support(bread) = \
+    25%/80% = 31.25%.
 </code></pre></div>
 
 <p>However, one of the drawbacks of Confidence is that it misrepresent the importance of an association. </p>
 <div class="highlight"><pre><span></span><code>Confidence (bread → newspaper) = \
-    Support(bread, newspaper)/support(bread) = 100%
+    Support(bread, newspaper)/support(bread) \
+    = 100%
 </code></pre></div>
 
 <h3 id="lift">Lift</h3>
