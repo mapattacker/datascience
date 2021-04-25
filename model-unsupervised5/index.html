@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#association-rule-learning" class="md-skip">
+        <a href="#recommenders" class="md-skip">
           Skip to content
         </a>
       
@@ -526,30 +526,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#association-rule-learning" class="md-nav__link">
+    Association Rule Learning
+  </a>
+  
+    <nav class="md-nav" aria-label="Association Rule Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#apriori" class="md-nav__link">
     Apriori
   </a>
   
-    <nav class="md-nav" aria-label="Apriori">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#support" class="md-nav__link">
-    Support
+  <a href="#eclat" class="md-nav__link">
+    Eclat
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#confidence" class="md-nav__link">
-    Confidence
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lift" class="md-nav__link">
-    Lift
+  <a href="#fp-growth" class="md-nav__link">
+    FP Growth
   </a>
   
 </li>
@@ -560,16 +560,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#eclat" class="md-nav__link">
-    Eclat
+  <a href="#product-similarity" class="md-nav__link">
+    Product Similarity
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Similarity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#fp-growth" class="md-nav__link">
-    FP Growth
+        
+          <li class="md-nav__item">
+  <a href="#convert-item-mapping-in-model" class="md-nav__link">
+    Convert Item Mapping in Model
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -705,30 +718,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#association-rule-learning" class="md-nav__link">
+    Association Rule Learning
+  </a>
+  
+    <nav class="md-nav" aria-label="Association Rule Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#apriori" class="md-nav__link">
     Apriori
   </a>
   
-    <nav class="md-nav" aria-label="Apriori">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#support" class="md-nav__link">
-    Support
+  <a href="#eclat" class="md-nav__link">
+    Eclat
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#confidence" class="md-nav__link">
-    Confidence
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lift" class="md-nav__link">
-    Lift
+  <a href="#fp-growth" class="md-nav__link">
+    FP Growth
   </a>
   
 </li>
@@ -739,16 +752,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#eclat" class="md-nav__link">
-    Eclat
+  <a href="#product-similarity" class="md-nav__link">
+    Product Similarity
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Similarity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#fp-growth" class="md-nav__link">
-    FP Growth
+        
+          <li class="md-nav__item">
+  <a href="#convert-item-mapping-in-model" class="md-nav__link">
+    Convert Item Mapping in Model
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -769,10 +795,11 @@
                   </a>
                 
                 
-                <h1 id="association-rule-learning">Association Rule Learning</h1>
+                <h1 id="recommenders">Recommenders</h1>
+<h2 id="association-rule-learning">Association Rule Learning</h2>
 <p>An informal definition of association rule learning is "Customer who bought this will also buy...". This is used for optimization of a combination of things. It is also commonly known as <em>Market Basket Analysis</em>.</p>
 <p>Knowing this association allows one to make recommendations to a customer. Two popular algorithms, Apriori &amp; FPGrowth are available in the library <a href="http://rasbt.github.io/mlxtend/api_subpackages/mlxtend.frequent_patterns/">mlxtend</a>.</p>
-<h2 id="apriori">Apriori</h2>
+<h3 id="apriori">Apriori</h3>
 <p>Apriori association consists of three important parameters, Support, Confidence and Lift. This kaggle <a href="https://www.kaggle.com/datatheque/association-rules-mining-market-basket-analysis">article</a> explains them perfectly.</p>
 <p>Given the transactional data below:</p>
 <table>
@@ -805,12 +832,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="support">Support</h3>
+<p><strong>Support</strong></p>
 <p>A parameter to measure the popularity of certain item. It is a proportion of transactions in which a specific item appears. Support threshold is a key parameters in product association algos, and ranges from 0 to 1.</p>
 <div class="highlight"><pre><span></span><code>support{apple,egg} = 3/5 or 60%
 </code></pre></div>
 
-<h3 id="confidence">Confidence</h3>
+<p><strong>Confidence</strong></p>
 <p>A parameter to measure how likely item B will be purchased given item A is purchased. This is expressed as <code>confidence{A-&gt;B} = support{A,B}/support{A}</code>, and ranges from 0 to 1.</p>
 <div class="highlight"><pre><span></span><code>confidence{apple-&gt;egg} 
 = support{apple,egg} / support{apple}
@@ -825,8 +852,8 @@
 = 1 or 100%
 </code></pre></div>
 
-<p>one of the drawbacks of Confidence is that it might misrepresent the importance of an association.</p>
-<h3 id="lift">Lift</h3>
+<p>One of the drawbacks of Confidence is that it might misrepresent the importance of an association.</p>
+<p><strong>Lift</strong></p>
 <p>A parameter to measure how likely item B will be purchased when item A is purchased, while controlling for how popular item B is. This accounts for the popularity of both items rather than just one in confidence calculation. </p>
 <p>Unlike the confidence metric whose value may vary depending on direction (eg: confidence{A-&gt;B} may be different from confidence{B-&gt;A}), lift has no direction. This means that the lift{A,B} is always equal to the lift{B,A}. 
 Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (support{A} * support{B})</code>, and it can range from 0 to infinity</p>
@@ -886,10 +913,99 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 <span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
 
-<h2 id="eclat">Eclat</h2>
+<h3 id="eclat">Eclat</h3>
 <p>Eclat is a simplified version of Apriori model, as only Support value is used, which shows how frequent a set of items occur. </p>
-<h2 id="fp-growth">FP Growth</h2>
+<h3 id="fp-growth">FP Growth</h3>
 <p>Frequent Pattern (FP) Growth is preferred to Apriori for the reason that Apriori takes more execution time for repeated scanning of the transaction dataset to mine the frequent items. FP-Growth builds a compact-tree structure and uses the tree for frequent itemset mining and generating rules, using a divide and conquer approach.</p>
+<h2 id="product-similarity">Product Similarity</h2>
+<p>Product similarity recommendation is a content-based method which aims to recommends products by finding the most similar products to a query product based on the content. this content may be product title, description, images, category/subcategory, specification, etc.</p>
+<p>We can use item2vec, a shallow, single layer neural network to do this. This is based on Word2Vec, where single words are replaced with the item content. More on its architecture in these two articles <a href="https://jalammar.github.io/illustrated-word2vec/">1</a>, <a href="https://medium.com/@vishwasbhanawat/the-architecture-of-word2vec-78659ceb6638">2</a>.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/word2vec1.png?raw=true" style="width:80%" />
+  <figcaption>Architecture</figcaption>
+</figure>
+
+<h3 id="evaluation">Evaluation</h3>
+<h3 id="convert-item-mapping-in-model">Convert Item Mapping in Model</h3>
+<p>While we used product names for the embedding mapping in the model, productid is usually the unique id for querying. We can do that by changing the mapping within the model, and avoid the need to have an additional mapping table and increase the latency.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
+
+<span class="k">def</span> <span class="nf">convert_word2vec_mapping</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">modelpath</span><span class="o">=</span><span class="s2">&quot;newmapping.model&quot;</span><span class="p">,</span> <span class="n">modeltemp</span><span class="o">=</span><span class="s2">&quot;modeltemp.txt&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Replace word2vec model product name mapping with SKU</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model (gensim model object): word2vec model</span>
+<span class="sd">        mapping (df): dataframe with column names &#39;Product Name&#39; &amp; &#39;SKU&#39;</span>
+<span class="sd">        modelpath (str): path to final word2vec model</span>
+<span class="sd">        modeltemp (str): path to temp model in text format</span>
+
+<span class="sd">    Out:</span>
+<span class="sd">        (gensim keyedVector model object)</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        loading of a kv model has different syntax</span>
+<span class="sd">            it does not have neural network weights etc.</span>
+<span class="sd">        models.KeyedVectors.load(&quot;test.model&quot;)</span>
+<span class="sd">        - &lt;https://github.com/RaRe-Technologies/gensim/issues/1936&gt;</span>
+<span class="sd">        - &lt;https://stackoverflow.com/questions/58393090/how-to-save-as-a-gensim-word2vec-file&gt;</span>
+<span class="sd">        - &lt;https://stackoverflow.com/questions/40936197/rename-gensim-word2vec-words-with-mapping&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># get list of product names &amp; vectors</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">vectors</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="c1"># create a new model file if exist</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">)</span>
+
+    <span class="c1"># save new mapping model as text</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">vo</span><span class="p">,</span> <span class="n">ve</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vocab</span><span class="p">,</span> <span class="n">vectors</span><span class="p">):</span>
+            <span class="c1"># convert np array of embeddings into string</span>
+            <span class="n">ve</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ve</span><span class="p">)]</span>
+            <span class="n">ve</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ve</span><span class="p">)</span>
+            <span class="c1"># query for SKU from product name</span>
+            <span class="n">sku</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">mapping</span><span class="p">[</span><span class="s2">&quot;Product Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">vo</span><span class="p">][</span><span class="s2">&quot;SKU&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+            <span class="c1"># validation for sku</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sku</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">sku</span> <span class="o">=</span> <span class="n">sku</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sku</span><span class="p">,</span> <span class="n">ve</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sku</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There are no SKUs for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vo</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There is more than 1 SKUs for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vo</span><span class="p">))</span>
+
+    <span class="c1"># load binary text model file</span>
+    <span class="n">newmodel</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load_word2vec_format</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">newmodel</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">modelpath</span><span class="p">)</span>
+
+    <span class="c1"># delete temp model file</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">)</span>
+
+<span class="n">loadedmodel</span> <span class="o">=</span> \
+<span class="n">convert_word2vec_mapping</span><span class="p">(</span><span class="n">loaded</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">modelpath</span><span class="o">=</span><span class="s2">&quot;word2vec-map/newmapping.model&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The downside is that this model does not include model weights, so an original copy of the model needs to be kept if retraining is required. The synatx is also changed since it is just a <code>KeyVector</code> now</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
+<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="n">newmapping</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;newmapping_cy.model&quot;</span><span class="p">)</span>
+<span class="n">newmapping</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s2">&quot;76577&quot;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="p">[(</span><span class="s1">&#39;12345&#39;</span><span class="p">,</span> <span class="mf">0.9807120561599731</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;12341&#39;</span><span class="p">,</span> <span class="mf">0.9798750281333923</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;32142&#39;</span><span class="p">,</span> <span class="mf">0.9789506196975708</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;54356&#39;</span><span class="p">,</span> <span class="mf">0.97857666015625</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;53463&#39;</span><span class="p">,</span> <span class="mf">0.9785518050193787</span><span class="p">)]</span>
+</code></pre></div>
                 
               
               
