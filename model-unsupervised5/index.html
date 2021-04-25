@@ -940,13 +940,36 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 </code></pre></div>
 
 <p>The <a href="https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec">arguments</a> are as stated.</p>
-<p>| arg | desc |
-|-|-|-|
-| vector_size | no. of dimensions of the embeddings. default 100 |
-| window | max distance between a target word and words around the target word. default 5. |
-| min_count | no. count of words to consider when training the model; words with occurrence less than this count will be ignored. default 5 |
-| workers | no. of partitions during training. default 3 |
-| sg | training algorithm, either CBOW(0) or skip gram(1). The default training algorithm is CBOW. |</p>
+<table>
+<thead>
+<tr>
+<th>arg</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vector_size</td>
+<td>no. of dimensions of the embeddings. default 100</td>
+</tr>
+<tr>
+<td>window</td>
+<td>max distance between a target word and words around the target word. default 5.</td>
+</tr>
+<tr>
+<td>min_count</td>
+<td>no. count of words to consider when training the model; words with occurrence less than this count will be ignored. default 5</td>
+</tr>
+<tr>
+<td>workers</td>
+<td>no. of partitions during training. default 3</td>
+</tr>
+<tr>
+<td>sg</td>
+<td>training algorithm, either CBOW(0) or skip gram(1). The default training algorithm is CBOW.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="evaluation">Evaluation</h3>
 <p>We can use mAP (Mean Average Precision), MRR (Mean Reciprocal Rank), or NDCG (Normalized Discounted Cumulative Gain)</p>
 <h3 id="convert-item-mapping-in-model">Convert Item Mapping in Model</h3>
