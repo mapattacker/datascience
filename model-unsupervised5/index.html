@@ -921,11 +921,34 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 <p>Product similarity recommendation is a content-based method which aims to recommends products by finding the most similar products to a query product based on the content. this content may be product title, description, images, category/subcategory, specification, etc.</p>
 <p>We can use item2vec, a shallow, single layer neural network to do this. This is based on Word2Vec, where single words are replaced with the item content. More on its architecture in these two articles <a href="https://jalammar.github.io/illustrated-word2vec/">1</a>, <a href="https://medium.com/@vishwasbhanawat/the-architecture-of-word2vec-78659ceb6638">2</a>.</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/word2vec1.png?raw=true" style="width:80%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/word2vec1.png?raw=true" style="width:100%" />
   <figcaption>Architecture</figcaption>
 </figure>
 
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector_size</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> \
+                    <span class="n">window</span> <span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;word2vec.model&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;word2vec.model&quot;</span><span class="p">)</span>
+
+<span class="c1"># get numpy vector of a word</span>
+<span class="n">vector</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s1">&#39;computer&#39;</span><span class="p">]</span>  
+<span class="c1"># get other similar words, in cosine similarity scores ranked</span>
+<span class="n">sims</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;computer&#39;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  
+</code></pre></div>
+
+<p>The <a href="https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec">arguments</a> are as stated.</p>
+<p>| arg | desc |
+|-|-|-|
+| vector_size | no. of dimensions of the embeddings. default 100 |
+| window | max distance between a target word and words around the target word. default 5. |
+| min_count | no. count of words to consider when training the model; words with occurrence less than this count will be ignored. default 5 |
+| workers | no. of partitions during training. default 3 |
+| sg | training algorithm, either CBOW(0) or skip gram(1). The default training algorithm is CBOW. |</p>
 <h3 id="evaluation">Evaluation</h3>
+<p>We can use mAP (Mean Average Precision), MRR (Mean Reciprocal Rank), or NDCG (Normalized Discounted Cumulative Gain)</p>
 <h3 id="convert-item-mapping-in-model">Convert Item Mapping in Model</h3>
 <p>While we used product names for the embedding mapping in the model, productid is usually the unique id for querying. We can do that by changing the mapping within the model, and avoid the need to have an additional mapping table and increase the latency.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
@@ -993,7 +1016,7 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 <span class="n">convert_word2vec_mapping</span><span class="p">(</span><span class="n">loaded</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">modelpath</span><span class="o">=</span><span class="s2">&quot;word2vec-map/newmapping.model&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>The downside is that this model does not include model weights, so an original copy of the model needs to be kept if retraining is required. The synatx is also changed since it is just a <code>KeyVector</code> now</p>
+<p>The downside is that this model does not include model weights, so an original copy of the model needs to be kept if retraining is required. The synatx is also changed since it is just a <code>KeyVector</code> now. It is however, much smaller and faster.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
 <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">models</span>
 
