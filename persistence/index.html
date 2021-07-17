@@ -708,14 +708,12 @@
 <span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;df.pkl&#39;</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;df.pkl&#39;</span><span class="p">)</span>
 </code></pre></div>
-
 <p>For models or scalars we need to import pickle directly. Note that the extension name can be anything.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pickle</span>
 
 <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model_rf.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span>
 <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model_rf.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
 </code></pre></div>
-
 <h2 id="joblib">Joblib</h2>
 <p>When using scikit-learn, it may be better to use joblib’s replacement of pickle (dump &amp; load), which is more efficient on objects that carry large numpy arrays internally as is often the case for fitted scikit-learn estimators, but can only pickle to the disk and not to a string. More <a href="https://scikit-learn.org/stable/modules/model_persistence.html">here</a>.</p>
 <p>However, note that for small files (&gt;4GB), pickle might be faster. Dicussion in <a href="https://stackoverflow.com/questions/12615525/what-are-the-different-use-cases-of-joblib-versus-pickle">stackoverflow</a>.</p>

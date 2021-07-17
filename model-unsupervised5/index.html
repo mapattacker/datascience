@@ -836,7 +836,6 @@
 <p>A parameter to measure the popularity of certain item. It is a proportion of transactions in which a specific item appears. Support threshold is a key parameters in product association algos, and ranges from 0 to 1.</p>
 <div class="highlight"><pre><span></span><code>support{apple,egg} = 3/5 or 60%
 </code></pre></div>
-
 <p><strong>Confidence</strong></p>
 <p>A parameter to measure how likely item B will be purchased given item A is purchased. This is expressed as <code>confidence{A-&gt;B} = support{A,B}/support{A}</code>, and ranges from 0 to 1.</p>
 <div class="highlight"><pre><span></span><code>confidence{apple-&gt;egg} 
@@ -844,14 +843,12 @@
 = (3/5) / (4/5)
 = 0.75 or 75%
 </code></pre></div>
-
 <p>However, if we look at the scores in the opposite direction.</p>
 <div class="highlight"><pre><span></span><code>confidence{egg-&gt;apple} 
 = support{apple,egg} / support{egg}
 = (3/5) / (3/5)
 = 1 or 100%
 </code></pre></div>
-
 <p>One of the drawbacks of Confidence is that it might misrepresent the importance of an association.</p>
 <p><strong>Lift</strong></p>
 <p>A parameter to measure how likely item B will be purchased when item A is purchased, while controlling for how popular item B is. This accounts for the popularity of both items rather than just one in confidence calculation. </p>
@@ -863,7 +860,6 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 = (3/5) / (4/5 * 3/5) 
 = 1.25  
 </code></pre></div>
-
 <p>The values of lift can be summarised as follows.</p>
 <table>
 <thead>
@@ -912,6 +908,16 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
+<p>To analyse the results we can plot the following graphs.</p>
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/asociation1.png?raw=true" style="width:80%" />
+  <figcaption></figcaption>
+</figure>
+
+<figure>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/asociation2.png?raw=true" style="width:80%" />
+  <figcaption></figcaption>
+</figure>
 
 <h3 id="eclat">Eclat</h3>
 <p>Eclat is a simplified version of Apriori model, as only Support value is used, which shows how frequent a set of items occur. </p>
@@ -919,7 +925,7 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 <p>Frequent Pattern (FP) Growth is preferred to Apriori for the reason that Apriori takes more execution time for repeated scanning of the transaction dataset to mine the frequent items. FP-Growth builds a compact-tree structure and uses the tree for frequent itemset mining and generating rules, using a divide and conquer approach.</p>
 <h2 id="product-similarity">Product Similarity</h2>
 <p>Product similarity recommendation is a content-based method which aims to recommends products by finding the most similar products to a query product based on the content. this content may be product title, description, images, category/subcategory, specification, etc.</p>
-<p>We can use item2vec, a shallow, single layer neural network to do this. This is based on Word2Vec, where single words are replaced with the item content. More on its architecture in these two articles <a href="https://jalammar.github.io/illustrated-word2vec/">1</a>, <a href="https://medium.com/@vishwasbhanawat/the-architecture-of-word2vec-78659ceb6638">2</a>.</p>
+<p>We can use item2vec, a shallow, single layer neural network to do this. This is based on Word2Vec, where single words are replaced with the item content. Each sentence of words are replaced by buckets of items. More on its architecture in these two articles <a href="https://jalammar.github.io/illustrated-word2vec/">1</a>, <a href="https://medium.com/@vishwasbhanawat/the-architecture-of-word2vec-78659ceb6638">2</a>.</p>
 <figure>
   <img src="https://github.com/mapattacker/datascience/blob/master/images/word2vec1.png?raw=true" style="width:100%" />
   <figcaption>Architecture</figcaption>
@@ -938,7 +944,6 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 <span class="c1"># get other similar words, in cosine similarity scores ranked</span>
 <span class="n">sims</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;computer&#39;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  
 </code></pre></div>
-
 <p>The <a href="https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec">arguments</a> are as stated.</p>
 <table>
 <thead>
@@ -1038,7 +1043,6 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
 <span class="n">loadedmodel</span> <span class="o">=</span> \
 <span class="n">convert_word2vec_mapping</span><span class="p">(</span><span class="n">loaded</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">modelpath</span><span class="o">=</span><span class="s2">&quot;word2vec-map/newmapping.model&quot;</span><span class="p">)</span>
 </code></pre></div>
-
 <p>The downside is that this model does not include model weights, so an original copy of the model needs to be kept if retraining is required. The synatx is also changed since it is just a <code>KeyVector</code> now. It is however, much smaller and faster.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
 <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">models</span>

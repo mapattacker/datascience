@@ -816,7 +816,6 @@
 <span class="c1"># 3 components at 77.41% explained variance</span>
 <span class="c1"># 4 components at 86.63% explained variance</span>
 </code></pre></div>
-
 <h3 id="mds">MDS</h3>
 <p>Multi-Dimensional Scaling (MDS) is a type of manifold learning algorithm that to visualize a high dimensional dataset and project it onto a lower dimensional space - in most cases, a two-dimensional page. PCA is weak in this aspect.</p>
 <p><a href="https://scikit-learn.org/stable/modules/manifold.htm">sklearn</a> gives a good overview of various manifold techniques.</p>
@@ -831,7 +830,6 @@
 
 <span class="n">X_fruits_mds</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_fruits_normalized</span><span class="p">)</span>
 </code></pre></div>
-
 <h3 id="t-sne">t-SNE</h3>
 <p>t-Distributed Stochastic Neighbor Embedding (t-SNE) is a powerful manifold learning algorithm for visualizing clusters. It finds a two-dimensional representation of your data, such that the distances between points in the 2D scatterplot match as closely as possible the distances between the same points in the original high dimensional dataset. </p>
 <p>In particular, t-SNE gives much more weight to preserving information about distances between points that are neighbors.</p>
@@ -848,7 +846,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Second t-SNE feature&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fruits dataset t-SNE&#39;</span><span class="p">);</span>
 </code></pre></div>
-
 <h3 id="lda">LDA</h3>
 <p>Latent Dirichlet Allocation is another dimension reduction method, but unlike PCA, it is a supervised method. </p>
 <p>It attempts to find a feature subspace or decision boundary that maximizes class separability. It then projects the data points to new dimensions in a way that the clusters are as separate from each other as possible and the individual elements within a cluster are as close to the centroid of the cluster as possible.</p>
