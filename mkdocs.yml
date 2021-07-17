@@ -2,16 +2,55 @@ site_name: Data Science in Python
 theme:
     name: 'material'
     palette:
-        primary: 'purple'
+        # primary: 'blue'
+      # Light mode
+      - media: "(prefers-color-scheme: light)"
+        scheme: default
+        primary: indigo
+        accent: indigo
+        toggle:
+          icon: material/toggle-switch-off-outline
+          name: Switch to dark mode
+      # Dark mode
+      - media: "(prefers-color-scheme: dark)"
+        scheme: slate
+        primary: blue
+        accent: blue
+        toggle:
+          icon: material/toggle-switch
+          name: Switch to light mode
 
 nav:
     - Introduction: index.md
+    - ML Process: process.md
+    - Datasets: datasets.md
+    - Data Exploration: data-exploration.md
+    - Data Preparation:
+      - Feature Preprocessing: data-preprocessing.md
+      - Feature Scaling: data-scaling.md
+      - Feature Engineering: data-engineering.md
+      - Class Imbalance: data-classimbalance.md
+    - Model Concepts: model-concepts.md
+    - Model Supervised:
+      - Classification: model-supervised1.md
+      - Regression: model-supervised2.md
+    - Model Unsupervised:
+      - Transformation: model-unsupervised1.md
+      - Clustering: model-unsupervised2.md
+      - One-Class: model-unsupervised3.md
+      - Distance: model-unsupervised4.md
+    - Recommender Systems:
+      - Association: rre-association.md
+    - Model Selection:
+      - Cross Validation: model-crossvalidation.md
+      - Model Tuning: model-tuning.md
+      - Model Evaluation: model-evaluation.md
+      - Model Explainability: model-explainability.md
+    - Model Persistence: persistence.md
 
 repo_name: mapattacker/datascience
 repo_url: https://github.com/mapattacker/datascience
 
 markdown_extensions:
-    - codehilite
-    - pymdownx.emoji:
-        emoji_index: !!python/name:materialx.emoji.twemoji
-        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.highlight
+    - pymdownx.superfences
