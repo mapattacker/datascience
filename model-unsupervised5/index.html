@@ -541,15 +541,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#eclat" class="md-nav__link">
-    Eclat
+  <a href="#fp-growth" class="md-nav__link">
+    FP Growth
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fp-growth" class="md-nav__link">
-    FP Growth
+  <a href="#eclat" class="md-nav__link">
+    Eclat
   </a>
   
 </li>
@@ -733,15 +733,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#eclat" class="md-nav__link">
-    Eclat
+  <a href="#fp-growth" class="md-nav__link">
+    FP Growth
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fp-growth" class="md-nav__link">
-    FP Growth
+  <a href="#eclat" class="md-nav__link">
+    Eclat
   </a>
   
 </li>
@@ -919,10 +919,10 @@ Hence, The formula for this is <code>lift{A,B} = lift{B,A} = support{A,B} / (sup
   <figcaption></figcaption>
 </figure>
 
-<h3 id="eclat">Eclat</h3>
-<p>Eclat is a simplified version of Apriori model, as only Support value is used, which shows how frequent a set of items occur. </p>
 <h3 id="fp-growth">FP Growth</h3>
 <p>Frequent Pattern (FP) Growth is preferred to Apriori for the reason that Apriori takes more execution time for repeated scanning of the transaction dataset to mine the frequent items. FP-Growth builds a compact-tree structure and uses the tree for frequent itemset mining and generating rules, using a divide and conquer approach.</p>
+<h3 id="eclat">Eclat</h3>
+<p>Eclat is a simplified version of Apriori model, as only Support value is used, which shows how frequent a set of items occur. </p>
 <h2 id="product-similarity">Product Similarity</h2>
 <p>Product similarity recommendation is a content-based method which aims to recommends products by finding the most similar products to a query product based on the content. this content may be product title, description, images, category/subcategory, specification, etc.</p>
 <p>We can use item2vec, a shallow, single layer neural network to do this. This is based on Word2Vec, where single words are replaced with the item content. Each sentence of words are replaced by buckets of items. More on its architecture in these two articles <a href="https://jalammar.github.io/illustrated-word2vec/">1</a>, <a href="https://medium.com/@vishwasbhanawat/the-architecture-of-word2vec-78659ceb6638">2</a>.</p>
