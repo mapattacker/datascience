@@ -580,6 +580,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pros-cons" class="md-nav__link">
+    Pros &amp; Cons
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#product-similarity" class="md-nav__link">
     Product Similarity
   </a>
@@ -738,6 +745,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pros-cons" class="md-nav__link">
+    Pros &amp; Cons
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#product-similarity" class="md-nav__link">
     Product Similarity
   </a>
@@ -782,6 +796,31 @@
                 
                 
                 <h1 id="content-based-recommenders">Content-Based Recommenders</h1>
+<p>Match users directly to products &amp; content by recommending based on what you have
+bought or viewed in the past.</p>
+<h2 id="pros-cons">Pros &amp; Cons</h2>
+<table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>No cold start</strong> - Can recommend new items even if there are no ratings provided by users</td>
+<td><strong>No serendipity</strong> - Hard to recommend items not similar to those already seen by the user</td>
+</tr>
+<tr>
+<td>Can explain why recommendations are made by referencing the deciding item features</td>
+<td>Getting an adequate set of product descriptor features can be hard</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Can be hard to get the user preferences against the product features. Users don’t generally have the patience to specify all of their preferences</td>
+</tr>
+</tbody>
+</table>
 <h2 id="product-similarity">Product Similarity</h2>
 <p>Product similarity recommendation is a content-based method which aims to recommends products by finding the most similar products to a query product based on the content. this content may be product title, description, images, category/subcategory, specification, etc.</p>
 <p>We can use item2vec, a shallow, single layer neural network to do this. This is based on Word2Vec, where single words are replaced with the item content. Each sentence of words are replaced by buckets of items. More on its architecture in these two articles <a href="https://jalammar.github.io/illustrated-word2vec/">1</a>, <a href="https://medium.com/@vishwasbhanawat/the-architecture-of-word2vec-78659ceb6638">2</a>.</p>
