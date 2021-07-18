@@ -14,7 +14,7 @@
     
     
       
-        <title>Introduction - Data Science in Python</title>
+        <title>Content - Data Science in Python</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#recommender-systems" class="md-skip">
+        <a href="#content-based-recommenders" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Content
             
           </span>
         </div>
@@ -523,56 +523,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Introduction
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../rre-intro/" class="md-nav__link">
         Introduction
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terms" class="md-nav__link">
-    Terms
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -592,11 +547,69 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../rre-content/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Content
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Content
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#product-similarity" class="md-nav__link">
+    Product Similarity
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Similarity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-item-mapping-in-model" class="md-nav__link">
+    Convert Item Mapping in Model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -725,16 +738,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#types" class="md-nav__link">
-    Types
+  <a href="#product-similarity" class="md-nav__link">
+    Product Similarity
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Similarity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#terms" class="md-nav__link">
-    Terms
+        
+          <li class="md-nav__item">
+  <a href="#convert-item-mapping-in-model" class="md-nav__link">
+    Convert Item Mapping in Model
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -750,48 +776,145 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/rre-intro.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/mapattacker/datascience/edit/master/docs/rre-content.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="recommender-systems">Recommender Systems</h1>
-<p>A Recommender System aims to find and suggest items of likely interest based on the users’ preferences</p>
-<h2 id="types">Types</h2>
-<p>There are various types of recommender systems, each with their own pros and cons.</p>
+                <h1 id="content-based-recommenders">Content-Based Recommenders</h1>
+<h2 id="product-similarity">Product Similarity</h2>
+<p>Product similarity recommendation is a content-based method which aims to recommends products by finding the most similar products to a query product based on the content. this content may be product title, description, images, category/subcategory, specification, etc.</p>
+<p>We can use item2vec, a shallow, single layer neural network to do this. This is based on Word2Vec, where single words are replaced with the item content. Each sentence of words are replaced by buckets of items. More on its architecture in these two articles <a href="https://jalammar.github.io/illustrated-word2vec/">1</a>, <a href="https://medium.com/@vishwasbhanawat/the-architecture-of-word2vec-78659ceb6638">2</a>.</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/rre-types.png?raw=true" style="width:100%" />
-  <figcaption></figcaption>
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/word2vec1.png?raw=true" style="width:100%" />
+  <figcaption>Architecture</figcaption>
 </figure>
 
-<h2 id="terms">Terms</h2>
-<p>There are various terms that are used in this branch of study which we will come across frequently.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector_size</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> \
+                    <span class="n">window</span> <span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sg</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;word2vec.model&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;word2vec.model&quot;</span><span class="p">)</span>
+
+<span class="c1"># get numpy vector of a word</span>
+<span class="n">vector</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s1">&#39;computer&#39;</span><span class="p">]</span>  
+<span class="c1"># get other similar words, in cosine similarity scores ranked</span>
+<span class="n">sims</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;computer&#39;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  
+</code></pre></div>
+<p>The <a href="https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec">arguments</a> are as stated.</p>
 <table>
 <thead>
 <tr>
-<th>Noun</th>
-<th>Desc</th>
+<th>arg</th>
+<th>desc</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Long Tail</td>
-<td>Business strategy of selling niche products to many customers</td>
+<td>vector_size</td>
+<td>no. of dimensions of the embeddings. default 100</td>
 </tr>
 <tr>
-<td>Cold Start</td>
-<td>A new user does not have any available data, so we can't make a personalised recommendation</td>
+<td>window</td>
+<td>max distance between a target word and words around the target word. default 5.</td>
 </tr>
 <tr>
-<td>Serendipity</td>
-<td>Recommend an item that a customer likes, even though is not sought by them</td>
+<td>min_count</td>
+<td>no. count of words to consider when training the model; words with occurrence less than this count will be ignored. default 5</td>
 </tr>
 <tr>
-<td>Implicit vs Explicit</td>
-<td>Directly given, e.g. user input rating VS inferred data from e.g. page-views, purchases etc.</td>
+<td>workers</td>
+<td>no. of partitions during training. default 3</td>
+</tr>
+<tr>
+<td>sg</td>
+<td>training algorithm, either CBOW(0) or skip gram(1). The default training algorithm is CBOW.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="evaluation">Evaluation</h3>
+<p>We can use mAP (Mean Average Precision), MRR (Mean Reciprocal Rank), or NDCG (Normalized Discounted Cumulative Gain)</p>
+<h3 id="convert-item-mapping-in-model">Convert Item Mapping in Model</h3>
+<p>While we used product names for the embedding mapping in the model, productid is usually the unique id for querying. We can do that by changing the mapping within the model, and avoid the need to have an additional mapping table and increase the latency.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
+
+<span class="k">def</span> <span class="nf">convert_word2vec_mapping</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">modelpath</span><span class="o">=</span><span class="s2">&quot;newmapping.model&quot;</span><span class="p">,</span> <span class="n">modeltemp</span><span class="o">=</span><span class="s2">&quot;modeltemp.txt&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Replace word2vec model product name mapping with SKU</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model (gensim model object): word2vec model</span>
+<span class="sd">        mapping (df): dataframe with column names &#39;Product Name&#39; &amp; &#39;SKU&#39;</span>
+<span class="sd">        modelpath (str): path to final word2vec model</span>
+<span class="sd">        modeltemp (str): path to temp model in text format</span>
+
+<span class="sd">    Out:</span>
+<span class="sd">        (gensim keyedVector model object)</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        loading of a kv model has different syntax</span>
+<span class="sd">            it does not have neural network weights etc.</span>
+<span class="sd">        models.KeyedVectors.load(&quot;test.model&quot;)</span>
+<span class="sd">        - &lt;https://github.com/RaRe-Technologies/gensim/issues/1936&gt;</span>
+<span class="sd">        - &lt;https://stackoverflow.com/questions/58393090/how-to-save-as-a-gensim-word2vec-file&gt;</span>
+<span class="sd">        - &lt;https://stackoverflow.com/questions/40936197/rename-gensim-word2vec-words-with-mapping&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># get list of product names &amp; vectors</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">vectors</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">vocab</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="c1"># create a new model file if exist</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">)</span>
+
+    <span class="c1"># save new mapping model as text</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">for</span> <span class="n">vo</span><span class="p">,</span> <span class="n">ve</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vocab</span><span class="p">,</span> <span class="n">vectors</span><span class="p">):</span>
+            <span class="c1"># convert np array of embeddings into string</span>
+            <span class="n">ve</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ve</span><span class="p">)]</span>
+            <span class="n">ve</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ve</span><span class="p">)</span>
+            <span class="c1"># query for SKU from product name</span>
+            <span class="n">sku</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">mapping</span><span class="p">[</span><span class="s2">&quot;Product Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">vo</span><span class="p">][</span><span class="s2">&quot;SKU&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+            <span class="c1"># validation for sku</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sku</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">sku</span> <span class="o">=</span> <span class="n">sku</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sku</span><span class="p">,</span> <span class="n">ve</span><span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sku</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There are no SKUs for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vo</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;There is more than 1 SKUs for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">vo</span><span class="p">))</span>
+
+    <span class="c1"># load binary text model file</span>
+    <span class="n">newmodel</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load_word2vec_format</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">newmodel</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">modelpath</span><span class="p">)</span>
+
+    <span class="c1"># delete temp model file</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">modeltemp</span><span class="p">)</span>
+
+<span class="n">loadedmodel</span> <span class="o">=</span> \
+<span class="n">convert_word2vec_mapping</span><span class="p">(</span><span class="n">loaded</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">modelpath</span><span class="o">=</span><span class="s2">&quot;word2vec-map/newmapping.model&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The downside is that this model does not include model weights, so an original copy of the model needs to be kept if retraining is required. The synatx is also changed since it is just a <code>KeyVector</code> now. It is however, much smaller and faster.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
+<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="n">newmapping</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;newmapping_cy.model&quot;</span><span class="p">)</span>
+<span class="n">newmapping</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s2">&quot;76577&quot;</span><span class="p">,</span> <span class="n">topn</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="p">[(</span><span class="s1">&#39;12345&#39;</span><span class="p">,</span> <span class="mf">0.9807120561599731</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;12341&#39;</span><span class="p">,</span> <span class="mf">0.9798750281333923</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;32142&#39;</span><span class="p">,</span> <span class="mf">0.9789506196975708</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;54356&#39;</span><span class="p">,</span> <span class="mf">0.97857666015625</span><span class="p">),</span>
+ <span class="p">(</span><span class="s1">&#39;53463&#39;</span><span class="p">,</span> <span class="mf">0.9785518050193787</span><span class="p">)]</span>
+</code></pre></div>
                 
               
               
@@ -810,7 +933,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../model-unsupervised4/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../rre-association/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -819,19 +942,19 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Distance
+              Association
             </div>
           </div>
         </a>
       
       
-        <a href="../rre-association/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../model-crossvalidation/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Association
+              Cross Validation
             </div>
           </div>
           <div class="md-footer__button md-icon">
