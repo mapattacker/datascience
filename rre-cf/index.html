@@ -569,9 +569,52 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Collaborative Filtering
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Collaborative Filtering
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-based-cf" class="md-nav__link">
+    User-Based CF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#item-based-cf" class="md-nav__link">
+    Item-Based CF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-factorization" class="md-nav__link">
+    Matrix Factorization
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -694,6 +737,35 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-based-cf" class="md-nav__link">
+    User-Based CF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#item-based-cf" class="md-nav__link">
+    Item-Based CF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrix-factorization" class="md-nav__link">
+    Matrix Factorization
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -710,7 +782,30 @@
                 
                 
                 <h1 id="collaborative-filtering">Collaborative Filtering</h1>
-<p>Match users to people with similar tastes, and recommend what they like. </p>
+<p>Match users to people with similar tastes, and recommend what they like.</p>
+<h2 id="user-based-cf">User-Based CF</h2>
+<h2 id="item-based-cf">Item-Based CF</h2>
+<h2 id="matrix-factorization">Matrix Factorization</h2>
+<p>Matrix Factorization forms a user's latent preference matrix and an item properties matrix. This usually results in a much reduced model. The number of <strong>latent features</strong> to build the user preference matrix is self-selected, similar to a PCA.</p>
+<p>Two good python libraries for implementing matrix factorization are <a href="https://github.com/benfred/implicit">Implicit</a>, and <a href="http://surpriselib.com">Surprise</a> (does not support implicit ratings or content-based info).</p>
+<table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generally more accurate than User-CF &amp; Item-CF</td>
+<td>No explaninability</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Factorization must be redone to apply to new users / items</td>
+</tr>
+</tbody>
+</table>
                 
               
               

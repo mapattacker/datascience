@@ -569,6 +569,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dealing-with-big-data" class="md-nav__link">
+    Dealing with Big Data
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -750,6 +757,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dealing-with-big-data" class="md-nav__link">
+    Dealing with Big Data
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -772,7 +786,7 @@
 <h2 id="types">Types</h2>
 <p>There are various types of recommender systems, each with their own pros and cons.</p>
 <figure>
-  <img src="https://github.com/mapattacker/datascience/blob/master/images/rre-types.png?raw=true" style="width:100%" />
+  <img src="https://github.com/mapattacker/datascience/blob/master/images/rre-typesv2.png?raw=true" style="width:100%" />
   <figcaption></figcaption>
 </figure>
 
@@ -799,11 +813,23 @@
 <td>Recommend an item that a customer likes, even though is not sought by them</td>
 </tr>
 <tr>
-<td>Implicit vs Explicit</td>
-<td>Directly given, e.g. user input rating VS inferred data from e.g. page-views, purchases etc.</td>
+<td>Implicit</td>
+<td>Directly given, e.g. user input rating</td>
+</tr>
+<tr>
+<td>Explicit</td>
+<td>inferred data from e.g. page-views, purchases etc. Problem is that there is no dislike signal</td>
 </tr>
 </tbody>
 </table>
+<h2 id="dealing-with-big-data">Dealing with Big Data</h2>
+<p>Recommender Systems often have huge data that requires preprocessing or manipulation. Below are some of the ways to achieve it.</p>
+<ol>
+<li>User Sampling - e.g. only choose active users</li>
+<li>Item Sampling - e.g. cut off "super" long tail items</li>
+<li>Item Categorisation</li>
+<li>Use a different Algorithm, e.g. Item-CF, instead of User-CF if too many users</li>
+</ol>
                 
               
               
