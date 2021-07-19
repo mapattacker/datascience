@@ -784,9 +784,37 @@
                 <h1 id="collaborative-filtering">Collaborative Filtering</h1>
 <p>Match users to people with similar tastes, and recommend what they like.</p>
 <h2 id="user-based-cf">User-Based CF</h2>
+<p>Because each user may use different ratings to quantify the same level of appreciation for an item, this can create bias. </p>
+<p>We can use normalization methods to over this bias. <strong>Pearson's Correlation Coefficient</strong> can be used in place of Cosine Similarity as a distance metric to overcome this bias by subtracting each users mean rating from their individual ratings. This is also referred to as mean centering.</p>
+<p><strong>Z-score normalization</strong> can also be used if the rating scale has a wide discrete value or is continuous.</p>
 <h2 id="item-based-cf">Item-Based CF</h2>
+<p>First introduced by Amazon, it has to resolve scalability issues when there are a lot more users than items. This involves transposing the user-rating matrix, and then computing the distances between items, not users.</p>
+<p>The distance matrix used is usually <strong>adjusted Cosine Similarity</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Faster as far fewer items than users</td>
+<td>-</td>
+</tr>
+<tr>
+<td>No cold start problem</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Items change less frequently than users</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
 <h2 id="matrix-factorization">Matrix Factorization</h2>
 <p>Matrix Factorization forms a user's latent preference matrix and an item properties matrix. This usually results in a much reduced model. The number of <strong>latent features</strong> to build the user preference matrix is self-selected, similar to a PCA.</p>
+<p>Some of the popular algorithms to implement this include <strong>Alternating Least Squares</strong> (ALS), <strong>Non-Negative Matrix Factorisation</strong>, and <strong>Singular Value Decomposition++</strong> (SVD++).</p>
 <p>Two good python libraries for implementing matrix factorization are <a href="https://github.com/benfred/implicit">Implicit</a>, and <a href="http://surpriselib.com">Surprise</a> (does not support implicit ratings or content-based info).</p>
 <table>
 <thead>
@@ -801,7 +829,7 @@
 <td>No explaninability</td>
 </tr>
 <tr>
-<td>-</td>
+<td>Smaller size than User-CF &amp; Item-CF</td>
 <td>Factorization must be redone to apply to new users / items</td>
 </tr>
 </tbody>
