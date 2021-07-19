@@ -583,6 +583,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -778,6 +785,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#evaluation" class="md-nav__link">
+    Evaluation
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -803,6 +817,8 @@
   <img src="https://github.com/mapattacker/datascience/blob/master/images/rre-typesv2.png?raw=true" style="width:100%" />
   <figcaption></figcaption>
 </figure>
+
+<hr>
 
 <h2 id="terms">Terms</h2>
 <p>There are various terms that are used in this branch of study which we will come across frequently.</p>
@@ -840,6 +856,8 @@
 </tr>
 </tbody>
 </table>
+<hr>
+
 <h2 id="explicit-vs-implicit-data">Explicit vs Implicit Data</h2>
 <p>While it might be good to have explicit data to build a recommender, they can come with its inherent problems.</p>
 <ul>
@@ -851,6 +869,8 @@ reliable / accurate than ratings</li>
 </ul>
 <p>Hence, we might want to consider using implicit data at times. However, we need to note that they often do not come with a like or dislike scale, but rather just a degree of like (e.g. number views to a page).</p>
 <p>We usually treat implicit data as a binary, e.g. a purchase = like. However, we will not be able to use Cosine Similarity (since it will always be 1), but rather <strong>Jaccard Similarity</strong> as a result.</p>
+<hr>
+
 <h2 id="dealing-with-big-data">Dealing with Big Data</h2>
 <p>Recommender Systems often have huge data that requires preprocessing or manipulation. Below are some of the ways to achieve it.</p>
 <ol>
@@ -859,7 +879,9 @@ reliable / accurate than ratings</li>
 <li>Item Categorisation</li>
 <li>Use a different Algorithm, e.g. Item-CF, instead of User-CF if too many users</li>
 </ol>
-<p>## Evaluation</p>
+<hr>
+
+<h2 id="evaluation">Evaluation</h2>
 <p><strong>Mean Absolute Error</strong> (MAE) calculates the absolute error of the recommendation.</p>
 <p><strong>Mean Average Precision at K</strong> (MAP@K) is done by calculating the MA of number of relevant items within the top K recommendations.</p>
 <p><strong>Lift</strong> calculates the number of hits of the model at top K, over the number of hits at random.</p>
