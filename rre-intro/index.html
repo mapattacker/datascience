@@ -570,6 +570,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#explicit-vs-implicit-data" class="md-nav__link">
+    Explicit vs Implicit Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dealing-with-big-data" class="md-nav__link">
     Dealing with Big Data
   </a>
@@ -758,6 +765,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#explicit-vs-implicit-data" class="md-nav__link">
+    Explicit vs Implicit Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dealing-with-big-data" class="md-nav__link">
     Dealing with Big Data
   </a>
@@ -818,7 +832,7 @@
 </tr>
 <tr>
 <td>Explicit</td>
-<td>Inferred data from e.g. page-views, purchases etc. Problem is that there is no dislike signal</td>
+<td>Inferred data from e.g. page-views, purchases etc.</td>
 </tr>
 <tr>
 <td>Sparsity</td>
@@ -826,6 +840,17 @@
 </tr>
 </tbody>
 </table>
+<h2 id="explicit-vs-implicit-data">Explicit vs Implicit Data</h2>
+<p>While it might be good to have explicit data to build a recommender, they can come with its inherent problems.</p>
+<ul>
+<li>Very sparse - users tend to be lazy, often don’t bother to rate</li>
+<li>Users may not always tell the truth? E.g. Influenced by peer/friend opinions</li>
+<li>May not be available at all if no system in place to collect them</li>
+<li>Watching what the user actually does (e.g. what they view or buy) may be more
+reliable / accurate than ratings</li>
+</ul>
+<p>Hence, we might want to consider using implicit data at times. However, we need to note that they often do not come with a like or dislike scale, but rather just a degree of like (e.g. number views to a page).</p>
+<p>We usually treat implicit data as a binary, e.g. a purchase = like. However, we will not be able to use Cosine Similarity (since it will always be 1), but rather <strong>Jaccard Similarity</strong> as a result.</p>
 <h2 id="dealing-with-big-data">Dealing with Big Data</h2>
 <p>Recommender Systems often have huge data that requires preprocessing or manipulation. Below are some of the ways to achieve it.</p>
 <ol>
@@ -834,6 +859,11 @@
 <li>Item Categorisation</li>
 <li>Use a different Algorithm, e.g. Item-CF, instead of User-CF if too many users</li>
 </ol>
+<p>## Evaluation</p>
+<p><strong>Mean Absolute Error</strong> (MAE) calculates the absolute error of the recommendation.</p>
+<p><strong>Mean Average Precision at K</strong> (MAP@K) is done by calculating the MA of number of relevant items within the top K recommendations.</p>
+<p><strong>Lift</strong> calculates the number of hits of the model at top K, over the number of hits at random.</p>
+<p><strong>Mean Percentage Ranking</strong> (MPR). MPR &lt; 50% means better than random guess.</p>
                 
               
               
